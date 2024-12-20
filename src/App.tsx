@@ -1,4 +1,4 @@
-import { AppRoutes } from "./features/shared/routes/AppRoutes";
+import { AppRoutes } from "@/features/shared/routes/AppRoutes";
 
 const App = () => {
   return (
