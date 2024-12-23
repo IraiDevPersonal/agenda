@@ -13,7 +13,7 @@ export const ArrayMap = <T,>({
   dataset,
   children,
   emptyContent,
-  as: Comp = React.Fragment,
+  as: Comp = "li",
 }: Props<T>) => {
   return (
     <>
