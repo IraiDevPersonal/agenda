@@ -1,6 +1,7 @@
 # iniciar Proyecto
 
 1. Ejecutar comando `npm install` o `bun install` o `yarn install`
+2. Crear rama de trabajo (la mia es iraidev), evitar trabajar en main (podrian bloquearse los push, no se como xD)
 
 # Estructura de carpetas
 
