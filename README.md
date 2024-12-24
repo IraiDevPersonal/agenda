@@ -3,6 +3,10 @@
 1. Ejecutar comando `npm install` o `bun install` o `yarn install`
 2. Crear rama de trabajo (la mia es iraidev), evitar trabajar en main (podrian bloquearse los push, no se como xD)
 
+# IMPORTANTE
+
+Los iconos usados en el sistema se estan obteniendo desde: https://lucide.dev/icons/dollar-sign, los componentes se obtienen desde: https://originui.com/, para el componente base hay que ir a: https://github.com/origin-space/originui/tree/main/components/ui desde aqui copiar el codigo y adaptar en shared/components/ui, tratar de seguir estructura de los demas componentes adapatados segun sea necesidad.
+
 # Estructura de carpetas
 
 La estructura de carpetas es basada en "features" dentro se encontrara una carpeta
