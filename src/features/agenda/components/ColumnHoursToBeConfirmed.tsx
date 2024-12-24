@@ -1,4 +1,5 @@
 import { AgendaColumn } from "./AgendaColumn";
+import { HourCard } from "./HourCard";
 
 export const ColumnHoursToBeConfirmed = () => {
   return (
@@ -10,16 +11,9 @@ export const ColumnHoursToBeConfirmed = () => {
         header: "hover:bg-amber-200",
       }}
     >
-      <HourCard />
-      <HourCard />
+      {Array.from({ length: 5 }).map((_, idx) => (
+        <HourCard key={idx} className="shadow-amber-700/15" />
+      ))}
     </AgendaColumn>
-  );
-};
-
-const HourCard: React.FC = () => {
-  return (
-    <li>
-      <article></article>
-    </li>
   );
 };

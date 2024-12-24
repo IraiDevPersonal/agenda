@@ -1,4 +1,5 @@
 import { AgendaColumn } from "./AgendaColumn";
+import { HourCard } from "./HourCard";
 
 export const ColumnHoursConfirmed = () => {
   return (
@@ -10,8 +11,9 @@ export const ColumnHoursConfirmed = () => {
         header: "hover:bg-emerald-200",
       }}
     >
-      <li>ITEM 1</li>
-      <li>ITEM 2</li>
+      {Array.from({ length: 5 }).map((_, idx) => (
+        <HourCard key={idx} className="shadow-emerald-700/15" />
+      ))}
     </AgendaColumn>
   );
 };

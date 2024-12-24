@@ -1,6 +1,6 @@
 import { IconProps } from "@/config/type";
-import { CircleCheckBig } from "lucide-react";
+import { CircleCheckBigIcon } from "lucide-react";
 
 export const IconAvailable: React.FC<IconProps> = (props) => {
-  return <CircleCheckBig {...props} />;
+  return <CircleCheckBigIcon {...props} />;
 };

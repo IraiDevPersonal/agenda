@@ -1,5 +1,6 @@
 import { IconAvailable } from "@/features/shared/components/icons/IconAvailable";
 import { AgendaColumn } from "./AgendaColumn";
+import { AgendaCard } from "./AgendaCard";
 
 export const ColumnHoursAvailable = () => {
   return (
@@ -14,14 +15,14 @@ export const ColumnHoursAvailable = () => {
 const AvailableCard: React.FC = () => {
   return (
     <li>
-      <article className="flex items-center justify-between gap-4 p-3 rounded-lg shadow-lg bg-background-default shadow-black/10">
-        <span>
+      <AgendaCard>
+        <span className="mr-auto">
           Horario: <strong>13:00 - 13:45</strong>
         </span>
         <figure>
           <IconAvailable className="text-emerald-500" />
         </figure>
-      </article>
+      </AgendaCard>
     </li>
   );
 };
