@@ -11,8 +11,8 @@
  */
 
 import { RoutePaths } from "@/config/routes";
-import { NavLinkRouter } from "./router/NavLinkRouter";
-import { ArrayMap } from "./utils/ArrayMap";
+import { NavLinkRouter } from "../router/NavLinkRouter";
+import { ArrayMap } from "../utils/ArrayMap";
 import { cn } from "@/config/tailwind-merge";
 import { UserProfile } from "@/features/profile/components/UserProfile";
 import { Box } from "./Box";
@@ -62,7 +62,7 @@ const ActiveNavLink: React.FC<PageProps> = ({ icon, label, route }) => {
       to={route}
       className={({ isActive }) =>
         cn(
-          "p-3 flex gap-4 items-center rounded-2xl font-medium",
+          "px-3 py-2.5 flex gap-4 items-center rounded-2xl font-medium",
           "[&_figure]:hover:scale-125",
           "transition-all duration-300",
           !isActive ? "hover:bg-black/10" : "bg-black text-white"

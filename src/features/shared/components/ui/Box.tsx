@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { CreateElement } from "./utils/CreateElement";
+import { CreateElement } from "../utils/CreateElement";
 import { ElementAttributes, TagElements } from "@/config/type";
 import { cn } from "@/config/tailwind-merge";
 

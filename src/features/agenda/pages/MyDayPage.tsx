@@ -1,4 +1,4 @@
-import { Main } from "@/features/shared/components/Main";
+import { Main } from "@/features/shared/components/ui/Main";
 import { Header } from "../components/my-day/Header";
 
 const MyDayPage = () => {

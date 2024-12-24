@@ -1,6 +1,6 @@
 import { useLayoutEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { AppSidebar } from "../components/AppSidebar";
+import { AppSidebar } from "../components/ui/AppSidebar";
 
 const rootElement = document.getElementById("root");
 
