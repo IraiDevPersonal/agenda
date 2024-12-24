@@ -15,6 +15,7 @@ import { NavLinkRouter } from "./router/NavLinkRouter";
 import { ArrayMap } from "./utils/ArrayMap";
 import { cn } from "@/config/tailwind-merge";
 import { UserProfile } from "@/features/profile/components/UserProfile";
+import { Box } from "./Box";
 
 const PAGES: PageProps[] = [
   { label: "Mi Día", icon: "*", route: "/" },
@@ -27,7 +28,7 @@ type PageProps = { label: string; icon: React.ReactNode; route: RoutePaths };
 
 export const AppSidebar = () => {
   return (
-    <aside className="flex flex-col w-full p-4 max-w-64 gap-y-8">
+    <Box as="aside" className="flex flex-col w-full max-w-64 gap-y-8">
       <div className="flex items-center gap-4 px-3">
         <span className="text-2xl italic font-bold">AGENDA</span>
         <span className="block w-10 h-10 text-white bg-black rounded-full"></span>
@@ -51,7 +52,7 @@ export const AppSidebar = () => {
           <span className="text-3xl rotate-90">{"..."}</span>
         </button>
       </div>
-    </aside>
+    </Box>
   );
 };
 

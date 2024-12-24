@@ -1,9 +1,8 @@
+import { TagElements } from "@/config/type";
 import React from "react";
 
 type Props<T> = {
-  as?:
-    | keyof React.JSX.IntrinsicElements
-    | React.ExoticComponent<{ children?: React.ReactNode }>;
+  as?: TagElements | React.ExoticComponent<{ children?: React.ReactNode }>;
   dataset: T[];
   children(e: T, idx: number): React.ReactNode;
   emptyContent?: string;
