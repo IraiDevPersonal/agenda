@@ -16,12 +16,16 @@ import { ArrayMap } from "../utils/ArrayMap";
 import { cn } from "@/config/tailwind-merge";
 import { UserProfile } from "@/features/profile/components/UserProfile";
 import { Box } from "./Box";
+import { IconMyDay } from "../icons/IconMyDay";
+import { IconUsers } from "../icons/IconUsers";
+import { IconDocument } from "../icons/IconDocument";
+import { IconDolar } from "../icons/IconDolar";
 
 const PAGES: PageProps[] = [
-  { label: "Mi Día", icon: "*", route: "/" },
-  { label: "Pacientes", icon: "*", route: "/not-found" },
-  { label: "Informes", icon: "*", route: "/not-found" },
-  { label: "Contabilidad", icon: "*", route: "/not-found" },
+  { label: "Mi Día", icon: <IconMyDay />, route: "/" },
+  { label: "Pacientes", icon: <IconUsers />, route: "/not-found" },
+  { label: "Informes", icon: <IconDocument />, route: "/not-found" },
+  { label: "Contabilidad", icon: <IconDolar />, route: "/not-found" },
 ];
 
 type PageProps = { label: string; icon: React.ReactNode; route: RoutePaths };
