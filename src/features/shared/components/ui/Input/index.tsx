@@ -1,5 +1,6 @@
 import { cn } from "@/config/tailwind-merge";
 import { InputProps, InputSearchProps } from "./types";
+import { IconSearch } from "../../icons/IconSearch";
 // import { IconEye, IconEyeOff, IconLock } from "../../icons";
 
 export function Input({ ref, type, className, ...props }: InputProps) {
@@ -54,7 +55,7 @@ function InputSearch({ className, ...props }: InputSearchProps) {
         {...props}
       />
       <Input.ContentWrapper className="end-0 pe-2">
-        <span>o</span>
+        <IconSearch />
       </Input.ContentWrapper>
     </Input.FieldWrapper>
   );
