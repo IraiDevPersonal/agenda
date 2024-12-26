@@ -29,7 +29,7 @@ export const AgendaColumn: React.FC<Props> = ({
           classNames?.header
         )}
       >
-        <h3 className="font-bold leading-none">
+        <h3 className="text-lg font-bold leading-none">
           {title} ({count})
         </h3>
         <Button size="icon-sm" variant="light" className="hover:bg-white/35">

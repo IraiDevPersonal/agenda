@@ -1,7 +1,7 @@
 import { AgendaColumn } from "./AgendaColumn";
 import { HourCard } from "./HourCard";
 
-export const ColumnHoursToBeConfirmed = () => {
+export const ColumnHoursToBeConfirm = () => {
   return (
     <AgendaColumn
       title="Por Confirmar"
@@ -12,7 +12,10 @@ export const ColumnHoursToBeConfirmed = () => {
       }}
     >
       {Array.from({ length: 5 }).map((_, idx) => (
-        <HourCard key={idx} className="shadow-amber-700/15" />
+        <HourCard
+          key={idx}
+          className="text-amber-700 border-amber-600/10 shadow-amber-700/15"
+        />
       ))}
     </AgendaColumn>
   );
