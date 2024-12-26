@@ -7,7 +7,7 @@ export const ColumnHoursConfirmed = () => {
       title="Confirmadas"
       count={2}
       classNames={{
-        wrapper: "text-emerald-600 bg-emerald-100",
+        wrapper: "text-emerald-700 bg-emerald-100",
         header: "hover:bg-emerald-200",
       }}
     >

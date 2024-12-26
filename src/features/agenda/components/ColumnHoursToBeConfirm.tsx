@@ -7,7 +7,7 @@ export const ColumnHoursToBeConfirm = () => {
       title="Por Confirmar"
       count={2}
       classNames={{
-        wrapper: "text-amber-600 bg-amber-100",
+        wrapper: "text-amber-700 bg-amber-100",
         header: "hover:bg-amber-200",
       }}
     >

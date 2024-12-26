@@ -7,7 +7,7 @@ export const ColumnHoursCancelled = () => {
       title="Canceladas"
       count={2}
       classNames={{
-        wrapper: "text-red-600 bg-red-100",
+        wrapper: "text-red-700 bg-red-100",
         header: "hover:bg-red-200",
       }}
     >
