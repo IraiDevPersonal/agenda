@@ -4,11 +4,12 @@ import { Box } from "@/features/shared/components/ui/Box";
 import { Button } from "@/features/shared/components/ui/Button";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import type { AgendaColumn as Column } from "../../domain/types";
 
 type Props = React.PropsWithChildren<{
-  id: number | string;
   title: string;
   count: number;
+  id: Column["id"];
   classNames?: Partial<{ header: string; body: string; wrapper: string }>;
 }>;
 

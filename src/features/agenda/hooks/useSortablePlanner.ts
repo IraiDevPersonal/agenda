@@ -1,32 +1,39 @@
+import { BrowserStorage } from "@/config/browser-storage";
 import { DragEndEvent } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 import { useState } from "react";
+import { AgendaColumn } from "../domain/types";
 
-type Props = {
-  initialColumns: {
-    id: string;
-    comp: React.ReactNode;
-    defaultPosition: number;
-  }[];
-};
+const AGENDA_COLUMNS: AgendaColumn[] = [
+  { id: "confirmed" },
+  { id: "to-be-confirm" },
+  { id: "available" },
+  { id: "cancelled" },
+];
 
-export function useSortablePlanner({ initialColumns }: Props) {
-  const [columns, setColumns] = useState(initialColumns);
+const storage = new BrowserStorage("user_columns_order");
+
+export function useSortablePlanner() {
+  const [columns, setColumns] = useState(
+    storage.get<AgendaColumn[]>(AGENDA_COLUMNS)
+  );
 
   const handleDragEnd = (e: DragEndEvent) => {
     const { active, over } = e;
     if (over && active.id !== over.id) {
       setColumns((prevItems) => {
+        if (!prevItems) return [];
         const oldIndex = prevItems.findIndex((item) => item.id === active.id);
         const newIndex = prevItems.findIndex((item) => item.id === over.id);
-        const n = arrayMove(prevItems, oldIndex, newIndex);
-        return n;
+        const newItems = arrayMove(prevItems, oldIndex, newIndex);
+        storage.save(newItems);
+        return newItems;
       });
     }
   };
 
   return {
-    columns,
     handleDragEnd,
+    columns: columns ?? [],
   };
 }

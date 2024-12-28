@@ -1,11 +1,11 @@
 import { Avatar } from "@/features/shared/components/ui/Avatar";
-import { AgendaCard } from "./AgendaCard";
+import { AgendaCard } from "../shared/AgendaCard";
 
 type Props = {
   className?: string;
 };
 
-export const HourCard: React.FC<Props> = ({ className }) => {
+export const AppointmentCard: React.FC<Props> = ({ className }) => {
   return (
     <li>
       <AgendaCard className={className}>

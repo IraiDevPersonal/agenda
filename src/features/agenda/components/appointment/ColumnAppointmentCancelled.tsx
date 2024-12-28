@@ -1,10 +1,10 @@
-import { AgendaColumn } from "./AgendaColumn";
-import { HourCard } from "./HourCard";
+import { AgendaColumn } from "../shared/AgendaColumn";
+import { AppointmentCard } from "./AppointmentCard";
 
-export const ColumnHoursCancelled = () => {
+export const ColumnAppointmentCancelled = () => {
   return (
     <AgendaColumn
-      id={"cancelled"}
+      id="cancelled"
       title="Canceladas"
       count={2}
       classNames={{
@@ -13,7 +13,7 @@ export const ColumnHoursCancelled = () => {
       }}
     >
       {Array.from({ length: 5 }).map((_, idx) => (
-        <HourCard
+        <AppointmentCard
           key={idx}
           className="text-red-700 border-red-600/10 shadow-red-700/15"
         />

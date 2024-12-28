@@ -1,36 +1,38 @@
 import { ArrayMap } from "@/features/shared/components/utils/ArrayMap";
 import { DndContext } from "@dnd-kit/core";
-import { restrictToHorizontalAxis } from "@dnd-kit/modifiers";
 import { SortableContext } from "@dnd-kit/sortable";
-import { Fragment } from "react";
 import { useSortablePlanner } from "../../hooks/useSortablePlanner";
-import { AgendaGrid } from "../AgendaGrid";
-import { ColumnHoursAvailable } from "../ColumnHoursAvailable";
-import { ColumnHoursCancelled } from "../ColumnHoursCancelled";
-import { ColumnHoursConfirmed } from "../ColumnHoursConfirmed";
-import { ColumnHoursToBeConfirm } from "../ColumnHoursToBeConfirm";
-
-const COLS = [
-  { defaultPosition: 0, id: "confirmed", comp: <ColumnHoursConfirmed /> },
-  { defaultPosition: 1, id: "to-be-confirm", comp: <ColumnHoursToBeConfirm /> },
-  { defaultPosition: 2, id: "available", comp: <ColumnHoursAvailable /> },
-  { defaultPosition: 3, id: "cancelled", comp: <ColumnHoursCancelled /> },
-];
+import { AgendaGrid } from "../shared/AgendaGrid";
+import { ColumnAppointmentAvailable } from "../appointment/ColumnAppointmentAvailable";
+import { ColumnAppointmentCancelled } from "../appointment/ColumnAppointmentCancelled";
+import { ColumnAppointmentConfirmed } from "../appointment/ColumnAppointmentConfirmed";
+import { ColumnAppointmentToBeConfirm } from "../appointment/ColumnAppointmentToBeConfirm";
 
 export const Planner = () => {
-  const { columns, handleDragEnd } = useSortablePlanner({
-    initialColumns: COLS,
-  });
+  const { columns, handleDragEnd } = useSortablePlanner();
 
   return (
     <DndContext
       onDragEnd={handleDragEnd}
-      modifiers={[restrictToHorizontalAxis]}
+      // modifiers={[restrictToHorizontalAxis]}
     >
       <AgendaGrid>
         <SortableContext items={columns}>
           <ArrayMap dataset={columns}>
-            {(col) => <Fragment key={col.id}>{col.comp}</Fragment>}
+            {(col) => {
+              switch (col.id) {
+                case "available":
+                  return <ColumnAppointmentAvailable key={col.id} />;
+                case "cancelled":
+                  return <ColumnAppointmentCancelled key={col.id} />;
+                case "confirmed":
+                  return <ColumnAppointmentConfirmed key={col.id} />;
+                case "to-be-confirm":
+                  return <ColumnAppointmentToBeConfirm key={col.id} />;
+                default:
+                  return null;
+              }
+            }}
           </ArrayMap>
         </SortableContext>
       </AgendaGrid>

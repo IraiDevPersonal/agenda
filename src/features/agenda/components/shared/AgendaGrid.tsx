@@ -4,10 +4,7 @@ type Props = React.PropsWithChildren;
 
 export const AgendaGrid: React.FC<Props> = ({ children }) => {
   return (
-    <Box
-      as="div"
-      className="flex flex-wrap justify-center p-0 gap-4 *:max-w-96"
-    >
+    <Box as="div" className="flex flex-wrap p-0 gap-4 *:max-w-96">
       {children}
     </Box>
   );
