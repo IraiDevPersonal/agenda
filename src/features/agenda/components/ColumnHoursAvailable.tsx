@@ -4,7 +4,7 @@ import { AgendaCard } from "./AgendaCard";
 
 export const ColumnHoursAvailable = () => {
   return (
-    <AgendaColumn title="Disponibles" count={2}>
+    <AgendaColumn id={"available"} title="Disponibles" count={2}>
       {Array.from({ length: 50 }).map((_, idx) => (
         <AvailableCard key={idx} />
       ))}

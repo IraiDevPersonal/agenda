@@ -4,6 +4,7 @@ import { HourCard } from "./HourCard";
 export const ColumnHoursConfirmed = () => {
   return (
     <AgendaColumn
+      id={"confirmed"}
       title="Confirmadas"
       count={2}
       classNames={{

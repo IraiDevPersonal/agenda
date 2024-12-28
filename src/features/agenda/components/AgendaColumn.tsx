@@ -2,8 +2,11 @@ import { cn } from "@/config/tailwind-merge";
 import { IconReload } from "@/features/shared/components/icons/IconReload";
 import { Box } from "@/features/shared/components/ui/Box";
 import { Button } from "@/features/shared/components/ui/Button";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 type Props = React.PropsWithChildren<{
+  id: number | string;
   title: string;
   count: number;
   classNames?: Partial<{ header: string; body: string; wrapper: string }>;
@@ -14,18 +17,31 @@ export const AgendaColumn: React.FC<Props> = ({
   children,
   title,
   count,
+  id,
 }) => {
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
   return (
     <Box
       as="section"
+      ref={setNodeRef}
+      style={style}
       className={cn(
         "w-full bg-background-secondary p-0 rounded-2xl shadow-lg shadow-black/10 overflow-hidden h-[90vh]",
         classNames?.wrapper
       )}
     >
       <div
+        {...attributes}
+        {...listeners}
         className={cn(
-          "px-4 py-2.5 transition-colors duration-300 hover:bg-black/5 flex justify-between items-center",
+          "px-4 py-2.5 transition-colors duration-300 hover:bg-black/5 flex justify-between items-center cursor-move",
           classNames?.header
         )}
       >
