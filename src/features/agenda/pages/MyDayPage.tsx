@@ -1,4 +1,4 @@
-import { Main } from "@/features/shared/components/ui/Main";
+import { Main } from "@/features/_core/components/ui/Main";
 import { Header } from "../components/my-day/Header";
 import { Planner } from "../components/my-day/Planner";
 

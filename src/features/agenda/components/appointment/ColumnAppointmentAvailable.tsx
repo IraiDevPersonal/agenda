@@ -1,4 +1,4 @@
-import { IconAvailable } from "@/features/shared/components/icons/IconAvailable";
+import { IconAvailable } from "@/features/_core/components/icons/IconAvailable";
 import { AgendaColumn } from "../shared/AgendaColumn";
 import { AgendaCard } from "../shared/AgendaCard";
 

@@ -1,4 +1,4 @@
-import { ArrayMap } from "@/features/shared/components/utils/ArrayMap";
+import { ArrayMap } from "@/features/_core/components/utils/ArrayMap";
 import { DndContext } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
 import { useSortablePlanner } from "../../hooks/useSortablePlanner";

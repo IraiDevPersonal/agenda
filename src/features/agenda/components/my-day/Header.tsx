@@ -1,5 +1,5 @@
-import { Box } from "@/features/shared/components/ui/Box";
-import { Input } from "@/features/shared/components/ui/Input";
+import { Box } from "@/features/_core/components/ui/Box";
+import { Input } from "@/features/_core/components/ui/Input";
 
 const CURRENT_DATE = new Date()
   .toLocaleDateString()

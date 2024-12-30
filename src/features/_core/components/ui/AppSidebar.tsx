@@ -10,7 +10,7 @@
  * dropdown usuario
  */
 
-import { NavLinkRouter } from "../router/NavLinkRouter";
+import { NavLinkRouter } from "./NavLinkRouter";
 import { ArrayMap } from "../utils/ArrayMap";
 import { cn } from "@/config/tailwind-merge";
 import { UserProfile } from "@/features/profile/components/UserProfile";

@@ -1,7 +1,7 @@
 import { cn } from "@/config/tailwind-merge";
-import { IconReload } from "@/features/shared/components/icons/IconReload";
-import { Box } from "@/features/shared/components/ui/Box";
-import { Button } from "@/features/shared/components/ui/Button";
+import { IconReload } from "@/features/_core/components/icons/IconReload";
+import { Box } from "@/features/_core/components/ui/Box";
+import { Button } from "@/features/_core/components/ui/Button";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { AgendaColumn as Column } from "../../domain/types";
