@@ -10,7 +10,6 @@
  * dropdown usuario
  */
 
-import { RoutePaths } from "@/config/routes";
 import { NavLinkRouter } from "../router/NavLinkRouter";
 import { ArrayMap } from "../utils/ArrayMap";
 import { cn } from "@/config/tailwind-merge";
@@ -20,6 +19,7 @@ import { IconMyDay } from "../icons/IconMyDay";
 import { IconUsers } from "../icons/IconUsers";
 import { IconDocument } from "../icons/IconDocument";
 import { IconDolar } from "../icons/IconDolar";
+import { RoutePaths } from "@/config/type";
 
 const PAGES: PageProps[] = [
   { label: "Mi Día", icon: <IconMyDay />, route: "/" },
