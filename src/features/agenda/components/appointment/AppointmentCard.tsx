@@ -1,5 +1,5 @@
-import { Avatar } from "@/features/_core/components/ui/Avatar";
-import { AgendaCard } from "../shared/AgendaCard";
+import { Avatar } from "@/features/_core/components/ui";
+import { AgendaCard } from "../shared";
 
 type Props = {
   className?: string;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
-import { cn } from "@/config/tailwind-merge";
-import { IconUser } from "../icons/IconUser";
+import { cn } from "@/config";
+import { IconUser } from "../icons";
 
 type AvatarWrapperProps = {
   ref?: React.Ref<HTMLSpanElement>;

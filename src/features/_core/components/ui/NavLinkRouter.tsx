@@ -1,4 +1,4 @@
-import { LinkRouteProps } from "@/config/type";
+import type { LinkRouteProps } from "@/config";
 import { NavLink, NavLinkProps } from "react-router-dom";
 import { generateRoutePath } from "../../utils/helpers.util";
 

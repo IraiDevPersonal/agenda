@@ -1,6 +1,6 @@
-import { LinkRouteProps } from "@/config/type";
 import { Link, LinkProps } from "react-router-dom";
 import { generateRoutePath } from "../../utils/helpers.util";
+import type { LinkRouteProps } from "@/config";
 
 type Props = Omit<LinkProps, "to"> & LinkRouteProps;
 

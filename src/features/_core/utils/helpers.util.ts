@@ -1,4 +1,4 @@
-import { LinkRouteProps } from "@/config/type";
+import type { LinkRouteProps } from "@/config";
 
 export const generateRoutePath = ({ to, params, query }: LinkRouteProps) => {
   const path: string = to.replace(/:([^/]+)/g, (_, key) => {

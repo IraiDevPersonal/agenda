@@ -1,4 +1,4 @@
-import { Avatar } from "@/features/_core/components/ui/Avatar";
+import { Avatar } from "@/features/_core/components/ui";
 
 export const UserProfile = () => {
   return (

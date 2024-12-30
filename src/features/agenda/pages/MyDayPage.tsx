@@ -1,6 +1,5 @@
-import { Main } from "@/features/_core/components/ui/Main";
-import { Header } from "../components/my-day/Header";
-import { Planner } from "../components/my-day/Planner";
+import { Main } from "@/features/_core/components/ui";
+import { Header, Planner } from "../components/my-day";
 
 const MyDayPage = () => {
   return (

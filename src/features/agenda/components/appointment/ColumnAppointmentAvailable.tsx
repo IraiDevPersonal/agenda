@@ -1,6 +1,5 @@
-import { IconAvailable } from "@/features/_core/components/icons/IconAvailable";
-import { AgendaColumn } from "../shared/AgendaColumn";
-import { AgendaCard } from "../shared/AgendaCard";
+import { IconAvailable } from "@/features/_core/components/icons";
+import { AgendaCard, AgendaColumn } from "../shared";
 
 export const ColumnAppointmentAvailable = () => {
   return (

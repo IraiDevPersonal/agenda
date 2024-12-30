@@ -1,5 +1,5 @@
-import { ElementAttributes, TagElements } from "@/config/type";
 import { createElement, PropsWithChildren } from "react";
+import type { ElementAttributes, TagElements } from "@/config";
 
 type Props<T extends HTMLElement | unknown = HTMLElement> = {
   as: TagElements;

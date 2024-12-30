@@ -1,10 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Layout } from "../layouts";
+import { ROUTES } from "@/config";
+
 import MyDayPage from "@/features/agenda/pages/MyDayPage";
 import NotFoundPage from "../pages/NotFoundPage";
-import Layout from "../layouts/Layout";
-import { ROUTES } from "@/config/routes";
 
-export const AppRoutes = () => {
+const AppRoutes = () => {
   return (
     <>
       <BrowserRouter>
@@ -19,3 +20,5 @@ export const AppRoutes = () => {
     </>
   );
 };
+
+export default AppRoutes;

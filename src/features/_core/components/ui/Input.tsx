@@ -1,5 +1,5 @@
-import { cn } from "@/config/tailwind-merge";
-import { IconSearch } from "../icons/IconSearch";
+import { cn } from "@/config";
+import { IconSearch } from "../icons";
 // import { IconEye, IconEyeOff, IconLock } from "../../icons";
 
 export type InputProps = React.ComponentProps<"input"> & {

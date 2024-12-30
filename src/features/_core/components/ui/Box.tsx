@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
-import { CreateElement } from "../utils/CreateElement";
-import { ElementAttributes, TagElements } from "@/config/type";
-import { cn } from "@/config/tailwind-merge";
+import { CreateElement } from "../utils";
+import { cn } from "@/config";
+import type { ElementAttributes, TagElements } from "@/config";
 
 type Props<T extends HTMLElement | unknown = HTMLElement> = {
   as: TagElements;

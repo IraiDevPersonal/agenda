@@ -1,4 +1,4 @@
-import { cn } from "@/config/tailwind-merge";
+import { cn } from "@/config";
 
 type Props = {
   className?: string;

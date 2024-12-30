@@ -1,12 +1,14 @@
-import { ArrayMap } from "@/features/_core/components/utils/ArrayMap";
 import { DndContext } from "@dnd-kit/core";
-import { SortableContext } from "@dnd-kit/sortable";
-import { useSortablePlanner } from "../../hooks/useSortablePlanner";
 import { AgendaGrid } from "../shared/AgendaGrid";
-import { ColumnAppointmentAvailable } from "../appointment/ColumnAppointmentAvailable";
-import { ColumnAppointmentCancelled } from "../appointment/ColumnAppointmentCancelled";
-import { ColumnAppointmentConfirmed } from "../appointment/ColumnAppointmentConfirmed";
-import { ColumnAppointmentToBeConfirm } from "../appointment/ColumnAppointmentToBeConfirm";
+import { SortableContext } from "@dnd-kit/sortable";
+import { ArrayMap } from "@/features/_core/components/utils";
+import {
+  ColumnAppointmentAvailable,
+  ColumnAppointmentCancelled,
+  ColumnAppointmentConfirmed,
+  ColumnAppointmentToBeConfirm,
+} from "../appointment";
+import { useSortablePlanner } from "../../hooks";
 
 export const Planner = () => {
   const { columns, handleDragEnd } = useSortablePlanner();

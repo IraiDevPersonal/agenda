@@ -1,4 +1,4 @@
-import { Box } from "@/features/_core/components/ui/Box";
+import { Box } from "@/features/_core/components/ui";
 
 type Props = React.PropsWithChildren;
 

@@ -1,5 +1,5 @@
-import { TagElements } from "@/config/type";
 import React from "react";
+import type { TagElements } from "@/config";
 
 type Props<T> = {
   as?: TagElements | React.ExoticComponent<{ children?: React.ReactNode }>;

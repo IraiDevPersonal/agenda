@@ -1,10 +1,9 @@
-import { cn } from "@/config/tailwind-merge";
-import { IconReload } from "@/features/_core/components/icons/IconReload";
-import { Box } from "@/features/_core/components/ui/Box";
-import { Button } from "@/features/_core/components/ui/Button";
-import { useSortable } from "@dnd-kit/sortable";
+import { IconReload } from "@/features/_core/components/icons";
 import { CSS } from "@dnd-kit/utilities";
-import type { AgendaColumn as Column } from "../../domain/types";
+import { cn } from "@/config/tailwind-merge";
+import { useSortable } from "@dnd-kit/sortable";
+import { Box, Button } from "@/features/_core/components/ui";
+import type { AgendaColumn as Column } from "../../domain";
 
 type Props = React.PropsWithChildren<{
   title: string;

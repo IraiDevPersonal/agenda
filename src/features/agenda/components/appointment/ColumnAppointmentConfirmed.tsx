@@ -1,4 +1,4 @@
-import { AgendaColumn } from "../shared/AgendaColumn";
+import { AgendaColumn } from "../shared";
 import { AppointmentCard } from "./AppointmentCard";
 
 export const ColumnAppointmentConfirmed = () => {

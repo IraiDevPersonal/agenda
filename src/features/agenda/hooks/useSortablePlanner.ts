@@ -2,7 +2,7 @@ import { BrowserStorage } from "@/config/browser-storage";
 import { DragEndEvent } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 import { useState } from "react";
-import { AgendaColumn } from "../domain/types";
+import { AgendaColumn } from "../domain";
 
 const AGENDA_COLUMNS: AgendaColumn[] = [
   { id: "confirmed" },

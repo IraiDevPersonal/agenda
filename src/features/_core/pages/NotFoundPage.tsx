@@ -1,4 +1,4 @@
-import { LinkRouter } from "../components/ui/LinkRouter";
+import { LinkRouter } from "../components/ui";
 
 const NotFoundPage = () => {
   return (

@@ -1,5 +1,4 @@
-import { Box } from "@/features/_core/components/ui/Box";
-import { Input } from "@/features/_core/components/ui/Input";
+import { Box, Input } from "@/features/_core/components/ui";
 
 const CURRENT_DATE = new Date()
   .toLocaleDateString()

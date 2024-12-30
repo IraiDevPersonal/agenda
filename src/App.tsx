@@ -1,4 +1,4 @@
-import { AppRoutes } from "@/features/_core/routes/AppRoutes";
+import AppRoutes from "@/features/_core/routes/AppRoutes";
 
 const App = () => {
   return (
