@@ -6,3 +6,8 @@ export * from "./IconReload";
 export * from "./IconSearch";
 export * from "./IconUser";
 export * from "./IconUsers";
+export * from "./IconX";
+export * from "./IconLock";
+export * from "./IconEye";
+export * from "./IconEyeOff";
+export * from "./IconSave";

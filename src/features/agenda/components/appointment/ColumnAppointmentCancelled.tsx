@@ -10,6 +10,7 @@ export const ColumnAppointmentCancelled = () => {
       classNames={{
         wrapper: "text-red-700 bg-red-100",
         header: "hover:bg-red-200",
+        body: "scrollbar-thumb-red-700",
       }}
     >
       {Array.from({ length: 5 }).map((_, idx) => (

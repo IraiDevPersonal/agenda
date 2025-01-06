@@ -50,7 +50,7 @@ const AvatarFallback: React.FC<AvatarFallbackProps> = ({
   <AvatarPrimitive.Fallback
     ref={ref}
     className={cn(
-      "flex h-full w-full items-center justify-center rounded-[inherit] bg-secondary text-xs",
+      "flex h-full w-full items-center justify-center rounded-[inherit] bg-muted text-xs",
       className
     )}
     {...props}
@@ -73,10 +73,7 @@ export const Avatar: React.FC<Props> = ({ fallback, classNames, ...props }) => {
     <AvatarWrapper className={cn(classNames?.wrapper)}>
       <AvatarImage {...props} className={cn(classNames?.image)} />
       <AvatarFallback
-        className={cn(
-          "bg-background-secondary text-text-default",
-          classNames?.fallback
-        )}
+        className={cn("bg-muted text-foreground", classNames?.fallback)}
       >
         {fallback || <IconUser className="opacity-70" aria-hidden="true" />}
       </AvatarFallback>

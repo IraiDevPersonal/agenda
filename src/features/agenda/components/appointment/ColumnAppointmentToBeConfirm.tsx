@@ -10,6 +10,7 @@ export const ColumnAppointmentToBeConfirm = () => {
       classNames={{
         wrapper: "text-amber-700 bg-amber-100",
         header: "hover:bg-amber-200",
+        body: "scrollbar-thumb-amber-700",
       }}
     >
       {Array.from({ length: 5 }).map((_, idx) => (

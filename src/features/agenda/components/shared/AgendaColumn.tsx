@@ -54,7 +54,8 @@ export const AgendaColumn: React.FC<Props> = ({
       </div>
       <ul
         className={cn(
-          "px-4 pt-2 space-y-2 h-[calc(100%-65px)] overflow-auto",
+          "px-4 pt-2 space-y-2 h-[calc(100%-65px)]",
+          "scrollbar-styles overflow-y-auto",
           classNames?.body
         )}
       >

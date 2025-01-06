@@ -10,6 +10,7 @@ export const ColumnAppointmentConfirmed = () => {
       classNames={{
         wrapper: "text-sky-700 bg-sky-100",
         header: "hover:bg-sky-200",
+        body: "scrollbar-thumb-skyt-700",
       }}
     >
       {Array.from({ length: 5 }).map((_, idx) => (
