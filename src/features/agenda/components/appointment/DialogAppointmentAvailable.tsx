@@ -7,6 +7,7 @@ import {
   RadioGroup,
   StateDialogProps,
 } from "@/features/_core/components/ui";
+import { useState } from "react";
 
 type Props = StateDialogProps;
 
@@ -14,14 +15,17 @@ export const DialogAppointmentAvailable: React.FC<Props> = ({
   isOpen,
   onClose,
 }) => {
+  const [filter, setFilter] = useState(FILTER_ITEMS[0].id);
   return (
     <Dialog modal isOpen={isOpen} onClose={onClose}>
       <Dialog.Content className="sm:max-w-[500px]">
         <Dialog.Body className="py-2">
           <h3 className="font-bold text-lg">Paciente:</h3>
           <Input.Root>
-            <Input.Search placeholder="Buscar por Rut/Nombre Paciente..." />
-            <FilterPatient />
+            <Input.Search
+              placeholder={`Buscar paciente por ${getName(filter)}...`}
+            />
+            <FilterPatient value={filter} onChange={setFilter} />
           </Input.Root>
           <h5 className="text-center font-semibold mt-4">Datos Paciente</h5>
           <span className="text-center text-sm text-muted-foreground italic">
@@ -29,6 +33,12 @@ export const DialogAppointmentAvailable: React.FC<Props> = ({
           </span>
         </Dialog.Body>
         <Dialog.Footer>
+          <Button
+            variant="light"
+            className="text-blue-500 text-sm hover:bg-blue-50 hover:text-blue-500 mr-auto"
+          >
+            Crear paciente +
+          </Button>
           <Button variant="light" onClick={onClose}>
             Cancelar
           </Button>
@@ -42,16 +52,17 @@ export const DialogAppointmentAvailable: React.FC<Props> = ({
   );
 };
 
-const FILTER_ITEMS = [
-  { label: "Rut paciente", id: "rut" },
-  { label: "Nombre paciente", id: "name" },
-];
+type FilterPatientProps = {
+  value: string;
+  onChange(value: string): void;
+};
 
-const FilterPatient = () => {
+const FilterPatient: React.FC<FilterPatientProps> = ({ value, onChange }) => {
   return (
     <RadioGroup
-      defaultValue="rut"
+      value={value}
       orientation="horizontal"
+      onValueChange={onChange}
       // className="justify-center"
     >
       {FILTER_ITEMS.map(({ id, label }) => (
@@ -72,3 +83,12 @@ const FilterPatient = () => {
     </RadioGroup>
   );
 };
+
+const FILTER_ITEMS = [
+  { label: "Rut paciente", showName: "rut", id: "rut" },
+  { label: "Nombre paciente", showName: "nombre", id: "name" },
+];
+
+function getName(id: string) {
+  return FILTER_ITEMS.find((el) => el.id === id)?.showName ?? "";
+}

@@ -20,8 +20,9 @@ export function RadioGroup({
   return (
     <RadioGroupPrimitive.Root
       className={cn(
-        !orientation && "grid gap-2",
-        orientation === "vertical" ? "flex flex-col gap-2" : "flex gap-2",
+        "gap-2",
+        !orientation && "grid grid-cols-3",
+        orientation === "vertical" ? "flex flex-col" : "flex",
         className
       )}
       {...props}
