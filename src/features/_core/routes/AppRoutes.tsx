@@ -3,6 +3,7 @@ import { Layout } from "../layouts";
 import { ROUTES } from "@/config";
 
 import MyDayPage from "@/features/agenda/pages/MyDayPage";
+import AgendaPage from "@/features/agenda/pages/AgendaPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
 const AppRoutes = () => {
@@ -12,7 +13,7 @@ const AppRoutes = () => {
         <Routes>
           <Route element={<Layout />}>
             <Route index element={<MyDayPage />} />
-            <Route path={ROUTES.TEST} element={"Pagina test"} />
+            <Route path={ROUTES.AGENDA} element={<AgendaPage />} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

@@ -3,7 +3,13 @@ import { useDialog } from "@/features/_core/hooks";
 import { AgendaCard, AgendaColumn } from "../shared";
 import { DialogAppointmentAvailable } from "./DialogAppointmentAvailable";
 
-export const ColumnAppointmentAvailable = () => {
+type Props = {
+  hideProfesionalData?: boolean;
+};
+
+export const ColumnAppointmentAvailable: React.FC<Props> = ({
+  hideProfesionalData = false,
+}) => {
   const [isOpen, handleToggleOpen] = useDialog();
   return (
     <>
@@ -23,7 +29,7 @@ export const ColumnAppointmentAvailable = () => {
             onClick={handleToggleOpen}
             className="hover:cursor-pointer"
           >
-            <AvailableCard />
+            <AvailableCard hideProfesionalData={hideProfesionalData} />
           </li>
         ))}
       </AgendaColumn>
@@ -32,17 +38,21 @@ export const ColumnAppointmentAvailable = () => {
   );
 };
 
-const AvailableCard: React.FC = () => {
+const AvailableCard: React.FC<{ hideProfesionalData: boolean }> = ({
+  hideProfesionalData,
+}) => {
   return (
     <AgendaCard className="text-emerald-700 border-emerald-600/10 shadow-emerald-700/15">
       <div className="flex flex-col mr-auto">
-        <strong>Nombre profesional</strong>
+        {!hideProfesionalData && <strong>Nombre profesional</strong>}
         <span>
           Horario: <strong>13:00 - 13:45</strong>
         </span>
-        <span>
-          Profesión: <strong>Psicologo(a)</strong>
-        </span>
+        {!hideProfesionalData && (
+          <span>
+            Profesión: <strong>Psicologo(a)</strong>
+          </span>
+        )}
       </div>
       <figure>
         <IconAvailable className="text-emerald-500" />

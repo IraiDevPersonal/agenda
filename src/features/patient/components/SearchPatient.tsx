@@ -41,7 +41,7 @@ export const SearchPatient: React.FC<Props> = ({ getPatient }) => {
     if (e.key !== "Enter") return;
     const value = e.currentTarget.value;
     if (lastSearch.current === value) return;
-    getPatient(value ? DUMMY_PATIENT : null);
+    getPatient(value.toLocaleLowerCase() === "ignacio" ? DUMMY_PATIENT : null);
     lastSearch.current = value;
   };
 

@@ -12,12 +12,19 @@
 
 import { cn, RoutePaths } from "@/config";
 import { UserProfile } from "@/features/profile/components/UserProfile";
-import { IconDocument, IconDolar, IconMyDay, IconUsers } from "../icons";
+import {
+  IconAgenda,
+  IconDocument,
+  IconDolar,
+  IconMyDay,
+  IconUsers,
+} from "../icons";
 import { ArrayMap } from "../utils";
 import { Box, NavLinkRouter } from "./";
 
 const PAGES: PageProps[] = [
   { label: "Mi Día", icon: <IconMyDay />, route: "/" },
+  { label: "Agenda", icon: <IconAgenda />, route: "/agenda" },
   { label: "Pacientes", icon: <IconUsers />, route: "/not-found" },
   { label: "Informes", icon: <IconDocument />, route: "/not-found" },
   { label: "Contabilidad", icon: <IconDolar />, route: "/not-found" },

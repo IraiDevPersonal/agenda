@@ -15,3 +15,4 @@ export * from "./IconPlus";
 export * from "./IconInfo";
 export * from "./IconLike";
 export * from "./IconDislike";
+export * from "./IconAgenda";
