@@ -29,9 +29,7 @@ export type StateDialogProps = {
   isOpen: boolean;
 };
 
-type DialogProps = {
-  // shouldCloseOnClickOverlay?: boolean;
-} & StateDialogProps &
+type DialogProps = StateDialogProps &
   Omit<
     React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>,
     "open" | "onOpenChange"
@@ -104,16 +102,14 @@ const DialogHeader: React.FC<DialogHeaderProps> = ({
       )}
       {...props}
     >
-      {title && (
-        <DialogPrimitive.Title
-          className={cn(
-            "text-lg font-semibold tracking-tight first-letter:uppercase",
-            classNames?.title
-          )}
-        >
-          {title}
-        </DialogPrimitive.Title>
-      )}
+      <DialogPrimitive.Title
+        className={cn(
+          "text-lg font-semibold tracking-tight first-letter:uppercase",
+          classNames?.title
+        )}
+      >
+        {title}
+      </DialogPrimitive.Title>
       {children}
     </header>
   );
