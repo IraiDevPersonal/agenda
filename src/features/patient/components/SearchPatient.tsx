@@ -1,27 +1,56 @@
+import { Uid } from "@/config";
 import { Input, Label, RadioGroup } from "@/features/_core/components/ui";
-import { SearchPatientEntity } from "../entities/search_patient.entity";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { PatientEntity } from "../domain/patient.entity";
+
+const DUMMY_PATIENT: PatientEntity = {
+  id: 1,
+  uid: Uid.generate(),
+  rut: "10.050.844-7",
+  names: "Ignacio Rodrigo",
+  last_names: "Arriagada Iriarte",
+  email: "ignacio.arr01@gmail.com",
+  phone: "+56956980565",
+};
+
+const FILTER_ITEMS = [
+  { label: "Rut paciente", showName: "rut", id: "rut" },
+  { label: "Nombre paciente", showName: "nombre", id: "name" },
+];
+
+function getFilterShowName(id: string) {
+  return FILTER_ITEMS.find((el) => el.id === id)?.showName ?? "";
+}
 
 type Props = {
-  getPatient(value: string): void;
+  getPatient(patient: PatientEntity | null): void;
 };
 
 export const SearchPatient: React.FC<Props> = ({ getPatient }) => {
-  const [filter, setFilter] = useState(SearchPatientEntity.items[0].id);
+  const [filter, setFilter] = useState(FILTER_ITEMS[0].id);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const lastSearch = useRef<string>("");
+
   const handleFilterChange = (value: string) => {
     setFilter(value);
+    lastSearch.current = "";
+    inputRef.current!.value = "";
+  };
+
+  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.key !== "Enter") return;
+    const value = e.currentTarget.value;
+    if (lastSearch.current === value) return;
+    getPatient(value ? DUMMY_PATIENT : null);
+    lastSearch.current = value;
   };
 
   return (
     <Input.Root>
       <Input.Search
-        placeholder={`Buscar paciente por ${SearchPatientEntity.getName(
-          filter
-        )}...`}
-        onKeyDown={(e) => {
-          if (e.key !== "Enter") return;
-          getPatient(e.currentTarget.value);
-        }}
+        ref={inputRef}
+        onKeyDown={handleKeyDown}
+        placeholder={`Buscar paciente por ${getFilterShowName(filter)}...`}
       />
       <RadioGroup
         value={filter}
@@ -29,7 +58,7 @@ export const SearchPatient: React.FC<Props> = ({ getPatient }) => {
         onValueChange={handleFilterChange}
         // className="justify-center"
       >
-        {SearchPatientEntity.items.map(({ id, label }) => (
+        {FILTER_ITEMS.map(({ id, label }) => (
           <div
             key={id}
             className="relative flex flex-col items-start gap-4 rounded-lg border border-input p-2 shadow-sm shadow-black/5 has-[[data-state=checked]]:border-ring has-[[data-state=checked]]:shadow-lg has-[[data-state=checked]]:bg-accent"

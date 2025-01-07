@@ -9,6 +9,7 @@ import {
   StateDialogProps,
 } from "@/features/_core/components/ui";
 import { FormPatient, SearchPatient } from "@/features/patient/components";
+import { PatientEntity } from "@/features/patient/domain/patient.entity";
 import { useState } from "react";
 
 type Props = StateDialogProps;
@@ -19,10 +20,15 @@ export const DialogAppointmentAvailable: React.FC<Props> = ({
 }) => {
   const [showCreateForm, setShowCreateForm] = useState(false);
 
+  const handleClose = () => {
+    onClose();
+    setShowCreateForm(false);
+  };
+
   return (
-    <Dialog modal isOpen={isOpen} onClose={onClose}>
+    <Dialog modal isOpen={isOpen} onClose={handleClose}>
       <Dialog.Content className="sm:max-w-[500px]">
-        {showCreateForm ? <FormCreatePatient /> : <SearchPatienForm />}
+        {showCreateForm ? <FormCreatePatient /> : <FormSearchPatien />}
         <Dialog.Footer>
           <Button
             variant="info"
@@ -32,7 +38,7 @@ export const DialogAppointmentAvailable: React.FC<Props> = ({
             {showCreateForm ? "Buscar paciente" : "Crear paciente"}
             {showCreateForm ? <IconSearch /> : <IconPlus />}
           </Button>
-          <Button variant="light" onClick={onClose}>
+          <Button variant="light" onClick={handleClose}>
             Cancelar
           </Button>
           <Button>
@@ -45,21 +51,25 @@ export const DialogAppointmentAvailable: React.FC<Props> = ({
   );
 };
 
-const SearchPatienForm = () => {
-  const [patientNotFound] = useState(false);
+const FormSearchPatien = () => {
+  const [patient, setPatient] = useState<PatientEntity | null>(null);
+  function getPatient(patient: PatientEntity | null) {
+    setPatient(patient);
+  }
+
   return (
     <>
       <Dialog.Header title="Paciente">
-        <SearchPatient getPatient={console.log} />
+        <SearchPatient getPatient={getPatient} />
       </Dialog.Header>
       <Dialog.Body className="py-2">
         <h5 className="text-center font-semibold">Datos Paciente</h5>
-        {patientNotFound ? (
-          <FormPatient />
+        {patient ? (
+          <FormPatient initialValues={patient} />
         ) : (
-          <span className="text-center text-sm text-muted-foreground italic">
+          <Dialog.Description className="text-center text-sm italic">
             Sin resultados...
-          </span>
+          </Dialog.Description>
         )}
       </Dialog.Body>
     </>
@@ -68,8 +78,11 @@ const SearchPatienForm = () => {
 
 const FormCreatePatient = () => {
   return (
-    <Dialog.Body>
-      <FormPatient />
-    </Dialog.Body>
+    <>
+      <Dialog.Header title="Crear nuevo paciente" />
+      <Dialog.Body>
+        <FormPatient />
+      </Dialog.Body>
+    </>
   );
 };

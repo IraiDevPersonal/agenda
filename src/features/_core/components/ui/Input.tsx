@@ -21,12 +21,21 @@ export type InputFieldProps = {
   endContent?: React.ReactNode;
   label?: React.ReactNode;
   error?: string;
+  classNames?: Partial<{
+    input: string;
+    startContent: string;
+    endContent: string;
+    wrapper: string;
+    label: string;
+    helper: string;
+  }>;
 } & InputProps &
   InputHelperTextProps;
 
 export type InputHelperTextProps = {
   error?: string;
   message?: string;
+  className?: string;
 };
 
 export function Input({ ref, type, className, ...props }: InputProps) {
@@ -47,8 +56,11 @@ export function Input({ ref, type, className, ...props }: InputProps) {
   );
 }
 
-function InputWrapper(props: React.PropsWithChildren) {
-  return <div className="relative" {...props} />;
+function InputWrapper({
+  className,
+  ...props
+}: React.PropsWithChildren<{ className?: string }>) {
+  return <div className={cn("relative", className)} {...props} />;
 }
 
 function ContentWrapper({
@@ -87,14 +99,14 @@ function InputSearch({ className, ...props }: InputSearchProps) {
   );
 }
 
-function InputHelperText({ error, message }: InputHelperTextProps) {
+function InputHelperText({ error, message, className }: InputHelperTextProps) {
   return (
     <>
       {(message || error) && (
         <p
           role={error ? "alert" : "textbox"}
           aria-live="polite"
-          className={cn("text-xs", error && "text-destructive")}
+          className={cn("text-xs", error && "text-destructive", className)}
         >
           {message || error}
         </p>
@@ -103,13 +115,21 @@ function InputHelperText({ error, message }: InputHelperTextProps) {
   );
 }
 
-function InputRoot(props: { children: React.ReactNode }) {
-  return <div className="space-y-1.5" {...props} />;
+function InputRoot({
+  className,
+  ...props
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return <div className={cn("space-y-1.5", className)} {...props} />;
 }
 
 function InputField({
   startContent,
   endContent,
+  classNames,
+  className,
   message,
   label,
   error,
@@ -117,20 +137,33 @@ function InputField({
 }: InputFieldProps) {
   const id = useId();
   return (
-    <InputRoot>
+    <InputRoot className={className}>
       {label && (
-        <Label className="block" htmlFor={props.id ?? id}>
+        <Label
+          className={cn("block", classNames?.label)}
+          htmlFor={props.id ?? id}
+        >
           {label}
         </Label>
       )}
 
-      <InputWrapper>
-        <ContentWrapper className="start-0 ps-2">{startContent}</ContentWrapper>
-        <Input id={id} {...props} />
-        <ContentWrapper className="end-0 pe-2">{endContent}</ContentWrapper>
+      <InputWrapper className={classNames?.wrapper}>
+        <ContentWrapper
+          className={cn("start-0 ps-2", classNames?.startContent)}
+        >
+          {startContent}
+        </ContentWrapper>
+        <Input id={id} className={classNames?.input} {...props} />
+        <ContentWrapper className={cn("end-0 pe-2", classNames?.endContent)}>
+          {endContent}
+        </ContentWrapper>
       </InputWrapper>
 
-      <InputHelperText error={error} message={message} />
+      <InputHelperText
+        error={error}
+        message={message}
+        className={classNames?.helper}
+      />
     </InputRoot>
   );
 }
