@@ -3,3 +3,4 @@ export * from "./type";
 export * from "./routes";
 export * from "./tailwind-merge";
 export * from "./uid";
+export * from "./validation-schema";

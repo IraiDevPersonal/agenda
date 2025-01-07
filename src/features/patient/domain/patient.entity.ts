@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { ValidationSchema } from "@/config";
 
 type Init = {
   id: number;
@@ -9,6 +9,8 @@ type Init = {
   phone: string;
   last_names: string;
 };
+
+const schema = new ValidationSchema();
 
 export class PatientEntity {
   public id: number;
@@ -30,21 +32,21 @@ export class PatientEntity {
   }
 
   static getSchema() {
-    return z.object({
-      id: z.number(),
-      uid: z.string(),
-      names: z.string(),
-      email: z.string(),
-      phone: z.string(),
-      last_names: z.string(),
-      rut: z.string().max(12),
+    return schema.create({
+      id: schema.input().number(),
+      uid: schema.input().string(),
+      names: schema.input().string(),
+      email: schema.input().string(),
+      phone: schema.input().string(),
+      last_names: schema.input().string(),
+      rut: schema.input().string().max(12),
     });
   }
 
   static fromObject(object: Record<string, any>) {
     try {
       const schema = this.getSchema().parse(object);
-      return new PatientEntity(schema);
+      return new PatientEntity(schema as Init);
     } catch (error) {
       throw new Error((error as Error).message);
     }
