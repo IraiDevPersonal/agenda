@@ -12,3 +12,6 @@ export * from "./IconEye";
 export * from "./IconEyeOff";
 export * from "./IconSave";
 export * from "./IconPlus";
+export * from "./IconInfo";
+export * from "./IconLike";
+export * from "./IconDislike";

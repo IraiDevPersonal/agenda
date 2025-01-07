@@ -1,7 +1,10 @@
+import { useDialog } from "@/features/_core/hooks";
 import { AgendaColumn } from "../shared";
 import { AppointmentCard } from "./AppointmentCard";
+import { DialogAppointmentToBeConform } from "./DialogAppointmentToBeConfirm";
 
 export const ColumnAppointmentToBeConfirm = () => {
+  const [isOpen, handleToggleOpen] = useDialog();
   return (
     <AgendaColumn
       count={2}
@@ -14,11 +17,18 @@ export const ColumnAppointmentToBeConfirm = () => {
       }}
     >
       {Array.from({ length: 5 }).map((_, idx) => (
-        <AppointmentCard
+        <li
           key={idx}
-          className="text-amber-700 border-amber-600/10 shadow-amber-700/15"
-        />
+          onClick={handleToggleOpen}
+          className="hover:cursor-pointer"
+        >
+          <AppointmentCard className="text-amber-700 border-amber-600/10 shadow-amber-700/15" />
+        </li>
       ))}
+      <DialogAppointmentToBeConform
+        isOpen={isOpen}
+        onClose={handleToggleOpen}
+      />
     </AgendaColumn>
   );
 };

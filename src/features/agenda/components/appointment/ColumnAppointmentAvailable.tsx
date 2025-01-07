@@ -18,7 +18,11 @@ export const ColumnAppointmentAvailable = () => {
         }}
       >
         {Array.from({ length: 50 }).map((_, idx) => (
-          <li key={idx} onClick={handleToggleOpen} className="cursor-pointer">
+          <li
+            key={idx}
+            onClick={handleToggleOpen}
+            className="hover:cursor-pointer"
+          >
             <AvailableCard />
           </li>
         ))}
