@@ -1,2 +1,2 @@
-export * from "./Header";
-export * from "./Planner";
+export * from "./MyDayHeader";
+export * from "./MyDayPlanner";

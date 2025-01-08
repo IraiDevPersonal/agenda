@@ -20,3 +20,5 @@ export type LinkRouteProps = {
   params?: ExtractRouteParams<RoutePaths>;
   query?: Record<string, any> | string;
 };
+
+export type Option = { label: string; value: string | number };

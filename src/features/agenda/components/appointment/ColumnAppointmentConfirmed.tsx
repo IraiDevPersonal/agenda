@@ -1,9 +1,9 @@
-import { AgendaColumn } from "../shared";
+import { Column } from "../shared";
 import { AppointmentCard } from "./AppointmentCard";
 
 export const ColumnAppointmentConfirmed = () => {
   return (
-    <AgendaColumn
+    <Column
       id="confirmed"
       title="Confirmadas"
       count={2}
@@ -19,6 +19,6 @@ export const ColumnAppointmentConfirmed = () => {
           className="border-sky-600/10 text-sky-700 shadow-sky-700/15"
         />
       ))}
-    </AgendaColumn>
+    </Column>
   );
 };

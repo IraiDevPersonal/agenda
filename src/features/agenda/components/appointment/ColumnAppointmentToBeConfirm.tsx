@@ -1,12 +1,12 @@
 import { useDialog } from "@/features/_core/hooks";
-import { AgendaColumn } from "../shared";
+import { Column } from "../shared";
 import { AppointmentCard } from "./AppointmentCard";
 import { DialogAppointmentToBeConform } from "./DialogAppointmentToBeConfirm";
 
 export const ColumnAppointmentToBeConfirm = () => {
   const [isOpen, handleToggleOpen] = useDialog();
   return (
-    <AgendaColumn
+    <Column
       count={2}
       id="to-be-confirm"
       title="Por Confirmar"
@@ -29,6 +29,6 @@ export const ColumnAppointmentToBeConfirm = () => {
         isOpen={isOpen}
         onClose={handleToggleOpen}
       />
-    </AgendaColumn>
+    </Column>
   );
 };

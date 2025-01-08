@@ -1,4 +1,5 @@
-import { Box, Input } from "@/features/_core/components/ui";
+import { Input } from "@/features/_core/components/ui";
+import { Header } from "../shared";
 
 const CURRENT_DATE = new Date()
   .toLocaleDateString()
@@ -6,12 +7,11 @@ const CURRENT_DATE = new Date()
   .reverse()
   .join("-");
 
-export const Header = () => {
+export const MyDayHeader = () => {
   return (
-    <Box as="header" className="flex items-center w-full gap-4">
-      <h1 className="mr-auto text-2xl font-bold">Mi Día</h1>
+    <Header title="Mi Día">
       <Input.Search className="w-80" placeholder="Buscar paciente..." />
       <Input className="w-max" type="date" defaultValue={CURRENT_DATE} />
-    </Box>
+    </Header>
   );
 };

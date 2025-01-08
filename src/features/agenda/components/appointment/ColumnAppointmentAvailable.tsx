@@ -1,6 +1,6 @@
 import { IconAvailable } from "@/features/_core/components/icons";
 import { useDialog } from "@/features/_core/hooks";
-import { AgendaCard, AgendaColumn } from "../shared";
+import { Card, Column } from "../shared";
 import { DialogAppointmentAvailable } from "./DialogAppointmentAvailable";
 
 type Props = {
@@ -13,7 +13,7 @@ export const ColumnAppointmentAvailable: React.FC<Props> = ({
   const [isOpen, handleToggleOpen] = useDialog();
   return (
     <>
-      <AgendaColumn
+      <Column
         id="available"
         title="Disponibles"
         count={2}
@@ -32,7 +32,7 @@ export const ColumnAppointmentAvailable: React.FC<Props> = ({
             <AvailableCard hideProfesionalData={hideProfesionalData} />
           </li>
         ))}
-      </AgendaColumn>
+      </Column>
       <DialogAppointmentAvailable isOpen={isOpen} onClose={handleToggleOpen} />
     </>
   );
@@ -42,7 +42,7 @@ const AvailableCard: React.FC<{ hideProfesionalData: boolean }> = ({
   hideProfesionalData,
 }) => {
   return (
-    <AgendaCard className="text-emerald-700 border-emerald-600/10 shadow-emerald-700/15">
+    <Card className="text-emerald-700 border-emerald-600/10 shadow-emerald-700/15">
       <div className="flex flex-col mr-auto">
         {!hideProfesionalData && <strong>Nombre profesional</strong>}
         <span>
@@ -57,6 +57,6 @@ const AvailableCard: React.FC<{ hideProfesionalData: boolean }> = ({
       <figure>
         <IconAvailable className="text-emerald-500" />
       </figure>
-    </AgendaCard>
+    </Card>
   );
 };

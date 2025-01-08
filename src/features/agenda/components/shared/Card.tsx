@@ -5,7 +5,7 @@ type Props = PropsWithChildren<{
   className?: string;
 }>;
 
-export const AgendaCard: React.FC<Props> = ({ className, ...props }) => {
+export const Card: React.FC<Props> = ({ className, ...props }) => {
   return (
     <article
       className={cn(

@@ -3,16 +3,16 @@ import { CSS } from "@dnd-kit/utilities";
 import { cn } from "@/config/tailwind-merge";
 import { useSortable } from "@dnd-kit/sortable";
 import { Box, Button } from "@/features/_core/components/ui";
-import type { AgendaColumn as Column } from "../../domain";
+import type { AgendaColumn } from "../../domain";
 
 type Props = React.PropsWithChildren<{
   title: string;
   count: number;
-  id: Column["id"];
+  id: AgendaColumn["id"];
   classNames?: Partial<{ header: string; body: string; wrapper: string }>;
 }>;
 
-export const AgendaColumn: React.FC<Props> = ({
+export const Column: React.FC<Props> = ({
   classNames,
   children,
   title,

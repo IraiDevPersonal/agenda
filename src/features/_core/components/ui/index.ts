@@ -9,3 +9,4 @@ export * from "./NavLinkRouter";
 export * from "./Dialog";
 export * from "./Label";
 export * from "./RadioGroup";
+export * from "./Select";

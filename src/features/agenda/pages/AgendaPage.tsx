@@ -1,14 +1,14 @@
 import { Main } from "@/features/_core/components/ui";
-import { Header, Planner } from "../components/agenda";
+import { AgendaHeader, AgendaPlanner } from "../components/agenda";
 
 const AgendaPage = () => {
   return (
     <>
-      <title>Agenda | Agendar</title>
+      <title>Agenda</title>
 
       <Main>
-        <Header />
-        <Planner />
+        <AgendaHeader />
+        <AgendaPlanner />
       </Main>
     </>
   );

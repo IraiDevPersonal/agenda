@@ -1,5 +1,5 @@
 import { Main } from "@/features/_core/components/ui";
-import { Header, Planner } from "../components/my-day";
+import { MyDayHeader, MyDayPlanner } from "../components/my-day";
 
 const MyDayPage = () => {
   return (
@@ -7,8 +7,8 @@ const MyDayPage = () => {
       <title>Agenda | Mi Día</title>
 
       <Main>
-        <Header />
-        <Planner />
+        <MyDayHeader />
+        <MyDayPlanner />
       </Main>
     </>
   );

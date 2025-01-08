@@ -1,5 +1,5 @@
 import { Avatar } from "@/features/_core/components/ui";
-import { AgendaCard } from "../shared";
+import { Card } from "../shared";
 
 type Props = {
   className?: string;
@@ -7,7 +7,7 @@ type Props = {
 
 export const AppointmentCard: React.FC<Props> = ({ className }) => {
   return (
-    <AgendaCard className={className}>
+    <Card className={className}>
       <Avatar alt="Paciente 1" />
       <div className="w-full">
         <h5 className="font-bold">Nombre paciente</h5>
@@ -19,6 +19,6 @@ export const AppointmentCard: React.FC<Props> = ({ className }) => {
           </strong>
         </div>
       </div>
-    </AgendaCard>
+    </Card>
   );
 };

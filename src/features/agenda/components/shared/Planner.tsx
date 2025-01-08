@@ -1,5 +1,5 @@
 import { DndContext } from "@dnd-kit/core";
-import { AgendaGrid } from "../shared/AgendaGrid";
+import { Grid } from "./Grid";
 import { SortableContext } from "@dnd-kit/sortable";
 import { ArrayMap } from "@/features/_core/components/utils";
 import {
@@ -10,7 +10,11 @@ import {
 } from "../appointment";
 import { useSortablePlanner } from "../../hooks";
 
-export const Planner = () => {
+type Props = {
+  hideProfesionalData?: boolean;
+};
+
+export const Planner: React.FC<Props> = ({ hideProfesionalData }) => {
   const { columns, handleDragEnd } = useSortablePlanner();
 
   return (
@@ -18,8 +22,8 @@ export const Planner = () => {
       onDragEnd={handleDragEnd}
       // modifiers={[restrictToHorizontalAxis]}
     >
-      <AgendaGrid>
-        <SortableContext items={columns}>
+      <SortableContext items={columns}>
+        <Grid>
           <ArrayMap dataset={columns}>
             {(col) => {
               switch (col.id) {
@@ -27,7 +31,7 @@ export const Planner = () => {
                   return (
                     <ColumnAppointmentAvailable
                       key={col.id}
-                      hideProfesionalData
+                      hideProfesionalData={hideProfesionalData}
                     />
                   );
                 case "cancelled":
@@ -41,8 +45,8 @@ export const Planner = () => {
               }
             }}
           </ArrayMap>
-        </SortableContext>
-      </AgendaGrid>
+        </Grid>
+      </SortableContext>
     </DndContext>
   );
 };
