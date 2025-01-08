@@ -1,10 +1,7 @@
 import { cn } from "@/config";
+import { IconDislike, IconLike } from "@/features/_core/components/icons";
 import {
-  IconDislike,
-  IconInfo,
-  IconLike,
-} from "@/features/_core/components/icons";
-import {
+  Alert,
   Button,
   Dialog,
   Label,
@@ -26,9 +23,11 @@ export const DialogAppointmentToBeConform: React.FC<Props> = ({
     <Dialog modal isOpen={isOpen} onClose={handleClose}>
       <Dialog.Content className="sm:max-w-[500px] p-0">
         <Dialog.Header title="Confirmación paciente" className="p-4 pb-0">
-          <Dialog.Description className="text-blue-500 font-semibold bg-blue-100 rounded-lg flex gap-4 p-2">
-            <IconInfo />
-            Profesional exige bono para confirmar paciente.
+          <Dialog.Description>
+            <Alert
+              severity="info"
+              description="Profesional exige bono para confirmar paciente."
+            />
           </Dialog.Description>
         </Dialog.Header>
 

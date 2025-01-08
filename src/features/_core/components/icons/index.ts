@@ -16,3 +16,6 @@ export * from "./IconInfo";
 export * from "./IconLike";
 export * from "./IconDislike";
 export * from "./IconAgenda";
+export * from "./IconDanger";
+export * from "./IconWarning";
+export * from "./IconSuccess";

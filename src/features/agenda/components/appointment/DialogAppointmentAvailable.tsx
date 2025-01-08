@@ -4,6 +4,7 @@ import {
   IconSearch,
 } from "@/features/_core/components/icons";
 import {
+  Alert,
   Button,
   Dialog,
   StateDialogProps,
@@ -35,7 +36,7 @@ export const DialogAppointmentAvailable: React.FC<Props> = ({
             className="mr-auto"
             onClick={() => setShowCreateForm(!showCreateForm)}
           >
-            {showCreateForm ? "Buscar paciente" : "Crear paciente"}
+            {showCreateForm ? "Buscar paciente" : "Registrar paciente"}
             {showCreateForm ? <IconSearch /> : <IconPlus />}
           </Button>
           <Button variant="light" onClick={handleClose}>
@@ -59,7 +60,7 @@ const FormSearchPatien = () => {
 
   return (
     <>
-      <Dialog.Header title="Paciente">
+      <Dialog.Header title="Agendar Paciente">
         <SearchPatient getPatient={getPatient} />
       </Dialog.Header>
       <Dialog.Body className="py-2">
@@ -79,7 +80,12 @@ const FormSearchPatien = () => {
 const FormCreatePatient = () => {
   return (
     <>
-      <Dialog.Header title="Crear nuevo paciente" />
+      <Dialog.Header title="Registrar y agendar paciente">
+        <Alert
+          severity="info"
+          description="Al guardar se registrara al nuevo paciente y se agendara la hora asignada."
+        />
+      </Dialog.Header>
       <Dialog.Body>
         <FormPatient />
       </Dialog.Body>

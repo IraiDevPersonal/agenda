@@ -10,3 +10,4 @@ export * from "./Dialog";
 export * from "./Label";
 export * from "./RadioGroup";
 export * from "./Select";
+export * from "./Alert";
