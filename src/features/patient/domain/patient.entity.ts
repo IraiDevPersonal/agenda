@@ -13,13 +13,13 @@ const patientSchema = z.object({
 type Init = z.infer<typeof patientSchema>;
 
 export class PatientEntity {
-  public id: number;
-  public uid: string;
-  public rut: string;
-  public names: string;
-  public email: string;
-  public phone: string;
-  public last_names: string;
+  public id: Init["id"];
+  public uid: Init["uid"];
+  public rut: Init["rut"];
+  public names: Init["names"];
+  public email: Init["email"];
+  public phone: Init["phone"];
+  public last_names: Init["last_names"];
 
   private constructor(init: Init) {
     this.id = init.id;
