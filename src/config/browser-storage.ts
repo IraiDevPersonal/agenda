@@ -20,7 +20,12 @@ export class BrowserStorage {
   public get<T>(defaultValue?: T) {
     const result = this.storage.getItem(this.key) ?? "";
     if (!result) return defaultValue ?? null;
-    return JSON.parse(result) as T;
+    try {
+      return JSON.parse(result) as T;
+    } catch (error) {
+      console.log({ error });
+      return defaultValue ?? null;
+    }
   }
 
   public remove() {
