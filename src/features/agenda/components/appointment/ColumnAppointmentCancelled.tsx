@@ -14,10 +14,9 @@ export const ColumnAppointmentCancelled = () => {
       }}
     >
       {Array.from({ length: 5 }).map((_, idx) => (
-        <AppointmentCard
-          key={idx}
-          className="text-red-700 border-red-600/10 shadow-red-700/15"
-        />
+        <li key={idx}>
+          <AppointmentCard className="text-red-700 border-red-600/10 shadow-red-700/15" />
+        </li>
       ))}
     </Column>
   );

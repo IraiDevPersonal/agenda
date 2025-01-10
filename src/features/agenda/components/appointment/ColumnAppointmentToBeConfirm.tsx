@@ -1,7 +1,7 @@
 import { useDialog } from "@/features/_core/hooks";
 import { Column } from "../shared";
 import { AppointmentCard } from "./AppointmentCard";
-import { DialogAppointmentToBeConform } from "./DialogAppointmentToBeConfirm";
+import { DialogAppointmentToBeConfirm } from "./DialogAppointmentToBeConfirm";
 
 export const ColumnAppointmentToBeConfirm = () => {
   const [isOpen, handleToggleOpen] = useDialog();
@@ -25,7 +25,7 @@ export const ColumnAppointmentToBeConfirm = () => {
           <AppointmentCard className="text-amber-700 border-amber-600/10 shadow-amber-700/15" />
         </li>
       ))}
-      <DialogAppointmentToBeConform
+      <DialogAppointmentToBeConfirm
         isOpen={isOpen}
         onClose={handleToggleOpen}
       />

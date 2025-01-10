@@ -27,32 +27,30 @@ export const DialogAppointmentAvailable: React.FC<Props> = ({
   };
 
   return (
-    <Dialog modal isOpen={isOpen} onClose={handleClose}>
-      <Dialog.Content className="sm:max-w-[500px]">
-        {showCreateForm ? <FormCreatePatient /> : <FormSearchPatien />}
-        <Dialog.Footer>
-          <Button
-            variant="info"
-            className="mr-auto"
-            onClick={() => setShowCreateForm(!showCreateForm)}
-          >
-            {showCreateForm ? "Buscar paciente" : "Registrar paciente"}
-            {showCreateForm ? <IconSearch /> : <IconPlus />}
-          </Button>
-          <Button variant="light" onClick={handleClose}>
-            Cancelar
-          </Button>
-          <Button>
-            Guardar
-            <IconSave />
-          </Button>
-        </Dialog.Footer>
-      </Dialog.Content>
+    <Dialog isOpen={isOpen} onClose={handleClose} className="sm:max-w-[500px]">
+      {showCreateForm ? <FormCreatePatient /> : <FormSearchPatient />}
+      <Dialog.Footer>
+        <Button
+          variant="info"
+          className="mr-auto"
+          onClick={() => setShowCreateForm(!showCreateForm)}
+        >
+          {showCreateForm ? "Buscar paciente" : "Registrar paciente"}
+          {showCreateForm ? <IconSearch /> : <IconPlus />}
+        </Button>
+        <Button variant="light" onClick={handleClose}>
+          Cancelar
+        </Button>
+        <Button>
+          Guardar
+          <IconSave />
+        </Button>
+      </Dialog.Footer>
     </Dialog>
   );
 };
 
-const FormSearchPatien = () => {
+const FormSearchPatient = () => {
   const [patient, setPatient] = useState<PatientEntity | null>(null);
   function getPatient(patient: PatientEntity | null) {
     setPatient(patient);
@@ -68,7 +66,7 @@ const FormSearchPatien = () => {
         {patient ? (
           <FormPatient initialValues={patient} />
         ) : (
-          <Dialog.Description className="text-center text-sm italic">
+          <Dialog.Description className="text-center text-sm italic text-muted-foreground">
             Sin resultados...
           </Dialog.Description>
         )}

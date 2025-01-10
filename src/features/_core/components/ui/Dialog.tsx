@@ -33,11 +33,26 @@ type DialogProps = StateDialogProps &
   Omit<
     React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>,
     "open" | "onOpenChange"
-  >;
+  > &
+  DialogContentProps;
 
-export function Dialog({ isOpen, onClose, ...props }: DialogProps) {
+export function Dialog({
+  isOpen,
+  onClose,
+  children,
+  defaultOpen,
+  modal,
+  ...props
+}: DialogProps) {
   return (
-    <DialogPrimitive.Root {...props} open={isOpen} onOpenChange={onClose} />
+    <DialogPrimitive.Root
+      modal={modal}
+      open={isOpen}
+      defaultOpen={defaultOpen}
+      onOpenChange={onClose}
+    >
+      <DialogContent {...props}>{children}</DialogContent>
+    </DialogPrimitive.Root>
   );
 }
 
@@ -151,7 +166,6 @@ const DialogBody: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
 
 const DialogTrigger = DialogPrimitive.Trigger;
 
-Dialog.Content = DialogContent;
 Dialog.Description = DialogDescription;
 Dialog.Header = DialogHeader;
 Dialog.Body = DialogBody;

@@ -11,7 +11,7 @@ import { ArrayMap } from "@/features/_core/components/utils";
 
 type Props = StateDialogProps;
 
-export const DialogAppointmentToBeConform: React.FC<Props> = ({
+export const DialogAppointmentToBeConfirm: React.FC<Props> = ({
   isOpen,
   onClose,
 }) => {
@@ -20,34 +20,38 @@ export const DialogAppointmentToBeConform: React.FC<Props> = ({
   };
 
   return (
-    <Dialog modal isOpen={isOpen} onClose={handleClose}>
-      <Dialog.Content className="sm:max-w-[500px] p-0">
-        <Dialog.Header title="Confirmación paciente" className="p-4 pb-0">
-          <Dialog.Description>
-            <Alert
-              severity="info"
-              description="Profesional exige bono para confirmar paciente."
-            />
-          </Dialog.Description>
-        </Dialog.Header>
+    <Dialog
+      isOpen={isOpen}
+      onClose={handleClose}
+      className="sm:max-w-[500px] p-0"
+    >
+      <Dialog.Header title="Confirmación paciente" className="p-4 pb-0">
+        <Alert
+          severity="info"
+          description="Profesional exige bono para confirmar paciente."
+        />
+        <Dialog.Description className="text-center italic">
+          Verifique y confirme todos los datos del paciente antes de confirmar
+          asistencia.
+        </Dialog.Description>
+      </Dialog.Header>
 
-        <Dialog.Body className="divide-y divide-black/30 border-b border-black/30">
-          <Professional />
-          <Patient />
-          <PatienHistory />
-        </Dialog.Body>
+      <Dialog.Body className="divide-y divide-black/30 border-b border-black/30">
+        <Professional />
+        <Patient />
+        <PatienHistory />
+      </Dialog.Body>
 
-        <Dialog.Footer className="p-4 pt-0">
-          <Button variant="destructive" onClick={handleClose}>
-            Cancelar hora
-            <IconDislike />
-          </Button>
-          <Button>
-            Confirmar hora
-            <IconLike />
-          </Button>
-        </Dialog.Footer>
-      </Dialog.Content>
+      <Dialog.Footer className="p-4 pt-0">
+        <Button variant="destructive" onClick={handleClose}>
+          Cancelar hora
+          <IconDislike />
+        </Button>
+        <Button>
+          Confirmar hora
+          <IconLike />
+        </Button>
+      </Dialog.Footer>
     </Dialog>
   );
 };
@@ -110,12 +114,11 @@ const PatienHistory = () => {
   );
 };
 
-const Wrapper: React.FC<
-  React.PropsWithChildren<{
-    title: React.ReactNode;
-    className?: string;
-  }>
-> = ({ title, children, className }) => {
+const Wrapper: React.FC<{
+  children: React.ReactNode;
+  title: React.ReactNode;
+  className?: string;
+}> = ({ title, children, className }) => {
   return (
     <section className={cn("flex flex-col gap-1.5 p-4", className)}>
       <h5 className="text-lg font-semibold">{title}</h5>
