@@ -14,7 +14,8 @@ export type InputPasswordProps = {
 } & Omit<InputProps, "type"> &
   Pick<InputHelperTextProps, "error">;
 
-export type InputSearchProps = Omit<InputProps, "type">;
+export type InputSearchProps = Omit<InputProps, "type"> &
+  Partial<Pick<InputFieldProps, "startContent">>;
 
 export type InputFieldProps = {
   startContent?: React.ReactNode;
@@ -83,9 +84,10 @@ function ContentWrapper({
   );
 }
 
-function InputSearch({ className, ...props }: InputSearchProps) {
+function InputSearch({ className, startContent, ...props }: InputSearchProps) {
   return (
     <InputWrapper>
+      {startContent}
       <Input
         className={cn("pe-8", className)}
         placeholder="Buscar..."

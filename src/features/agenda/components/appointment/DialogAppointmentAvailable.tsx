@@ -9,7 +9,7 @@ import {
   Dialog,
   StateDialogProps,
 } from "@/features/_core/components/ui";
-import { FormPatient, SearchPatient } from "@/features/patient/components";
+import { FormPatient, SearchPatientByRut } from "@/features/patient/components";
 import { PatientEntity } from "@/features/patient/domain/patient.entity";
 import { useState } from "react";
 
@@ -59,7 +59,7 @@ const FormSearchPatient = () => {
   return (
     <>
       <Dialog.Header title="Agendar Paciente">
-        <SearchPatient getPatient={getPatient} />
+        <SearchPatientByRut getPatient={getPatient} />
       </Dialog.Header>
       <Dialog.Body className="py-2">
         <h5 className="text-center font-semibold">Datos Paciente</h5>
