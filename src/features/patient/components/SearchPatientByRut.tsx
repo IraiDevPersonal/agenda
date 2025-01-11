@@ -36,7 +36,7 @@ export const SearchPatientByRut: React.FC<Props> = ({ getPatient }) => {
   return (
     <Input.Root>
       <Input.Search
-        className="ps-16"
+        className="ps-[4.5rem]"
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         value={prettifyRut(value)}

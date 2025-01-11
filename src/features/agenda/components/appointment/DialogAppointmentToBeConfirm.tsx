@@ -25,7 +25,7 @@ export const DialogAppointmentToBeConfirm: React.FC<Props> = ({
       onClose={handleClose}
       className="sm:max-w-[500px] p-0"
     >
-      <Dialog.Header title="Confirmación paciente" className="p-4 pb-0">
+      <Dialog.Header title="Confirmación paciente" className="p-6 pb-0">
         <Alert
           severity="info"
           description="Profesional exige bono para confirmar paciente."
@@ -36,13 +36,13 @@ export const DialogAppointmentToBeConfirm: React.FC<Props> = ({
         </Dialog.Description>
       </Dialog.Header>
 
-      <Dialog.Body className="divide-y divide-black/30 border-b border-black/30">
+      <Dialog.Body className="divide-y divide-black/30">
         <Professional />
         <Patient />
         <PatienHistory />
       </Dialog.Body>
 
-      <Dialog.Footer className="p-4 pt-0">
+      <Dialog.Footer className="p-6 pt-0">
         <Button variant="destructive" onClick={handleClose}>
           Cancelar hora
           <IconDislike />
@@ -120,7 +120,7 @@ const Wrapper: React.FC<{
   className?: string;
 }> = ({ title, children, className }) => {
   return (
-    <section className={cn("flex flex-col gap-1.5 p-4", className)}>
+    <section className={cn("flex flex-col gap-1.5 p-6", className)}>
       <h5 className="text-lg font-semibold">{title}</h5>
       {children}
     </section>
