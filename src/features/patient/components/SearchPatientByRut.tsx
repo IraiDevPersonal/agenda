@@ -1,7 +1,8 @@
 import { Uid } from "@/config";
 import { Input } from "@/features/_core/components/ui";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { PatientEntity } from "../domain/patient.entity";
+import { prettifyRut } from "react-rut-formatter";
 
 const DUMMY_PATIENT: PatientEntity = {
   id: 1,
@@ -18,28 +19,30 @@ type Props = {
 };
 
 export const SearchPatientByRut: React.FC<Props> = ({ getPatient }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
   const lastSearch = useRef<string>("");
+  const [value, setValue] = useState("");
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key !== "Enter") return;
     const value = e.currentTarget.value;
     if (lastSearch.current === value) return;
-    getPatient(
-      value.toLocaleLowerCase() === "19.050.844-7" ? DUMMY_PATIENT : null
-    );
+    getPatient(prettifyRut(value) === "19.050.844-7" ? DUMMY_PATIENT : null);
     lastSearch.current = value;
+  };
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    setValue(e.target.value);
   };
 
   return (
     <Input.Root>
       <Input.Search
-        ref={inputRef}
         className="ps-16"
+        onChange={handleChange}
         onKeyDown={handleKeyDown}
+        value={prettifyRut(value)}
         placeholder="Buscar paciente por RUT..."
         startContent={
-          <Input.ContentWrapper className="start-0 px-3 bg-black/10 rounded-s-lg font-semibold">
+          <Input.ContentWrapper className="start-0 px-3 bg-black text-white rounded-s-xl font-semibold">
             RUT:
           </Input.ContentWrapper>
         }

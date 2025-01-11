@@ -12,6 +12,7 @@ import {
 import { FormPatient, SearchPatientByRut } from "@/features/patient/components";
 import { PatientEntity } from "@/features/patient/domain/patient.entity";
 import { useState } from "react";
+import { SelectedApointmentTime } from "./SelectedApointmentDatetime";
 
 type Props = StateDialogProps;
 
@@ -60,9 +61,10 @@ const FormSearchPatient = () => {
     <>
       <Dialog.Header title="Agendar Paciente">
         <SearchPatientByRut getPatient={getPatient} />
+        <SelectedApointmentTime id="available" />
       </Dialog.Header>
       <Dialog.Body className="py-2">
-        <h5 className="text-center font-semibold">Datos Paciente</h5>
+        <h5 className="text-center font-semibold mb-4">Datos Paciente</h5>
         {patient ? (
           <FormPatient initialValues={patient} />
         ) : (
@@ -83,6 +85,7 @@ const FormCreatePatient = () => {
           severity="info"
           description="Al guardar se registrara al nuevo paciente y se agendara la hora asignada."
         />
+        <SelectedApointmentTime id="available" />
       </Dialog.Header>
       <Dialog.Body>
         <FormPatient />

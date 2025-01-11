@@ -45,7 +45,7 @@ export function Input({ ref, type, className, ...props }: InputProps) {
       ref={ref}
       type={type}
       className={cn(
-        "peer flex h-9 w-full rounded-lg border border-transparent px-3 py-2 bg-muted text-foreground shadow-none shadow-black/5 transition-shadow placeholder:text-muted-foreground/60 focus-visible:border-black/50 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-black/15 disabled:cursor-not-allowed disabled:opacity-50",
+        "peer flex h-9 w-full rounded-xl border border-transparent px-3 py-2 bg-muted text-foreground shadow-none shadow-black/5 transition-shadow placeholder:text-muted-foreground/60 focus-visible:border-black/50 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-black/15 disabled:cursor-not-allowed disabled:opacity-50",
         type === "search" &&
           "[&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none [&::-webkit-search-results-button]:appearance-none [&::-webkit-search-results-decoration]:appearance-none;",
         type === "file" &&
