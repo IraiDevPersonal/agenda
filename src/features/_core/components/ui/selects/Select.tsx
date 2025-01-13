@@ -1,28 +1,12 @@
 import { cn, Option } from "@/config";
-import { Label } from "./Label";
-import { InputHelperText, InputHelperTextProps, InputRoot } from "./Input";
-import { useId } from "react";
-import { ArrayMap } from "../utils";
+import { ArrayMap } from "../../utils";
 
-export type SelectFieldProps = {
-  label?: React.ReactNode;
-  error?: string;
-  classNames?: Partial<{
-    select: string;
-    label: string;
-    helper: string;
-  }>;
-} & SelectProps &
-  InputHelperTextProps;
-
-type SelectProps = {
+export type SelectProps = {
   ref?: React.Ref<HTMLSelectElement>;
   options?: Option[];
-  placeholder?: string;
 } & React.ComponentProps<"select">;
 
 export function Select({
-  placeholder,
   className,
   children,
   options,
@@ -49,11 +33,6 @@ export function Select({
           </ArrayMap>
         )}
       </select>
-      {placeholder && !props.value && (
-        <span className="pointer-events-none absolute top-1/2 -translate-y-1/2 start-3 text-muted-foreground/60 bg-muted w-[calc(100%-44px)]">
-          {placeholder}
-        </span>
-      )}
       <span className="pointer-events-none absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center text-muted-foreground/80 peer-disabled:opacity-50">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -75,43 +54,9 @@ export function Select({
   );
 }
 
-const SelectField: React.FC<SelectFieldProps> = ({
-  classNames,
-  className,
-  message,
-  label,
-  error,
-  ...props
-}) => {
-  const id = useId();
-  return (
-    <InputRoot className={className}>
-      {label && (
-        <Label
-          className={cn("block", classNames?.label)}
-          htmlFor={props.id ?? id}
-        >
-          {label}
-        </Label>
-      )}
-
-      <Select {...props} />
-
-      <InputHelperText
-        error={error}
-        message={message}
-        className={classNames?.helper}
-      />
-    </InputRoot>
-  );
-};
-
-const SelectOption: React.FC<{
+export const SelectOption: React.FC<{
   children: React.ReactNode;
   value: string | number;
 }> = ({ children, value }) => {
   return <option value={value}>{children}</option>;
 };
-
-Select.Option = SelectOption;
-Select.Field = SelectField;

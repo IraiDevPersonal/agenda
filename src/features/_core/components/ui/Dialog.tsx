@@ -85,7 +85,7 @@ const DialogContent: React.FC<DialogContentProps> = ({
         {children}
         <DialogPrimitive.Close
           className={cn(
-            "group absolute right-2 top-2 flex size-7 items-center justify-center rounded-lg outline-offset-2 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none",
+            "group absolute right-3 top-3 flex size-7 items-center justify-center rounded-lg outline-offset-2 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none",
             classNames?.close
           )}
         >

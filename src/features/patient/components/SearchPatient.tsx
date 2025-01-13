@@ -1,5 +1,10 @@
 import { Uid } from "@/config";
-import { Input, Label, RadioGroup } from "@/features/_core/components/ui";
+import {
+  FieldRootWrapper,
+  InputSearch,
+  Label,
+  RadioGroup,
+} from "@/features/_core/components/ui";
 import { useRef, useState } from "react";
 import { PatientEntity } from "../domain/patient.entity";
 
@@ -46,8 +51,8 @@ export const SearchPatient: React.FC<Props> = ({ getPatient }) => {
   };
 
   return (
-    <Input.Root>
-      <Input.Search
+    <FieldRootWrapper>
+      <InputSearch
         ref={inputRef}
         onKeyDown={handleKeyDown}
         placeholder={`Buscar paciente por ${getFilterShowName(filter)}...`}
@@ -74,6 +79,6 @@ export const SearchPatient: React.FC<Props> = ({ getPatient }) => {
           </div>
         ))}
       </RadioGroup>
-    </Input.Root>
+    </FieldRootWrapper>
   );
 };

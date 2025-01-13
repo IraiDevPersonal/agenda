@@ -9,10 +9,13 @@ import {
   Dialog,
   StateDialogProps,
 } from "@/features/_core/components/ui";
-import { FormPatient, SearchPatientByRut } from "@/features/patient/components";
+import {
+  FormFieldsPatient,
+  SearchPatientByRut,
+} from "@/features/patient/components";
 import { PatientEntity } from "@/features/patient/domain/patient.entity";
 import { useState } from "react";
-import { SelectedApointmentTime } from "./SelectedApointmentDatetime";
+import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
 
 type Props = StateDialogProps;
 
@@ -36,8 +39,15 @@ export const DialogAppointmentAvailable: React.FC<Props> = ({
           className="mr-auto"
           onClick={() => setShowCreateForm(!showCreateForm)}
         >
-          {showCreateForm ? "Buscar paciente" : "Registrar paciente"}
-          {showCreateForm ? <IconSearch /> : <IconPlus />}
+          {showCreateForm ? (
+            <>
+              Buscar paciente <IconSearch />
+            </>
+          ) : (
+            <>
+              Registrar paciente <IconPlus />
+            </>
+          )}
         </Button>
         <Button variant="light" onClick={handleClose}>
           Cancelar
@@ -61,12 +71,12 @@ const FormSearchPatient = () => {
     <>
       <Dialog.Header title="Agendar Paciente">
         <SearchPatientByRut getPatient={getPatient} />
-        <SelectedApointmentTime id="available" />
+        <SelectedApointmentDateTime type="available" />
       </Dialog.Header>
       <Dialog.Body className="py-2">
         <h5 className="text-center font-semibold mb-4">Datos Paciente</h5>
         {patient ? (
-          <FormPatient initialValues={patient} />
+          <FormFieldsPatient initialValues={patient} />
         ) : (
           <Dialog.Description className="text-center text-sm italic text-muted-foreground">
             Sin resultados...
@@ -85,10 +95,10 @@ const FormCreatePatient = () => {
           severity="info"
           description="Al guardar se registrara al nuevo paciente y se agendara la hora asignada."
         />
-        <SelectedApointmentTime id="available" />
+        <SelectedApointmentDateTime type="available" />
       </Dialog.Header>
       <Dialog.Body>
-        <FormPatient />
+        <FormFieldsPatient />
       </Dialog.Body>
     </>
   );

@@ -1,8 +1,12 @@
 import { Uid } from "@/config";
-import { Input } from "@/features/_core/components/ui";
+import {
+  FieldRootWrapper,
+  InputContentWrapper,
+  InputSearch,
+} from "@/features/_core/components/ui";
 import { useRef, useState } from "react";
-import { PatientEntity } from "../domain/patient.entity";
 import { prettifyRut } from "react-rut-formatter";
+import { PatientEntity } from "../domain/patient.entity";
 
 const DUMMY_PATIENT: PatientEntity = {
   id: 1,
@@ -34,19 +38,19 @@ export const SearchPatientByRut: React.FC<Props> = ({ getPatient }) => {
   };
 
   return (
-    <Input.Root>
-      <Input.Search
+    <FieldRootWrapper>
+      <InputSearch
         className="ps-[4.5rem]"
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         value={prettifyRut(value)}
         placeholder="Buscar paciente por RUT..."
         startContent={
-          <Input.ContentWrapper className="start-0 px-3 bg-black text-white rounded-s-xl font-semibold">
+          <InputContentWrapper className="start-0 px-3 bg-black text-white rounded-s-xl font-semibold">
             RUT:
-          </Input.ContentWrapper>
+          </InputContentWrapper>
         }
       />
-    </Input.Root>
+    </FieldRootWrapper>
   );
 };

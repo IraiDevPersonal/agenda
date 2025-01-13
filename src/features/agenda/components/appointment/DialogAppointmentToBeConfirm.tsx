@@ -8,6 +8,7 @@ import {
   StateDialogProps,
 } from "@/features/_core/components/ui";
 import { ArrayMap } from "@/features/_core/components/utils";
+import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
 
 type Props = StateDialogProps;
 
@@ -34,6 +35,7 @@ export const DialogAppointmentToBeConfirm: React.FC<Props> = ({
           Verifique y confirme todos los datos del paciente antes de confirmar
           asistencia.
         </Dialog.Description>
+        <SelectedApointmentDateTime type="to-be-confirm" />
       </Dialog.Header>
 
       <Dialog.Body className="divide-y divide-black/30">
@@ -59,13 +61,10 @@ export const DialogAppointmentToBeConfirm: React.FC<Props> = ({
 const Professional = () => {
   return (
     <Wrapper title="Profesional" className="pt-0">
-      <DataItem label="Nombre" value="Ignacio Rodigo Arriagada Iriarte" />
-      <DataItem label="Profesión" value="Psicolog@" />
-      <DataItem label="Forma de pago" value="Bono/Particular" />
-      <DataItem
-        label="Metodo de confirmación"
-        value="whatsapp/teléfono/correo"
-      />
+      <Item label="Nombre" value="Ignacio Rodigo Arriagada Iriarte" />
+      <Item label="Profesión" value="Psicolog@" />
+      <Item label="Forma de pago" value="Bono/Particular" />
+      <Item label="Metodo de confirmación" value="whatsapp/teléfono/correo" />
     </Wrapper>
   );
 };
@@ -73,10 +72,10 @@ const Professional = () => {
 const Patient = () => {
   return (
     <Wrapper title="Paciente">
-      <DataItem label="Nombre" value="Ignacio Rodrigo Arriagada Iriarte" />
-      <DataItem label="Rut" value="19.050.844-7" />
-      <DataItem label="Teléfono" value="+56956980565" />
-      <DataItem label="Correo" value="ignacio.arr01@gmail.com" />
+      <Item label="Nombre" value="Ignacio Rodrigo Arriagada Iriarte" />
+      <Item label="Rut" value="19.050.844-7" />
+      <Item label="Teléfono" value="+56956980565" />
+      <Item label="Correo" value="ignacio.arr01@gmail.com" />
     </Wrapper>
   );
 };
@@ -127,7 +126,7 @@ const Wrapper: React.FC<{
   );
 };
 
-const DataItem: React.FC<{
+const Item: React.FC<{
   label: string;
   value: string;
 }> = ({ label, value }) => {
