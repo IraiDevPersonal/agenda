@@ -1,17 +1,5 @@
-/**
- * HEADER:
- * agenda (NOMBRE APP) - logo
- * BODY:
- * 1. Mi dia
- * 2. Pacientes
- * 3. Informes
- * 4. Contabilidad
- * FOOTER:
- * dropdown usuario
- */
-
 import { cn, RoutePaths } from "@/config";
-import { UserProfile } from "@/features/profile/components/UserProfile";
+import { UserAccount } from "@/features/account/components/UserAccount";
 import {
   IconAgenda,
   IconDocument,
@@ -54,7 +42,7 @@ export const AppSidebar = () => {
 
       <div>
         <button className="flex items-center w-full transition-colors duration-300 bg-black/5 hover:bg-black/10 rounded-2xl">
-          <UserProfile />
+          <UserAccount />
           <span className="text-3xl rotate-90">{"..."}</span>
         </button>
       </div>
