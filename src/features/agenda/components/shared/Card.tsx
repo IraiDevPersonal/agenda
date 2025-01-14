@@ -1,17 +1,26 @@
 import { cn } from "@/config/tailwind-merge";
 import { PropsWithChildren } from "react";
+import { AgendaColumn } from "../../domain";
+
+const HASH_COLORS: Record<Props["id"], string> = {
+  "to-be-confirm": "text-amber-700 border-amber-600/10 shadow-amber-700/15",
+  available: "text-emerald-700 border-emerald-600/10 shadow-emerald-700/15",
+  cancelled: "text-red-700 border-red-600/10 shadow-red-700/15",
+  confirmed: "text-sky-700 border-sky-600/10 shadow-sky-700/15",
+};
 
 type Props = PropsWithChildren<{
+  id: AgendaColumn["id"];
   className?: string;
 }>;
 
-export const Card: React.FC<Props> = ({ className, ...props }) => {
+export const Card: React.FC<Props> = ({ className, id, ...props }) => {
   return (
     <article
       className={cn(
-        "flex items-center gap-4 p-3 shadow-lg rounded-xl border",
-        "shadow-black/10 border-black/5 bg-white/20",
+        "flex items-center gap-4 p-3 shadow-lg rounded-xl border bg-white/25",
         "hover:scale-105 transition-transform duration-150",
+        HASH_COLORS[id],
         className
       )}
       {...props}

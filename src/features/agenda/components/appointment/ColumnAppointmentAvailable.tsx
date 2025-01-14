@@ -13,16 +13,7 @@ export const ColumnAppointmentAvailable: React.FC<Props> = ({
   const [isOpen, handleToggleOpen] = useDialog();
   return (
     <>
-      <Column
-        id="available"
-        title="Disponibles"
-        count={2}
-        classNames={{
-          wrapper: "text-emerald-700 bg-emerald-100",
-          header: "hover:bg-emerald-200",
-          body: "scrollbar-thumb-emerald-700",
-        }}
-      >
+      <Column id="available" title="Disponibles" count={2}>
         {Array.from({ length: 50 }).map((_, idx) => (
           <li
             key={idx}
@@ -42,7 +33,7 @@ const AvailableCard: React.FC<{ hideProfesionalData: boolean }> = ({
   hideProfesionalData,
 }) => {
   return (
-    <Card className="text-emerald-700 border-emerald-600/10 shadow-emerald-700/15">
+    <Card id="available">
       <div className="flex flex-col mr-auto">
         {!hideProfesionalData && <strong>Nombre profesional</strong>}
         <span>

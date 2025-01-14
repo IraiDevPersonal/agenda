@@ -1,13 +1,15 @@
 import { Avatar } from "@/features/_core/components/ui";
 import { Card } from "../shared";
+import { AgendaColumn } from "../../domain";
 
 type Props = {
+  id: AgendaColumn["id"];
   className?: string;
 };
 
-export const AppointmentCard: React.FC<Props> = ({ className }) => {
+export const AppointmentCard: React.FC<Props> = (props) => {
   return (
-    <Card className={className}>
+    <Card {...props}>
       <Avatar alt="Paciente 1" />
       <div className="w-full">
         <h5 className="font-bold">Nombre paciente</h5>
