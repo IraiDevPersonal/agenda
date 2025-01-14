@@ -29,7 +29,7 @@ export const DialogAppointmentConfirmed: React.FC<Props> = ({
       <Dialog.Body></Dialog.Body>
 
       <Dialog.Footer>
-        <Button variant="light" onClick={handleClose}>
+        <Button variant="text" onClick={handleClose}>
           Cancelar
         </Button>
         <Button>

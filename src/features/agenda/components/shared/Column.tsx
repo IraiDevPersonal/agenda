@@ -74,7 +74,7 @@ export const Column: React.FC<Props> = ({
         <h3 className="text-lg font-bold">
           {title} ({count})
         </h3>
-        {/* <Button size="icon-sm" variant="light" className="hover:bg-white/35">
+        {/* <Button size="icon-sm" variant="text" className="hover:bg-white/35">
           <IconReload />
         </Button> */}
       </div>

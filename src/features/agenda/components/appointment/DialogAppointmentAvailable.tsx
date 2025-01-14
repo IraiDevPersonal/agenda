@@ -49,7 +49,7 @@ export const DialogAppointmentAvailable: React.FC<Props> = ({
             </>
           )}
         </Button>
-        <Button variant="light" onClick={handleClose}>
+        <Button variant="text" onClick={handleClose}>
           Cancelar
         </Button>
         <Button>
