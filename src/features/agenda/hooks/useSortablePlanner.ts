@@ -2,20 +2,20 @@ import { BrowserStorage } from "@/config/browser-storage";
 import { DragEndEvent } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 import { useState } from "react";
-import { AgendaColumn } from "../domain";
+import { AgendaColumns } from "../domain";
 
-const AGENDA_COLUMNS: AgendaColumn[] = [
+const AGENDA_COLUMNS: { id: AgendaColumns }[] = [
   { id: "confirmed" },
   { id: "to-be-confirm" },
   { id: "available" },
   { id: "cancelled" },
 ];
 
-const storage = new BrowserStorage("user_columns_order");
+const storage = new BrowserStorage("agenda_user_columns_order");
 
 export function useSortablePlanner() {
   const [columns, setColumns] = useState(
-    storage.get<AgendaColumn[]>(AGENDA_COLUMNS)
+    storage.get<{ id: AgendaColumns }[]>(AGENDA_COLUMNS)
   );
 
   const handleDragEnd = (e: DragEndEvent) => {

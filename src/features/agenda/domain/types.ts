@@ -1,3 +1,5 @@
-export type AgendaColumn = {
-  id: "confirmed" | "to-be-confirm" | "available" | "cancelled";
-};
+export type AgendaColumns =
+  | "confirmed"
+  | "to-be-confirm"
+  | "available"
+  | "cancelled";

@@ -1,5 +1,5 @@
 import { cn } from "@/config";
-import { AgendaColumn } from "../../domain";
+import { AgendaColumns } from "../../domain";
 
 const HASH_COLORS: Record<Props["type"], string> = {
   "to-be-confirm": "bg-amber-100 text-amber-600",
@@ -9,7 +9,7 @@ const HASH_COLORS: Record<Props["type"], string> = {
 };
 
 type Props = {
-  type: AgendaColumn["id"];
+  type: AgendaColumns;
 };
 
 export const SelectedApointmentDateTime: React.FC<Props> = ({ type }) => {

@@ -1,9 +1,9 @@
 import { Avatar } from "@/features/_core/components/ui";
 import { Card } from "../shared";
-import { AgendaColumn } from "../../domain";
+import { AgendaColumns } from "../../domain";
 
 type Props = {
-  id: AgendaColumn["id"];
+  id: AgendaColumns;
   className?: string;
 };
 

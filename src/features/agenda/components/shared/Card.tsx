@@ -1,6 +1,6 @@
 import { cn } from "@/config/tailwind-merge";
 import { PropsWithChildren } from "react";
-import { AgendaColumn } from "../../domain";
+import { AgendaColumns } from "../../domain";
 
 const HASH_COLORS: Record<Props["id"], string> = {
   "to-be-confirm": "text-amber-700 border-amber-600/10 shadow-amber-700/15",
@@ -10,7 +10,7 @@ const HASH_COLORS: Record<Props["id"], string> = {
 };
 
 type Props = PropsWithChildren<{
-  id: AgendaColumn["id"];
+  id: AgendaColumns;
   className?: string;
 }>;
 

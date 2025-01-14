@@ -2,7 +2,7 @@ import { cn } from "@/config/tailwind-merge";
 import { Box } from "@/features/_core/components/ui";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import type { AgendaColumn } from "../../domain";
+import type { AgendaColumns } from "../../domain";
 
 const HASH_COLORS: Record<
   Props["id"],
@@ -31,7 +31,7 @@ const HASH_COLORS: Record<
 };
 
 type Props = React.PropsWithChildren<{
-  id: AgendaColumn["id"];
+  id: AgendaColumns;
   className?: string;
   title: string;
   count: number;
