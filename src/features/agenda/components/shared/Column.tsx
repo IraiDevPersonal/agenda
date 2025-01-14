@@ -1,8 +1,7 @@
-import { IconReload } from "@/features/_core/components/icons";
-import { CSS } from "@dnd-kit/utilities";
 import { cn } from "@/config/tailwind-merge";
+import { Box } from "@/features/_core/components/ui";
 import { useSortable } from "@dnd-kit/sortable";
-import { Box, Button } from "@/features/_core/components/ui";
+import { CSS } from "@dnd-kit/utilities";
 import type { AgendaColumn } from "../../domain";
 
 type Props = React.PropsWithChildren<{
@@ -45,12 +44,12 @@ export const Column: React.FC<Props> = ({
           classNames?.header
         )}
       >
-        <h3 className="text-lg font-bold leading-none">
+        <h3 className="text-lg font-bold">
           {title} ({count})
         </h3>
-        <Button size="icon-sm" variant="light" className="hover:bg-white/35">
+        {/* <Button size="icon-sm" variant="light" className="hover:bg-white/35">
           <IconReload />
-        </Button>
+        </Button> */}
       </div>
       <ul
         className={cn(

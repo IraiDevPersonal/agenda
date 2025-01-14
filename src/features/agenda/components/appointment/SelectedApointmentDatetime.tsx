@@ -16,7 +16,7 @@ export const SelectedApointmentDateTime: React.FC<Props> = ({ type }) => {
   return (
     <div
       className={cn(
-        "flex gap-2 rounded-xl p-3 font-semibold italic w-full justify-center *:leading-none",
+        "flex gap-2 rounded-xl p-3 *:font-bold italic w-full justify-center *:leading-none",
         HASH_COLORS[type]
       )}
     >

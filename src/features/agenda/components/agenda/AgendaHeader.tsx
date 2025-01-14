@@ -18,7 +18,7 @@ export const AgendaHeader = () => {
         className="w-56"
         options={[{ label: "Profesional: opcion 1", value: "1" }]}
       />
-      <InputSearch className="w-80" placeholder="Buscar paciente..." />
+      <InputSearch className="w-80 first" placeholder="Buscar paciente..." />
       <Input className="w-max" type="date" defaultValue={CURRENT_DATE} />
     </Header>
   );
