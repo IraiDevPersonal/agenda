@@ -24,7 +24,7 @@ export const DialogAppointmentToBeConfirm: React.FC<Props> = ({
       onClose={handleClose}
       className="sm:max-w-[500px] p-0"
     >
-      <Dialog.Header title="Confirmación paciente" className="p-6 pb-0">
+      <Dialog.Header className="p-6 pb-0" title="Confirmar paciente">
         <Alert
           severity="info"
           description="Profesional exige bono para confirmar paciente."

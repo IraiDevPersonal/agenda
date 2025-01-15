@@ -83,7 +83,10 @@ const FormSearchPatient = () => {
 const FormCreatePatient = () => {
   return (
     <>
-      <Dialog.Header title="Registrar y agendar paciente">
+      <Dialog.Header
+        title="Registrar y agendar paciente"
+        classNames={{ title: "text-center" }}
+      >
         <Alert
           severity="info"
           description="Al guardar se registrará al paciente y se agendará la hora seleccionada."

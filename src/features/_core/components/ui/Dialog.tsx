@@ -16,6 +16,7 @@ type DialogHeaderProps = {
 
 type DialogContentProps = {
   ref?: React.Ref<HTMLDivElement>;
+  showCloseButton?: boolean;
   overlayRef?: React.Ref<HTMLDivElement>;
   classNames?: Partial<{
     overlay: string;
@@ -29,12 +30,12 @@ export type StateDialogProps = {
   isOpen: boolean;
 };
 
-type DialogProps = StateDialogProps &
-  Omit<
-    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>,
-    "open" | "onOpenChange"
-  > &
-  DialogContentProps;
+type DialogProps = Omit<
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>,
+  "open" | "onOpenChange"
+> &
+  DialogContentProps &
+  StateDialogProps;
 
 export function Dialog({
   isOpen,
@@ -57,6 +58,7 @@ export function Dialog({
 }
 
 const DialogContent: React.FC<DialogContentProps> = ({
+  showCloseButton = false,
   overlayRef,
   classNames,
   className,
@@ -83,20 +85,24 @@ const DialogContent: React.FC<DialogContentProps> = ({
         {...props}
       >
         {children}
-        <DialogPrimitive.Close
-          className={cn(
-            "group absolute right-3 top-3 flex size-7 items-center justify-center rounded-lg outline-offset-2 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none",
-            classNames?.close
-          )}
-        >
-          <IconX
-            className={cn(
-              "opacity-60 transition-opacity group-hover:opacity-100",
-              classNames?.icon
-            )}
-          />
-          <span className="sr-only">Close</span>
-        </DialogPrimitive.Close>
+        {showCloseButton && (
+          <>
+            <DialogPrimitive.Close
+              className={cn(
+                "group absolute right-3 top-3 flex size-7 items-center justify-center rounded-lg outline-offset-2 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none",
+                classNames?.close
+              )}
+            >
+              <IconX
+                className={cn(
+                  "opacity-60 transition-opacity group-hover:opacity-100",
+                  classNames?.icon
+                )}
+              />
+              <span className="sr-only">Close</span>
+            </DialogPrimitive.Close>
+          </>
+        )}
       </DialogPrimitive.Content>
     </DialogPrimitive.Portal>
   );
@@ -119,7 +125,7 @@ const DialogHeader: React.FC<DialogHeaderProps> = ({
     >
       <DialogPrimitive.Title
         className={cn(
-          "text-2xl font-semibold tracking-tight first-letter:uppercase",
+          "text-2xl font-semibold first-letter:uppercase text-center",
           children && "leading-none pb-3",
           classNames?.title
         )}

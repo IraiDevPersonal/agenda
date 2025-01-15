@@ -3,7 +3,7 @@ import { DataWrapper } from "./DataWrapper";
 
 export const Professional = () => {
   return (
-    <DataWrapper title="Profesional" className="pt-0">
+    <DataWrapper title="Profesional">
       <DataItem label="Nombre" value="Ignacio Rodigo Arriagada Iriarte" />
       <DataItem label="Profesión" value="Psicolog@" />
       <DataItem label="Forma de pago" value="Bono/Particular" />

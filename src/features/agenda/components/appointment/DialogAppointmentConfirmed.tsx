@@ -33,7 +33,7 @@ export const DialogAppointmentConfirmed: React.FC<Props> = ({
       onClose={handleClose}
       className="sm:max-w-[500px] p-0"
     >
-      <Dialog.Header title="Estado asistencia paciente" className="p-6 pb-0">
+      <Dialog.Header className="p-6 pb-0" title="Estado asistencia paciente">
         <SelectedApointmentDateTime type="confirmed" />
         <Dialog.Description className="italic text-center">
           Mantener seguimiento de asistencia de paciente actualizado.

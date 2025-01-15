@@ -40,14 +40,14 @@ export const SearchPatientByRut: React.FC<Props> = ({ getPatient }) => {
   return (
     <FieldRootWrapper>
       <InputSearch
-        className="ps-16"
+        className="ps-36"
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         value={prettifyRut(value)}
         placeholder="Buscar paciente por rut..."
         startContent={
-          <InputContentWrapper className="start-0 px-3 bg-black text-white rounded-s-xl font-semibold">
-            RUT
+          <InputContentWrapper className="start-0 px-3 bg-black/10 text-foreground rounded-s-xl">
+            Buscar por Rut:
           </InputContentWrapper>
         }
       />
