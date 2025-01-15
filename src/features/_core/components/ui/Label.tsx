@@ -10,7 +10,7 @@ export const Label: React.FC<Props> = ({ className, ref, ...props }) => {
     <label
       ref={ref}
       className={cn(
-        "text-sm font-medium leading-4 text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+        "text-sm font-medium w-max leading-4 text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
         className
       )}
       {...props}

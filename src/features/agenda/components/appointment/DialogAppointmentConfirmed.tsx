@@ -40,17 +40,17 @@ export const DialogAppointmentConfirmed: React.FC<Props> = ({
         <SelectedApointmentDateTime type="confirmed" />
       </Dialog.Header>
 
-      <Dialog.Body className="divide-y divide-black/30">
+      <Dialog.Description asChild className="divide-y divide-black/30">
         <div className="p-6 pt-4">
           <SelectField label="Estado" options={STATUS} />
-          <Dialog.Description className="italic text-center mt-2">
+          <span className="italic text-center mt-2 text-muted-foreground text-sm">
             "Mantenga el estado de seguimiento de asistencia del paciente
             actualizado."
-          </Dialog.Description>
+          </span>
         </div>
         <Professional />
         <Patient />
-      </Dialog.Body>
+      </Dialog.Description>
 
       <Dialog.Footer className="p-6 pt-0">
         <Button variant="text" onClick={handleClose}>

@@ -13,7 +13,7 @@ export const DataWrapper: React.FC<Props> = ({
 }) => {
   return (
     <section className={cn("flex flex-col gap-1.5 p-6", className)}>
-      <h5 className="text-lg font-semibold">{title}</h5>
+      <h5 className="text-lg font-semibold leading-none mb-1">{title}</h5>
       {children}
     </section>
   );

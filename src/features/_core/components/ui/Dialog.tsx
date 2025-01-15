@@ -169,13 +169,18 @@ const DialogFooter: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
 
 const DialogDescription: React.FC<DialogDescriptionProps> = ({
   className,
+  children,
+  asChild,
   ...props
 }) => {
   return (
     <DialogPrimitive.Description
-      className={cn("text-sm text-muted-foreground", className)}
+      className={cn(!asChild && "text-sm text-muted-foreground", className)}
+      asChild={asChild}
       {...props}
-    />
+    >
+      {asChild ? <DialogBody>{children}</DialogBody> : children}
+    </DialogPrimitive.Description>
   );
 };
 
@@ -183,7 +188,12 @@ const DialogBody: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   className,
   ...props
 }) => {
-  return <div className={cn("flex flex-col gap-2", className)} {...props} />;
+  return (
+    <div
+      className={cn("flex flex-col gap-2 overflow-y-auto", className)}
+      {...props}
+    />
+  );
 };
 
 const DialogTrigger = DialogPrimitive.Trigger;

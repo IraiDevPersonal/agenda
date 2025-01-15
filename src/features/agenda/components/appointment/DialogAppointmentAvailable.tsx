@@ -66,16 +66,16 @@ const FormSearchPatient = () => {
         <SelectedApointmentDateTime type="available" />
         <SearchPatientByRut getPatient={getPatient} />
       </Dialog.Header>
-      <Dialog.Body className="py-2">
-        <h5 className="text-center font-semibold mb-4">Datos Paciente</h5>
+      <Dialog.Description asChild className="py-2">
+        <h5 className="text-center font-semibold mb-2">Datos Paciente</h5>
         {patient ? (
           <FormFieldsPatient initialValues={patient} />
         ) : (
-          <Dialog.Description className="text-center text-sm italic text-muted-foreground">
+          <span className="text-center text-sm italic text-muted-foreground leading-none">
             Sin resultados...
-          </Dialog.Description>
+          </span>
         )}
-      </Dialog.Body>
+      </Dialog.Description>
     </>
   );
 };
@@ -90,9 +90,9 @@ const FormCreatePatient = () => {
           description="Al guardar se registrará al paciente y se agendará la hora seleccionada."
         />
       </Dialog.Header>
-      <Dialog.Body>
+      <Dialog.Description asChild>
         <FormFieldsPatient />
-      </Dialog.Body>
+      </Dialog.Description>
     </>
   );
 };

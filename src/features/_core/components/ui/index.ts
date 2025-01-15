@@ -14,6 +14,7 @@ export * from "./inputs/Input";
 export * from "./inputs/InputPassword";
 export * from "./inputs/InputSearch";
 export * from "./inputs/InputField";
+export * from "./inputs/InputFile";
 export * from "./inputs/InputContentWrapper";
 export * from "./FieldRootWrapper";
 export * from "./selects/Select";

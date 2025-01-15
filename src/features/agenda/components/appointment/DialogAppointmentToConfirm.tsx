@@ -3,6 +3,7 @@ import {
   Alert,
   Button,
   Dialog,
+  InputFile,
   StateDialogProps,
 } from "@/features/_core/components/ui";
 import { Patient, PatientHistory, Professional } from "../shared";
@@ -26,17 +27,17 @@ export const DialogAppointmentToConfirm: React.FC<Props> = ({
           severity="info"
           description="Profesional exige bono para confirmar paciente."
         />
-        <Dialog.Description className="text-center italic">
-          "Verifique y confirme todos los datos del paciente antes de confirmar
-          asistencia."
-        </Dialog.Description>
+        <InputFile label="Adjuntar Bono" />
       </Dialog.Header>
 
-      <Dialog.Body className="divide-y divide-black/30">
+      <Dialog.Description
+        asChild
+        className="divide-y divide-black/30 max-h-[min(400px,60vh)] scrollbar-styles"
+      >
         <Professional className="pt-0" />
         <Patient />
         <PatientHistory className="pb-2" />
-      </Dialog.Body>
+      </Dialog.Description>
 
       <Dialog.Footer className="p-6 pt-0">
         <Button variant="destructive" onClick={handleClose}>

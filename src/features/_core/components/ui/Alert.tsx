@@ -32,7 +32,7 @@ export const Alert: React.FC<Props> = ({ description, severity }) => {
   return (
     <div
       className={cn(
-        "font-medium rounded-lg flex items-center gap-4 p-3",
+        "font-medium rounded-xl flex items-center gap-4 p-3",
         HASH_SEVERITY[severity].color
       )}
     >
