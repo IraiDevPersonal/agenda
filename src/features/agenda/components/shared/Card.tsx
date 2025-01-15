@@ -3,7 +3,7 @@ import { PropsWithChildren } from "react";
 import { AgendaColumns } from "../../domain";
 
 const HASH_COLORS: Record<Props["id"], string> = {
-  "to-be-confirm": "text-amber-700 border-amber-600/10 shadow-amber-700/15",
+  "to-confirm": "text-amber-700 border-amber-600/10 shadow-amber-700/15",
   available: "text-emerald-700 border-emerald-600/10 shadow-emerald-700/15",
   cancelled: "text-red-700 border-red-600/10 shadow-red-700/15",
   confirmed: "text-sky-700 border-sky-600/10 shadow-sky-700/15",

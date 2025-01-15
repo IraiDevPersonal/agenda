@@ -46,7 +46,7 @@ export const DialogAppointmentAvailable: React.FC<Props> = ({
           Cancelar
         </Button>
         <Button>
-          Guardar
+          {showCreateForm ? "Registrar y agendar" : "Agendar"}
           <IconSave />
         </Button>
       </Dialog.Footer>
@@ -63,8 +63,8 @@ const FormSearchPatient = () => {
   return (
     <>
       <Dialog.Header title="Agendar Paciente">
-        <SearchPatientByRut getPatient={getPatient} />
         <SelectedApointmentDateTime type="available" />
+        <SearchPatientByRut getPatient={getPatient} />
       </Dialog.Header>
       <Dialog.Body className="py-2">
         <h5 className="text-center font-semibold mb-4">Datos Paciente</h5>
@@ -83,15 +83,12 @@ const FormSearchPatient = () => {
 const FormCreatePatient = () => {
   return (
     <>
-      <Dialog.Header
-        title="Registrar y agendar paciente"
-        classNames={{ title: "text-center" }}
-      >
+      <Dialog.Header title="Registrar y agendar paciente">
+        <SelectedApointmentDateTime type="available" />
         <Alert
           severity="info"
           description="Al guardar se registrará al paciente y se agendará la hora seleccionada."
         />
-        <SelectedApointmentDateTime type="available" />
       </Dialog.Header>
       <Dialog.Body>
         <FormFieldsPatient />

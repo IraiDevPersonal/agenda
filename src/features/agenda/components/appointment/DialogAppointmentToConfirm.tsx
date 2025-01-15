@@ -21,21 +21,21 @@ export const DialogAppointmentToConfirm: React.FC<Props> = ({
   return (
     <Dialog isOpen={isOpen} onClose={handleClose} className="p-0">
       <Dialog.Header className="p-6 pb-0" title="Confirmar paciente">
+        <SelectedApointmentDateTime type="to-confirm" />
         <Alert
           severity="info"
           description="Profesional exige bono para confirmar paciente."
         />
         <Dialog.Description className="text-center italic">
-          Verifique y confirme todos los datos del paciente antes de confirmar
-          asistencia.
+          "Verifique y confirme todos los datos del paciente antes de confirmar
+          asistencia."
         </Dialog.Description>
-        <SelectedApointmentDateTime type="to-confirm" />
       </Dialog.Header>
 
       <Dialog.Body className="divide-y divide-black/30">
         <Professional className="pt-0" />
         <Patient />
-        <PatientHistory />
+        <PatientHistory className="pb-2" />
       </Dialog.Body>
 
       <Dialog.Footer className="p-6 pt-0">

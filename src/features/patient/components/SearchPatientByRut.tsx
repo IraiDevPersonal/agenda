@@ -46,7 +46,7 @@ export const SearchPatientByRut: React.FC<Props> = ({ getPatient }) => {
         value={prettifyRut(value)}
         placeholder="Buscar paciente por rut..."
         startContent={
-          <InputContentWrapper className="start-0 px-3 bg-black/10 text-foreground rounded-s-xl">
+          <InputContentWrapper className="start-0 px-3 bg-black/10 text-foreground rounded-s-xl italic">
             Buscar por Rut:
           </InputContentWrapper>
         }

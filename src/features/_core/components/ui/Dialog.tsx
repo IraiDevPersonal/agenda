@@ -30,7 +30,10 @@ export type StateDialogProps = {
   isOpen: boolean;
 };
 
-type DialogProps = Omit<
+type DialogProps = {
+  shouldEscapeKeyCloseDialog?: boolean;
+  shouldClickOutsideCloseDialog?: boolean;
+} & Omit<
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>,
   "open" | "onOpenChange"
 > &
@@ -38,21 +41,39 @@ type DialogProps = Omit<
   StateDialogProps;
 
 export function Dialog({
+  modal,
   isOpen,
   onClose,
   children,
   defaultOpen,
-  modal,
+  onEscapeKeyDown,
+  onInteractOutside,
+  shouldEscapeKeyCloseDialog = false,
+  shouldClickOutsideCloseDialog = false,
   ...props
 }: DialogProps) {
   return (
     <DialogPrimitive.Root
       modal={modal}
       open={isOpen}
-      defaultOpen={defaultOpen}
       onOpenChange={onClose}
+      defaultOpen={defaultOpen}
     >
-      <DialogContent {...props}>{children}</DialogContent>
+      <DialogContent
+        {...props}
+        onEscapeKeyDown={(e) => {
+          onEscapeKeyDown?.(e);
+          if (shouldEscapeKeyCloseDialog) return;
+          e.preventDefault();
+        }}
+        onInteractOutside={(e) => {
+          onInteractOutside?.(e);
+          if (shouldClickOutsideCloseDialog) return;
+          e.preventDefault();
+        }}
+      >
+        {children}
+      </DialogContent>
     </DialogPrimitive.Root>
   );
 }
@@ -74,7 +95,6 @@ const DialogContent: React.FC<DialogContentProps> = ({
           "fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
           classNames?.overlay
         )}
-        {...props}
       />
       <DialogPrimitive.Content
         ref={ref}
@@ -117,16 +137,10 @@ const DialogHeader: React.FC<DialogHeaderProps> = ({
   ...props
 }) => {
   return (
-    <header
-      className={cn(
-        "flex flex-col space-y-2 text-center sm:text-left",
-        className
-      )}
-      {...props}
-    >
+    <header className={cn("flex flex-col space-y-2", className)} {...props}>
       <DialogPrimitive.Title
         className={cn(
-          "text-2xl font-semibold first-letter:uppercase text-center",
+          "text-2xl font-bold first-letter:uppercase text-left",
           children && "leading-none pb-3",
           classNames?.title
         )}
