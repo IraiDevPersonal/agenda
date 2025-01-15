@@ -1,10 +1,21 @@
 import { IconSave } from "@/features/_core/components/icons";
 import {
-  Alert,
   Button,
   Dialog,
+  SelectField,
   StateDialogProps,
 } from "@/features/_core/components/ui";
+import { Patient, Professional } from "../shared";
+import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
+import { Option } from "@/config";
+
+const STATUS: Option[] = [
+  { label: "Sin seleccionar", value: "" },
+  { label: "Atendido", value: "1" },
+  { label: "En salada de espera", value: "2" },
+  { label: "No se atendio", value: "3" },
+  { label: "No se presento", value: "4" },
+];
 
 type Props = StateDialogProps;
 
@@ -17,18 +28,25 @@ export const DialogAppointmentConfirmed: React.FC<Props> = ({
   };
 
   return (
-    <Dialog isOpen={isOpen} onClose={handleClose} className="sm:max-w-[500px]">
-      <Dialog.Header title="Estado asistencia paciente">
-        <Alert
-          severity="info"
-          description="Mantener seguimiento de asistencia de paciente actualizado."
-        />
-        <Dialog.Description></Dialog.Description>
+    <Dialog
+      isOpen={isOpen}
+      onClose={handleClose}
+      className="sm:max-w-[500px] p-0"
+    >
+      <Dialog.Header title="Estado asistencia paciente" className="p-6 pb-0">
+        <SelectedApointmentDateTime type="confirmed" />
+        <Dialog.Description className="italic text-center">
+          Mantener seguimiento de asistencia de paciente actualizado.
+        </Dialog.Description>
       </Dialog.Header>
 
-      <Dialog.Body></Dialog.Body>
+      <Dialog.Body className="divide-y divide-black/30">
+        <SelectField label="Estado" options={STATUS} className="p-6 pt-0" />
+        <Professional />
+        <Patient />
+      </Dialog.Body>
 
-      <Dialog.Footer>
+      <Dialog.Footer className="p-6 pt-0">
         <Button variant="text" onClick={handleClose}>
           Cancelar
         </Button>
@@ -40,3 +58,8 @@ export const DialogAppointmentConfirmed: React.FC<Props> = ({
     </Dialog>
   );
 };
+
+/**
+ * hora de llegada
+ * estado de citacion: atendido / no se presento / no se atendio
+ */

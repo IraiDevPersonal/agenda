@@ -3,3 +3,8 @@ export * from "./Column";
 export * from "./Grid";
 export * from "./Header";
 export * from "./Planner";
+export * from "./DataWrapper";
+export * from "./DataItem";
+export * from "./PatientHistory";
+export * from "./Patient";
+export * from "./Professional";

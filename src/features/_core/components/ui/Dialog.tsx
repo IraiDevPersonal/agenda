@@ -119,7 +119,8 @@ const DialogHeader: React.FC<DialogHeaderProps> = ({
     >
       <DialogPrimitive.Title
         className={cn(
-          "text-xl font-semibold tracking-tight first-letter:uppercase",
+          "text-2xl font-semibold tracking-tight first-letter:uppercase",
+          children && "leading-none pb-3",
           classNames?.title
         )}
       >

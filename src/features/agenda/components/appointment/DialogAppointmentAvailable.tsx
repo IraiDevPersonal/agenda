@@ -39,15 +39,8 @@ export const DialogAppointmentAvailable: React.FC<Props> = ({
           className="mr-auto"
           onClick={() => setShowCreateForm(!showCreateForm)}
         >
-          {showCreateForm ? (
-            <>
-              Buscar paciente <IconSearch />
-            </>
-          ) : (
-            <>
-              Registrar paciente <IconPlus />
-            </>
-          )}
+          {showCreateForm ? "Buscar paciente" : "Registrar paciente"}
+          {showCreateForm ? <IconSearch /> : <IconPlus />}
         </Button>
         <Button variant="text" onClick={handleClose}>
           Cancelar
@@ -93,7 +86,7 @@ const FormCreatePatient = () => {
       <Dialog.Header title="Registrar y agendar paciente">
         <Alert
           severity="info"
-          description="Al guardar se registrara al nuevo paciente y se agendara la hora asignada."
+          description="Al guardar se registrará al paciente y se agendará la hora seleccionada."
         />
         <SelectedApointmentDateTime type="available" />
       </Dialog.Header>

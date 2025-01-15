@@ -20,7 +20,7 @@ export const SelectedApointmentDateTime: React.FC<Props> = ({ type }) => {
         HASH_COLORS[type]
       )}
     >
-      <div className="bg-white/60 h-full">Hora</div>
+      <div className="bg-white/50 h-full">Hora</div>
       <div className="flex gap-3">
         <span>Fecha: 11-01-2025</span>
         <span>|</span>
