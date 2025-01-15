@@ -1,5 +1,5 @@
 export type AgendaColumns =
   | "confirmed"
-  | "to-be-confirm"
+  | "to-confirm"
   | "available"
   | "cancelled";

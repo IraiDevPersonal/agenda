@@ -6,7 +6,7 @@ import { AgendaColumns } from "../domain";
 
 const AGENDA_COLUMNS: { id: AgendaColumns }[] = [
   { id: "confirmed" },
-  { id: "to-be-confirm" },
+  { id: "to-confirm" },
   { id: "available" },
   { id: "cancelled" },
 ];

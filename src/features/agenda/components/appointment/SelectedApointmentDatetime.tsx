@@ -2,7 +2,7 @@ import { cn } from "@/config";
 import { AgendaColumns } from "../../domain";
 
 const HASH_COLORS: Record<Props["type"], string> = {
-  "to-be-confirm": "bg-amber-100 text-amber-600",
+  "to-confirm": "bg-amber-100 text-amber-600",
   available: "bg-emerald-100 text-emerald-600",
   cancelled: "bg-red-100 text-red-600",
   confirmed: "bg-blue-100 text-blue-600",
@@ -10,14 +10,19 @@ const HASH_COLORS: Record<Props["type"], string> = {
 
 type Props = {
   type: AgendaColumns;
+  className?: string;
 };
 
-export const SelectedApointmentDateTime: React.FC<Props> = ({ type }) => {
+export const SelectedApointmentDateTime: React.FC<Props> = ({
+  className,
+  type,
+}) => {
   return (
     <div
       className={cn(
-        "flex gap-2 rounded-xl *:py-3 *:px-4 *:font-bold w-full justify-between *:leading-none overflow-hidden",
-        HASH_COLORS[type]
+        "flex gap-2 rounded-xl *:p-3 *:font-bold w- mx-auto justify-between *:leading-none overflow-hidden",
+        HASH_COLORS[type],
+        className
       )}
     >
       <div className="bg-white/50 h-full">Hora</div>

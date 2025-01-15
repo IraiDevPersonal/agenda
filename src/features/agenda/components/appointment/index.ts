@@ -4,6 +4,6 @@ export * from "./ColumnAppointmentCancelled";
 export * from "./ColumnAppointmentConfirmed";
 export * from "./ColumnAppointmentToBeConfirm";
 export * from "./DialogAppointmentAvailable";
-export * from "./DialogAppointmentToBeConfirm";
+export * from "./DialogAppointmentToConfirm";
 export * from "./DialogAppointmentConfirmed";
 export * from "./SelectedApointmentDatetime";

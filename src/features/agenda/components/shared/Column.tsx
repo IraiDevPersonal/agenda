@@ -8,7 +8,7 @@ const HASH_COLORS: Record<
   Props["id"],
   { header: string; body: string; wrapper: string }
 > = {
-  "to-be-confirm": {
+  "to-confirm": {
     wrapper: "text-amber-700 bg-amber-50",
     header: "hover:bg-amber-100",
     body: "scrollbar-thumb-amber-700",

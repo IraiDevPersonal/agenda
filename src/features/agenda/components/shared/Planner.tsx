@@ -38,7 +38,7 @@ export const Planner: React.FC<Props> = ({ hideProfesionalData }) => {
                   return <ColumnAppointmentCancelled key={col.id} />;
                 case "confirmed":
                   return <ColumnAppointmentConfirmed key={col.id} />;
-                case "to-be-confirm":
+                case "to-confirm":
                   return <ColumnAppointmentToBeConfirm key={col.id} />;
                 default:
                   return null;

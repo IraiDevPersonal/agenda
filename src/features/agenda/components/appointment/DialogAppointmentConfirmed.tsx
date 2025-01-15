@@ -31,7 +31,7 @@ export const DialogAppointmentConfirmed: React.FC<Props> = ({
     <Dialog
       isOpen={isOpen}
       onClose={handleClose}
-      className="sm:max-w-[500px] p-0"
+      className="p-0 sm:max-w-[500px]"
     >
       <Dialog.Header className="p-6 pb-0" title="Estado asistencia paciente">
         <SelectedApointmentDateTime type="confirmed" />

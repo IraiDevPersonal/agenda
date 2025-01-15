@@ -31,7 +31,7 @@ export const DialogAppointmentAvailable: React.FC<Props> = ({
   };
 
   return (
-    <Dialog isOpen={isOpen} onClose={handleClose} className="sm:max-w-[500px]">
+    <Dialog isOpen={isOpen} onClose={handleClose}>
       {showCreateForm ? <FormCreatePatient /> : <FormSearchPatient />}
       <Dialog.Footer>
         <Button

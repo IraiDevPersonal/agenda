@@ -10,7 +10,7 @@ import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
 
 type Props = StateDialogProps;
 
-export const DialogAppointmentToBeConfirm: React.FC<Props> = ({
+export const DialogAppointmentToConfirm: React.FC<Props> = ({
   isOpen,
   onClose,
 }) => {
@@ -19,11 +19,7 @@ export const DialogAppointmentToBeConfirm: React.FC<Props> = ({
   };
 
   return (
-    <Dialog
-      isOpen={isOpen}
-      onClose={handleClose}
-      className="sm:max-w-[500px] p-0"
-    >
+    <Dialog isOpen={isOpen} onClose={handleClose} className="p-0">
       <Dialog.Header className="p-6 pb-0" title="Confirmar paciente">
         <Alert
           severity="info"
@@ -33,11 +29,11 @@ export const DialogAppointmentToBeConfirm: React.FC<Props> = ({
           Verifique y confirme todos los datos del paciente antes de confirmar
           asistencia.
         </Dialog.Description>
-        <SelectedApointmentDateTime type="to-be-confirm" />
+        <SelectedApointmentDateTime type="to-confirm" />
       </Dialog.Header>
 
       <Dialog.Body className="divide-y divide-black/30">
-        <Professional />
+        <Professional className="pt-0" />
         <Patient />
         <PatientHistory />
       </Dialog.Body>
