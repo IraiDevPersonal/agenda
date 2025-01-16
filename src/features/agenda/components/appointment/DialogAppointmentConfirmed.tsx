@@ -30,7 +30,7 @@ export const DialogAppointmentConfirmed: React.FC<Props> = ({
 
       <Dialog.Body className="gap-y-6">
         <Select className="mt-2" options={STATUS} />
-        <Text type="paragraph" className="italic text-center text-sm mt-2">
+        <Text type="text" className="mt-2">
           "Mantenga el estado de seguimiento de asistencia del paciente
           actualizado"
         </Text>
