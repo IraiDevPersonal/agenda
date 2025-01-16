@@ -1,20 +1,15 @@
+import { Option, StateDialogProps } from "@/config";
 import { IconSave } from "@/features/_core/components/icons";
-import {
-  Button,
-  Dialog,
-  SelectField,
-  StateDialogProps,
-} from "@/features/_core/components/ui";
+import { Button, Dialog, Select, Text } from "@/features/_core/components/ui";
 import { Patient, Professional } from "../shared";
 import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
-import { Option } from "@/config";
 
 const STATUS: Option[] = [
-  { label: "Sin seleccionar", value: "" },
-  { label: "Atendido", value: "1" },
-  { label: "En salada de espera", value: "2" },
-  { label: "No se atendio", value: "3" },
-  { label: "No se presento", value: "4" },
+  { label: "Estado: Sin seleccionar", value: "" },
+  { label: "Estado: Atendido", value: "1" },
+  { label: "Estado: En salada de espera", value: "2" },
+  { label: "Estado: No se atendio", value: "3" },
+  { label: "Estado: No se presento", value: "4" },
 ];
 
 type Props = StateDialogProps;
@@ -28,31 +23,22 @@ export const DialogAppointmentConfirmed: React.FC<Props> = ({
   };
 
   return (
-    <Dialog
-      isOpen={isOpen}
-      onClose={handleClose}
-      className="p-0 sm:max-w-[500px]"
-    >
-      <Dialog.Header
-        className="p-6 pb-0"
-        title="Seguimiento asistencia paciente"
-      >
+    <Dialog isOpen={isOpen} onClose={handleClose} className="sm:max-w-[500px]">
+      <Dialog.Header title="Seguimiento asistencia paciente">
         <SelectedApointmentDateTime type="confirmed" />
       </Dialog.Header>
 
-      <Dialog.Description asChild className="divide-y divide-black/30">
-        <div className="p-6 pt-4">
-          <SelectField label="Estado" options={STATUS} />
-          <span className="italic text-center mt-2 text-muted-foreground text-sm">
-            "Mantenga el estado de seguimiento de asistencia del paciente
-            actualizado."
-          </span>
-        </div>
+      <Dialog.Body className="gap-y-6">
+        <Select className="mt-2" options={STATUS} />
+        <Text type="paragraph" className="italic text-center text-sm mt-2">
+          "Mantenga el estado de seguimiento de asistencia del paciente
+          actualizado"
+        </Text>
         <Professional />
         <Patient />
-      </Dialog.Description>
+      </Dialog.Body>
 
-      <Dialog.Footer className="p-6 pt-0">
+      <Dialog.Footer>
         <Button variant="text" onClick={handleClose}>
           Cancelar
         </Button>
@@ -64,8 +50,3 @@ export const DialogAppointmentConfirmed: React.FC<Props> = ({
     </Dialog>
   );
 };
-
-/**
- * hora de llegada
- * estado de citacion: atendido / no se presento / no se atendio
- */

@@ -51,11 +51,11 @@ export const SelectedApointmentDateTime: React.FC<Props> = ({
       <div className="h-full grid content-center p-4">
         <h3 className="font-bold">Cita</h3>
       </div>
-      <div className="flex flex-col font-bold *:leading-tight">
-        <span className={cn("p-3 pb-1.5 bg-white/30", HASH_COLORS[type].date)}>
+      <div className="flex flex-col w-full font-bold *:leading-tight *:block *:p-3">
+        <span className={cn("pb-1.5", HASH_COLORS[type].date)}>
           Fecha: 11-01-2025
         </span>
-        <span className={cn("p-3 pt-1.5", HASH_COLORS[type].time)}>
+        <span className={cn("pt-1.5", HASH_COLORS[type].time)}>
           Horario: 13:00 - 13:45
         </span>
       </div>

@@ -22,3 +22,8 @@ export type LinkRouteProps = {
 };
 
 export type Option = { label: string; value: string | number };
+
+export type StateDialogProps = {
+  onClose(): void;
+  isOpen: boolean;
+};

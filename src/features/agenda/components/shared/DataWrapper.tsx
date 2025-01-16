@@ -1,4 +1,5 @@
 import { cn } from "@/config";
+import { Text } from "@/features/_core/components/ui";
 
 type Props = {
   children: React.ReactNode;
@@ -12,8 +13,10 @@ export const DataWrapper: React.FC<Props> = ({
   className,
 }) => {
   return (
-    <section className={cn("flex flex-col gap-1.5 p-6", className)}>
-      <h5 className="text-lg font-semibold leading-none mb-1">{title}</h5>
+    <section className={cn("flex flex-col gap-1.5", className)}>
+      <Text type="subtitle" className="font-semibold leading-none mb-1">
+        {title}
+      </Text>
       {children}
     </section>
   );

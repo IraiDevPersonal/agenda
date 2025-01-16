@@ -3,12 +3,7 @@ import {
   IconSave,
   IconSearch,
 } from "@/features/_core/components/icons";
-import {
-  Alert,
-  Button,
-  Dialog,
-  StateDialogProps,
-} from "@/features/_core/components/ui";
+import { Alert, Button, Dialog, Text } from "@/features/_core/components/ui";
 import {
   FormFieldsPatient,
   SearchPatientByRut,
@@ -16,6 +11,7 @@ import {
 import { PatientEntity } from "@/features/patient/domain/patient.entity";
 import { useState } from "react";
 import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
+import { StateDialogProps } from "@/config";
 
 type Props = StateDialogProps;
 
@@ -33,6 +29,7 @@ export const DialogAppointmentAvailable: React.FC<Props> = ({
   return (
     <Dialog isOpen={isOpen} onClose={handleClose}>
       {showCreateForm ? <FormCreatePatient /> : <FormSearchPatient />}
+
       <Dialog.Footer>
         <Button
           variant="info"
@@ -64,18 +61,19 @@ const FormSearchPatient = () => {
     <>
       <Dialog.Header title="Agendar Paciente">
         <SelectedApointmentDateTime type="available" />
-        <SearchPatientByRut getPatient={getPatient} />
       </Dialog.Header>
-      <Dialog.Description asChild className="py-2">
-        <h5 className="text-center font-semibold mb-2">Datos Paciente</h5>
+
+      <Dialog.Body>
+        <SearchPatientByRut getPatient={getPatient} />
+        <Text type="subtitle" className="text-center">
+          Datos Paciente
+        </Text>
         {patient ? (
           <FormFieldsPatient initialValues={patient} />
         ) : (
-          <span className="text-center text-sm italic text-muted-foreground leading-none">
-            Sin resultados...
-          </span>
+          <Text type="text">Sin resultados...</Text>
         )}
-      </Dialog.Description>
+      </Dialog.Body>
     </>
   );
 };
@@ -83,16 +81,22 @@ const FormSearchPatient = () => {
 const FormCreatePatient = () => {
   return (
     <>
-      <Dialog.Header title="Registrar y agendar paciente">
+      <Dialog.Header
+        title="Registrar y agendar paciente"
+        classNames={{
+          content: "flex-row gap-2 *:w-1/2",
+        }}
+      >
         <SelectedApointmentDateTime type="available" />
         <Alert
           severity="info"
           description="Al guardar se registrará al paciente y se agendará la hora seleccionada."
         />
       </Dialog.Header>
-      <Dialog.Description asChild>
+
+      <Dialog.Body>
         <FormFieldsPatient />
-      </Dialog.Description>
+      </Dialog.Body>
     </>
   );
 };

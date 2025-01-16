@@ -19,3 +19,4 @@ export * from "./inputs/InputContentWrapper";
 export * from "./FieldRootWrapper";
 export * from "./selects/Select";
 export * from "./selects/SelectField";
+export * from "./Text";

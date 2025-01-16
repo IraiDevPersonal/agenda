@@ -1,4 +1,4 @@
-import { Label } from "@/features/_core/components/ui";
+import { Text } from "@/features/_core/components/ui";
 
 type Props = {
   label: string;
@@ -7,8 +7,12 @@ type Props = {
 
 export const DataItem: React.FC<Props> = ({ label, value }) => {
   return (
-    <Label>
-      {label}: <span className="text-muted-foreground">{value}</span>
-    </Label>
+    <Text
+      type="paragraph"
+      className="leading-none text-foreground font-semibold"
+    >
+      {label}:{" "}
+      <span className="text-muted-foreground font-normal">{value}</span>
+    </Text>
   );
 };

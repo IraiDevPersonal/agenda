@@ -4,9 +4,14 @@ import { ArrayMap } from "../../utils";
 export type SelectProps = {
   ref?: React.Ref<HTMLSelectElement>;
   options?: Option[];
+  classNames?: Partial<{
+    select: string;
+    icon: string;
+  }>;
 } & React.ComponentProps<"select">;
 
 export function Select({
+  classNames,
   className,
   children,
   options,
@@ -14,12 +19,12 @@ export function Select({
   ...props
 }: SelectProps) {
   return (
-    <div className="relative">
+    <div className={cn("relative", className)}>
       <select
         ref={ref}
         className={cn(
           "peer inline-flex w-full cursor-pointer appearance-none items-center rounded-xl border border-transparent bg-muted text-sm text-foreground shadow-none shadow-black/5 transition-shadow focus-visible:border-black/20 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/20 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 has-[option[disabled]:checked]:text-muted-foreground h-9 pe-8 ps-3",
-          className
+          classNames?.select
         )}
         {...props}
       >
@@ -33,7 +38,12 @@ export function Select({
           </ArrayMap>
         )}
       </select>
-      <span className="pointer-events-none absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center text-muted-foreground/80 peer-disabled:opacity-50">
+      <span
+        className={cn(
+          "pointer-events-none absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center text-muted-foreground/80 peer-disabled:opacity-50",
+          classNames?.icon
+        )}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
