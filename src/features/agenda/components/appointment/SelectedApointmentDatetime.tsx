@@ -43,13 +43,13 @@ export const SelectedApointmentDateTime: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        "flex rounded-xl w-max overflow-hidden border divide-x",
+        "flex rounded-xl w-max overflow-hidden border divide-x h-max",
         HASH_COLORS[type].wrapper,
         className
       )}
     >
-      <div className="h-full grid content-center p-4">
-        <h3 className="font-bold">Cita</h3>
+      <div className="p-4">
+        <h3 className="font-bold mt-4">Cita</h3>
       </div>
       <div className="flex flex-col w-full font-bold *:leading-tight *:block *:p-3">
         <span className={cn("pb-1.5", HASH_COLORS[type].date)}>

@@ -8,6 +8,7 @@ const patientSchema = z.object({
   phone: z.string(),
   last_names: z.string(),
   rut: z.string().max(12),
+  address: z.string().min(10),
 });
 
 type Init = z.infer<typeof patientSchema>;
@@ -19,7 +20,9 @@ export class PatientEntity {
   public names: Init["names"];
   public email: Init["email"];
   public phone: Init["phone"];
+  public address: Init["address"];
   public last_names: Init["last_names"];
+  public static validationSchema = patientSchema;
 
   private constructor(init: Init) {
     this.id = init.id;
@@ -28,16 +31,13 @@ export class PatientEntity {
     this.names = init.names;
     this.email = init.email;
     this.phone = init.phone;
+    this.address = init.address;
     this.last_names = init.last_names;
-  }
-
-  static getSchema() {
-    return patientSchema;
   }
 
   static fromObject(object: Record<string, any>) {
     try {
-      const schema = this.getSchema().parse(object);
+      const schema = this.validationSchema.parse(object);
       return new PatientEntity(schema);
     } catch (error) {
       throw new Error((error as Error).message);

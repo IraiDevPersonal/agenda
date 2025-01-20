@@ -3,9 +3,9 @@ import { IconSave } from "@/features/_core/components/icons";
 import { Button, Dialog, Select, Text } from "@/features/_core/components/ui";
 import { Patient, Professional } from "../shared";
 import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
+import { createOptions } from "@/features/_core/utils/helpers.util";
 
 const STATUS: Option[] = [
-  { label: "Estado: Sin seleccionar", value: "" },
   { label: "Estado: Atendido", value: "1" },
   { label: "Estado: En salada de espera", value: "2" },
   { label: "Estado: No se atendio", value: "3" },
@@ -29,7 +29,13 @@ export const DialogAppointmentConfirmed: React.FC<Props> = ({
       </Dialog.Header>
 
       <Dialog.Body className="gap-y-6">
-        <Select className="mt-2" options={STATUS} />
+        <Select
+          className="mt-2"
+          options={createOptions({
+            options: STATUS,
+            customLabel: "Estado: Sin seleción",
+          })}
+        />
         <Text type="text" className="mt-2">
           "Mantenga el estado de seguimiento de asistencia del paciente
           actualizado"

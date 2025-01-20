@@ -1,6 +1,12 @@
-import { InputField } from "@/features/_core/components/ui";
+import { InputField, SelectField } from "@/features/_core/components/ui";
 import { PatientEntity } from "../domain/patient.entity";
-import { cn } from "@/config";
+import { cn, Option } from "@/config";
+import { createOptions } from "@/features/_core/utils/helpers.util";
+
+const PAYMENT_METHODS: Option[] = [
+  { label: "Fonasa", value: "fonasa" },
+  { label: "Particular", value: "particular" },
+];
 
 type Props = {
   initialValues?: PatientEntity;
@@ -21,6 +27,16 @@ export const FormFieldsPatient: React.FC<Props> = ({
         className="col-span-2"
         defaultValue={initialValues?.email}
         label="Correo"
+      />
+      <InputField
+        className="col-span-2"
+        defaultValue={initialValues?.address}
+        label="Dirección"
+      />
+      <SelectField
+        className="col-span-2"
+        options={createOptions({ options: PAYMENT_METHODS }, true)}
+        label="Forma de pago"
       />
     </div>
   );

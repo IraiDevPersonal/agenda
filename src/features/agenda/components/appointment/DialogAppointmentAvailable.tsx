@@ -84,13 +84,13 @@ const FormCreatePatient = () => {
       <Dialog.Header
         title="Registrar y agendar paciente"
         classNames={{
-          content: "flex-row gap-2 *:w-1/2",
+          content: "flex-row gap-2 *:w-1/2 items-center",
         }}
       >
         <SelectedApointmentDateTime type="available" />
         <Alert
           severity="info"
-          description="Al guardar se registrará al paciente y se agendará la hora seleccionada."
+          description="Al Registrar y agendar se creará al paciente y se le agendará la cita seleccionada."
         />
       </Dialog.Header>
 

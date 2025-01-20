@@ -16,6 +16,7 @@ const DUMMY_PATIENT: PatientEntity = {
   last_names: "Arriagada Iriarte",
   email: "ignacio.arr01@gmail.com",
   phone: "+56956980565",
+  address: "Porvenir sitio 2, Santa Fe",
 };
 
 const FILTER_ITEMS = [

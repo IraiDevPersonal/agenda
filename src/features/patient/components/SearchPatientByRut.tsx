@@ -16,6 +16,7 @@ const DUMMY_PATIENT: PatientEntity = {
   last_names: "Arriagada Iriarte",
   email: "ignacio.arr01@gmail.com",
   phone: "+56956980565",
+  address: "Porvenir sitio 2, Santa Fe",
 };
 
 type Props = {
@@ -44,7 +45,7 @@ export const SearchPatientByRut: React.FC<Props> = ({ getPatient }) => {
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         value={prettifyRut(value)}
-        placeholder="Buscar paciente por rut..."
+        placeholder="Digite rut del paciente..."
         startContent={
           <InputContentWrapper className="start-0 px-3 bg-black/10 text-foreground rounded-s-xl italic">
             Buscar por Rut:

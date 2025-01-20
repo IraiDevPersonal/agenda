@@ -1,6 +1,6 @@
-import type { CustomLinkProps } from "@/config";
+import type { CustomLinkProps, Option } from "@/config";
 
-export const generatePath = ({ to, params, query }: CustomLinkProps) => {
+export function generatePath({ to, params, query }: CustomLinkProps) {
   const path: string = to.replace(/:([^/]+)/g, (_, key) => {
     if (!params || !(key in params)) {
       throw new Error(
@@ -19,4 +19,24 @@ export const generatePath = ({ to, params, query }: CustomLinkProps) => {
     return `${path}?${queryToString}`;
   }
   return path;
+}
+
+type CreateOptionProps = {
+  options: Option[];
+  customLabel?: Option["label"];
+  customValue?: Option["value"];
 };
+
+export function createOptions(
+  { options, customLabel, customValue }: CreateOptionProps,
+  shouldContainEmptyOption: boolean = false
+) {
+  const emptyOption: Option = {
+    label: customLabel ?? "Sin selección",
+    value: customValue ?? "",
+  };
+  if (shouldContainEmptyOption || customLabel || customValue) {
+    return [emptyOption, ...options];
+  }
+  return options;
+}

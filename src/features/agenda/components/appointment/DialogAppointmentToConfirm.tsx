@@ -8,6 +8,7 @@ import {
 import { Patient, PatientHistory, Professional } from "../shared";
 import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
 import { DialogHandlerProps } from "@/config";
+import { useState } from "react";
 
 type Props = DialogHandlerProps;
 
@@ -15,8 +16,14 @@ export const DialogAppointmentToConfirm: React.FC<Props> = ({
   isOpen,
   onClose,
 }) => {
+  const [file, setFile] = useState<File | null>(null);
   const handleClose = () => {
+    setFile(null);
     onClose();
+  };
+  const handleChooseFile: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    const file = e.target.files?.[0] ?? null;
+    setFile(file);
   };
 
   return (
@@ -30,7 +37,7 @@ export const DialogAppointmentToConfirm: React.FC<Props> = ({
       </Dialog.Header>
 
       <Dialog.Body className="max-h-[calc(100vh-360px)] overflow-y-auto gap-y-6">
-        <InputFile label="Adjuntar Bono" />
+        <InputFile label="Adjuntar Bono" onChange={handleChooseFile} />
         <Professional />
         <Patient />
         <PatientHistory />
@@ -41,7 +48,7 @@ export const DialogAppointmentToConfirm: React.FC<Props> = ({
           Cancelar hora
           <IconDislike />
         </Button>
-        <Button>
+        <Button disabled={!file}>
           Confirmar hora
           <IconLike />
         </Button>
