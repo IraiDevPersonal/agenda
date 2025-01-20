@@ -4,6 +4,7 @@ import { Button, Dialog, Select, Text } from "@/features/_core/components/ui";
 import { Patient, Professional } from "../shared";
 import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
 import { createOptions } from "@/features/_core/utils/helpers.util";
+import { useViewProfessionalInfo } from "../stores";
 
 const STATUS: Option[] = [
   { label: "Estado: Atendido", value: "1" },
@@ -18,6 +19,7 @@ export const DialogAppointmentConfirmed: React.FC<Props> = ({
   isOpen,
   onClose,
 }) => {
+  const { showProfesionalData } = useViewProfessionalInfo();
   const handleClose = () => {
     onClose();
   };
@@ -40,7 +42,7 @@ export const DialogAppointmentConfirmed: React.FC<Props> = ({
           "Mantenga el estado de seguimiento de asistencia del paciente
           actualizado"
         </Text>
-        <Professional />
+        {showProfesionalData && <Professional />}
         <Patient />
       </Dialog.Body>
 

@@ -2,14 +2,9 @@ import { IconAvailable } from "@/features/_core/components/icons";
 import { useDialog } from "@/features/_core/hooks";
 import { Card, Column } from "../shared";
 import { DialogAppointmentAvailable } from "./DialogAppointmentAvailable";
+import { useViewProfessionalInfo } from "../stores";
 
-type Props = {
-  hideProfesionalData?: boolean;
-};
-
-export const ColumnAppointmentAvailable: React.FC<Props> = ({
-  hideProfesionalData = false,
-}) => {
+export const ColumnAppointmentAvailable = () => {
   const [isOpen, handleToggleOpen] = useDialog();
   return (
     <>
@@ -20,7 +15,7 @@ export const ColumnAppointmentAvailable: React.FC<Props> = ({
             onClick={handleToggleOpen}
             className="hover:cursor-pointer"
           >
-            <AvailableCard hideProfesionalData={hideProfesionalData} />
+            <AvailableCard />
           </li>
         ))}
       </Column>
@@ -29,17 +24,16 @@ export const ColumnAppointmentAvailable: React.FC<Props> = ({
   );
 };
 
-const AvailableCard: React.FC<{ hideProfesionalData: boolean }> = ({
-  hideProfesionalData,
-}) => {
+const AvailableCard = () => {
+  const { showProfesionalData } = useViewProfessionalInfo();
   return (
     <Card id="available">
       <div className="flex flex-col mr-auto">
-        {!hideProfesionalData && <strong>Nombre profesional</strong>}
+        {showProfesionalData && <strong>Nombre profesional</strong>}
         <span>
           Horario: <strong>13:00 - 13:45</strong>
         </span>
-        {!hideProfesionalData && (
+        {showProfesionalData && (
           <span>
             Profesión: <strong>Psicologo(a)</strong>
           </span>

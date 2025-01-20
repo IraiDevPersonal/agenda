@@ -9,6 +9,7 @@ import { Patient, PatientHistory, Professional } from "../shared";
 import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
 import { DialogHandlerProps } from "@/config";
 import { useState } from "react";
+import { useViewProfessionalInfo } from "../stores";
 
 type Props = DialogHandlerProps;
 
@@ -16,6 +17,7 @@ export const DialogAppointmentToConfirm: React.FC<Props> = ({
   isOpen,
   onClose,
 }) => {
+  const { showProfesionalData } = useViewProfessionalInfo();
   const [file, setFile] = useState<File | null>(null);
   const handleClose = () => {
     setFile(null);
@@ -38,7 +40,7 @@ export const DialogAppointmentToConfirm: React.FC<Props> = ({
 
       <Dialog.Body className="max-h-[calc(100vh-360px)] overflow-y-auto gap-y-6">
         <InputFile label="Adjuntar Bono" onChange={handleChooseFile} />
-        <Professional />
+        {showProfesionalData && <Professional />}
         <Patient />
         <PatientHistory />
       </Dialog.Body>

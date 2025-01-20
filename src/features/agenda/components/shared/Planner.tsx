@@ -10,11 +10,7 @@ import {
 } from "../appointment";
 import { useSortablePlanner } from "../../hooks";
 
-type Props = {
-  hideProfesionalData?: boolean;
-};
-
-export const Planner: React.FC<Props> = ({ hideProfesionalData }) => {
+export const Planner = () => {
   const { columns, handleDragEnd } = useSortablePlanner();
 
   return (
@@ -28,12 +24,7 @@ export const Planner: React.FC<Props> = ({ hideProfesionalData }) => {
             {(col) => {
               switch (col.id) {
                 case "available":
-                  return (
-                    <ColumnAppointmentAvailable
-                      key={col.id}
-                      hideProfesionalData={hideProfesionalData}
-                    />
-                  );
+                  return <ColumnAppointmentAvailable key={col.id} />;
                 case "cancelled":
                   return <ColumnAppointmentCancelled key={col.id} />;
                 case "confirmed":

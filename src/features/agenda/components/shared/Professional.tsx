@@ -7,7 +7,7 @@ type Props = {
 
 export const Professional: React.FC<Props> = ({ className }) => {
   return (
-    <DataWrapper title="Profesional" className={className}>
+    <DataWrapper title="Datos Profesional" className={className}>
       <DataItem label="Nombre" value="Ignacio Rodigo Arriagada Iriarte" />
       <DataItem label="Profesión" value="Psicolog@" />
       <DataItem label="Forma de pago" value="Bono/Particular" />
