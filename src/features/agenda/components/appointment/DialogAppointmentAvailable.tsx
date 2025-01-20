@@ -95,7 +95,7 @@ const FormCreatePatient = () => {
       </Dialog.Header>
 
       <Dialog.Body>
-        <FormFieldsPatient />
+        <FormFieldsPatient withAutofocus />
       </Dialog.Body>
     </>
   );

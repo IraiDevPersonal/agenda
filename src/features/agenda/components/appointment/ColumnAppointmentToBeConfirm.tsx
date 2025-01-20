@@ -6,17 +6,19 @@ import { DialogAppointmentToConfirm } from "./DialogAppointmentToConfirm";
 export const ColumnAppointmentToBeConfirm = () => {
   const [isOpen, handleToggleOpen] = useDialog();
   return (
-    <Column count={2} id="to-confirm" title="Por Confirmar">
-      {Array.from({ length: 5 }).map((_, idx) => (
-        <li
-          key={idx}
-          onClick={handleToggleOpen}
-          className="hover:cursor-pointer"
-        >
-          <AppointmentCard id="to-confirm" />
-        </li>
-      ))}
+    <>
+      <Column count={2} id="to-confirm" title="Por Confirmar">
+        {Array.from({ length: 5 }).map((_, idx) => (
+          <li
+            key={idx}
+            onClick={handleToggleOpen}
+            className="hover:cursor-pointer"
+          >
+            <AppointmentCard id="to-confirm" />
+          </li>
+        ))}
+      </Column>
       <DialogAppointmentToConfirm isOpen={isOpen} onClose={handleToggleOpen} />
-    </Column>
+    </>
   );
 };

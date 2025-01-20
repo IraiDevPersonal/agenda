@@ -10,16 +10,22 @@ const PAYMENT_METHODS: Option[] = [
 
 type Props = {
   initialValues?: PatientEntity;
+  withAutofocus?: boolean;
   className?: string;
 };
 
 export const FormFieldsPatient: React.FC<Props> = ({
   initialValues,
+  withAutofocus,
   className,
 }) => {
   return (
     <div className={cn("grid gap-2 grid-cols-2", className)}>
-      <InputField defaultValue={initialValues?.rut} label="Rut" />
+      <InputField
+        autoFocus={withAutofocus}
+        defaultValue={initialValues?.rut}
+        label="Rut"
+      />
       <InputField defaultValue={initialValues?.phone} label="Teléfono" />
       <InputField defaultValue={initialValues?.names} label="Nombres" />
       <InputField defaultValue={initialValues?.last_names} label="Apellidos" />
