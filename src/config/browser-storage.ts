@@ -18,21 +18,25 @@ export class BrowserStorage {
   }
 
   public get<T>(defaultValue?: T) {
-    const result = this.storage.getItem(this.key) ?? "";
-    if (!result) return defaultValue ?? null;
+    const value = this.getAsString();
+    if (!value) return defaultValue ?? null;
     try {
-      return JSON.parse(result) as T;
-    } catch (error) {
-      console.log({ error });
-      return defaultValue ?? null;
+      return JSON.parse(value) as T;
+    } catch (_) {
+      return value as T;
     }
+  }
+
+  public getAsString() {
+    const value = this.storage.getItem(this.key) ?? "";
+    return value;
   }
 
   public remove() {
     this.storage.removeItem(this.key);
   }
 
-  public has() {
-    return !!this.get();
+  public hasValue() {
+    return !!this.getAsString();
   }
 }

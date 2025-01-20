@@ -1,11 +1,11 @@
 import React from "react";
-import type { TagElements } from "@/config";
+import type { HTMLTags } from "@/config";
 
 type Props<T> = {
-  as?: TagElements | React.ExoticComponent<{ children?: React.ReactNode }>;
-  dataset: T[];
+  as?: HTMLTags | React.ExoticComponent<{ children?: React.ReactNode }>;
   children(e: T, idx: number): React.ReactNode;
   emptyContent?: string;
+  dataset: T[];
 };
 
 export const ArrayMap = <T,>({

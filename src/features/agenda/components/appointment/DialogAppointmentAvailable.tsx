@@ -11,9 +11,9 @@ import {
 import { PatientEntity } from "@/features/patient/domain/patient.entity";
 import { useState } from "react";
 import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
-import { StateDialogProps } from "@/config";
+import { DialogHandlerProps } from "@/config";
 
-type Props = StateDialogProps;
+type Props = DialogHandlerProps;
 
 export const DialogAppointmentAvailable: React.FC<Props> = ({
   isOpen,

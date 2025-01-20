@@ -1,4 +1,4 @@
-import { cn, RoutePaths } from "@/config";
+import { cn, Paths } from "@/config";
 import { UserAccount } from "@/features/account/components/UserAccount";
 import {
   IconAgenda,
@@ -18,7 +18,7 @@ const PAGES: PageProps[] = [
   { label: "Contabilidad", icon: <IconDolar />, route: "/not-found" },
 ];
 
-type PageProps = { label: string; icon: React.ReactNode; route: RoutePaths };
+type PageProps = { label: string; icon: React.ReactNode; route: Paths };
 
 export const AppSidebar = () => {
   return (

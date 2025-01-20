@@ -1,4 +1,4 @@
-import { Option, StateDialogProps } from "@/config";
+import { Option, DialogHandlerProps } from "@/config";
 import { IconSave } from "@/features/_core/components/icons";
 import { Button, Dialog, Select, Text } from "@/features/_core/components/ui";
 import { Patient, Professional } from "../shared";
@@ -12,7 +12,7 @@ const STATUS: Option[] = [
   { label: "Estado: No se presento", value: "4" },
 ];
 
-type Props = StateDialogProps;
+type Props = DialogHandlerProps;
 
 export const DialogAppointmentConfirmed: React.FC<Props> = ({
   isOpen,

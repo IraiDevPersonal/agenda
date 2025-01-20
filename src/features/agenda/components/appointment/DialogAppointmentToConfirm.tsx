@@ -7,9 +7,9 @@ import {
 } from "@/features/_core/components/ui";
 import { Patient, PatientHistory, Professional } from "../shared";
 import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
-import { StateDialogProps } from "@/config";
+import { DialogHandlerProps } from "@/config";
 
-type Props = StateDialogProps;
+type Props = DialogHandlerProps;
 
 export const DialogAppointmentToConfirm: React.FC<Props> = ({
   isOpen,

@@ -1,5 +1,5 @@
 export * from "./browser-storage";
-export * from "./type";
+export * from "./types";
 export * from "./routes";
 export * from "./tailwind-merge";
 export * from "./uid";

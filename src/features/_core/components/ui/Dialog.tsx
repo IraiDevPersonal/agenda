@@ -1,4 +1,4 @@
-import { cn, StateDialogProps } from "@/config";
+import { cn, DialogHandlerProps } from "@/config";
 import { IconX } from "@/features/_core/components/icons/IconX";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import * as React from "react";
@@ -8,7 +8,7 @@ type DialogContentProps = React.ComponentPropsWithoutRef<
 >;
 
 type DialogProps = DialogContentProps &
-  StateDialogProps & {
+  DialogHandlerProps & {
     shouldClickOutsideCloseDialog?: boolean;
     overlayRef?: React.Ref<HTMLDivElement>;
     shouldEscapeKeyCloseDialog?: boolean;

@@ -1,11 +1,12 @@
-import { createElement, PropsWithChildren } from "react";
-import type { ElementAttributes, TagElements } from "@/config";
+import type { HTMLAttributes, HTMLTags } from "@/config";
+import { createElement } from "react";
 
-type Props<T extends HTMLElement | unknown = HTMLElement> = {
-  as: TagElements;
-  ref?: React.Ref<T>;
-} & PropsWithChildren &
-  ElementAttributes<T>;
+type Props<T extends HTMLElement | unknown = HTMLElement> =
+  HTMLAttributes<T> & {
+    children: React.ReactNode;
+    ref?: React.Ref<T>;
+    as: HTMLTags;
+  };
 
 export const CreateElement = <T extends HTMLElement | unknown = HTMLElement>({
   as,

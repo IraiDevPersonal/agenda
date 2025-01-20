@@ -1,6 +1,6 @@
-import type { LinkRouteProps } from "@/config";
+import type { CustomLinkProps } from "@/config";
 
-export const generateRoutePath = ({ to, params, query }: LinkRouteProps) => {
+export const generatePath = ({ to, params, query }: CustomLinkProps) => {
   const path: string = to.replace(/:([^/]+)/g, (_, key) => {
     if (!params || !(key in params)) {
       throw new Error(

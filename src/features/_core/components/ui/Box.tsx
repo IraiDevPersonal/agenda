@@ -1,14 +1,13 @@
-import { PropsWithChildren } from "react";
-import { CreateElement } from "../utils";
+import type { HTMLAttributes, HTMLTags } from "@/config";
 import { cn } from "@/config";
-import type { ElementAttributes, TagElements } from "@/config";
+import { CreateElement } from "../utils";
 
 type Props<T extends HTMLElement | unknown = HTMLElement> = {
-  as: TagElements;
-  ref?: React.Ref<T>;
   shouldUseDefaultStyles?: boolean;
-} & PropsWithChildren &
-  ElementAttributes<T>;
+  children: React.ReactNode;
+  ref?: React.Ref<T>;
+  as: HTMLTags;
+} & HTMLAttributes<T>;
 
 export const Box = <T extends HTMLElement | unknown = HTMLElement>({
   shouldUseDefaultStyles = true,
