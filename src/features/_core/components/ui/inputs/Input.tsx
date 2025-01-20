@@ -1,7 +1,7 @@
 import { cn } from "@/config";
 
 export type InputProps = React.ComponentProps<"input"> & {
-  ref?: React.Ref<HTMLInputElement | null>;
+  ref?: React.Ref<HTMLInputElement>;
 };
 
 export const Input: React.FC<InputProps> = ({

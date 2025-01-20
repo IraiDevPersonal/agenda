@@ -3,12 +3,15 @@ import { z } from "zod";
 const patientSchema = z.object({
   id: z.number(),
   uid: z.string(),
-  names: z.string(),
-  email: z.string(),
-  phone: z.string(),
-  last_names: z.string(),
-  rut: z.string().max(12),
-  address: z.string().min(10),
+  names: z.string().min(1, { message: "Obligatorio" }),
+  phone: z.string().min(1, { message: "Obligatorio" }),
+  last_names: z.string().min(1, { message: "Obligatorio" }),
+  rut: z.string().min(1, { message: "Obligatorio" }).max(12),
+  address: z.string().min(10, { message: "Minimo 10 caracteres" }),
+  email: z
+    .string()
+    .email({ message: "Formato incorrecto" })
+    .min(1, { message: "Obligatorio" }),
 });
 
 type Init = z.infer<typeof patientSchema>;

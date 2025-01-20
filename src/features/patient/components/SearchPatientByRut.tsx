@@ -28,6 +28,7 @@ export const SearchPatientByRut: React.FC<Props> = ({ getPatient }) => {
   const [value, setValue] = useState("");
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+    e.stopPropagation();
     if (e.key !== "Enter") return;
     const value = e.currentTarget.value;
     if (lastSearch.current === value) return;
