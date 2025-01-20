@@ -33,19 +33,31 @@ export const FormFieldsPatient: React.FC<Props> = ({
           formatValue: prettifyRut,
         })}
       />
-      <InputField defaultValue={initialValues?.phone} label="Teléfono" />
-      <InputField defaultValue={initialValues?.names} label="Nombres" />
-      <InputField defaultValue={initialValues?.last_names} label="Apellidos" />
+      <InputField
+        {...controller("phone", { defaultValue: initialValues?.phone })}
+        label="Teléfono"
+      />
+      <InputField
+        {...controller("names", { defaultValue: initialValues?.names })}
+        label="Nombres"
+      />
+      <InputField
+        {...controller("last_names", {
+          defaultValue: initialValues?.last_names,
+        })}
+        label="Apellidos"
+      />
       <InputField
         className="col-span-2"
-        defaultValue={initialValues?.email}
+        {...controller("email", { defaultValue: initialValues?.email })}
         label="Correo"
       />
       <InputField
         className="col-span-2"
-        defaultValue={initialValues?.address}
+        {...controller("address", { defaultValue: initialValues?.address })}
         label="Dirección"
       />
+      {/* TODO: analizar si quitar este campo de aqui ya que es propio del agendar la cita */}
       <SelectField
         className="col-span-2"
         options={createOptions({ options: PAYMENT_METHODS }, true)}

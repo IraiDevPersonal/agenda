@@ -10,8 +10,8 @@ const patientSchema = z.object({
   address: z.string().min(10, { message: "Minimo 10 caracteres" }),
   email: z
     .string()
-    .email({ message: "Formato incorrecto" })
-    .min(1, { message: "Obligatorio" }),
+    .min(1, { message: "Obligatorio" })
+    .email({ message: "Formato incorrecto" }),
 });
 
 type Init = z.infer<typeof patientSchema>;
