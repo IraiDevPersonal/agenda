@@ -1,23 +1,31 @@
+import { DialogHandlerProps } from "@/config";
 import {
   IconPlus,
   IconSave,
   IconSearch,
 } from "@/features/_core/components/icons";
-import { Alert, Button, Dialog, Text } from "@/features/_core/components/ui";
+import {
+  Alert,
+  Button,
+  Dialog,
+  SelectField,
+  Text,
+} from "@/features/_core/components/ui";
+import { useForm } from "@/features/_core/hooks";
+import { createOptions } from "@/features/_core/utils/helpers.util";
 import {
   FormFieldsPatient,
   SearchPatientByRut,
 } from "@/features/patient/components";
 import { PatientEntity } from "@/features/patient/domain/patient.entity";
 import { useState } from "react";
+import { PAYMENT_METHODS } from "../../utils/constants.util";
 import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
-import { DialogHandlerProps } from "@/config";
-import { useForm } from "@/features/_core/hooks";
 
 type Props = DialogHandlerProps;
 type CommonProps = Pick<DialogHandlerProps, "onClose"> & {
-  showCreateForm: boolean;
   toggleShowCreateForm(): void;
+  showCreateForm: boolean;
 };
 
 export const DialogAppointmentAvailable: React.FC<Props> = ({
@@ -37,13 +45,13 @@ export const DialogAppointmentAvailable: React.FC<Props> = ({
   return (
     <Dialog isOpen={isOpen} onClose={handleClose}>
       {showCreateForm ? (
-        <FormCreatePatient
+        <CreatePatient
           onClose={handleClose}
           showCreateForm={showCreateForm}
           toggleShowCreateForm={handleToggle}
         />
       ) : (
-        <FormSearchPatient
+        <SearchPatient
           onClose={handleClose}
           showCreateForm={showCreateForm}
           toggleShowCreateForm={handleToggle}
@@ -67,18 +75,44 @@ const FormPatient: React.FC<FormPatientProps> = ({
     defaultValues: initialValues,
     validationSchema: PatientEntity.validationSchema,
   });
+  const [paymentMethod, setPaymentMethod] = useState("");
+  const handleChangePaymentMethod: React.ChangeEventHandler<
+    HTMLSelectElement
+  > = (e) => {
+    setPaymentMethod(e.target.value);
+  };
+
   return (
-    <form onSubmit={handleSubmit(() => console.log("submit XDDD"))}>
+    <form
+      onSubmit={handleSubmit((values) =>
+        alert(JSON.stringify(values, null, 2))
+      )}
+    >
+      <SelectField
+        error={
+          paymentMethod ? undefined : 'Debe seleccionar una "Forma de pago"'
+        }
+        options={createOptions({ options: PAYMENT_METHODS }, true)}
+        onChange={handleChangePaymentMethod}
+        value={paymentMethod}
+        label="Forma de pago"
+        className="mb-2"
+      />
       <FormFieldsPatient
         withAutofocus={withAutofocus}
         controller={controller}
       />
-      <DialogActions {...props} />
+      <DialogActions {...props} disableSaveButton={!paymentMethod} />
     </form>
   );
 };
 
-const FormSearchPatient: React.FC<CommonProps> = (props) => {
+/**
+ * datos para bono fonasa
+ *
+ */
+
+const SearchPatient: React.FC<CommonProps> = (props) => {
   const [patient, setPatient] = useState<PatientEntity | null>(null);
   function getPatient(patient: PatientEntity | null) {
     setPatient(patient);
@@ -108,7 +142,7 @@ const FormSearchPatient: React.FC<CommonProps> = (props) => {
   );
 };
 
-const FormCreatePatient: React.FC<CommonProps> = (props) => {
+const CreatePatient: React.FC<CommonProps> = (props) => {
   return (
     <>
       <Dialog.Header
@@ -131,7 +165,10 @@ const FormCreatePatient: React.FC<CommonProps> = (props) => {
   );
 };
 
-const DialogActions: React.FC<CommonProps> = ({
+const DialogActions: React.FC<
+  CommonProps & { disableSaveButton?: boolean }
+> = ({
+  disableSaveButton = false,
   toggleShowCreateForm,
   showCreateForm,
   onClose,
@@ -145,7 +182,7 @@ const DialogActions: React.FC<CommonProps> = ({
       <Button variant="text" onClick={onClose}>
         Cancelar
       </Button>
-      <Button type="submit">
+      <Button type="submit" disabled={disableSaveButton}>
         {showCreateForm ? "Registrar y agendar" : "Agendar"}
         <IconSave />
       </Button>

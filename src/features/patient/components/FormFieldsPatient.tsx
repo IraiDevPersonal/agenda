@@ -1,14 +1,8 @@
-import { InputField, SelectField } from "@/features/_core/components/ui";
-import { PatientEntity } from "../domain/patient.entity";
-import { cn, Option } from "@/config";
-import { createOptions } from "@/features/_core/utils/helpers.util";
+import { cn } from "@/config";
+import { InputField } from "@/features/_core/components/ui";
 import { UseFormControllerHandler } from "@/features/_core/hooks";
 import { prettifyRut } from "react-rut-formatter";
-
-const PAYMENT_METHODS: Option[] = [
-  { label: "Fonasa", value: "fonasa" },
-  { label: "Particular", value: "particular" },
-];
+import { PatientEntity } from "../domain/patient.entity";
 
 type Props = {
   controller: UseFormControllerHandler<PatientEntity>;
@@ -56,12 +50,6 @@ export const FormFieldsPatient: React.FC<Props> = ({
         className="col-span-2"
         {...controller("address", { defaultValue: initialValues?.address })}
         label="Dirección"
-      />
-      {/* TODO: analizar si quitar este campo de aqui ya que es propio del agendar la cita */}
-      <SelectField
-        className="col-span-2"
-        options={createOptions({ options: PAYMENT_METHODS }, true)}
-        label="Forma de pago"
       />
     </div>
   );
