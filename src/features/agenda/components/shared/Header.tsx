@@ -1,5 +1,6 @@
 import { cn } from "@/config";
 import { Box } from "@/features/_core/components/ui";
+import { BonoFonasaProfessionalData } from "./BonoFonasaProfessionalData";
 
 type Props = React.PropsWithChildren<{
   title: string;
@@ -27,6 +28,7 @@ export const Header: React.FC<Props> = ({
         {title}
       </h1>
       {children}
+      <BonoFonasaProfessionalData />
     </Box>
   );
 };

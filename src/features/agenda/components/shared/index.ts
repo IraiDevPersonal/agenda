@@ -8,3 +8,4 @@ export * from "./DataItem";
 export * from "./PatientHistory";
 export * from "./Patient";
 export * from "./Professional";
+export * from "./BonoFonasaProfessionalData";

@@ -107,11 +107,6 @@ const FormPatient: React.FC<FormPatientProps> = ({
   );
 };
 
-/**
- * datos para bono fonasa
- *
- */
-
 const SearchPatient: React.FC<CommonProps> = (props) => {
   const [patient, setPatient] = useState<PatientEntity | null>(null);
   function getPatient(patient: PatientEntity | null) {
