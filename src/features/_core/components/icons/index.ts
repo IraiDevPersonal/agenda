@@ -19,3 +19,6 @@ export * from "./IconAgenda";
 export * from "./IconDanger";
 export * from "./IconWarning";
 export * from "./IconSuccess";
+export * from "./IconLocation";
+export * from "./IconWeb";
+export * from "./IconPhone";

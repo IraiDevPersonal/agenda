@@ -9,7 +9,7 @@ const HASH_TEXT_TYPE: Record<Props["type"], { tag: HTMLTags; styles: string }> =
       tag: "span",
       styles: "text-center text-sm italic text-muted-foreground leading-none",
     },
-    title: { tag: "h1", styles: "text-2xl font-semibold" },
+    title: { tag: "h1", styles: "text-2xl font-bold" },
   };
 
 type Props = {

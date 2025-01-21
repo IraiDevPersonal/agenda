@@ -1,7 +1,12 @@
 import { Button, Dialog, Text } from "@/features/_core/components/ui";
 import { useDialog } from "@/features/_core/hooks";
 import { DataItem } from "./DataItem";
-import { IconInfo } from "@/features/_core/components/icons";
+import {
+  IconInfo,
+  IconLocation,
+  IconPhone,
+  IconWeb,
+} from "@/features/_core/components/icons";
 
 export const BonoFonasaProfessionalData = () => {
   const [isOepn, onToggleOpen] = useDialog();
@@ -11,7 +16,7 @@ export const BonoFonasaProfessionalData = () => {
 
   return (
     <>
-      <Button onClick={onToggleOpen}>
+      <Button onClick={onToggleOpen} className="bg-sky-800 hover:bg-sky-700">
         <IconInfo /> Datos Fonasa
       </Button>
 
@@ -21,29 +26,52 @@ export const BonoFonasaProfessionalData = () => {
         onClose={handleClose}
         shouldEscapeKeyCloseDialog
         shouldClickOutsideCloseDialog
-        className="sm:max-w-[450px] left-auto right-40 top-10 -translate-x-0 translate-y-0 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-right-40  data-[state=closed]:slide-out-to-top-10 data-[state=open]:slide-in-from-right-40 data-[state=open]:slide-in-from-top-10"
+        className="sm:max-w-[450px] left-auto right-3.5 top-3.5 -translate-x-0 translate-y-0 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-right-3.5  data-[state=closed]:slide-out-to-top-3.5 data-[state=open]:slide-in-from-right-3.5 data-[state=open]:slide-in-from-top-3.5 bg-sky-100 text-sky-800 border-sky-800 shadow-sky-800/10 p-0 gap-0"
+        classNames={{
+          overlay: "bg-sky-900/30",
+        }}
       >
-        <Dialog.Header title="Bono Fonasa" />
-        <Dialog.Body className="gap-2">
-          <DataItem label="Nombre" value="Ignacio Arriagada I." />
-          <DataItem label="Rut" value="19.050.844-7" />
-          <DataItem label="Codigo prestación 1º sesión" value="0902001" />
-          <DataItem
-            label="Codigo prestaación siguientes sesiones"
-            value="0902002"
-          />
-          <Text type="subtitle">Comprar en:</Text>
-          <ul className="list-inside px-3">
-            <li className="list-image-[url(web.svg)]">
-              ONLINE EN MI FONASA (CON CLAVE UNICA)
-            </li>
-            <li className="list-image-[url(call.svg)]">
-              SENCILLITO (LLAMAR AL <strong>600 360 3000</strong>)
-            </li>
-            <li className="list-image-[url(location.svg)]">
-              FONASA (CALLE ALMAGRO #417)
-            </li>
-          </ul>
+        <Dialog.Header
+          title="Bono Fonasa"
+          className="p-6 pb-0"
+          classNames={{ title: "leading-none" }}
+        />
+        <Dialog.Body className="text-sky-800 *:p-6 *:space-y-2 gap-0">
+          <div className="*:text-sky-800 border-b border-sky-800 *:ps-3">
+            <Text type="subtitle" className="!ps-0">
+              Datos Prestador
+            </Text>
+            <DataItem label="Nombre" value="Ignacio Arriagada I." />
+            <DataItem label="Rut" value="19.050.844-7" />
+            <DataItem label="Codigo prestación 1º sesión" value="0902001" />
+            <DataItem
+              label="Codigo prestaación siguientes sesiones"
+              value="0902002"
+            />
+          </div>
+          <div>
+            <Text type="subtitle">Comprar En</Text>
+            <ul className="px-3 space-y-1 *:flex *:items-center *:gap-3 font-medium">
+              <li>
+                <IconWeb />
+                <span>
+                  Online en mi fonasa (<strong>CON CLAVE UNICA</strong>)
+                </span>
+              </li>
+              <li>
+                <IconPhone />
+                <span>
+                  Sencillito (LLAMAR AL <strong>600 360 3000</strong>)
+                </span>
+              </li>
+              <li>
+                <IconLocation />
+                <span>
+                  Fonasa (<strong>CALLE ALMAGRO #417</strong>)
+                </span>
+              </li>
+            </ul>
+          </div>
         </Dialog.Body>
       </Dialog>
     </>

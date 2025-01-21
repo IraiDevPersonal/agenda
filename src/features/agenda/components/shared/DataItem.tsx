@@ -11,8 +11,7 @@ export const DataItem: React.FC<Props> = ({ label, value }) => {
       type="paragraph"
       className="leading-none text-foreground font-semibold"
     >
-      {label}:{" "}
-      <span className="text-muted-foreground font-normal">{value}</span>
+      {label}: <span className="opacity-75 font-normal">{value}</span>
     </Text>
   );
 };
