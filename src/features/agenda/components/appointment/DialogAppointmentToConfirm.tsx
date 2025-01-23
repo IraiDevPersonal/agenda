@@ -46,7 +46,10 @@ export const DialogAppointmentToConfirm: React.FC<Props> = ({
       </Dialog.Body>
 
       <Dialog.Footer>
-        <Button variant="destructive" onClick={handleClose}>
+        <Button variant="text" onClick={handleClose} className="mr-auto">
+          Cerrar
+        </Button>
+        <Button variant="destructive">
           Cancelar hora
           <IconDislike />
         </Button>

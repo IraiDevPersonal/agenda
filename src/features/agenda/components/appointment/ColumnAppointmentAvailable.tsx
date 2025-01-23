@@ -1,29 +1,28 @@
 import { IconAvailable } from "@/features/_core/components/icons";
+import { useDialog } from "@/features/_core/hooks";
 import {
-  AvailableAppointmentContext,
-  useAvailableAppointmentContext,
+  AvailableAppointmentToggleFormContext,
   useViewProfessionalData,
 } from "../../context";
 import { Card, Column } from "../shared";
 import { DialogAppointmentAvailable } from "./DialogAppointmentAvailable";
 
 export const ColumnAppointmentAvailable = () => {
-  const { handleToggleDialogOpen } = useAvailableAppointmentContext();
+  const [isOpen, onToggleIsOpen] = useDialog();
+  const handleClose = () => {
+    onToggleIsOpen();
+  };
   return (
-    <AvailableAppointmentContext>
+    <AvailableAppointmentToggleFormContext>
       <Column id="available" title="Disponibles" count={2}>
         {Array.from({ length: 50 }).map((_, idx) => (
-          <li
-            key={idx}
-            onClick={handleToggleDialogOpen}
-            className="hover:cursor-pointer"
-          >
+          <li key={idx} onClick={handleClose} className="hover:cursor-pointer">
             <AvailableCard />
           </li>
         ))}
       </Column>
-      <DialogAppointmentAvailable />
-    </AvailableAppointmentContext>
+      <DialogAppointmentAvailable isOpen={isOpen} onClose={handleClose} />
+    </AvailableAppointmentToggleFormContext>
   );
 };
 

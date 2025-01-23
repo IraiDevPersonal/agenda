@@ -18,16 +18,21 @@ import {
 } from "@/features/patient/components";
 import { PatientEntity } from "@/features/patient/domain/patient.entity";
 import { useState } from "react";
-import { useAvailableAppointmentContext } from "../../context";
+import { useAvailableAppointmentToggleFormContext } from "../../context";
 import { PAYMENT_METHODS } from "../../utils/constants.util";
 import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
+import { DialogHandlerProps } from "@/config";
 
-export const DialogAppointmentAvailable = () => {
-  const { selectedForm, isDialogOpen, handleToggleDialogOpen } =
-    useAvailableAppointmentContext();
+type Props = DialogHandlerProps;
+
+export const DialogAppointmentAvailable: React.FC<Props> = ({
+  onClose,
+  isOpen,
+}) => {
+  const { selectedForm } = useAvailableAppointmentToggleFormContext();
 
   return (
-    <Dialog isOpen={isDialogOpen} onClose={handleToggleDialogOpen}>
+    <Dialog isOpen={isOpen} onClose={onClose}>
       {selectedForm === "create" ? <CreatePatient /> : <SearchPatient />}
     </Dialog>
   );
@@ -134,25 +139,37 @@ const CreatePatient = () => {
 const DialogActions: React.FC<{ disableSaveButton?: boolean }> = ({
   disableSaveButton = false,
 }) => {
-  const { selectedForm, handleToggleDialogOpen, handleToggleSelectedForm } =
-    useAvailableAppointmentContext();
+  const { selectedForm, resetSelectedForm, handleToggleSelectedForm } =
+    useAvailableAppointmentToggleFormContext();
   return (
     <Dialog.Footer className="mt-6">
-      <Button
-        variant="info"
-        className="mr-auto"
-        onClick={handleToggleSelectedForm}
-      >
-        {selectedForm === "create" ? "Buscar paciente" : "Registrar paciente"}
-        {selectedForm === "create" ? <IconSearch /> : <IconPlus />}
-      </Button>
-      <Button variant="text" onClick={handleToggleDialogOpen}>
-        Cancelar
-      </Button>
-      <Button type="submit" disabled={disableSaveButton}>
-        {selectedForm === "create" ? "Registrar y agendar" : "Agendar"}
-        <IconSave />
-      </Button>
+      {({ onClose }) => (
+        <>
+          <Button
+            variant="info"
+            className="mr-auto"
+            onClick={handleToggleSelectedForm}
+          >
+            {selectedForm === "create"
+              ? "Buscar paciente"
+              : "Registrar paciente"}
+            {selectedForm === "create" ? <IconSearch /> : <IconPlus />}
+          </Button>
+          <Button
+            variant="text"
+            onClick={() => {
+              onClose();
+              resetSelectedForm();
+            }}
+          >
+            Cancelar
+          </Button>
+          <Button type="submit" disabled={disableSaveButton}>
+            {selectedForm === "create" ? "Registrar y agendar" : "Agendar"}
+            <IconSave />
+          </Button>
+        </>
+      )}
     </Dialog.Footer>
   );
 };

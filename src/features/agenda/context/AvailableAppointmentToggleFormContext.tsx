@@ -1,4 +1,3 @@
-import { useDialog } from "@/features/_core/hooks";
 import {
   createContext,
   PropsWithChildren,
@@ -10,16 +9,14 @@ import {
 type ContextProps = {
   selectedForm: "create" | "search";
   handleToggleSelectedForm(): void;
-  handleToggleDialogOpen(): void;
-  isDialogOpen: boolean;
+  resetSelectedForm(): void;
 };
 
 const Context = createContext<ContextProps | undefined>(undefined);
 
-export const AvailableAppointmentContext: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
-  const [isDialogOpen, onToggleDialogOpen] = useDialog();
+export const AvailableAppointmentToggleFormContext: React.FC<
+  PropsWithChildren
+> = ({ children }) => {
   const [selectedForm, setSelectedForm] =
     useState<ContextProps["selectedForm"]>("search");
   const handleToggleSelectedForm = useCallback(() => {
@@ -27,18 +24,16 @@ export const AvailableAppointmentContext: React.FC<PropsWithChildren> = ({
       prevValue === "create" ? "search" : "create"
     );
   }, []);
-  const handleToggleDialogOpen = useCallback(() => {
+  const resetSelectedForm = useCallback(() => {
     setSelectedForm("search");
-    onToggleDialogOpen();
-  }, [onToggleDialogOpen]);
+  }, []);
 
   return (
     <Context
       value={{
         handleToggleSelectedForm,
-        handleToggleDialogOpen,
+        resetSelectedForm,
         selectedForm,
-        isDialogOpen,
       }}
     >
       {children}
@@ -46,11 +41,11 @@ export const AvailableAppointmentContext: React.FC<PropsWithChildren> = ({
   );
 };
 
-export const useAvailableAppointmentContext = () => {
+export const useAvailableAppointmentToggleFormContext = () => {
   const context = use(Context);
   if (!context) {
     throw new Error(
-      "el context solo puede usarse dentro de: AvailableAppointmentToggleFormContext"
+      "useAvailableAppointmentToggleFormContext el context solo puede usarse dentro de: AvailableAppointmentToggleFormContext"
     );
   }
   return context;
