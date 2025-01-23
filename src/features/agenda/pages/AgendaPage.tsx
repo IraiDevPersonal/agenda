@@ -1,18 +1,18 @@
 import { Main } from "@/features/_core/components/ui";
 import { AgendaHeader } from "../components/agenda";
-import { Planner } from "../components/shared";
-import { ViewProfessionalInfoProvider } from "../components/stores";
+import { Appointments } from "../components/appointment";
+import { ViewProfessionalDataContext } from "../context";
 
 const AgendaPage = () => {
   return (
-    <ViewProfessionalInfoProvider showProfesionalData>
+    <ViewProfessionalDataContext showProfesionalData>
       <title>Agenda</title>
 
       <Main>
         <AgendaHeader />
-        <Planner />
+        <Appointments />
       </Main>
-    </ViewProfessionalInfoProvider>
+    </ViewProfessionalDataContext>
   );
 };
 

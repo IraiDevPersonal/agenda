@@ -1,4 +1,3 @@
-import { DialogHandlerProps } from "@/config";
 import {
   IconPlus,
   IconSave,
@@ -19,49 +18,22 @@ import {
 } from "@/features/patient/components";
 import { PatientEntity } from "@/features/patient/domain/patient.entity";
 import { useState } from "react";
+import { useAvailableAppointmentContext } from "../../context";
 import { PAYMENT_METHODS } from "../../utils/constants.util";
 import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
 
-type Props = DialogHandlerProps;
-type CommonProps = Pick<DialogHandlerProps, "onClose"> & {
-  toggleShowCreateForm(): void;
-  showCreateForm: boolean;
-};
-
-export const DialogAppointmentAvailable: React.FC<Props> = ({
-  isOpen,
-  onClose,
-}) => {
-  const [showCreateForm, setShowCreateForm] = useState(false);
-
-  const handleClose = () => {
-    onClose();
-    setShowCreateForm(false);
-  };
-  const handleToggle = () => {
-    setShowCreateForm((prev) => !prev);
-  };
+export const DialogAppointmentAvailable = () => {
+  const { selectedForm, isDialogOpen, handleToggleDialogOpen } =
+    useAvailableAppointmentContext();
 
   return (
-    <Dialog isOpen={isOpen} onClose={handleClose}>
-      {showCreateForm ? (
-        <CreatePatient
-          onClose={handleClose}
-          showCreateForm={showCreateForm}
-          toggleShowCreateForm={handleToggle}
-        />
-      ) : (
-        <SearchPatient
-          onClose={handleClose}
-          showCreateForm={showCreateForm}
-          toggleShowCreateForm={handleToggle}
-        />
-      )}
+    <Dialog isOpen={isDialogOpen} onClose={handleToggleDialogOpen}>
+      {selectedForm === "create" ? <CreatePatient /> : <SearchPatient />}
     </Dialog>
   );
 };
 
-type FormPatientProps = CommonProps & {
+type FormPatientProps = {
   initialValues?: PatientEntity;
   withAutofocus?: boolean;
 };
@@ -69,7 +41,6 @@ type FormPatientProps = CommonProps & {
 const FormPatient: React.FC<FormPatientProps> = ({
   initialValues,
   withAutofocus,
-  ...props
 }) => {
   const { controller, handleSubmit } = useForm({
     defaultValues: initialValues,
@@ -102,12 +73,12 @@ const FormPatient: React.FC<FormPatientProps> = ({
         withAutofocus={withAutofocus}
         controller={controller}
       />
-      <DialogActions {...props} disableSaveButton={!paymentMethod} />
+      <DialogActions disableSaveButton={!paymentMethod} />
     </form>
   );
 };
 
-const SearchPatient: React.FC<CommonProps> = (props) => {
+const SearchPatient = () => {
   const [patient, setPatient] = useState<PatientEntity | null>(null);
   function getPatient(patient: PatientEntity | null) {
     setPatient(patient);
@@ -125,11 +96,11 @@ const SearchPatient: React.FC<CommonProps> = (props) => {
           Datos Paciente
         </Text>
         {patient ? (
-          <FormPatient initialValues={patient} {...props} />
+          <FormPatient initialValues={patient} />
         ) : (
           <>
             <Text type="text">Sin resultados...</Text>
-            <DialogActions {...props} />
+            <DialogActions />
           </>
         )}
       </Dialog.Body>
@@ -137,7 +108,7 @@ const SearchPatient: React.FC<CommonProps> = (props) => {
   );
 };
 
-const CreatePatient: React.FC<CommonProps> = (props) => {
+const CreatePatient = () => {
   return (
     <>
       <Dialog.Header
@@ -154,31 +125,32 @@ const CreatePatient: React.FC<CommonProps> = (props) => {
       </Dialog.Header>
 
       <Dialog.Body>
-        <FormPatient withAutofocus {...props} />
+        <FormPatient withAutofocus />
       </Dialog.Body>
     </>
   );
 };
 
-const DialogActions: React.FC<
-  CommonProps & { disableSaveButton?: boolean }
-> = ({
+const DialogActions: React.FC<{ disableSaveButton?: boolean }> = ({
   disableSaveButton = false,
-  toggleShowCreateForm,
-  showCreateForm,
-  onClose,
 }) => {
+  const { selectedForm, handleToggleDialogOpen, handleToggleSelectedForm } =
+    useAvailableAppointmentContext();
   return (
     <Dialog.Footer className="mt-6">
-      <Button variant="info" className="mr-auto" onClick={toggleShowCreateForm}>
-        {showCreateForm ? "Buscar paciente" : "Registrar paciente"}
-        {showCreateForm ? <IconSearch /> : <IconPlus />}
+      <Button
+        variant="info"
+        className="mr-auto"
+        onClick={handleToggleSelectedForm}
+      >
+        {selectedForm === "create" ? "Buscar paciente" : "Registrar paciente"}
+        {selectedForm === "create" ? <IconSearch /> : <IconPlus />}
       </Button>
-      <Button variant="text" onClick={onClose}>
+      <Button variant="text" onClick={handleToggleDialogOpen}>
         Cancelar
       </Button>
       <Button type="submit" disabled={disableSaveButton}>
-        {showCreateForm ? "Registrar y agendar" : "Agendar"}
+        {selectedForm === "create" ? "Registrar y agendar" : "Agendar"}
         <IconSave />
       </Button>
     </Dialog.Footer>

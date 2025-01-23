@@ -8,3 +8,4 @@ export * from "./DialogAppointmentToConfirm";
 export * from "./DialogAppointmentConfirmed";
 export * from "./DialogAppointmentCancelled";
 export * from "./SelectedApointmentDatetime";
+export * from "./Appoinments";

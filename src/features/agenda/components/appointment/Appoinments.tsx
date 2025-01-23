@@ -1,25 +1,22 @@
-import { DndContext } from "@dnd-kit/core";
-import { Grid } from "./Grid";
-import { SortableContext } from "@dnd-kit/sortable";
+import { Box } from "@/features/_core/components/ui";
 import { ArrayMap } from "@/features/_core/components/utils";
+import { DndContext } from "@dnd-kit/core";
+import { SortableContext } from "@dnd-kit/sortable";
+import { useSortableAppointments } from "../../hooks";
 import {
   ColumnAppointmentAvailable,
   ColumnAppointmentCancelled,
   ColumnAppointmentConfirmed,
   ColumnAppointmentToBeConfirm,
-} from "../appointment";
-import { useSortablePlanner } from "../../hooks";
+} from ".";
 
-export const Planner = () => {
-  const { columns, handleDragEnd } = useSortablePlanner();
+export const Appointments = () => {
+  const { columns, handleDragEnd } = useSortableAppointments();
 
   return (
-    <DndContext
-      onDragEnd={handleDragEnd}
-      // modifiers={[restrictToHorizontalAxis]}
-    >
+    <DndContext onDragEnd={handleDragEnd}>
       <SortableContext items={columns}>
-        <Grid>
+        <Box as="div" className="flex flex-wrap p-0 gap-4 *:max-w-96">
           <ArrayMap dataset={columns}>
             {(col) => {
               switch (col.id) {
@@ -36,7 +33,7 @@ export const Planner = () => {
               }
             }}
           </ArrayMap>
-        </Grid>
+        </Box>
       </SortableContext>
     </DndContext>
   );

@@ -13,7 +13,7 @@ const AGENDA_COLUMNS: { id: AgendaColumns }[] = [
 
 const storage = new BrowserStorage("agenda_user_columns_order");
 
-export function useSortablePlanner() {
+export function useSortableAppointments() {
   const [columns, setColumns] = useState(
     storage.get<{ id: AgendaColumns }[]>(AGENDA_COLUMNS)
   );

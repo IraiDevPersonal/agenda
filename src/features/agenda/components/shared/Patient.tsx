@@ -1,17 +1,13 @@
-import { DataItem } from "./DataItem";
+import { TextItem } from "@/features/_core/components/ui";
 import { DataWrapper } from "./DataWrapper";
 
-type Props = {
-  className?: string;
-};
-
-export const Patient: React.FC<Props> = ({ className }) => {
+export const Patient = () => {
   return (
-    <DataWrapper title="Datos Paciente" className={className}>
-      <DataItem label="Nombre" value="Ignacio Rodrigo Arriagada Iriarte" />
-      <DataItem label="Rut" value="19.050.844-7" />
-      <DataItem label="Teléfono" value="+56956980565" />
-      <DataItem label="Correo" value="ignacio.arr01@gmail.com" />
+    <DataWrapper title="Datos Paciente">
+      <TextItem label="Nombre">Ignacio Rodrigo Arriagada Iriarte</TextItem>
+      <TextItem label="Rut">19.050.844-7</TextItem>
+      <TextItem label="Teléfono">+56956980565</TextItem>
+      <TextItem label="Correo">ignacio.arr01@gmail.com</TextItem>
     </DataWrapper>
   );
 };

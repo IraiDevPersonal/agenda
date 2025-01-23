@@ -9,7 +9,7 @@ import { Patient, PatientHistory, Professional } from "../shared";
 import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
 import { DialogHandlerProps } from "@/config";
 import { useState } from "react";
-import { useViewProfessionalInfo } from "../stores";
+import { useViewProfessionalData } from "../../context";
 
 type Props = DialogHandlerProps;
 
@@ -17,7 +17,7 @@ export const DialogAppointmentToConfirm: React.FC<Props> = ({
   isOpen,
   onClose,
 }) => {
-  const { showProfesionalData } = useViewProfessionalInfo();
+  const { showProfesionalData } = useViewProfessionalData();
   const [file, setFile] = useState<File | null>(null);
   const handleClose = () => {
     setFile(null);

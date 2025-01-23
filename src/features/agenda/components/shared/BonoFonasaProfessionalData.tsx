@@ -1,13 +1,13 @@
-import { Button, Dialog, Text } from "@/features/_core/components/ui";
-import { useDialog } from "@/features/_core/hooks";
-import { DataItem } from "./DataItem";
 import {
   IconInfo,
   IconLocation,
   IconPhone,
   IconWeb,
 } from "@/features/_core/components/icons";
+import { Button, Dialog, Text, TextItem } from "@/features/_core/components/ui";
+import { useDialog } from "@/features/_core/hooks";
 
+// TODO: mejorar este componente visualemente
 export const BonoFonasaProfessionalData = () => {
   const [isOepn, onToggleOpen] = useDialog();
   const handleClose = () => {
@@ -41,13 +41,12 @@ export const BonoFonasaProfessionalData = () => {
             <Text type="subtitle" className="!ps-0">
               Datos Prestador
             </Text>
-            <DataItem label="Nombre" value="Ignacio Arriagada I." />
-            <DataItem label="Rut" value="19.050.844-7" />
-            <DataItem label="Codigo prestación 1º sesión" value="0902001" />
-            <DataItem
-              label="Codigo prestaación siguientes sesiones"
-              value="0902002"
-            />
+            <TextItem label="Nombre">Ignacio Arriagada I.</TextItem>
+            <TextItem label="Rut">19.050.844-7</TextItem>
+            <TextItem label="Codigo prestación 1º sesión">0902001</TextItem>
+            <TextItem label="Codigo prestación siguientes sesiones">
+              0902002
+            </TextItem>
           </div>
           <div>
             <Text type="subtitle">Comprar En</Text>

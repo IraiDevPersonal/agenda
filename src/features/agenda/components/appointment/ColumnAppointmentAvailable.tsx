@@ -1,31 +1,34 @@
 import { IconAvailable } from "@/features/_core/components/icons";
-import { useDialog } from "@/features/_core/hooks";
+import {
+  AvailableAppointmentContext,
+  useAvailableAppointmentContext,
+  useViewProfessionalData,
+} from "../../context";
 import { Card, Column } from "../shared";
 import { DialogAppointmentAvailable } from "./DialogAppointmentAvailable";
-import { useViewProfessionalInfo } from "../stores";
 
 export const ColumnAppointmentAvailable = () => {
-  const [isOpen, handleToggleOpen] = useDialog();
+  const { handleToggleDialogOpen } = useAvailableAppointmentContext();
   return (
-    <>
+    <AvailableAppointmentContext>
       <Column id="available" title="Disponibles" count={2}>
         {Array.from({ length: 50 }).map((_, idx) => (
           <li
             key={idx}
-            onClick={handleToggleOpen}
+            onClick={handleToggleDialogOpen}
             className="hover:cursor-pointer"
           >
             <AvailableCard />
           </li>
         ))}
       </Column>
-      <DialogAppointmentAvailable isOpen={isOpen} onClose={handleToggleOpen} />
-    </>
+      <DialogAppointmentAvailable />
+    </AvailableAppointmentContext>
   );
 };
 
 const AvailableCard = () => {
-  const { showProfesionalData } = useViewProfessionalInfo();
+  const { showProfesionalData } = useViewProfessionalData();
   return (
     <Card id="available">
       <div className="flex flex-col mr-auto">

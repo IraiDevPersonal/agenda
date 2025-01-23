@@ -1,14 +1,9 @@
 import { ArrayMap } from "@/features/_core/components/utils";
 import { DataWrapper } from "./DataWrapper";
 
-type Props = {
-  className?: string;
-};
-
-export const PatientHistory: React.FC<Props> = ({ className }) => {
+export const PatientHistory = () => {
   return (
     <DataWrapper
-      className={className}
       title={
         <>
           Historial paciente{" "}

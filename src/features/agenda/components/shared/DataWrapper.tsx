@@ -8,9 +8,9 @@ type Props = {
 };
 
 export const DataWrapper: React.FC<Props> = ({
-  title,
-  children,
   className,
+  children,
+  title,
 }) => {
   return (
     <section className={cn("flex flex-col gap-1.5", className)}>

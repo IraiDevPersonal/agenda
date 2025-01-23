@@ -1,20 +1,15 @@
-import { DataItem } from "./DataItem";
+import { TextItem } from "@/features/_core/components/ui";
 import { DataWrapper } from "./DataWrapper";
 
-type Props = {
-  className?: string;
-};
-
-export const Professional: React.FC<Props> = ({ className }) => {
+export const Professional = () => {
   return (
-    <DataWrapper title="Datos Profesional" className={className}>
-      <DataItem label="Nombre" value="Ignacio Rodigo Arriagada Iriarte" />
-      <DataItem label="Profesión" value="Psicolog@" />
-      <DataItem label="Forma de pago" value="Bono/Particular" />
-      <DataItem
-        label="Metodo de confirmación"
-        value="whatsapp/teléfono/correo"
-      />
+    <DataWrapper title="Datos Profesional">
+      <TextItem label="Nombre">Ignacio Rodigo Arriagada Iriarte</TextItem>
+      <TextItem label="Profesión">Psicolog@</TextItem>
+      <TextItem label="Forma de pago">Bono/Particular</TextItem>
+      <TextItem label="Metodo de confirmación">
+        whatsapp/teléfono/correo
+      </TextItem>
     </DataWrapper>
   );
 };
