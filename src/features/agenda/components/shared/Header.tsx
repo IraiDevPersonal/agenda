@@ -1,5 +1,5 @@
 import Box from "@/features/_core/components/ui/Box";
-import DialogBonoFonasa from "./DialogBonoFonasa";
+import PopoverBonoFonasa from "./PopoverBonoFonasa";
 import { cn } from "@/config";
 
 type Props = React.PropsWithChildren<{
@@ -28,7 +28,7 @@ const Header: React.FC<Props> = ({
         {title}
       </h1>
       {children}
-      <DialogBonoFonasa />
+      <PopoverBonoFonasa />
     </Box>
   );
 };

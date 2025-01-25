@@ -1,6 +1,6 @@
 import { useDialog } from "@/features/_core/hooks";
 import Column from "../shared/Column";
-import AppointmentCard from "./AppointmentCard";
+import CardAppointment from "./CardAppointment";
 import DialogAppointmentToConfirm from "./DialogAppointmentToConfirm";
 
 const ColumnAppointmentToBeConfirm = () => {
@@ -14,7 +14,7 @@ const ColumnAppointmentToBeConfirm = () => {
             onClick={handleToggleOpen}
             className="hover:cursor-pointer"
           >
-            <AppointmentCard id="to-confirm" />
+            <CardAppointment id="to-confirm" />
           </li>
         ))}
       </Column>

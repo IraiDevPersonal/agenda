@@ -1,6 +1,6 @@
 import { useDialog } from "@/features/_core/hooks";
 import Column from "../shared/Column";
-import AppointmentCard from "./AppointmentCard";
+import CardAppointment from "./CardAppointment";
 import DialogAppointmentCancelled from "./DialogAppointmentCancelled";
 
 const ColumnAppointmentCancelled = () => {
@@ -18,7 +18,7 @@ const ColumnAppointmentCancelled = () => {
             className="hover:cursor-pointer"
             onClick={handleToogleOpen}
           >
-            <AppointmentCard id="cancelled" />
+            <CardAppointment id="cancelled" />
           </li>
         ))}
       </Column>

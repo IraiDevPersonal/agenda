@@ -7,7 +7,7 @@ type Props = {
   className?: string;
 };
 
-const AppointmentCard: React.FC<Props> = (props) => {
+const CardAppointment: React.FC<Props> = (props) => {
   return (
     <Card {...props}>
       <Avatar alt="Paciente 1" />
@@ -25,4 +25,4 @@ const AppointmentCard: React.FC<Props> = (props) => {
   );
 };
 
-export default AppointmentCard;
+export default CardAppointment;
