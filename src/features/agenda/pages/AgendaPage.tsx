@@ -1,7 +1,7 @@
 import Main from "@/features/_core/components/ui/Main";
-import { AgendaHeader } from "../components/agenda";
-import { Appointments } from "../components/appointment";
-import { ViewProfessionalDataContext } from "../context";
+import ViewProfessionalDataContext from "../context/ViewProfessionalDataContext";
+import AgendaHeader from "../components/agenda/AgendaHeader";
+import Appointments from "../components/appointment/Appoinments";
 
 const AgendaPage = () => {
   return (

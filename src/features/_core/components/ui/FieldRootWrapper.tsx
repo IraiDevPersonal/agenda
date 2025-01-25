@@ -5,6 +5,8 @@ type Props = {
   className?: string;
 };
 
-export const FieldRootWrapper: React.FC<Props> = ({ className, ...props }) => {
+const FieldRootWrapper: React.FC<Props> = ({ className, ...props }) => {
   return <div className={cn("space-y-1.5", className)} {...props} />;
 };
+
+export default FieldRootWrapper;

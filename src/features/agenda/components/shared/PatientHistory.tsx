@@ -1,7 +1,7 @@
-import { ArrayMap } from "@/features/_core/components/utils";
-import { DataWrapper } from "./DataWrapper";
+import ArrayMap from "@/features/_core/components/utils/ArrayMap";
+import DataWrapper from "./DataWrapper";
 
-export const PatientHistory = () => {
+const PatientHistory = () => {
   return (
     <DataWrapper
       title={
@@ -33,3 +33,5 @@ export const PatientHistory = () => {
     </DataWrapper>
   );
 };
+
+export default PatientHistory;

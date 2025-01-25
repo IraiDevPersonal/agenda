@@ -42,7 +42,7 @@ type Props = {
 } & React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants>;
 
-export const Button: React.FC<Props> = ({
+const Button: React.FC<Props> = ({
   ref,
   size,
   variant,
@@ -61,3 +61,5 @@ export const Button: React.FC<Props> = ({
     />
   );
 };
+
+export default Button;

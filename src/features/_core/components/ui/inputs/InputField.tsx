@@ -1,11 +1,11 @@
 import { useId } from "react";
-import { HelperText, HelperTextProps } from "../HelperText";
-import { Input, InputProps } from "./Input";
-import { FieldRootWrapper } from "../FieldRootWrapper";
-import { Label } from "../Label";
+import HelperText, { HelperTextProps } from "../HelperText";
+import Input, { InputProps } from "./Input";
+import FieldRootWrapper from "../FieldRootWrapper";
+import Label from "../Label";
+import InputWrapper from "./InputWrapper";
+import InputContentWrapper from "./InputContentWrapper";
 import { cn } from "@/config";
-import { InputWrapper } from "./InputWrapper";
-import { InputContentWrapper } from "./InputContentWrapper";
 
 export type InputFieldProps = {
   startContent?: React.ReactNode;
@@ -23,7 +23,7 @@ export type InputFieldProps = {
 } & InputProps &
   HelperTextProps;
 
-export const InputField: React.FC<InputFieldProps> = ({
+const InputField: React.FC<InputFieldProps> = ({
   startContent,
   endContent,
   classNames,
@@ -67,3 +67,5 @@ export const InputField: React.FC<InputFieldProps> = ({
     </FieldRootWrapper>
   );
 };
+
+export default InputField;

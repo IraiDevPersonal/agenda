@@ -12,7 +12,7 @@ type Props = ContextProps & {
   children: React.ReactNode;
 };
 
-export const ViewProfessionalDataContext: React.FC<Props> = ({
+const ViewProfessionalDataContext: React.FC<Props> = ({
   children,
   showProfesionalData,
 }) => {
@@ -28,3 +28,5 @@ export const useViewProfessionalData = () => {
   }
   return context;
 };
+
+export default ViewProfessionalDataContext;

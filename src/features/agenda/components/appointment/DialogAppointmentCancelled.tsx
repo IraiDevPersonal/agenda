@@ -1,15 +1,14 @@
 import { DialogHandlerProps } from "@/config";
-import { Dialog } from "@/features/_core/components/ui";
-import { Patient, PatientHistory, Professional } from "../shared";
-import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
 import { useViewProfessionalData } from "../../context";
+import Dialog from "@/features/_core/components/ui/dialog/Dialog";
+import SelectedApointmentDateTime from "./SelectedApointmentDatetime";
+import Professional from "../shared/Professional";
+import Patient from "../shared/Patient";
+import PatientHistory from "../shared/PatientHistory";
 
 type Props = DialogHandlerProps;
 
-export const DialogAppointmentCancelled: React.FC<Props> = ({
-  isOpen,
-  onClose,
-}) => {
+const DialogAppointmentCancelled: React.FC<Props> = ({ isOpen, onClose }) => {
   const { showProfesionalData } = useViewProfessionalData();
   const handleClose = () => {
     onClose();
@@ -35,3 +34,5 @@ export const DialogAppointmentCancelled: React.FC<Props> = ({
     </Dialog>
   );
 };
+
+export default DialogAppointmentCancelled;

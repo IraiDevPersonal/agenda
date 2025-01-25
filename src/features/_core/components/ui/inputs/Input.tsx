@@ -4,7 +4,7 @@ export type InputProps = React.ComponentProps<"input"> & {
   ref?: React.Ref<HTMLInputElement>;
 };
 
-export const Input: React.FC<InputProps> = ({
+const Input: React.FC<InputProps> = ({
   ref,
   type,
   className,
@@ -26,3 +26,5 @@ export const Input: React.FC<InputProps> = ({
     />
   );
 };
+
+export default Input;

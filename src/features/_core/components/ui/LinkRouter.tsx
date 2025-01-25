@@ -4,7 +4,7 @@ import type { CustomLinkProps } from "@/config";
 
 type Props = Omit<LinkProps, "to"> & CustomLinkProps;
 
-export const LinkRouter: React.FC<Props> = ({
+const LinkRouter: React.FC<Props> = ({
   to,
   params,
   query,
@@ -12,3 +12,5 @@ export const LinkRouter: React.FC<Props> = ({
 }) => {
   return <Link {...props} to={generatePath({ to, params, query })} />;
 };
+
+export default LinkRouter;

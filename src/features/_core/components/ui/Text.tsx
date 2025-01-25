@@ -1,5 +1,5 @@
 import { cn, HTMLTags } from "@/config";
-import { CreateElement } from "../utils";
+import CreateElement from "../utils/CreateElement";
 
 const HASH_TEXT_TYPE: Record<Props["type"], { tag: HTMLTags; styles: string }> =
   {
@@ -18,7 +18,7 @@ type Props = {
   className?: string;
 };
 
-export const Text: React.FC<Props> = ({ type, children, className }) => {
+const Text: React.FC<Props> = ({ type, children, className }) => {
   return (
     <CreateElement
       as={HASH_TEXT_TYPE[type].tag}
@@ -28,3 +28,5 @@ export const Text: React.FC<Props> = ({ type, children, className }) => {
     </CreateElement>
   );
 };
+
+export default Text;

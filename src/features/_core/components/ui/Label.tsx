@@ -5,7 +5,7 @@ type Props = {
   ref?: React.Ref<HTMLLabelElement>;
 } & React.LabelHTMLAttributes<HTMLLabelElement>;
 
-export const Label: React.FC<Props> = ({ className, ref, ...props }) => {
+const Label: React.FC<Props> = ({ className, ref, ...props }) => {
   return (
     <label
       ref={ref}
@@ -17,3 +17,5 @@ export const Label: React.FC<Props> = ({ className, ref, ...props }) => {
     />
   );
 };
+
+export default Label;

@@ -1,11 +1,13 @@
 import { useId, useState } from "react";
-import { HelperText, HelperTextProps } from "../HelperText";
-import { Input, InputProps } from "./Input";
-import { FieldRootWrapper } from "../FieldRootWrapper";
-import { Label } from "../Label";
-import { InputWrapper } from "./InputWrapper";
-import { InputContentWrapper } from "./InputContentWrapper";
-import { IconEye, IconEyeOff, IconLock } from "../../icons";
+import HelperText, { HelperTextProps } from "../HelperText";
+import Input, { InputProps } from "./Input";
+import FieldRootWrapper from "../FieldRootWrapper";
+import InputWrapper from "./InputWrapper";
+import InputContentWrapper from "./InputContentWrapper";
+import IconLock from "../../icons/IconLock";
+import IconEyeOff from "../../icons/IconEyeOff";
+import IconEye from "../../icons/IconEye";
+import Label from "../Label";
 import { cn } from "@/config";
 
 type Props = {
@@ -14,7 +16,7 @@ type Props = {
 } & Omit<InputProps, "type"> &
   Pick<HelperTextProps, "error">;
 
-export const InputPassword: React.FC<Props> = ({
+const InputPassword: React.FC<Props> = ({
   className,
   showIcon,
   label,
@@ -62,3 +64,5 @@ export const InputPassword: React.FC<Props> = ({
     </FieldRootWrapper>
   );
 };
+
+export default InputPassword;

@@ -1,6 +1,6 @@
+import Box from "@/features/_core/components/ui/Box";
+import DialogBonoFonasa from "./DialogBonoFonasa";
 import { cn } from "@/config";
-import { Box } from "@/features/_core/components/ui";
-import { DialogBonoFonasa } from "./DialogBonoFonasa";
 
 type Props = React.PropsWithChildren<{
   title: string;
@@ -10,7 +10,7 @@ type Props = React.PropsWithChildren<{
   }>;
 }>;
 
-export const Header: React.FC<Props> = ({
+const Header: React.FC<Props> = ({
   classNames,
   className,
   children,
@@ -32,3 +32,5 @@ export const Header: React.FC<Props> = ({
     </Box>
   );
 };
+
+export default Header;

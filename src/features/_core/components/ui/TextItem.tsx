@@ -10,7 +10,7 @@ type Props = {
   }>;
 };
 
-export const TextItem: React.FC<Props> = ({
+const TextItem: React.FC<Props> = ({
   label,
   children,
   className,
@@ -27,3 +27,5 @@ export const TextItem: React.FC<Props> = ({
     </div>
   );
 };
+
+export default TextItem;

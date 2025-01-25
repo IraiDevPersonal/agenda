@@ -1,7 +1,7 @@
-import { TextItem } from "@/features/_core/components/ui";
-import { DataWrapper } from "./DataWrapper";
+import TextItem from "@/features/_core/components/ui/TextItem";
+import DataWrapper from "./DataWrapper";
 
-export const Professional = () => {
+const Professional = () => {
   return (
     <DataWrapper title="Datos Profesional">
       <TextItem label="Nombre">Ignacio Rodigo Arriagada Iriarte</TextItem>
@@ -13,3 +13,5 @@ export const Professional = () => {
     </DataWrapper>
   );
 };
+
+export default Professional;

@@ -1,5 +1,6 @@
-import { Input, InputSearch } from "@/features/_core/components/ui";
-import { Header } from "../shared";
+import InputSearch from "@/features/_core/components/ui/inputs/InputSearch";
+import Header from "../shared/Header";
+import Input from "@/features/_core/components/ui/inputs/Input";
 
 const CURRENT_DATE = new Date()
   .toLocaleDateString()
@@ -7,7 +8,7 @@ const CURRENT_DATE = new Date()
   .reverse()
   .join("-");
 
-export const MyDayHeader = () => {
+const MyDayHeader = () => {
   return (
     <Header title="Mi Día">
       <InputSearch className="w-80" placeholder="Buscar paciente..." />
@@ -15,3 +16,5 @@ export const MyDayHeader = () => {
     </Header>
   );
 };
+
+export default MyDayHeader;

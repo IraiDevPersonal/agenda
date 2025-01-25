@@ -4,7 +4,7 @@ import { generatePath } from "../../utils/helpers.util";
 
 type Props = Omit<NavLinkProps, "to"> & CustomLinkProps;
 
-export const NavLinkRouter: React.FC<Props> = ({
+const NavLinkRouter: React.FC<Props> = ({
   to,
   params,
   query,
@@ -12,3 +12,5 @@ export const NavLinkRouter: React.FC<Props> = ({
 }) => {
   return <NavLink {...props} to={generatePath({ to, params, query })} />;
 };
+
+export default NavLinkRouter;

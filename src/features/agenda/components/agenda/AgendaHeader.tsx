@@ -1,6 +1,8 @@
-import { Input, InputSearch, Select } from "@/features/_core/components/ui";
-import { Header } from "../shared";
 import { createOptions } from "@/features/_core/utils/helpers.util";
+import Header from "../shared/Header";
+import Select from "@/features/_core/components/ui/selects/Select";
+import InputSearch from "@/features/_core/components/ui/inputs/InputSearch";
+import Input from "@/features/_core/components/ui/inputs/Input";
 
 const CURRENT_DATE = new Date()
   .toLocaleDateString()
@@ -8,7 +10,7 @@ const CURRENT_DATE = new Date()
   .reverse()
   .join("-");
 
-export const AgendaHeader = () => {
+const AgendaHeader = () => {
   return (
     <Header title="Agenda">
       <Select
@@ -30,3 +32,5 @@ export const AgendaHeader = () => {
     </Header>
   );
 };
+
+export default AgendaHeader;

@@ -1,5 +1,8 @@
 import { cn } from "@/config";
-import { IconDanger, IconInfo, IconSuccess, IconWarning } from "../icons";
+import IconDanger from "../icons/IconDanger";
+import IconInfo from "../icons/IconInfo";
+import IconSuccess from "../icons/IconSuccess";
+import IconWarning from "../icons/IconWarning";
 
 const HASH_SEVERITY: Record<
   Props["severity"],
@@ -28,7 +31,7 @@ type Props = {
   severity: "warning" | "danger" | "info" | "success";
 };
 
-export const Alert: React.FC<Props> = ({ description, severity }) => {
+const Alert: React.FC<Props> = ({ description, severity }) => {
   return (
     <div
       className={cn(
@@ -41,3 +44,5 @@ export const Alert: React.FC<Props> = ({ description, severity }) => {
     </div>
   );
 };
+
+export default Alert;

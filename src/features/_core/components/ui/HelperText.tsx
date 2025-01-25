@@ -6,7 +6,7 @@ export type HelperTextProps = Partial<{
   error: string;
 }>;
 
-export const HelperText: React.FC<HelperTextProps> = ({
+const HelperText: React.FC<HelperTextProps> = ({
   error,
   message,
   className,
@@ -25,3 +25,5 @@ export const HelperText: React.FC<HelperTextProps> = ({
     </>
   );
 };
+
+export default HelperText;

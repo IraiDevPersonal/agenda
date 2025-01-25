@@ -8,7 +8,7 @@ type Props<T extends HTMLElement | unknown = HTMLElement> =
     as: HTMLTags;
   };
 
-export const CreateElement = <T extends HTMLElement | unknown = HTMLElement>({
+const CreateElement = <T extends HTMLElement | unknown = HTMLElement>({
   as,
   ref,
   children,
@@ -16,3 +16,5 @@ export const CreateElement = <T extends HTMLElement | unknown = HTMLElement>({
 }: Props<T>) => {
   return createElement(as, { ref, ...props }, children);
 };
+
+export default CreateElement;

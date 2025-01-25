@@ -9,7 +9,7 @@ type Props = DialogHandlerProps & {
   children: React.ReactNode;
 };
 
-export const DialogContext: React.FC<Props> = ({ children, ...props }) => {
+const DialogContext: React.FC<Props> = ({ children, ...props }) => {
   return <Context value={{ ...props }}>{children}</Context>;
 };
 
@@ -22,3 +22,5 @@ export const useDialogContext = () => {
   }
   return context;
 };
+
+export default DialogContext;

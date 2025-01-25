@@ -1,14 +1,15 @@
-import {
-  IconInfo,
-  IconLocation,
-  IconPhone,
-  IconWeb,
-} from "@/features/_core/components/icons";
-import { Button, Dialog, Text, TextItem } from "@/features/_core/components/ui";
+import IconInfo from "@/features/_core/components/icons/IconInfo";
+import IconLocation from "@/features/_core/components/icons/IconLocation";
+import IconPhone from "@/features/_core/components/icons/IconPhone";
+import IconWeb from "@/features/_core/components/icons/IconWeb";
+import Button from "@/features/_core/components/ui/Button";
+import Dialog from "@/features/_core/components/ui/dialog/Dialog";
+import Text from "@/features/_core/components/ui/Text";
+import TextItem from "@/features/_core/components/ui/TextItem";
 import { useDialog } from "@/features/_core/hooks";
 
 // TODO: mejorar este componente visualemente
-export const DialogBonoFonasa = () => {
+const DialogBonoFonasa = () => {
   const [isOepn, onToggleOpen] = useDialog();
   const handleClose = () => {
     onToggleOpen();
@@ -76,3 +77,5 @@ export const DialogBonoFonasa = () => {
     </>
   );
 };
+
+export default DialogBonoFonasa;

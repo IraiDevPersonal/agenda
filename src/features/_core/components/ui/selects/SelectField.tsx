@@ -1,9 +1,9 @@
 import { useId } from "react";
-import { FieldRootWrapper } from "../FieldRootWrapper";
-import { Label } from "../Label";
+import FieldRootWrapper from "../FieldRootWrapper";
+import Select, { SelectProps } from "./Select";
+import HelperText, { HelperTextProps } from "../HelperText";
+import Label from "../Label";
 import { cn } from "@/config";
-import { Select, SelectProps } from "./Select";
-import { HelperText, HelperTextProps } from "../HelperText";
 
 type Props = {
   label?: React.ReactNode;
@@ -16,7 +16,7 @@ type Props = {
 } & SelectProps &
   HelperTextProps;
 
-export const SelectField: React.FC<Props> = ({
+const SelectField: React.FC<Props> = ({
   classNames,
   className,
   message,
@@ -46,3 +46,5 @@ export const SelectField: React.FC<Props> = ({
     </FieldRootWrapper>
   );
 };
+
+export default SelectField;

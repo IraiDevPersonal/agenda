@@ -1,9 +1,9 @@
 import { useDialog } from "@/features/_core/hooks";
-import { Column } from "../shared";
-import { AppointmentCard } from "./AppointmentCard";
-import { DialogAppointmentCancelled } from "./DialogAppointmentCancelled";
+import Column from "../shared/Column";
+import AppointmentCard from "./AppointmentCard";
+import DialogAppointmentCancelled from "./DialogAppointmentCancelled";
 
-export const ColumnAppointmentCancelled = () => {
+const ColumnAppointmentCancelled = () => {
   const [isOpen, handleToogleOpen] = useDialog();
   const handleClose = () => {
     handleToogleOpen();
@@ -26,3 +26,5 @@ export const ColumnAppointmentCancelled = () => {
     </>
   );
 };
+
+export default ColumnAppointmentCancelled;

@@ -5,7 +5,7 @@ type Props = {
   className?: string;
 };
 
-export const InputContentWrapper: React.FC<Props> = ({
+const InputContentWrapper: React.FC<Props> = ({
   children,
   className,
 }) => {
@@ -21,3 +21,5 @@ export const InputContentWrapper: React.FC<Props> = ({
     </div>
   );
 };
+
+export default InputContentWrapper;

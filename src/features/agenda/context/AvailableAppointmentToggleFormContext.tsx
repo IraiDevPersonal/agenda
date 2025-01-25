@@ -14,7 +14,7 @@ type ContextProps = {
 
 const Context = createContext<ContextProps | undefined>(undefined);
 
-export const AvailableAppointmentToggleFormContext: React.FC<
+const AvailableAppointmentToggleFormContext: React.FC<
   PropsWithChildren
 > = ({ children }) => {
   const [selectedForm, setSelectedForm] =
@@ -50,3 +50,5 @@ export const useAvailableAppointmentToggleFormContext = () => {
   }
   return context;
 };
+
+export default AvailableAppointmentToggleFormContext;

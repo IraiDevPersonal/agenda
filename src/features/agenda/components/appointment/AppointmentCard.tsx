@@ -1,13 +1,13 @@
-import { Avatar } from "@/features/_core/components/ui";
-import { Card } from "../shared";
+import Avatar from "@/features/_core/components/ui/Avatar";
 import { AgendaColumns } from "../../domain";
+import Card from "../shared/Card";
 
 type Props = {
   id: AgendaColumns;
   className?: string;
 };
 
-export const AppointmentCard: React.FC<Props> = (props) => {
+const AppointmentCard: React.FC<Props> = (props) => {
   return (
     <Card {...props}>
       <Avatar alt="Paciente 1" />
@@ -24,3 +24,5 @@ export const AppointmentCard: React.FC<Props> = (props) => {
     </Card>
   );
 };
+
+export default AppointmentCard;

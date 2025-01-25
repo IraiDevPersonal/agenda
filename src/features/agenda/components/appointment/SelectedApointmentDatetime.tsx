@@ -36,7 +36,7 @@ type Props = {
   className?: string;
 };
 
-export const SelectedApointmentDateTime: React.FC<Props> = ({
+const SelectedApointmentDateTime: React.FC<Props> = ({
   className,
   type,
 }) => {
@@ -62,3 +62,5 @@ export const SelectedApointmentDateTime: React.FC<Props> = ({
     </div>
   );
 };
+
+export default SelectedApointmentDateTime;

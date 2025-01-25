@@ -1,7 +1,7 @@
 import { useId } from "react";
-import { FieldRootWrapper } from "../FieldRootWrapper";
-import { Label } from "../Label";
-import { Input, InputProps } from "./Input";
+import FieldRootWrapper from "../FieldRootWrapper";
+import Label from "../Label";
+import Input, { InputProps } from "./Input";
 import { cn } from "@/config";
 
 export type Props = {
@@ -12,7 +12,7 @@ export type Props = {
   }>;
 } & Omit<InputProps, "value" | "type">;
 
-export const InputFile: React.FC<Props> = ({
+const InputFile: React.FC<Props> = ({
   classNames,
   className,
   label,
@@ -33,3 +33,5 @@ export const InputFile: React.FC<Props> = ({
     </FieldRootWrapper>
   );
 };
+
+export default InputFile;

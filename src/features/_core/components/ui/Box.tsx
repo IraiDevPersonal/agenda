@@ -1,6 +1,6 @@
 import type { HTMLAttributes, HTMLTags } from "@/config";
+import CreateElement from "../utils/CreateElement";
 import { cn } from "@/config";
-import { CreateElement } from "../utils";
 
 type Props<T extends HTMLElement | unknown = HTMLElement> = {
   shouldUseDefaultStyles?: boolean;
@@ -9,7 +9,7 @@ type Props<T extends HTMLElement | unknown = HTMLElement> = {
   as: HTMLTags;
 } & HTMLAttributes<T>;
 
-export const Box = <T extends HTMLElement | unknown = HTMLElement>({
+const Box = <T extends HTMLElement | unknown = HTMLElement>({
   shouldUseDefaultStyles = true,
   className,
   ...props
@@ -21,3 +21,5 @@ export const Box = <T extends HTMLElement | unknown = HTMLElement>({
     />
   );
 };
+
+export default Box;

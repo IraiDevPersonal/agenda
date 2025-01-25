@@ -8,7 +8,7 @@ type Props<T> = {
   dataset: T[];
 };
 
-export const ArrayMap = <T,>({
+const ArrayMap = <T,>({
   dataset,
   children,
   emptyContent,
@@ -21,3 +21,5 @@ export const ArrayMap = <T,>({
     </>
   );
 };
+
+export default ArrayMap;

@@ -1,22 +1,20 @@
-import { IconDislike, IconLike } from "@/features/_core/components/icons";
-import {
-  Alert,
-  Button,
-  Dialog,
-  InputFile,
-} from "@/features/_core/components/ui";
-import { Patient, PatientHistory, Professional } from "../shared";
-import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
 import { DialogHandlerProps } from "@/config";
 import { useState } from "react";
 import { useViewProfessionalData } from "../../context";
+import Dialog from "@/features/_core/components/ui/dialog/Dialog";
+import SelectedApointmentDateTime from "./SelectedApointmentDatetime";
+import Alert from "@/features/_core/components/ui/Alert";
+import InputFile from "@/features/_core/components/ui/inputs/InputFile";
+import Professional from "../shared/Professional";
+import Patient from "../shared/Patient";
+import PatientHistory from "../shared/PatientHistory";
+import Button from "@/features/_core/components/ui/Button";
+import IconDislike from "@/features/_core/components/icons/IconDislike";
+import IconLike from "@/features/_core/components/icons/IconLike";
 
 type Props = DialogHandlerProps;
 
-export const DialogAppointmentToConfirm: React.FC<Props> = ({
-  isOpen,
-  onClose,
-}) => {
+const DialogAppointmentToConfirm: React.FC<Props> = ({ isOpen, onClose }) => {
   const { showProfesionalData } = useViewProfessionalData();
   const [file, setFile] = useState<File | null>(null);
   const handleClose = () => {
@@ -61,3 +59,5 @@ export const DialogAppointmentToConfirm: React.FC<Props> = ({
     </Dialog>
   );
 };
+
+export default DialogAppointmentToConfirm;

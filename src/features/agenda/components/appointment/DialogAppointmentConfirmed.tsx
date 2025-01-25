@@ -1,10 +1,14 @@
 import { Option, DialogHandlerProps } from "@/config";
-import { IconSave } from "@/features/_core/components/icons";
-import { Button, Dialog, Select, Text } from "@/features/_core/components/ui";
-import { Patient, Professional } from "../shared";
-import { SelectedApointmentDateTime } from "./SelectedApointmentDatetime";
 import { createOptions } from "@/features/_core/utils/helpers.util";
 import { useViewProfessionalData } from "../../context";
+import Dialog from "@/features/_core/components/ui/dialog/Dialog";
+import SelectedApointmentDateTime from "./SelectedApointmentDatetime";
+import Select from "@/features/_core/components/ui/selects/Select";
+import Text from "@/features/_core/components/ui/Text";
+import Professional from "../shared/Professional";
+import Patient from "../shared/Patient";
+import Button from "@/features/_core/components/ui/Button";
+import IconSave from "@/features/_core/components/icons/IconSave";
 
 const STATUS: Option[] = [
   { label: "Estado: Atendido", value: "1" },
@@ -15,10 +19,7 @@ const STATUS: Option[] = [
 
 type Props = DialogHandlerProps;
 
-export const DialogAppointmentConfirmed: React.FC<Props> = ({
-  isOpen,
-  onClose,
-}) => {
+const DialogAppointmentConfirmed: React.FC<Props> = ({ isOpen, onClose }) => {
   const { showProfesionalData } = useViewProfessionalData();
   const handleClose = () => {
     onClose();
@@ -58,3 +59,5 @@ export const DialogAppointmentConfirmed: React.FC<Props> = ({
     </Dialog>
   );
 };
+
+export default DialogAppointmentConfirmed;

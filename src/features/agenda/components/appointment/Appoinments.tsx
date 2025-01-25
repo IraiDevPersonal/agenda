@@ -1,16 +1,14 @@
-import { Box } from "@/features/_core/components/ui";
-import { ArrayMap } from "@/features/_core/components/utils";
 import { DndContext } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
 import { useSortableAppointments } from "../../hooks";
-import {
-  ColumnAppointmentAvailable,
-  ColumnAppointmentCancelled,
-  ColumnAppointmentConfirmed,
-  ColumnAppointmentToBeConfirm,
-} from ".";
+import Box from "@/features/_core/components/ui/Box";
+import ArrayMap from "@/features/_core/components/utils/ArrayMap";
+import ColumnAppointmentAvailable from "./ColumnAppointmentAvailable";
+import ColumnAppointmentCancelled from "./ColumnAppointmentCancelled";
+import ColumnAppointmentConfirmed from "./ColumnAppointmentConfirmed";
+import ColumnAppointmentToBeConfirm from "./ColumnAppointmentToBeConfirm";
 
-export const Appointments = () => {
+const Appointments = () => {
   const { columns, handleDragEnd } = useSortableAppointments();
 
   return (
@@ -38,3 +36,5 @@ export const Appointments = () => {
     </DndContext>
   );
 };
+
+export default Appointments;

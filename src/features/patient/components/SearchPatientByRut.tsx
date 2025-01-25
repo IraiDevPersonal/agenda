@@ -1,12 +1,10 @@
 import { Uid } from "@/config";
-import {
-  FieldRootWrapper,
-  InputContentWrapper,
-  InputSearch,
-} from "@/features/_core/components/ui";
 import { useRef, useState } from "react";
 import { prettifyRut } from "react-rut-formatter";
 import { PatientEntity } from "../domain/patient.entity";
+import FieldRootWrapper from "@/features/_core/components/ui/FieldRootWrapper";
+import InputSearch from "@/features/_core/components/ui/inputs/InputSearch";
+import InputContentWrapper from "@/features/_core/components/ui/inputs/InputContentWrapper";
 
 const DUMMY_PATIENT: PatientEntity = {
   id: 1,
@@ -23,7 +21,7 @@ type Props = {
   getPatient(patient: PatientEntity | null): void;
 };
 
-export const SearchPatientByRut: React.FC<Props> = ({ getPatient }) => {
+const SearchPatientByRut: React.FC<Props> = ({ getPatient }) => {
   const lastSearch = useRef<string>("");
   const [value, setValue] = useState("");
 
@@ -56,3 +54,5 @@ export const SearchPatientByRut: React.FC<Props> = ({ getPatient }) => {
     </FieldRootWrapper>
   );
 };
+
+export default SearchPatientByRut;

@@ -1,13 +1,12 @@
-import { IconAvailable } from "@/features/_core/components/icons";
+import Column from "../shared/Column";
+import DialogAppointmentAvailable from "./DialogAppointmentAvailable";
+import Card from "../shared/Card";
+import IconAvailable from "@/features/_core/components/icons/IconAvailable";
+import AvailableAppointmentToggleFormContext from "../../context/AvailableAppointmentToggleFormContext";
+import { useViewProfessionalData } from "../../context";
 import { useDialog } from "@/features/_core/hooks";
-import {
-  AvailableAppointmentToggleFormContext,
-  useViewProfessionalData,
-} from "../../context";
-import { Card, Column } from "../shared";
-import { DialogAppointmentAvailable } from "./DialogAppointmentAvailable";
 
-export const ColumnAppointmentAvailable = () => {
+const ColumnAppointmentAvailable = () => {
   const [isOpen, onToggleIsOpen] = useDialog();
   const handleClose = () => {
     onToggleIsOpen();
@@ -47,3 +46,5 @@ const AvailableCard = () => {
     </Card>
   );
 };
+
+export default ColumnAppointmentAvailable;

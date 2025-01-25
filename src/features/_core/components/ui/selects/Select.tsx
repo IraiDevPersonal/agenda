@@ -1,5 +1,5 @@
 import { cn, Option } from "@/config";
-import { ArrayMap } from "../../utils";
+import ArrayMap from "../../utils/ArrayMap";
 
 export type SelectProps = {
   ref?: React.Ref<HTMLSelectElement>;
@@ -10,7 +10,7 @@ export type SelectProps = {
   }>;
 } & React.ComponentProps<"select">;
 
-export function Select({
+function Select({
   classNames,
   className,
   children,
@@ -70,3 +70,5 @@ export const SelectOption: React.FC<{
 }> = ({ children, value }) => {
   return <option value={value}>{children}</option>;
 };
+
+export default Select;

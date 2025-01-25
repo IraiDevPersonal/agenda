@@ -1,6 +1,5 @@
-import { cn } from "@/config/tailwind-merge";
-import { PropsWithChildren } from "react";
-import { AgendaColumns } from "../../domain";
+import type { AgendaColumns } from "../../domain";
+import { cn } from "@/config";
 
 const HASH_COLORS: Record<Props["id"], string> = {
   "to-confirm": "text-amber-700 border-amber-600/10 shadow-amber-700/15",
@@ -9,12 +8,13 @@ const HASH_COLORS: Record<Props["id"], string> = {
   confirmed: "text-sky-700 border-sky-600/10 shadow-sky-700/15",
 };
 
-type Props = PropsWithChildren<{
-  id: AgendaColumns;
+type Props = {
+  children: React.ReactNode;
   className?: string;
-}>;
+  id: AgendaColumns;
+};
 
-export const Card: React.FC<Props> = ({ className, id, ...props }) => {
+const Card: React.FC<Props> = ({ className, id, ...props }) => {
   return (
     <article
       className={cn(
@@ -27,3 +27,5 @@ export const Card: React.FC<Props> = ({ className, id, ...props }) => {
     />
   );
 };
+
+export default Card;

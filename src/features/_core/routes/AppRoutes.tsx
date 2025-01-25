@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Layout } from "../layouts";
+import Layout from "../layouts/Layout";
 import { ROUTES } from "@/config";
 
 import MyDayPage from "@/features/agenda/pages/MyDayPage";

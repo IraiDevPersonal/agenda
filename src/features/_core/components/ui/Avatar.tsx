@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { cn } from "@/config";
-import { IconUser } from "../icons";
+import IconUser from "../icons/IconUser";
 
 type AvatarWrapperProps = {
   ref?: React.Ref<HTMLSpanElement>;
@@ -68,7 +68,7 @@ type Props = {
   }>;
 };
 
-export const Avatar: React.FC<Props> = ({ fallback, classNames, ...props }) => {
+const Avatar: React.FC<Props> = ({ fallback, classNames, ...props }) => {
   return (
     <AvatarWrapper className={cn(classNames?.wrapper)}>
       <AvatarImage {...props} className={cn(classNames?.image)} />
@@ -80,3 +80,5 @@ export const Avatar: React.FC<Props> = ({ fallback, classNames, ...props }) => {
     </AvatarWrapper>
   );
 };
+
+export default Avatar;

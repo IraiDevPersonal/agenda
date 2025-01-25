@@ -1,8 +1,12 @@
 import { cn, Paths } from "@/config";
-import { UserAccount } from "@/features/account/components/UserAccount";
-import { IconAgenda, IconDolar, IconMyDay, IconUsers } from "../icons";
-import { ArrayMap } from "../utils";
-import { Box, NavLinkRouter } from "./";
+import UserAccount from "@/features/account/components/UserAccount";
+import ArrayMap from "../utils/ArrayMap";
+import NavLinkRouter from "./NavLinkRouter";
+import Box from "./Box";
+import IconMyDay from "../icons/IconMyDay";
+import IconAgenda from "../icons/IconAgenda";
+import IconUsers from "../icons/IconUsers";
+import IconDolar from "../icons/IconDolar";
 
 const PAGES: PageProps[] = [
   { label: "Mi Día", icon: <IconMyDay />, route: "/" },
@@ -14,7 +18,7 @@ const PAGES: PageProps[] = [
 
 type PageProps = { label: string; icon: React.ReactNode; route: Paths };
 
-export const AppSidebar = () => {
+const AppSidebar = () => {
   return (
     <Box as="aside" className="flex flex-col w-full max-w-64 gap-y-8">
       <div className="flex items-center gap-4 px-3">
@@ -64,3 +68,5 @@ const ActiveNavLink: React.FC<PageProps> = ({ icon, label, route }) => {
     </NavLinkRouter>
   );
 };
+
+export default AppSidebar;

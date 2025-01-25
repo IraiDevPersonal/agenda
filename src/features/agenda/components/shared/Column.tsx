@@ -1,30 +1,30 @@
-import { cn } from "@/config/tailwind-merge";
-import { Box } from "@/features/_core/components/ui";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { AgendaColumns } from "../../domain";
+import Box from "@/features/_core/components/ui/Box";
+import { cn } from "@/config/tailwind-merge";
 
 const HASH_COLORS: Record<
   Props["id"],
   { header: string; body: string; wrapper: string }
 > = {
   "to-confirm": {
-    wrapper: "text-amber-700 bg-amber-50",
+    wrapper: "text-amber-700 bg-amber-50 border-amber-100",
     header: "hover:bg-amber-100",
     body: "scrollbar-thumb-amber-700",
   },
   available: {
-    wrapper: "text-emerald-700 bg-emerald-50",
+    wrapper: "text-emerald-700 bg-emerald-50 border-emerald-100",
     header: "hover:bg-emerald-100",
     body: "scrollbar-thumb-emerald-700",
   },
   confirmed: {
-    wrapper: "text-sky-700 bg-sky-50",
+    wrapper: "text-sky-700 bg-sky-50 border-sky-100",
     header: "hover:bg-sky-100",
     body: "scrollbar-thumb-sky-700",
   },
   cancelled: {
-    wrapper: "text-red-700 bg-red-50",
+    wrapper: "text-red-700 bg-red-50 border-red-100",
     header: "hover:bg-red-100",
     body: "scrollbar-thumb-red-700",
   },
@@ -37,13 +37,7 @@ type Props = React.PropsWithChildren<{
   count: number;
 }>;
 
-export const Column: React.FC<Props> = ({
-  className,
-  children,
-  title,
-  count,
-  id,
-}) => {
+const Column: React.FC<Props> = ({ className, children, title, count, id }) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id });
 
@@ -58,7 +52,7 @@ export const Column: React.FC<Props> = ({
       ref={setNodeRef}
       style={style}
       className={cn(
-        "w-full bg-background-secondary p-0 rounded-2xl shadow-lg shadow-black/10 overflow-hidden h-[90vh]",
+        "w-full bg-background-secondary p-0 rounded-2xl shadow-lg shadow-black/10 overflow-hidden border-2 h-[90vh]",
         HASH_COLORS[id].wrapper,
         className
       )}
@@ -87,3 +81,5 @@ export const Column: React.FC<Props> = ({
     </Box>
   );
 };
+
+export default Column;

@@ -1,14 +1,14 @@
 import { cn } from "@/config";
-import { Input, InputProps } from "./Input";
-import { InputWrapper } from "./InputWrapper";
-import { IconSearch } from "../../icons";
+import Input, { InputProps } from "./Input";
+import InputWrapper from "./InputWrapper";
+import InputContentWrapper from "./InputContentWrapper";
 import { InputFieldProps } from "./InputField";
-import { InputContentWrapper } from "./InputContentWrapper";
+import IconSearch from "../../icons/IconSearch";
 
 type Props = Omit<InputProps, "type"> &
   Partial<Pick<InputFieldProps, "startContent">>;
 
-export const InputSearch: React.FC<Props> = ({
+const InputSearch: React.FC<Props> = ({
   className,
   startContent,
   ...props
@@ -28,3 +28,5 @@ export const InputSearch: React.FC<Props> = ({
     </InputWrapper>
   );
 };
+
+export default InputSearch;

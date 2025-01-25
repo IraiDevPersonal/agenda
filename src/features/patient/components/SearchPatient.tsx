@@ -1,12 +1,10 @@
 import { Uid } from "@/config";
-import {
-  FieldRootWrapper,
-  InputSearch,
-  Label,
-  RadioGroup,
-} from "@/features/_core/components/ui";
 import { useRef, useState } from "react";
 import { PatientEntity } from "../domain/patient.entity";
+import FieldRootWrapper from "@/features/_core/components/ui/FieldRootWrapper";
+import InputSearch from "@/features/_core/components/ui/inputs/InputSearch";
+import RadioGroup from "@/features/_core/components/ui/RadioGroup";
+import Label from "@/features/_core/components/ui/Label";
 
 const DUMMY_PATIENT: PatientEntity = {
   id: 1,
@@ -32,7 +30,7 @@ type Props = {
   getPatient(patient: PatientEntity | null): void;
 };
 
-export const SearchPatient: React.FC<Props> = ({ getPatient }) => {
+const SearchPatient: React.FC<Props> = ({ getPatient }) => {
   const [filter, setFilter] = useState(FILTER_ITEMS[0].id);
   const inputRef = useRef<HTMLInputElement>(null);
   const lastSearch = useRef<string>("");
@@ -83,3 +81,5 @@ export const SearchPatient: React.FC<Props> = ({ getPatient }) => {
     </FieldRootWrapper>
   );
 };
+
+export default SearchPatient;

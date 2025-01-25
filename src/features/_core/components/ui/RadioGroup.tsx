@@ -11,7 +11,7 @@ type RadioGroupItemProps = {
   orientation?: "vertical" | "horizontal";
 } & React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>;
 
-export function RadioGroup({
+function RadioGroup({
   orientation = "vertical",
   className,
   ref,
@@ -61,3 +61,5 @@ const RadioGroupItem: React.FC<RadioGroupItemProps> = ({
 };
 
 RadioGroup.Item = RadioGroupItem;
+
+export default RadioGroup;

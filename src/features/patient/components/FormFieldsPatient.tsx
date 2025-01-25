@@ -1,8 +1,8 @@
 import { cn } from "@/config";
-import { InputField } from "@/features/_core/components/ui";
 import { UseFormControllerHandler } from "@/features/_core/hooks";
 import { prettifyRut } from "react-rut-formatter";
 import { PatientEntity } from "../domain/patient.entity";
+import InputField from "@/features/_core/components/ui/inputs/InputField";
 
 type Props = {
   controller: UseFormControllerHandler<PatientEntity>;
@@ -11,7 +11,7 @@ type Props = {
   className?: string;
 };
 
-export const FormFieldsPatient: React.FC<Props> = ({
+const FormFieldsPatient: React.FC<Props> = ({
   initialValues,
   withAutofocus,
   controller,
@@ -54,3 +54,5 @@ export const FormFieldsPatient: React.FC<Props> = ({
     </div>
   );
 };
+
+export default FormFieldsPatient;

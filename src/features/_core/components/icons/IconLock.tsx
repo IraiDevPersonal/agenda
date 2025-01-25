@@ -1,6 +1,8 @@
 import type { IconProps } from "@/config";
 import { LockIcon } from "lucide-react";
 
-export const IconLock: React.FC<IconProps> = (props) => {
+const IconLock: React.FC<IconProps> = (props) => {
   return <LockIcon {...props} />;
 };
+
+export default IconLock;

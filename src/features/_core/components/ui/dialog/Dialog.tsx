@@ -1,8 +1,8 @@
 import { cn, DialogHandlerProps } from "@/config";
-import { IconX } from "@/features/_core/components/icons/IconX";
+import IconX from "@/features/_core/components/icons/IconX";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import * as React from "react";
-import { DialogContext, useDialogContext } from "./DialogContext";
+import DialogContext, { useDialogContext } from "./DialogContext";
 
 type DialogContentProps = React.ComponentPropsWithoutRef<
   typeof DialogPrimitive.Content
@@ -23,7 +23,7 @@ type DialogProps = DialogContentProps &
     }>;
   };
 
-export function Dialog({
+function Dialog({
   shouldClickOutsideCloseDialog = false,
   shouldEscapeKeyCloseDialog = false,
   onInteractOutside,
@@ -190,3 +190,5 @@ Dialog.Trigger = DialogPrimitive.Trigger;
 Dialog.Header = DialogHeader;
 Dialog.Body = DialogBody;
 Dialog.Footer = DialogFooter;
+
+export default Dialog;

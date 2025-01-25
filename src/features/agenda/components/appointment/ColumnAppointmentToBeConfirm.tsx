@@ -1,9 +1,9 @@
 import { useDialog } from "@/features/_core/hooks";
-import { Column } from "../shared";
-import { AppointmentCard } from "./AppointmentCard";
-import { DialogAppointmentToConfirm } from "./DialogAppointmentToConfirm";
+import Column from "../shared/Column";
+import AppointmentCard from "./AppointmentCard";
+import DialogAppointmentToConfirm from "./DialogAppointmentToConfirm";
 
-export const ColumnAppointmentToBeConfirm = () => {
+const ColumnAppointmentToBeConfirm = () => {
   const [isOpen, handleToggleOpen] = useDialog();
   return (
     <>
@@ -22,3 +22,5 @@ export const ColumnAppointmentToBeConfirm = () => {
     </>
   );
 };
+
+export default ColumnAppointmentToBeConfirm;

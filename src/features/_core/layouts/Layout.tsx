@@ -1,10 +1,10 @@
 import { useLayoutEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { AppSidebar } from "../components/ui";
+import AppSidebar from "../components/ui/AppSidebar";
 
 const rootElement = document.getElementById("root");
 
-export const Layout = () => {
+const Layout = () => {
   useLayoutEffect(() => {
     if (!rootElement) return;
     rootElement.classList.add("min-h-screen", "w-full", "flex");
@@ -16,3 +16,5 @@ export const Layout = () => {
     </>
   );
 };
+
+export default Layout;
