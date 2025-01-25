@@ -5,4 +5,4 @@ export * from "./DataWrapper";
 export * from "./PatientHistory";
 export * from "./Patient";
 export * from "./Professional";
-export * from "./BonoFonasaProfessionalData";
+export * from "./DialogBonoFonasa";

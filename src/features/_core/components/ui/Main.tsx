@@ -5,7 +5,7 @@ type Props = {
   pageTitle?: string;
 } & React.PropsWithChildren;
 
-export const Main: React.FC<Props> = ({ className, ...props }) => {
+const Main: React.FC<Props> = ({ className, ...props }) => {
   return (
     <main
       className={cn("w-full h-screen overflow-auto pb-4", className)}
@@ -13,3 +13,5 @@ export const Main: React.FC<Props> = ({ className, ...props }) => {
     />
   );
 };
+
+export default Main;

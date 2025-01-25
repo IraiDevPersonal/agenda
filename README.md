@@ -5,7 +5,7 @@
 
 # IMPORTANTE
 
-Los iconos usados en el sistema se estan obteniendo desde: https://lucide.dev/icons/dollar-sign, los componentes se obtienen desde: https://originui.com/, para el componente base hay que ir a: https://github.com/origin-space/originui/tree/main/components/ui desde aqui copiar el codigo y adaptar en shared/components/ui, tratar de seguir estructura de los demas componentes adapatados segun sea necesidad.
+Los iconos usados en el sistema se estan obteniendo desde: https://lucide.dev/icons/dollar-sign, los componentes se obtienen desde: https://originui.com/, para el componente base hay que ir a: https://github.com/origin-space/originui/tree/main/registry/default/ui desde aqui copiar el codigo y adaptar en shared/components/ui, tratar de seguir estructura de los demas componentes adapatados segun sea necesidad.
 
 # Estructura de carpetas
 

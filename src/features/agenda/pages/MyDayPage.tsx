@@ -1,4 +1,4 @@
-import { Main } from "@/features/_core/components/ui";
+import Main from "@/features/_core/components/ui/Main";
 import { MyDayHeader } from "../components/my-day";
 import { Appointments } from "../components/appointment";
 import { ViewProfessionalDataContext } from "../context";

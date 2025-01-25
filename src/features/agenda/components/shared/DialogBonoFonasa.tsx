@@ -8,7 +8,7 @@ import { Button, Dialog, Text, TextItem } from "@/features/_core/components/ui";
 import { useDialog } from "@/features/_core/hooks";
 
 // TODO: mejorar este componente visualemente
-export const BonoFonasaProfessionalData = () => {
+export const DialogBonoFonasa = () => {
   const [isOepn, onToggleOpen] = useDialog();
   const handleClose = () => {
     onToggleOpen();
@@ -26,7 +26,7 @@ export const BonoFonasaProfessionalData = () => {
         onClose={handleClose}
         shouldEscapeKeyCloseDialog
         shouldClickOutsideCloseDialog
-        className="sm:max-w-[450px] left-auto right-3.5 top-3.5 -translate-x-0 translate-y-0 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-right-3.5  data-[state=closed]:slide-out-to-top-3.5 data-[state=open]:slide-in-from-right-3.5 data-[state=open]:slide-in-from-top-3.5 bg-sky-100 text-sky-800 border-sky-800 shadow-sky-800/10 p-0 gap-0"
+        className="sm:max-w-[450px] left-auto right-3.5 top-3.5 -translate-x-0 translate-y-0 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-right-3.5  data-[state=closed]:slide-out-to-top-3.5 data-[state=open]:slide-in-from-right-3.5 data-[state=open]:slide-in-from-top-3.5 bg-sky-50 text-sky-800 border-sky-800 shadow-sky-800/10 p-0 gap-0"
         classNames={{
           overlay: "bg-sky-900/30",
         }}
@@ -36,8 +36,8 @@ export const BonoFonasaProfessionalData = () => {
           className="p-6 pb-0"
           classNames={{ title: "leading-none" }}
         />
-        <Dialog.Body className="text-sky-800 *:p-6 *:space-y-2 gap-0">
-          <div className="*:text-sky-800 border-b border-sky-800 *:ps-3">
+        <Dialog.Body className="*:p-6 *:space-y-2 gap-0">
+          <div className="border-b border-sky-800 *:ps-3">
             <Text type="subtitle" className="!ps-0">
               Datos Prestador
             </Text>
