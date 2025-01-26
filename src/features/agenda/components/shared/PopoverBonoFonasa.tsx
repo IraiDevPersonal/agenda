@@ -16,23 +16,25 @@ const PopoverBonoFonasa = () => {
         </Popover.Trigger>
       </Button>
 
-      <Popover.Content
-        showArrow
-        align="end"
-        className="p-0 divide-y-2 divide-foreground border-2 border-foreground"
-      >
-        <div className="space-y-1.5 *:ps-3 p-6">
-          <Text type="subtitle" className="!ps-0 pb-1.5">
+      <Popover.Content showArrow align="end" className="p-0">
+        <div className="p-6">
+          <Text type="subtitle" className="pb-3">
             Datos Prestador
           </Text>
-          <TextItem label="Nombre">Ignacio Arriagada I.</TextItem>
-          <TextItem label="Rut">19.050.844-7</TextItem>
-          <TextItem label="Codigo prestación 1º sesión">0902001</TextItem>
-          <TextItem label="Codigo prestación siguientes sesiones">
-            0902002
-          </TextItem>
+          <ul className="px-3">
+            <li className="space-y-1.5">
+              <TextItem label="Nombre">
+                Ignacio Rodrigo Arriagada Iriarte
+              </TextItem>
+              <TextItem label="Rut">19.050.844-7</TextItem>
+              <TextItem label="Codigo prestación 1º sesión">0902001</TextItem>
+              <TextItem label="Codigo prestación siguientes sesiones">
+                0902002
+              </TextItem>
+            </li>
+          </ul>
         </div>
-        <div className="p-6">
+        <div className="p-6 bg-black/5">
           <Text type="subtitle" className="mb-3">
             Comprar En
           </Text>
