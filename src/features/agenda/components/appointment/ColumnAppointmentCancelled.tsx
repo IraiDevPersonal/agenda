@@ -21,8 +21,8 @@ const ColumnAppointmentCancelled = () => {
             <CardAppointment id="cancelled" />
           </li>
         ))}
+        <DialogAppointmentCancelled isOpen={isOpen} onClose={handleClose} />
       </Column>
-      <DialogAppointmentCancelled isOpen={isOpen} onClose={handleClose} />
     </>
   );
 };

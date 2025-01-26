@@ -17,8 +17,11 @@ const ColumnAppointmentToBeConfirm = () => {
             <CardAppointment id="to-confirm" />
           </li>
         ))}
+        <DialogAppointmentToConfirm
+          isOpen={isOpen}
+          onClose={handleToggleOpen}
+        />
       </Column>
-      <DialogAppointmentToConfirm isOpen={isOpen} onClose={handleToggleOpen} />
     </>
   );
 };

@@ -14,11 +14,14 @@ const ColumnAppointmentConfirmed = () => {
             onClick={handleToogleOpen}
             className="hover:cursor-pointer"
           >
-            <CardAppointment key={idx} id="confirmed" />
+            <CardAppointment id="confirmed" />
           </li>
         ))}
+        <DialogAppointmentConfirmed
+          isOpen={isOpen}
+          onClose={handleToogleOpen}
+        />
       </Column>
-      <DialogAppointmentConfirmed isOpen={isOpen} onClose={handleToogleOpen} />
     </>
   );
 };

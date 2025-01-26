@@ -10,11 +10,11 @@ import TextItem from "@/features/_core/components/ui/TextItem";
 const PopoverBonoFonasa = () => {
   return (
     <Popover>
-      <Popover.Triger asChild>
-        <Button>
+      <Button asChild>
+        <Popover.Trigger>
           <IconInfo /> Datos Fonasa
-        </Button>
-      </Popover.Triger>
+        </Popover.Trigger>
+      </Button>
 
       <Popover.Content
         showArrow

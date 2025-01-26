@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Column from "../shared/Column";
 import DialogAppointmentAvailable from "./DialogAppointmentAvailable";
 import Card from "../shared/Card";
@@ -19,13 +20,13 @@ const ColumnAppointmentAvailable = () => {
             <AvailableCard />
           </li>
         ))}
+        <DialogAppointmentAvailable isOpen={isOpen} onClose={handleClose} />
       </Column>
-      <DialogAppointmentAvailable isOpen={isOpen} onClose={handleClose} />
     </AvailableAppointmentToggleFormContext>
   );
 };
 
-const AvailableCard = () => {
+const AvailableCard = memo(() => {
   const { showProfesionalData } = useViewProfessionalData();
   return (
     <Card id="available">
@@ -45,6 +46,6 @@ const AvailableCard = () => {
       </figure>
     </Card>
   );
-};
+});
 
 export default ColumnAppointmentAvailable;

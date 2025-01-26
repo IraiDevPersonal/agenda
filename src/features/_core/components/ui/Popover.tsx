@@ -56,6 +56,6 @@ const PopoverContent: React.FC<PopoverContentProps> = ({
 
 export default Popover;
 
-Popover.Triger = PopoverPrimitive.Trigger;
+Popover.Trigger = PopoverPrimitive.Trigger;
 Popover.Anchor = PopoverPrimitive.Anchor;
 Popover.Content = PopoverContent;
