@@ -1,8 +1,8 @@
 import { Option, DialogHandlerProps } from "@/config";
-import { createOptions } from "@/features/_core/utils/helpers.util";
+import { createOptions } from "@/features/_core/utils/createOptions.util";
 import { useViewProfessionalData } from "../../context";
 import Dialog from "@/features/_core/components/ui/dialog/Dialog";
-import SelectedApointmentDateTime from "./SelectedApointmentDatetime";
+import SelectedAppointmentDateTime from "./SelectedAppointmentDatetime";
 import Select from "@/features/_core/components/ui/selects/Select";
 import Text from "@/features/_core/components/ui/Text";
 import Professional from "../shared/Professional";
@@ -28,7 +28,7 @@ const DialogAppointmentConfirmed: React.FC<Props> = ({ isOpen, onClose }) => {
   return (
     <Dialog isOpen={isOpen} onClose={handleClose} className="sm:max-w-[500px]">
       <Dialog.Header title="Seguimiento asistencia paciente">
-        <SelectedApointmentDateTime type="confirmed" />
+        <SelectedAppointmentDateTime type="confirmed" />
       </Dialog.Header>
 
       <Dialog.Body className="gap-y-6">

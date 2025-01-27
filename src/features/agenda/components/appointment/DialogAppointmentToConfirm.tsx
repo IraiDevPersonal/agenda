@@ -2,7 +2,7 @@ import { DialogHandlerProps } from "@/config";
 import { useState } from "react";
 import { useViewProfessionalData } from "../../context";
 import Dialog from "@/features/_core/components/ui/dialog/Dialog";
-import SelectedApointmentDateTime from "./SelectedApointmentDatetime";
+import SelectedAppointmentDateTime from "./SelectedAppointmentDatetime";
 import Alert from "@/features/_core/components/ui/Alert";
 import InputFile from "@/features/_core/components/ui/inputs/InputFile";
 import Professional from "../shared/Professional";
@@ -29,7 +29,7 @@ const DialogAppointmentToConfirm: React.FC<Props> = ({ isOpen, onClose }) => {
   return (
     <Dialog isOpen={isOpen} onClose={handleClose}>
       <Dialog.Header title="Confirmar paciente">
-        <SelectedApointmentDateTime type="to-confirm" />
+        <SelectedAppointmentDateTime type="to-confirm" />
         <Alert
           severity="info"
           description="Profesional exige bono para confirmar paciente."

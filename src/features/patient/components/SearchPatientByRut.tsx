@@ -1,21 +1,11 @@
-import { Uid } from "@/config";
 import { useRef, useState } from "react";
 import { prettifyRut } from "react-rut-formatter";
 import { PatientEntity } from "../domain/patient.entity";
+import { DUMMY_PATIENT } from "../utils/constants.util";
+import { InputChangeEvHandler, InputKeyboardEventHandler } from "@/config";
 import FieldRootWrapper from "@/features/_core/components/ui/FieldRootWrapper";
-import InputSearch from "@/features/_core/components/ui/inputs/InputSearch";
 import InputContentWrapper from "@/features/_core/components/ui/inputs/InputContentWrapper";
-
-const DUMMY_PATIENT: PatientEntity = {
-  id: 1,
-  uid: Uid.generate(),
-  rut: "10.050.844-7",
-  names: "Ignacio Rodrigo",
-  last_names: "Arriagada Iriarte",
-  email: "ignacio.arr01@gmail.com",
-  phone: "+56956980565",
-  address: "Porvenir sitio 2, Santa Fe",
-};
+import InputSearch from "@/features/_core/components/ui/inputs/InputSearch";
 
 type Props = {
   getPatient(patient: PatientEntity | null): void;
@@ -25,7 +15,7 @@ const SearchPatientByRut: React.FC<Props> = ({ getPatient }) => {
   const lastSearch = useRef<string>("");
   const [value, setValue] = useState("");
 
-  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+  const handleKeyDown: InputKeyboardEventHandler = (e) => {
     e.stopPropagation();
     if (e.key !== "Enter") return;
     const value = e.currentTarget.value;
@@ -33,7 +23,7 @@ const SearchPatientByRut: React.FC<Props> = ({ getPatient }) => {
     getPatient(prettifyRut(value) === "19.050.844-7" ? DUMMY_PATIENT : null);
     lastSearch.current = value;
   };
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleChange: InputChangeEvHandler = (e) => {
     setValue(e.target.value);
   };
 

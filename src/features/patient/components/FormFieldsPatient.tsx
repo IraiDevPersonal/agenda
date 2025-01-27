@@ -1,8 +1,8 @@
 import { cn } from "@/config";
+import InputField from "@/features/_core/components/ui/inputs/InputField";
 import { UseFormControllerHandler } from "@/features/_core/hooks";
 import { prettifyRut } from "react-rut-formatter";
 import { PatientEntity } from "../domain/patient.entity";
-import InputField from "@/features/_core/components/ui/inputs/InputField";
 
 type Props = {
   controller: UseFormControllerHandler<PatientEntity>;
@@ -18,7 +18,7 @@ const FormFieldsPatient: React.FC<Props> = ({
   className,
 }) => {
   return (
-    <div className={cn("grid gap-2 grid-cols-2", className)}>
+    <div className={cn("grid gap-2 sm:grid-cols-2", className)}>
       <InputField
         label="Rut"
         autoFocus={withAutofocus}

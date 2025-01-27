@@ -1,21 +1,11 @@
-import { Uid } from "@/config";
 import { useRef, useState } from "react";
 import { PatientEntity } from "../domain/patient.entity";
+import { DUMMY_PATIENT } from "../utils/constants.util";
+import { InputKeyboardEventHandler } from "@/config";
 import FieldRootWrapper from "@/features/_core/components/ui/FieldRootWrapper";
 import InputSearch from "@/features/_core/components/ui/inputs/InputSearch";
-import RadioGroup from "@/features/_core/components/ui/RadioGroup";
 import Label from "@/features/_core/components/ui/Label";
-
-const DUMMY_PATIENT: PatientEntity = {
-  id: 1,
-  uid: Uid.generate(),
-  rut: "10.050.844-7",
-  names: "Ignacio Rodrigo",
-  last_names: "Arriagada Iriarte",
-  email: "ignacio.arr01@gmail.com",
-  phone: "+56956980565",
-  address: "Porvenir sitio 2, Santa Fe",
-};
+import RadioGroup from "@/features/_core/components/ui/RadioGroup";
 
 const FILTER_ITEMS = [
   { label: "Rut paciente", showName: "rut", id: "rut" },
@@ -40,8 +30,7 @@ const SearchPatient: React.FC<Props> = ({ getPatient }) => {
     lastSearch.current = "";
     inputRef.current!.value = "";
   };
-
-  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+  const handleKeyDown: InputKeyboardEventHandler = (e) => {
     if (e.key !== "Enter") return;
     const value = e.currentTarget.value;
     if (lastSearch.current === value) return;

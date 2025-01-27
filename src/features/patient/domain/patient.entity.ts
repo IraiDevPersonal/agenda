@@ -1,3 +1,4 @@
+import { checkRut } from "react-rut-formatter";
 import { z } from "zod";
 
 const patientSchema = z.object({
@@ -6,7 +7,11 @@ const patientSchema = z.object({
   names: z.string().min(1, { message: "Obligatorio" }),
   phone: z.string().min(1, { message: "Obligatorio" }),
   last_names: z.string().min(1, { message: "Obligatorio" }),
-  rut: z.string().min(1, { message: "Obligatorio" }).max(12),
+  rut: z
+    .string()
+    .max(12)
+    .min(1, { message: "Obligatorio" })
+    .refine(checkRut, { message: "Rut invalido" }),
   address: z.string().min(10, { message: "Minimo 10 caracteres" }),
   email: z
     .string()
@@ -25,7 +30,6 @@ export class PatientEntity {
   public phone: Init["phone"];
   public address: Init["address"];
   public last_names: Init["last_names"];
-  public static validationSchema = patientSchema;
 
   private constructor(init: Init) {
     this.id = init.id;
@@ -38,9 +42,13 @@ export class PatientEntity {
     this.last_names = init.last_names;
   }
 
+  static getValidationSchema() {
+    return patientSchema;
+  }
+
   static fromObject(object: Record<string, any>) {
     try {
-      const schema = this.validationSchema.parse(object);
+      const schema = this.getValidationSchema().parse(object);
       return new PatientEntity(schema);
     } catch (error) {
       throw new Error((error as Error).message);

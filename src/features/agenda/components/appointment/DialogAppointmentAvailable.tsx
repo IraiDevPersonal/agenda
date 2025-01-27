@@ -1,14 +1,14 @@
-import { useForm } from "@/features/_core/hooks";
-import { createOptions } from "@/features/_core/utils/helpers.util";
-import { PatientEntity } from "@/features/patient/domain/patient.entity";
 import { useState } from "react";
+import { useForm } from "@/features/_core/hooks";
+import { createOptions } from "@/features/_core/utils/createOptions.util";
+import { PatientEntity } from "@/features/patient/domain/patient.entity";
 import { useAvailableAppointmentToggleFormContext } from "../../context";
 import { PAYMENT_METHODS } from "../../utils/constants.util";
-import { DialogHandlerProps } from "@/config";
+import { DialogHandlerProps, SelectChangeEvHandler } from "@/config";
 import Dialog from "@/features/_core/components/ui/dialog/Dialog";
 import SelectField from "@/features/_core/components/ui/selects/SelectField";
 import FormFieldsPatient from "@/features/patient/components/FormFieldsPatient";
-import SelectedApointmentDateTime from "./SelectedApointmentDatetime";
+import SelectedApointmentDateTime from "./SelectedAppointmentDatetime";
 import SearchPatientByRut from "@/features/patient/components/SearchPatientByRut";
 import Text from "@/features/_core/components/ui/Text";
 import Alert from "@/features/_core/components/ui/Alert";
@@ -40,12 +40,10 @@ const FormPatient: React.FC<FormPatientProps> = ({
 }) => {
   const { controller, handleSubmit } = useForm({
     defaultValues: initialValues,
-    validationSchema: PatientEntity.validationSchema,
+    validationSchema: PatientEntity.getValidationSchema(),
   });
   const [paymentMethod, setPaymentMethod] = useState("");
-  const handleChangePaymentMethod: React.ChangeEventHandler<
-    HTMLSelectElement
-  > = (e) => {
+  const handleChangePaymentMethod: SelectChangeEvHandler = (e) => {
     setPaymentMethod(e.target.value);
   };
 

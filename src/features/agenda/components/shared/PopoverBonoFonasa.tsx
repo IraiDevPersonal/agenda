@@ -38,7 +38,7 @@ const PopoverBonoFonasa = () => {
           <Text type="subtitle" className="mb-3">
             Comprar En
           </Text>
-          <ul className="px-3 space-y-1 *:flex *:items-center *:gap-3 text-muted-foreground [&_strong]:text-foreground">
+          <ul className="px-3 space-y-1 *:flex *:items-center *:gap-3 [&_strong]:font-semibold">
             <li>
               <IconWeb />
               <span>

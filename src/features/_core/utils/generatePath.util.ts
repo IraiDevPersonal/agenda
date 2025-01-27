@@ -1,4 +1,4 @@
-import type { CustomLinkProps, Option } from "@/config";
+import { CustomLinkProps } from "@/config";
 
 export function generatePath({ to, params, query }: CustomLinkProps) {
   const path: string = to.replace(/:([^/]+)/g, (_, key) => {
@@ -19,24 +19,4 @@ export function generatePath({ to, params, query }: CustomLinkProps) {
     return `${path}?${queryToString}`;
   }
   return path;
-}
-
-type CreateOptionProps = {
-  options: Option[];
-  customLabel?: Option["label"];
-  customValue?: Option["value"];
-};
-
-export function createOptions(
-  { options, customLabel, customValue }: CreateOptionProps,
-  shouldContainEmptyOption: boolean = false
-) {
-  const emptyOption: Option = {
-    label: customLabel ?? "Sin selección",
-    value: customValue ?? "",
-  };
-  if (shouldContainEmptyOption || customLabel || customValue) {
-    return [emptyOption, ...options];
-  }
-  return options;
 }

@@ -27,3 +27,10 @@ export type DialogHandlerProps = {
   isOpen: boolean;
   onClose(): void;
 };
+
+export type SelectChangeEvHandler = React.ChangeEventHandler<HTMLSelectElement>;
+export type SelectKeyboardEventHandler =
+  React.KeyboardEventHandler<HTMLSelectElement>;
+export type InputChangeEvHandler = React.ChangeEventHandler<HTMLInputElement>;
+export type InputKeyboardEventHandler =
+  React.KeyboardEventHandler<HTMLInputElement>;
