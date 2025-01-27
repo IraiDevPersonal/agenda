@@ -1,4 +1,4 @@
-import { createOptions } from "@/features/_core/utils/createOptions.util";
+import { createOptions } from "@/features/_core/utils/create-options.util";
 import Header from "../shared/Header";
 import Select from "@/features/_core/components/ui/selects/Select";
 import InputSearch from "@/features/_core/components/ui/inputs/InputSearch";

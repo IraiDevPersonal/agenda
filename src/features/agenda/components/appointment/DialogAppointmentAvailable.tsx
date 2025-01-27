@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "@/features/_core/hooks";
-import { createOptions } from "@/features/_core/utils/createOptions.util";
+import { createOptions } from "@/features/_core/utils/create-options.util";
 import { PatientEntity } from "@/features/patient/domain/patient.entity";
 import { useAvailableAppointmentToggleFormContext } from "../../context";
 import { PAYMENT_METHODS } from "../../utils/constants.util";

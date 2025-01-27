@@ -1,5 +1,5 @@
 import { Link, LinkProps } from "react-router-dom";
-import { generatePath } from "../../utils/generatePath.util";
+import { generatePath } from "../../utils/generate-path.util";
 import type { CustomLinkProps } from "@/config";
 
 type Props = Omit<LinkProps, "to"> & CustomLinkProps;
