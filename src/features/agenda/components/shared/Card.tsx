@@ -9,17 +9,24 @@ const HASH_COLORS: Record<Props["id"], string> = {
 };
 
 type Props = {
+  shouldHoverScale?: boolean;
   children: React.ReactNode;
   className?: string;
   id: AgendaColumns;
 };
 
-const Card: React.FC<Props> = ({ className, id, ...props }) => {
+const Card: React.FC<Props> = ({
+  shouldHoverScale = true,
+  className,
+  id,
+  ...props
+}) => {
   return (
     <article
       className={cn(
         "flex items-center gap-4 p-3 shadow-lg rounded-xl border bg-white/25",
-        "hover:scale-105 transition-transform duration-150",
+        "transition-transform duration-150",
+        shouldHoverScale && "hover:scale-105",
         HASH_COLORS[id],
         className
       )}

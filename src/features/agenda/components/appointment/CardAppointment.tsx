@@ -5,6 +5,7 @@ import Card from "../shared/Card";
 type Props = {
   id: AgendaColumns;
   className?: string;
+  shouldHoverScale?: boolean;
 };
 
 const CardAppointment: React.FC<Props> = (props) => {
