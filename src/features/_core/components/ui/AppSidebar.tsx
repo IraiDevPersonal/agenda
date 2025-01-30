@@ -7,6 +7,7 @@ import IconMyDay from "../icons/IconMyDay";
 import IconAgenda from "../icons/IconAgenda";
 import IconUsers from "../icons/IconUsers";
 import IconDolar from "../icons/IconDolar";
+import IconVerticalDots from "../icons/IconVerticalDots";
 
 const PAGES: PageProps[] = [
   { label: "Mi Día", icon: <IconMyDay />, route: "/" },
@@ -23,7 +24,7 @@ const AppSidebar = () => {
     <Box as="aside" className="flex flex-col w-full max-w-64 gap-y-8">
       <div className="flex items-center gap-4 px-3">
         <span className="text-2xl italic font-bold">AGENDA</span>
-        <span className="block w-10 h-10 text-white bg-black rounded-full"></span>
+        <span className="block w-10 h-10 text-white bg-primary rounded-full"></span>
       </div>
 
       <div className="mb-auto">
@@ -39,9 +40,9 @@ const AppSidebar = () => {
       </div>
 
       <div>
-        <button className="flex items-center w-full transition-colors duration-300 bg-black/5 hover:bg-black/10 rounded-2xl">
+        <button className="flex items-center w-full transition-colors duration-300 bg-accent text-primary shadow-lg shadow-primary/10 rounded-2xl hover:bg-primary/15">
           <UserAccount />
-          <span className="text-3xl rotate-90">{"..."}</span>
+          <IconVerticalDots className="me-2.5" />
         </button>
       </div>
     </Box>

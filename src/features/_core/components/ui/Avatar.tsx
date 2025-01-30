@@ -75,7 +75,7 @@ const Avatar: React.FC<Props> = ({ fallback, classNames, ...props }) => {
       <AvatarFallback
         className={cn("bg-muted text-foreground", classNames?.fallback)}
       >
-        {fallback || <IconUser className="opacity-70" aria-hidden="true" />}
+        {fallback || <IconUser aria-hidden="true" />}
       </AvatarFallback>
     </AvatarWrapper>
   );
