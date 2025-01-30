@@ -3,6 +3,7 @@ import IconChevronLeft from "@/features/_core/components/icons/IconChevronLeft";
 import IconChevronRight from "@/features/_core/components/icons/IconChevronRight";
 import Button from "@/features/_core/components/ui/Button";
 import Calendar from "@/features/_core/components/ui/Calendar";
+import ArrayMap from "@/features/_core/components/utils/ArrayMap";
 import { useState } from "react";
 import {
   DayButtonProps,
@@ -13,7 +14,7 @@ import {
 
 type Props = Pick<PropsSingle, "onSelect" | "selected">;
 
-const AgendaCalendar: React.FC<Props> = () => {
+const AgendaCalendar: React.FC<Props> = (props) => {
   const [date, setDate] = useState(new Date());
 
   return (
@@ -21,7 +22,7 @@ const AgendaCalendar: React.FC<Props> = () => {
       month={date}
       mode="single"
       onMonthChange={setDate}
-      className="p-4 border-2 border-primary/20 rounded-3xl"
+      className="p-4"
       classNames={{
         selected: "[&_button]:bg-primary [&_button]:text-white",
         day: "p-1",
@@ -29,9 +30,33 @@ const AgendaCalendar: React.FC<Props> = () => {
       }}
       components={{
         Nav: (props) => <Nav {...props} date={date} />,
-        DayButton: (props) => <DayButton {...props} />,
+        DayButton: (props) => (
+          <DayButton
+            {...props}
+            renderItems={() => (
+              <>
+                {props.day.date.toDateString().includes("23") ? (
+                  <ul className="space-y-1 w-full">
+                    <ArrayMap dataset={Array.from({ length: 3 })}>
+                      {(_, idx) => (
+                        <li
+                          key={idx}
+                          className="px-3 py-1 rounded-lg bg-primary text-accent text-left text-sm"
+                        >
+                          hora {idx + 1}
+                        </li>
+                      )}
+                    </ArrayMap>
+                    <li className="text-left">...</li>
+                  </ul>
+                ) : null}
+              </>
+            )}
+          />
+        ),
         Weekday: (props) => <WeekDay {...props} />,
       }}
+      {...props}
     />
   );
 };
@@ -58,13 +83,16 @@ const Nav: React.FC<NavProps & { date: Date }> = ({
   );
 };
 
-const DayButton: React.FC<DayButtonProps> = ({ children, ...props }) => {
+const DayButton: React.FC<
+  DayButtonProps & { renderItems(): React.ReactNode }
+> = ({ children, renderItems, ...props }) => {
   return (
     <button
       {...props}
-      className="outline-none p-2 h-36 w-44 flex flex-col gap-1 bg-accent rounded-xl border-2 border-transparent hover:border-primary/40 hover:scale-105 transition-all duration-300"
+      className="outline-none p-2 h-40 w-48 flex flex-col gap-1 bg-accent rounded-xl border-2 border-transparent hover:border-primary/40 hover:scale-105 transition-all duration-300"
     >
       <span className="font-semibold leading-none">{children}</span>
+      {renderItems()}
     </button>
   );
 };

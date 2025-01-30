@@ -1,8 +1,7 @@
 import Main from "@/features/_core/components/ui/Main";
-import ViewProfessionalDataContext from "../context/ViewProfessionalDataContext";
 import AgendaAppointmentSelector from "../components/agenda/AgendaAppointmentSelector";
 import AgendaHeader from "../components/agenda/AgendaHeader";
-import AppointmentList from "../components/appointment/AppointmentList";
+import ViewProfessionalDataContext from "../context/ViewProfessionalDataContext";
 
 const AgendaPage = () => {
   return (
@@ -11,10 +10,7 @@ const AgendaPage = () => {
 
       <Main>
         <AgendaHeader />
-        <div className="flex w-full">
-          <AgendaAppointmentSelector />
-          <AppointmentList />
-        </div>
+        <AgendaAppointmentSelector />
       </Main>
     </ViewProfessionalDataContext>
   );

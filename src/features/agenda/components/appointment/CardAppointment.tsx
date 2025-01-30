@@ -3,9 +3,10 @@ import { AgendaColumns } from "../../domain";
 import Card from "../shared/Card";
 
 type Props = {
-  id: AgendaColumns;
-  className?: string;
+  shouldShowShadow?: boolean;
   shouldHoverScale?: boolean;
+  className?: string;
+  id?: AgendaColumns;
 };
 
 const CardAppointment: React.FC<Props> = (props) => {

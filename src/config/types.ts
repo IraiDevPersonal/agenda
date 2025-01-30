@@ -21,7 +21,10 @@ export type CustomLinkProps = {
   to: Paths;
 };
 
-export type Option = { label: string; value: string | number };
+export type Option<T extends string | number = string> = {
+  label: string;
+  value: T;
+};
 
 export type DialogHandlerProps = {
   isOpen: boolean;

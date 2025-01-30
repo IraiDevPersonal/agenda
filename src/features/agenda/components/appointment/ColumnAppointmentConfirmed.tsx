@@ -3,11 +3,18 @@ import Column from "../shared/Column";
 import CardAppointment from "./CardAppointment";
 import DialogAppointmentConfirmed from "./DialogAppointmentConfirmed";
 
-const ColumnAppointmentConfirmed = () => {
+type Props = { heightAuto?: boolean };
+
+const ColumnAppointmentConfirmed: React.FC<Props> = ({ heightAuto }) => {
   const [isOpen, handleToogleOpen] = useDialog();
   return (
     <>
-      <Column id="confirmed" title="Confirmadas" count={2}>
+      <Column
+        heightAuto={heightAuto}
+        title="Confirmadas"
+        id="confirmed"
+        count={2}
+      >
         {Array.from({ length: 5 }).map((_, idx) => (
           <li
             key={idx}

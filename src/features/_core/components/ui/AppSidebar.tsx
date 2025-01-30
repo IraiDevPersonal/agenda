@@ -57,7 +57,7 @@ const ActiveNavLink: React.FC<PageProps> = ({ icon, label, route }) => {
           "px-3 py-2.5 flex gap-4 items-center rounded-2xl font-medium",
           "[&_figure]:hover:scale-125",
           "transition-all duration-300",
-          isActive ? "bg-black text-white" : "hover:bg-black/10"
+          isActive ? "bg-primary text-white" : "hover:bg-accent"
         )
       }
     >

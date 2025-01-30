@@ -34,7 +34,7 @@ const PopoverBonoFonasa = () => {
             </li>
           </ul>
         </div>
-        <div className="p-6 bg-black/5">
+        <div className="p-6 bg-accent">
           <Text type="subtitle" className="mb-3">
             Comprar En
           </Text>

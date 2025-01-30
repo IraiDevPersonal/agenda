@@ -1,18 +1,20 @@
 import type { AgendaColumns } from "../../domain";
 import { cn } from "@/config";
 
-const HASH_COLORS: Record<Props["id"], string> = {
-  "to-confirm": "text-amber-700 border-amber-600/10 shadow-amber-700/15",
-  available: "text-emerald-700 border-emerald-600/10 shadow-emerald-700/15",
-  cancelled: "text-red-700 border-red-600/10 shadow-red-700/15",
-  confirmed: "text-sky-700 border-sky-600/10 shadow-sky-700/15",
+const HASH_COLORS: Record<AgendaColumns, string> = {
+  "to-confirm":
+    "text-amber-700 border-amber-100/70 bg-amber-50 shadow-amber-700/10",
+  available:
+    "text-emerald-700 border-emerald-100/70 bg-emerald-50 shadow-emerald-700/10",
+  cancelled: "text-red-700 border-red-100/70 bg-red-50 shadow-red-700/10",
+  confirmed: "text-sky-700 border-sky-100/70 bg-sky-50 shadow-sky-700/10",
 };
 
 type Props = {
   shouldHoverScale?: boolean;
   children: React.ReactNode;
   className?: string;
-  id: AgendaColumns;
+  id?: AgendaColumns;
 };
 
 const Card: React.FC<Props> = ({
@@ -24,10 +26,10 @@ const Card: React.FC<Props> = ({
   return (
     <article
       className={cn(
-        "flex items-center gap-4 p-3 shadow-lg rounded-xl border bg-white/25",
+        "flex items-center gap-4 shadow-lg p-3 rounded-xl border",
         "transition-transform duration-150",
         shouldHoverScale && "hover:scale-105",
-        HASH_COLORS[id],
+        id ? HASH_COLORS[id] : "",
         className
       )}
       {...props}
