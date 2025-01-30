@@ -3,9 +3,9 @@ import Column from "../shared/Column";
 import CardAppointment from "./CardAppointment";
 import DialogAppointmentCancelled from "./DialogAppointmentCancelled";
 
-type Props = { heightAuto?: boolean };
+type Props = { heightAuto?: boolean; isHovereableHeader?: boolean };
 
-const ColumnAppointmentCancelled: React.FC<Props> = ({ heightAuto }) => {
+const ColumnAppointmentCancelled: React.FC<Props> = (props) => {
   const [isOpen, handleToogleOpen] = useDialog();
   const handleClose = () => {
     handleToogleOpen();
@@ -13,12 +13,7 @@ const ColumnAppointmentCancelled: React.FC<Props> = ({ heightAuto }) => {
 
   return (
     <>
-      <Column
-        heightAuto={heightAuto}
-        title="Canceladas"
-        id="cancelled"
-        count={2}
-      >
+      <Column {...props} title="Canceladas" id="cancelled" count={2}>
         {Array.from({ length: 5 }).map((_, idx) => (
           <li
             key={idx}

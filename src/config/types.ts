@@ -37,3 +37,4 @@ export type SelectKeyboardEventHandler =
 export type InputChangeEvHandler = React.ChangeEventHandler<HTMLInputElement>;
 export type InputKeyboardEventHandler =
   React.KeyboardEventHandler<HTMLInputElement>;
+export type ButtonMouseEvHandler = React.MouseEventHandler<HTMLButtonElement>;

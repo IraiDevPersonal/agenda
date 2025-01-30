@@ -27,7 +27,7 @@ const Card: React.FC<Props> = ({
     <article
       className={cn(
         "flex items-center gap-4 shadow-lg p-3 rounded-xl border",
-        "transition-transform duration-150",
+        "transition-transform duration-300",
         shouldHoverScale && "hover:scale-105",
         id ? HASH_COLORS[id] : "",
         className

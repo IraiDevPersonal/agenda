@@ -4,9 +4,9 @@ import Column from "../shared/Column";
 import CardAvailableAppointment from "./CardAppointmentAvailable";
 import DialogAppointmentAvailable from "./DialogAppointmentAvailable";
 
-type Props = { heightAuto?: boolean };
+type Props = { heightAuto?: boolean; isHovereableHeader?: boolean };
 
-const ColumnAppointmentAvailable: React.FC<Props> = ({ heightAuto }) => {
+const ColumnAppointmentAvailable: React.FC<Props> = (props) => {
   const [isOpen, onToggleIsOpen] = useDialog();
   const handleClose = () => {
     onToggleIsOpen();
@@ -14,12 +14,7 @@ const ColumnAppointmentAvailable: React.FC<Props> = ({ heightAuto }) => {
 
   return (
     <AvailableAppointmentToggleFormContext>
-      <Column
-        heightAuto={heightAuto}
-        title="Disponibles"
-        id="available"
-        count={2}
-      >
+      <Column {...props} title="Disponibles" id="available" count={2}>
         {Array.from({ length: 5 }).map((_, idx) => (
           <li key={idx} onClick={handleClose} className="hover:cursor-pointer">
             <CardAvailableAppointment />

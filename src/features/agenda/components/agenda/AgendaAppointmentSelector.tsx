@@ -17,7 +17,7 @@ const AgendaAppointmentSelector = () => {
           <AppointmentList currentDate={selectedDate} />
         ) : (
           <div className="h-[calc(100vh-6rem)] w-full grid place-content-center">
-            <Text type="text">Seleccione una fecha...</Text>
+            <Text type="text">Seleccione una día...</Text>
           </div>
         )}
       </div>
