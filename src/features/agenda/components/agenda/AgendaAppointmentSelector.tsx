@@ -14,7 +14,7 @@ const AgendaAppointmentSelector = () => {
       <div className="flex w-full">
         <AgendaCalendar selected={selectedDate} onSelect={handleSelectDate} />
         {selectedDate ? (
-          <AppointmentList currentDate={selectedDate} />
+          <AppointmentList date={selectedDate} />
         ) : (
           <div className="h-[calc(100vh-6rem)] w-full grid place-content-center">
             <Text type="text">Seleccione una día...</Text>

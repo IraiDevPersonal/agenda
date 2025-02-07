@@ -1,11 +1,11 @@
-import DateFns from "@/config/date-fns";
+import { useState } from "react";
+import { NavProps, PropsSingle, WeekdayProps } from "react-day-picker";
 import IconChevronLeft from "@/features/_core/components/icons/IconChevronLeft";
 import IconChevronRight from "@/features/_core/components/icons/IconChevronRight";
 import Button from "@/features/_core/components/ui/Button";
 import Calendar from "@/features/_core/components/ui/Calendar";
-import { useState } from "react";
-import { NavProps, PropsSingle, WeekdayProps } from "react-day-picker";
 import AgendaCalendarDayButton from "./AgendaCalendarDayButton";
+import Now from "@/config/now";
 
 type Props = Pick<PropsSingle, "onSelect" | "selected">;
 
@@ -45,7 +45,7 @@ const Nav: React.FC<NavProps & { date: Date }> = ({
         <IconChevronLeft />
       </Button>
       <span className="font-semibold text-lg capitalize sm:w-64 text-center">
-        {new DateFns().format({ date: date, format: "month_year" })}
+        {new Now().format(date, "month_name")}
       </span>
       <Button size="icon" variant="text" onClick={onNextClick}>
         <IconChevronRight />
