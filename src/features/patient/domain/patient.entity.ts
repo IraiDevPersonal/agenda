@@ -48,7 +48,7 @@ export class PatientEntity {
 
   static fromObject(object: Record<string, any>) {
     try {
-      const schema = this.getValidationSchema().parse(object);
+      const schema = patientSchema.parse(object);
       return new PatientEntity(schema);
     } catch (error) {
       throw new Error((error as Error).message);
