@@ -24,7 +24,8 @@ export default class Now {
 }
 
 const DATE_FORMATS = {
-  day_numeric: { weekday: "short", day: "numeric" },
+  day_complete: { weekday: "short", day: "numeric" },
+  month_year: { month: "long", year: "numeric" },
   "dd-of-mmmm-of-yyyy": { dateStyle: "long" },
   month_name: { month: "long" },
   "dd-mm-yyyy": {},

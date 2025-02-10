@@ -44,8 +44,8 @@ const Nav: React.FC<NavProps & { date: Date }> = ({
       <Button size="icon" variant="text" onClick={onPreviousClick}>
         <IconChevronLeft />
       </Button>
-      <span className="font-semibold text-lg capitalize sm:w-64 text-center">
-        {new Now().format(date, "month_name")}
+      <span className="font-semibold text-lg first-letter:capitalize sm:w-64 text-center">
+        {new Now().format(date, "month_year")}
       </span>
       <Button size="icon" variant="text" onClick={onNextClick}>
         <IconChevronRight />
