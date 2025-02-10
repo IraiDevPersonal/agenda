@@ -5,14 +5,16 @@ import ViewProfessionalDataContext from "../context/ViewProfessionalDataContext"
 
 const AgendaPage = () => {
   return (
-    <ViewProfessionalDataContext showProfesionalData>
+    <>
       <title>Agenda</title>
 
       <Main>
         <AgendaHeader />
-        <AgendaAppointmentSelector />
+        <ViewProfessionalDataContext showProfesionalData>
+          <AgendaAppointmentSelector />
+        </ViewProfessionalDataContext>
       </Main>
-    </ViewProfessionalDataContext>
+    </>
   );
 };
 

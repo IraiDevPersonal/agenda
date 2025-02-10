@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { useViewProfessionalData } from "../../context";
+import { useViewProfessionalData } from "../../context/ViewProfessionalDataContext";
 import Card from "../shared/Card";
 import IconAvailable from "@/features/_core/components/icons/IconAvailable";
 

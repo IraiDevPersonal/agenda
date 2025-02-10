@@ -1,8 +1,10 @@
-import { cn, DialogHandlerProps } from "@/config";
-import IconX from "@/features/_core/components/icons/IconX";
-import * as DialogPrimitive from "@radix-ui/react-dialog";
 import * as React from "react";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 import DialogContext, { useDialogContext } from "./DialogContext";
+import IconX from "@/features/_core/components/icons/IconX";
+import { cn, DialogHandlerProps } from "@/config";
+
+const root = document.getElementById("root");
 
 type DialogContentProps = React.ComponentPropsWithoutRef<
   typeof DialogPrimitive.Content
@@ -47,7 +49,7 @@ function Dialog({
         onOpenChange={onClose}
         // defaultOpen={defaultOpen}
       >
-        <DialogPrimitive.Portal>
+        <DialogPrimitive.Portal container={root}>
           <DialogPrimitive.Overlay
             ref={overlayRef}
             className={cn(

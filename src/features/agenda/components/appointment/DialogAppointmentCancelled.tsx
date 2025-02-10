@@ -1,5 +1,5 @@
 import { DialogHandlerProps } from "@/config";
-import { useViewProfessionalData } from "../../context";
+import { useViewProfessionalData } from "../../context/ViewProfessionalDataContext";
 import Dialog from "@/features/_core/components/ui/dialog/Dialog";
 import SelectedAppointmentDateTime from "./SelectedAppointmentDatetime";
 import Professional from "../shared/Professional";

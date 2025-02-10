@@ -1,10 +1,7 @@
-import { useState } from "react";
+import { createContext, use, useMemo, useState } from "react";
 import { useForm } from "@/features/_core/hooks";
 import { createOptions } from "@/features/_core/utils/create-options.util";
 import { PatientEntity } from "@/features/patient/domain/patient.entity";
-import { useAvailableAppointmentToggleFormContext } from "../../context";
-import { PAYMENT_METHODS } from "../../utils/constants.util";
-import { DialogHandlerProps, SelectChangeEvHandler } from "@/config";
 import Dialog from "@/features/_core/components/ui/dialog/Dialog";
 import SelectField from "@/features/_core/components/ui/selects/SelectField";
 import FormFieldsPatient from "@/features/patient/components/FormFieldsPatient";
@@ -16,16 +13,42 @@ import Button from "@/features/_core/components/ui/Button";
 import IconSearch from "@/features/_core/components/icons/IconSearch";
 import IconPlus from "@/features/_core/components/icons/IconPlus";
 import IconSave from "@/features/_core/components/icons/IconSave";
+import { PAYMENT_METHODS } from "../../utils/constants.util";
+import type { DialogHandlerProps, SelectChangeEvHandler } from "@/config";
 
 type Props = DialogHandlerProps;
+type ContextProps = {
+  component: "create" | "search";
+  onToggleComponent(): void;
+  resetComponent(): void;
+};
+
+const Context = createContext<ContextProps | undefined>(undefined);
 
 const DialogAppointmentAvailable: React.FC<Props> = ({ onClose, isOpen }) => {
-  const { selectedForm } = useAvailableAppointmentToggleFormContext();
+  const [component, setComponent] =
+    useState<ContextProps["component"]>("search");
+
+  const value: ContextProps = useMemo(() => {
+    return {
+      component,
+      onToggleComponent: () => {
+        setComponent((prevValue) =>
+          prevValue === "create" ? "search" : "create"
+        );
+      },
+      resetComponent: () => {
+        setComponent("search");
+      },
+    };
+  }, [component]);
 
   return (
-    <Dialog isOpen={isOpen} onClose={onClose}>
-      {selectedForm === "create" ? <CreatePatient /> : <SearchPatient />}
-    </Dialog>
+    <Context value={value}>
+      <Dialog isOpen={isOpen} onClose={onClose}>
+        {component === "create" ? <CreatePatient /> : <SearchPatient />}
+      </Dialog>
+    </Context>
   );
 };
 
@@ -128,8 +151,8 @@ const CreatePatient = () => {
 const DialogActions: React.FC<{ disableSaveButton?: boolean }> = ({
   disableSaveButton = false,
 }) => {
-  const { selectedForm, resetSelectedForm, handleToggleSelectedForm } =
-    useAvailableAppointmentToggleFormContext();
+  const { component, resetComponent, onToggleComponent } =
+    useComponentContext();
   return (
     <Dialog.Footer className="mt-6">
       {({ onClose }) => (
@@ -137,24 +160,22 @@ const DialogActions: React.FC<{ disableSaveButton?: boolean }> = ({
           <Button
             variant="info"
             className="mr-auto"
-            onClick={handleToggleSelectedForm}
+            onClick={onToggleComponent}
           >
-            {selectedForm === "create"
-              ? "Buscar paciente"
-              : "Registrar paciente"}
-            {selectedForm === "create" ? <IconSearch /> : <IconPlus />}
+            {component === "create" ? "Buscar paciente" : "Registrar paciente"}
+            {component === "create" ? <IconSearch /> : <IconPlus />}
           </Button>
           <Button
             variant="text"
             onClick={() => {
               onClose();
-              resetSelectedForm();
+              resetComponent();
             }}
           >
             Cancelar
           </Button>
           <Button type="submit" disabled={disableSaveButton}>
-            {selectedForm === "create" ? "Registrar y agendar" : "Agendar"}
+            {component === "create" ? "Registrar y agendar" : "Agendar"}
             <IconSave />
           </Button>
         </>
@@ -164,3 +185,11 @@ const DialogActions: React.FC<{ disableSaveButton?: boolean }> = ({
 };
 
 export default DialogAppointmentAvailable;
+
+const useComponentContext = () => {
+  const context = use(Context);
+  if (!context) {
+    throw new Error("useContext solo puede usarse dentro de: FormContext");
+  }
+  return context;
+};

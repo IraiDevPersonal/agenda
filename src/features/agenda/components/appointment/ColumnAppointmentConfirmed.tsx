@@ -1,29 +1,12 @@
-import { useDialog } from "@/features/_core/hooks";
-import Column from "../shared/Column";
+import AppointmentColumn from "./AppointmentColumn";
 import CardAppointment from "./CardAppointment";
-import DialogAppointmentConfirmed from "./DialogAppointmentConfirmed";
 
-type Props = { heightAuto?: boolean; isHovereableHeader?: boolean };
-
-const ColumnAppointmentConfirmed: React.FC<Props> = (props) => {
-  const [isOpen, handleToogleOpen] = useDialog();
+const ColumnAppointmentConfirmed = () => {
   return (
     <>
-      <Column {...props} title="Confirmadas" id="confirmed" count={2}>
-        {Array.from({ length: 5 }).map((_, idx) => (
-          <li
-            key={idx}
-            onClick={handleToogleOpen}
-            className="hover:cursor-pointer"
-          >
-            <CardAppointment id="confirmed" />
-          </li>
-        ))}
-        <DialogAppointmentConfirmed
-          isOpen={isOpen}
-          onClose={handleToogleOpen}
-        />
-      </Column>
+      <AppointmentColumn id="confirmed" appointments={[1, 2]}>
+        {() => <CardAppointment id="confirmed" />}
+      </AppointmentColumn>
     </>
   );
 };

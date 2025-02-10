@@ -1,6 +1,6 @@
 import { Option, DialogHandlerProps } from "@/config";
 import { createOptions } from "@/features/_core/utils/create-options.util";
-import { useViewProfessionalData } from "../../context";
+import { useViewProfessionalData } from "../../context/ViewProfessionalDataContext";
 import Dialog from "@/features/_core/components/ui/dialog/Dialog";
 import SelectedAppointmentDateTime from "./SelectedAppointmentDatetime";
 import Select from "@/features/_core/components/ui/selects/Select";

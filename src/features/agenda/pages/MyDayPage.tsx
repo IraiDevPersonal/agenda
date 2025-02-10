@@ -5,14 +5,16 @@ import Appointments from "../components/appointment/Appoinments";
 
 const MyDayPage = () => {
   return (
-    <ViewProfessionalDataContext>
+    <>
       <title>Agenda | Mi Día</title>
 
       <Main>
         <MyDayHeader />
-        <Appointments />
+        <ViewProfessionalDataContext>
+          <Appointments />
+        </ViewProfessionalDataContext>
       </Main>
-    </ViewProfessionalDataContext>
+    </>
   );
 };
 

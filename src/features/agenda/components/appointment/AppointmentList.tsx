@@ -54,14 +54,14 @@ const AppointmentList: React.FC<Props> = ({ date }) => {
           <IconChevronRight />
         </Button>
       </div>
-      <MainList appointmentFilter={appointmentFilter} />
+      <List appointmentFilter={appointmentFilter} />
     </div>
   );
 };
 
 export default AppointmentList;
 
-const MainList: React.FC<{ appointmentFilter: AgendaColumns | "all" }> = ({
+const List: React.FC<{ appointmentFilter: AgendaColumns | "all" }> = ({
   appointmentFilter,
 }) => {
   const isVisible = (value: AgendaColumns) => {
@@ -70,18 +70,10 @@ const MainList: React.FC<{ appointmentFilter: AgendaColumns | "all" }> = ({
 
   return (
     <div className="h-[calc(100vh-9.5rem)] overflow-y-auto scrollbar-styles scrollbar-thumb-transparent space-y-4">
-      {isVisible("available") && (
-        <ColumnAppointmentAvailable heightAuto isHovereableHeader={false} />
-      )}
-      {isVisible("to-confirm") && (
-        <ColumnAppointmentToBeConfirm heightAuto isHovereableHeader={false} />
-      )}
-      {isVisible("confirmed") && (
-        <ColumnAppointmentConfirmed heightAuto isHovereableHeader={false} />
-      )}
-      {isVisible("cancelled") && (
-        <ColumnAppointmentCancelled heightAuto isHovereableHeader={false} />
-      )}
+      {isVisible("available") && <ColumnAppointmentAvailable />}
+      {isVisible("to-confirm") && <ColumnAppointmentToBeConfirm />}
+      {isVisible("confirmed") && <ColumnAppointmentConfirmed />}
+      {isVisible("cancelled") && <ColumnAppointmentCancelled />}
     </div>
   );
 };

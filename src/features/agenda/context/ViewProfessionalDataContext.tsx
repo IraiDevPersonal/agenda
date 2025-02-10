@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, use } from "react";
 
 type ContextProps = {
   showProfesionalData?: boolean;
@@ -20,7 +20,7 @@ const ViewProfessionalDataContext: React.FC<Props> = ({
 };
 
 export const useViewProfessionalData = () => {
-  const context = useContext(Context);
+  const context = use(Context);
   if (!context) {
     throw new Error(
       "Solo puede acceder al contexto dentro de: ViewProfessionalInfoProvider"
