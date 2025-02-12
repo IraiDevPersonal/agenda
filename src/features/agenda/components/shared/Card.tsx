@@ -1,4 +1,4 @@
-import type { AgendaColumns } from "../../domain";
+import type { AgendaColumns } from "../../domain/types";
 import { cn } from "@/config";
 
 const HASH_COLORS: Record<AgendaColumns, string> = {
@@ -11,24 +11,18 @@ const HASH_COLORS: Record<AgendaColumns, string> = {
 };
 
 type Props = {
-  shouldHoverScale?: boolean;
   children: React.ReactNode;
   className?: string;
   id?: AgendaColumns;
 };
 
-const Card: React.FC<Props> = ({
-  shouldHoverScale = true,
-  className,
-  id,
-  ...props
-}) => {
+const Card: React.FC<Props> = ({ className, id, ...props }) => {
   return (
     <article
       className={cn(
         "flex items-center gap-4 shadow-lg p-3 rounded-xl border",
         "transition-transform duration-300",
-        shouldHoverScale && "hover:scale-105",
+        "hover:scale-105",
         id ? HASH_COLORS[id] : "",
         className
       )}

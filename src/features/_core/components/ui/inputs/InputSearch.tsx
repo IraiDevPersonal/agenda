@@ -6,11 +6,15 @@ import { InputFieldProps } from "./InputField";
 import IconSearch from "../../icons/IconSearch";
 
 type Props = Omit<InputProps, "type"> &
-  Partial<Pick<InputFieldProps, "startContent">>;
+  Partial<Pick<InputFieldProps, "startContent">> & {
+    onSearch?(): void;
+  };
 
 const InputSearch: React.FC<Props> = ({
-  className,
   startContent,
+  className,
+  onKeyDown,
+  onSearch,
   ...props
 }) => {
   return (
@@ -20,6 +24,13 @@ const InputSearch: React.FC<Props> = ({
         className={cn("pe-8", className)}
         placeholder="Buscar..."
         type="search"
+        onKeyDown={(e) => {
+          if (e.code === "Enter") {
+            e.preventDefault();
+            onSearch?.();
+          }
+          onKeyDown?.(e);
+        }}
         {...props}
       />
       <InputContentWrapper className="end-0 pe-2">

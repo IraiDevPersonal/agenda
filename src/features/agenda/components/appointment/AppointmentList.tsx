@@ -11,7 +11,7 @@ import ColumnAppointmentToBeConfirm from "./ColumnAppointmentToBeConfirm";
 import { createOptions } from "@/features/_core/utils/create-options.util";
 import { APPOINTMENT_OPTIONS } from "../../utils/constants.util";
 import { Now, ROUTES, type SelectChangeEvHandler } from "@/config";
-import type { AgendaColumns } from "../../domain";
+import type { AgendaColumns } from "../../domain/types";
 
 type Props = {
   date: Date;
@@ -69,10 +69,18 @@ const List: React.FC<{ appointmentFilter: AgendaColumns | "all" }> = ({
 
   return (
     <div className="h-[calc(100vh-9.5rem)] overflow-y-auto scrollbar-styles scrollbar-thumb-transparent space-y-4">
-      {isVisible("available") && <ColumnAppointmentAvailable />}
-      {isVisible("to-confirm") && <ColumnAppointmentToBeConfirm />}
-      {isVisible("confirmed") && <ColumnAppointmentConfirmed />}
-      {isVisible("cancelled") && <ColumnAppointmentCancelled />}
+      {isVisible("available") && (
+        <ColumnAppointmentAvailable appointments={[]} />
+      )}
+      {isVisible("to-confirm") && (
+        <ColumnAppointmentToBeConfirm appointments={[]} />
+      )}
+      {isVisible("confirmed") && (
+        <ColumnAppointmentConfirmed appointments={[]} />
+      )}
+      {isVisible("cancelled") && (
+        <ColumnAppointmentCancelled appointments={[]} />
+      )}
     </div>
   );
 };

@@ -1,8 +1,9 @@
 import type { IconProps } from "@/config";
 import { FileTextIcon } from "lucide-react";
+import { DEFAULT_ICON_SIZE } from "../../utils/constants";
 
 const IconDocument: React.FC<IconProps> = (props) => {
-  return <FileTextIcon {...props} />;
+  return <FileTextIcon {...DEFAULT_ICON_SIZE} {...props} />;
 };
 
 export default IconDocument;

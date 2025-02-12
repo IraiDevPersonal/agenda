@@ -1,6 +1,7 @@
 import Avatar from "@/features/_core/components/ui/Avatar";
-import { AgendaColumns } from "../../domain";
+import { AgendaColumns } from "../../domain/types";
 import Card from "../shared/Card";
+import AppointmentEntity from "../../domain/appointment.entity";
 
 const HASH_COLORS: Record<AgendaColumns, string> = {
   "to-confirm": "bg-amber-100 text-amber-600",
@@ -10,13 +11,14 @@ const HASH_COLORS: Record<AgendaColumns, string> = {
 };
 
 type Props = {
-  shouldShowShadow?: boolean;
-  shouldHoverScale?: boolean;
+  appointment: AppointmentEntity;
   className?: string;
   id: AgendaColumns;
 };
 
-const CardAppointment: React.FC<Props> = (props) => {
+const CardAppointment: React.FC<Props> = ({ appointment, ...props }) => {
+  const { patient_name, patient_rut, patient_phone, time_from, time_to } =
+    appointment;
   return (
     <Card {...props}>
       <Avatar
@@ -24,12 +26,12 @@ const CardAppointment: React.FC<Props> = (props) => {
         classNames={{ fallback: HASH_COLORS[props.id] }}
       />
       <div className="w-full">
-        <h5 className="font-bold">Nombre paciente</h5>
-        <span className="block">1.111.111-1</span>
+        <h5 className="font-bold">{patient_name}</h5>
+        <span className="block">{patient_rut}</span>
         <div className="flex w-full gap-2">
-          <span>+56 9 1234 5678</span>
+          <span>{patient_phone}</span>
           <strong className="inline-block ml-auto">
-            13:00 - 13:45 <small>hrs</small>
+            {time_to} - {time_from} <small>hrs</small>
           </strong>
         </div>
       </div>

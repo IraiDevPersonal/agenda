@@ -1,37 +1,68 @@
-import { DndContext } from "@dnd-kit/core";
-import { SortableContext } from "@dnd-kit/sortable";
+import { use } from "react";
 import { useSortableAppointments } from "../../hooks";
-import Box from "@/features/_core/components/ui/Box";
+import { SortableContext } from "@dnd-kit/sortable";
+import { DndContext } from "@dnd-kit/core";
+import AppointmentGrid from "./AppointmentGrid";
 import ArrayMap from "@/features/_core/components/utils/ArrayMap";
 import ColumnAppointmentAvailable from "./ColumnAppointmentAvailable";
 import ColumnAppointmentCancelled from "./ColumnAppointmentCancelled";
 import ColumnAppointmentConfirmed from "./ColumnAppointmentConfirmed";
 import ColumnAppointmentToBeConfirm from "./ColumnAppointmentToBeConfirm";
+import type { GetAppointmentsReturn } from "../../services/agenda.service";
 
-const Appointments = () => {
+type Props = {
+  getAppointments: GetAppointmentsReturn;
+};
+
+const Appointments: React.FC<Props> = ({ getAppointments }) => {
   const { columns, handleDragEnd } = useSortableAppointments();
+  const [error, agenda] = use(getAppointments);
+
+  if (error) {
+    return <p className="text-center text-3xl text-red-500">{error}</p>;
+  }
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
       <SortableContext items={columns}>
-        <Box as="div" className="flex flex-wrap p-0 gap-4 *:max-w-96">
+        <AppointmentGrid>
           <ArrayMap dataset={columns}>
             {(col) => {
               switch (col.id) {
                 case "available":
-                  return <ColumnAppointmentAvailable key={col.id} />;
+                  return (
+                    <ColumnAppointmentAvailable
+                      key={col.id}
+                      appointments={agenda!.availables}
+                    />
+                  );
                 case "cancelled":
-                  return <ColumnAppointmentCancelled key={col.id} />;
+                  return (
+                    <ColumnAppointmentCancelled
+                      key={col.id}
+                      appointments={agenda!.cancelled}
+                    />
+                  );
                 case "confirmed":
-                  return <ColumnAppointmentConfirmed key={col.id} />;
+                  return (
+                    <ColumnAppointmentConfirmed
+                      key={col.id}
+                      appointments={agenda!.confirmed}
+                    />
+                  );
                 case "to-confirm":
-                  return <ColumnAppointmentToBeConfirm key={col.id} />;
+                  return (
+                    <ColumnAppointmentToBeConfirm
+                      key={col.id}
+                      appointments={agenda!.toConfirm}
+                    />
+                  );
                 default:
                   return null;
               }
             }}
           </ArrayMap>
-        </Box>
+        </AppointmentGrid>
       </SortableContext>
     </DndContext>
   );

@@ -1,5 +1,5 @@
 import { cn } from "@/config";
-import { AgendaColumns } from "../../domain";
+import { AgendaColumns } from "../../domain/types";
 
 const HASH_COLORS: Record<
   Props["type"],

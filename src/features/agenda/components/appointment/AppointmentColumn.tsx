@@ -12,16 +12,17 @@ import {
   HASH_COLUMN_TITLE,
   HASH_COLUMNS_STYLES,
 } from "../../utils/constants.util";
-import type { AgendaColumns } from "../../domain";
+import type { AgendaColumns } from "../../domain/types";
+import AppointmentEntity from "../../domain/appointment.entity";
 
-type Props = {
+export type AppointmentColumnProps = {
   children(item: any, idx: number): React.ReactNode;
-  appointments: any[];
+  appointments: AppointmentEntity[];
   className?: string;
   id: AgendaColumns;
 };
 
-const AppointmentColumn: React.FC<Props> = ({
+const AppointmentColumn: React.FC<AppointmentColumnProps> = ({
   appointments,
   className,
   children,

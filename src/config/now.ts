@@ -9,9 +9,13 @@ export class Now {
   }
 
   public format(date: Date, format: Format = "dd-mm-yyyy") {
-    return this.config("es", {
+    const output = this.config("es-CL", {
       ...(DATE_FORMATS[format] as any),
     }).format(date);
+
+    if (format === "yyyy-mm-dd") return date.toISOString().split("T")[0];
+
+    return output;
   }
 
   public valueOf(): Date {
@@ -24,6 +28,7 @@ export class Now {
 }
 
 const DATE_FORMATS = {
+  "yyyy-mm-dd": { year: "numeric", month: "2-digit", day: "2-digit" },
   day_complete: { weekday: "short", day: "numeric" },
   month_year: { month: "long", year: "numeric" },
   "dd-of-mmmm-of-yyyy": { dateStyle: "long" },

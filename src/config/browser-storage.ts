@@ -1,4 +1,4 @@
-type StorageType = "local-storage" | "session-storage";
+export type StorageType = "local-storage" | "session-storage";
 
 export class BrowserStorage {
   constructor(

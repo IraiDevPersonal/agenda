@@ -1,10 +1,12 @@
-import AppointmentColumn from "./AppointmentColumn";
+import AppointmentColumn, { AppointmentColumnProps } from "./AppointmentColumn";
 import CardAvailableAppointment from "./CardAppointmentAvailable";
 
-const ColumnAppointmentAvailable = () => {
+type Props = Pick<AppointmentColumnProps, "appointments">;
+
+const ColumnAppointmentAvailable: React.FC<Props> = ({ appointments }) => {
   return (
-    <AppointmentColumn id="available" appointments={[1, 2, 3]}>
-      {() => <CardAvailableAppointment />}
+    <AppointmentColumn id="available" appointments={appointments}>
+      {(appointment) => <CardAvailableAppointment appointment={appointment} />}
     </AppointmentColumn>
   );
 };

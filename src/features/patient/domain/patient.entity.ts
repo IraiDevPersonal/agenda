@@ -19,19 +19,19 @@ const patientSchema = z.object({
     .email({ message: "Formato incorrecto" }),
 });
 
-type Init = z.infer<typeof patientSchema>;
+type PatientModel = z.infer<typeof patientSchema>;
 
 export class PatientEntity {
-  public id: Init["id"];
-  public uid: Init["uid"];
-  public rut: Init["rut"];
-  public names: Init["names"];
-  public email: Init["email"];
-  public phone: Init["phone"];
-  public address: Init["address"];
-  public last_names: Init["last_names"];
+  public id: PatientModel["id"];
+  public uid: PatientModel["uid"];
+  public rut: PatientModel["rut"];
+  public names: PatientModel["names"];
+  public email: PatientModel["email"];
+  public phone: PatientModel["phone"];
+  public address: PatientModel["address"];
+  public last_names: PatientModel["last_names"];
 
-  private constructor(init: Init) {
+  private constructor(init: PatientModel) {
     this.id = init.id;
     this.uid = init.uid;
     this.rut = init.rut;
@@ -46,10 +46,10 @@ export class PatientEntity {
     return patientSchema;
   }
 
-  static fromObject(object: Record<string, any>) {
+  static fromObject(entry: Record<string, any>) {
     try {
-      const schema = patientSchema.parse(object);
-      return new PatientEntity(schema);
+      const patient = patientSchema.parse(entry);
+      return new PatientEntity(patient);
     } catch (error) {
       throw new Error((error as Error).message);
     }

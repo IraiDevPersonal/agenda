@@ -3,13 +3,7 @@ import { DragEndEvent } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 import { useState } from "react";
 import { AgendaColumns } from "../domain";
-
-const AGENDA_COLUMNS: { id: AgendaColumns }[] = [
-  { id: "confirmed" },
-  { id: "to-confirm" },
-  { id: "available" },
-  { id: "cancelled" },
-];
+import { AGENDA_COLUMNS } from "../utils/constants.util";
 
 const storage = new BrowserStorage("agenda_user_columns_order");
 

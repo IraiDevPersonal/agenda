@@ -45,3 +45,10 @@ export const HASH_COLUMN_TITLE: Record<AgendaColumns, string> = {
   cancelled: "Canceladas",
   confirmed: "Confirmadas",
 };
+
+export const AGENDA_COLUMNS: { id: AgendaColumns }[] = [
+  { id: "confirmed" },
+  { id: "to-confirm" },
+  { id: "available" },
+  { id: "cancelled" },
+];
