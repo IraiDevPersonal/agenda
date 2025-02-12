@@ -7,9 +7,9 @@ type ButtonProps = DayButtonProps;
 
 const AgendaCalendarDayButton: React.FC<ButtonProps> = (props) => {
   const {
-    children,
-    day: { date },
     modifiers: { selected = false },
+    day: { date },
+    children,
   } = props;
   return (
     <button

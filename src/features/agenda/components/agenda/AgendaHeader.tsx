@@ -20,7 +20,10 @@ const AgendaHeader = () => {
           customLabel: "Profesional: Sin selección",
         })}
       />
-      <InputSearch className="w-80 first" placeholder="Buscar paciente..." />
+      <InputSearch
+        className="w-80 first"
+        placeholder="Buscar por Rut paciente..."
+      />
       {/* <Input
         className="w-max"
         type="date"

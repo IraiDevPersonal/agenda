@@ -11,7 +11,7 @@ const CURRENT_DATE = new Date()
 const MyDayHeader = () => {
   return (
     <Header title="Mi Día">
-      <InputSearch className="w-80" placeholder="Buscar paciente..." />
+      <InputSearch className="w-80" placeholder="Buscar por Rut paciente..." />
       <Input className="w-max" type="date" defaultValue={CURRENT_DATE} />
     </Header>
   );

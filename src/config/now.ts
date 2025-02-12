@@ -1,7 +1,7 @@
 type IntlFormatOptions = Intl.DateTimeFormatOptions;
 type Format = keyof typeof DATE_FORMATS;
 
-export default class Now {
+export class Now {
   public currentDate: Date;
 
   constructor(date?: Date) {

@@ -10,8 +10,7 @@ import ColumnAppointmentConfirmed from "./ColumnAppointmentConfirmed";
 import ColumnAppointmentToBeConfirm from "./ColumnAppointmentToBeConfirm";
 import { createOptions } from "@/features/_core/utils/create-options.util";
 import { APPOINTMENT_OPTIONS } from "../../utils/constants.util";
-import { ROUTES, type SelectChangeEvHandler } from "@/config";
-import Now from "@/config/now";
+import { Now, ROUTES, type SelectChangeEvHandler } from "@/config";
 import type { AgendaColumns } from "../../domain";
 
 type Props = {
