@@ -1,3 +1,4 @@
+import { toArray } from "@/features/_core/utils/to-array.util";
 import AppointmentEntity from "./appointment.entity";
 
 type AgendaModel = {
@@ -20,14 +21,12 @@ export default class AgendaEntity {
     this.toConfirm = init.toConfirm;
   }
 
-  static fromObject(
-    entry: Record<keyof AgendaModel, any>
-  ): Record<keyof AgendaModel, AppointmentEntity> {
-    return {
-      availables: entry.availables.map(AppointmentEntity.fromObject),
-      cancelled: entry.cancelled.map(AppointmentEntity.fromObject),
-      confirmed: entry.confirmed.map(AppointmentEntity.fromObject),
-      toConfirm: entry.toConfirm.map(AppointmentEntity.fromObject),
-    };
+  static appointmentsAdapter(entry: Record<string, any>) {
+    return new AgendaEntity({
+      availables: toArray(entry.availables).map(AppointmentEntity.appointmentAdapter),
+      cancelled: toArray(entry.cancelled).map(AppointmentEntity.appointmentAdapter),
+      confirmed: toArray(entry.confirmed).map(AppointmentEntity.appointmentAdapter),
+      toConfirm: toArray(entry.toConfirm).map(AppointmentEntity.appointmentAdapter),
+    });
   }
 }

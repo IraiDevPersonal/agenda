@@ -1,12 +1,8 @@
 import { Suspense } from "react";
 import Main from "@/features/_core/components/ui/Main";
-import Appointments from "../components/appointment/Appoinments";
-import MyDayHeader from "../components/my-day/MyDayHeader";
-import ViewProfessionalDataContext from "../context/ViewProfessionalDataContext";
+import AppointmentsPresenter from "../components/appointment/AppoinmentsPresenter";
 import AppointmentFallback from "../components/appointment/AppointmentFallback";
-import AgendaService from "../services/agenda.service";
-
-const agenda = new AgendaService();
+import MyDayHeader from "../components/my-day/MyDayHeader";
 
 const MyDayPage = () => {
   return (
@@ -15,11 +11,10 @@ const MyDayPage = () => {
 
       <Main>
         <MyDayHeader />
-        <ViewProfessionalDataContext>
-          <Suspense fallback={<AppointmentFallback />}>
-            <Appointments getAppointments={agenda.getAppointments()} />
-          </Suspense>
-        </ViewProfessionalDataContext>
+
+        <Suspense fallback={<AppointmentFallback />}>
+          <AppointmentsPresenter />
+        </Suspense>
       </Main>
     </>
   );

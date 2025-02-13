@@ -1,18 +1,16 @@
-import { z } from "zod";
+import { toArray } from "@/features/_core/utils/to-array.util";
 
-const appointmentSchema = z.object({
-  uid: z.string(),
-  date: z.date(),
-  time_from: z.string(),
-  time_to: z.string(),
-  patient_name: z.string(),
-  patient_rut: z.string(),
-  patient_phone: z.string(),
-  professional_name: z.string(),
-  professions: z.string().array(),
-});
-
-type AppointmentModel = z.infer<typeof appointmentSchema>;
+type AppointmentModel = {
+  uid: string;
+  date: string;
+  time_from: string;
+  time_to: string;
+  patient_name: string;
+  patient_rut: string;
+  patient_phone: string;
+  professional_name: string;
+  professions: string[];
+};
 
 export default class AppointmentEntity {
   public uid: AppointmentModel["uid"];
@@ -37,12 +35,59 @@ export default class AppointmentEntity {
     this.professions = init.professions;
   }
 
-  static fromObject(entry: Record<string, any>) {
-    try {
-      const appointment = appointmentSchema.parse(entry);
-      return new AppointmentEntity(appointment);
-    } catch (error) {
-      throw new Error((error as Error).message);
-    }
+  static appointmentAdapter(entry: Record<string, any>) {
+    const item = {
+      uid: entry["uid"] ?? "",
+      date: entry["date"] ?? "-- -- ----",
+      time_from: entry["time_from"] ?? "--",
+      time_to: entry["time_to"] ?? "--",
+      patient_name: entry["patient_name"] ?? "Paciente sin nombre...",
+      patient_rut: entry["patient_rut"] ?? "--",
+      patient_phone: entry["patient_phone"] ?? "--",
+      professional_name: entry["professional_name"] ?? "Profesional sin nombre...",
+      professions: toArray(entry["professions"]).map((value) => `${value ?? "--"}`),
+    };
+    return new AppointmentEntity(item);
   }
 }
+
+// static appointmetAdapter(entry: Record<string, any>) {
+//   const output: Record<string, any> = {};
+
+//   for (const [key, value] of Object.entries(entry)) {
+//     if (key in appointmentSchema.shape) {
+//       const schema =
+//         appointmentSchema.shape[key as keyof typeof appointmentSchema.shape];
+//       const result = schema.safeParse(value);
+//       if (Array.isArray(value)) {
+//         output[key] = result.success ? value : ["--"];
+//       }
+//       output[key] = result.success ? value : "--";
+//     } else {
+//       output[key] = "--";
+//     }
+//   }
+
+//   return new AppointmentEntity(output as AppointmentModel);
+// }
+
+// static adapter(entry: Record<string, any>) {
+//   try {
+//     const appointment = appointmentSchema.parse(entry);
+//     return new AppointmentEntity(appointment);
+//   } catch (error) {
+//     // throw new Error((error as Error).message);
+//     console.log((error as Error).message);
+//     return new AppointmentEntity({
+//       uid: "--",
+//       date: "--",
+//       time_from: "--",
+//       time_to: "--",
+//       patient_name: "--",
+//       patient_rut: "--",
+//       patient_phone: "--",
+//       professional_name: "--",
+//       professions: ["--"],
+//     });
+//   }
+// }

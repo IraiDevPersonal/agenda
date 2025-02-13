@@ -8,9 +8,9 @@ const MyDayHeader = () => {
     <Header title="Mi Día">
       <AgendaFilterPatientByRut />
       <Input
-        type="date"
-        className="w-max"
         defaultValue={new Now().format(new Date(), "yyyy-mm-dd")}
+        className="w-max"
+        type="date"
       />
     </Header>
   );
