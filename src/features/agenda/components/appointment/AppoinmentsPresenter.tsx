@@ -18,7 +18,7 @@ const AppointmentsPresenter = () => {
   return (
     <DndContext onDragEnd={handleDragEnd}>
       <SortableContext items={columns}>
-        <ViewProfessionalDataContext showProfesionalData>
+        <ViewProfessionalDataContext>
           <Suspense fallback={<AppointmentFallback />}>
             <AppointmentGrid>
               <Appointments

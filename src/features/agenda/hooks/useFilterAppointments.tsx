@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useLayoutEffect } from "react";
 import { create } from "zustand";
 import useSyncSearchParams from "@/features/_core/hooks/useSyncSearchParams";
 import SearchParams from "@/config/search-params";
@@ -30,6 +30,11 @@ export function useSyncAppointmentFilters() {
   window.addEventListener("popstate", () => {
     syncFilters();
   });
+
+  useLayoutEffect(() => {
+    // TODO: reset de filtros al cambiar de paginas
+    syncFilters();
+  }, [syncFilters]);
 }
 
 type Store = {

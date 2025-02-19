@@ -1,7 +1,6 @@
 import Main from "@/features/_core/components/ui/Main";
 import AgendaAppointmentSelector from "../components/agenda/AgendaAppointmentSelector";
 import AgendaHeader from "../components/agenda/AgendaHeader";
-import ViewProfessionalDataContext from "../context/ViewProfessionalDataContext";
 
 const AgendaPage = () => {
   return (
@@ -10,9 +9,7 @@ const AgendaPage = () => {
 
       <Main>
         <AgendaHeader />
-        <ViewProfessionalDataContext showProfesionalData>
-          <AgendaAppointmentSelector />
-        </ViewProfessionalDataContext>
+        <AgendaAppointmentSelector />
       </Main>
     </>
   );

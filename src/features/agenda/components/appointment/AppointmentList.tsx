@@ -8,10 +8,10 @@ import ColumnAppointmentAvailable from "./ColumnAppointmentAvailable";
 import ColumnAppointmentCancelled from "./ColumnAppointmentCancelled";
 import ColumnAppointmentConfirmed from "./ColumnAppointmentConfirmed";
 import ColumnAppointmentToBeConfirm from "./ColumnAppointmentToBeConfirm";
+import ViewProfessionalDataContext from "../../context/ViewProfessionalDataContext";
 import { createOptions } from "@/features/_core/utils/create-options.util";
 import { APPOINTMENT_OPTIONS } from "../../utils/constants.util";
 import Now from "@/config/now";
-import ROUTES from "@/config/routes";
 import type { AgendaColumns } from "../../domain/types";
 import type { SelectChangeEvHandler } from "@/config/types";
 
@@ -19,24 +19,27 @@ type Props = {
   date: Date;
 };
 
+const now = new Now();
+
 const AppointmentList: React.FC<Props> = ({ date }) => {
   const navigate = useNavigate();
   const [appointmentFilter, setAppointmentFilter] = useState(
     APPOINTMENT_OPTIONS[0].value,
   );
+
   const handleFilterAppointment: SelectChangeEvHandler = (e) => {
     const value = e.target.value as AgendaColumns;
     setAppointmentFilter(value);
   };
   const handleNavigateToMyDay = () => {
-    navigate(ROUTES.ROOT);
+    navigate(`detalle?date=${now.format(date, "yyyy-mm-dd")}`);
   };
 
   return (
     <div className="w-full pt-4 pe-2 space-y-4">
       <div className="flex items-center gap-4">
         <Text type="subtitle" className="mr-auto">
-          {new Now().format(date, "dd-of-mmmm-of-yyyy")}
+          {now.format(date, "dd-of-mmmm-of-yyyy")}
         </Text>
         <Select
           value={appointmentFilter}
@@ -66,11 +69,13 @@ const List: React.FC<{ appointmentFilter: AgendaColumns | "all" }> = ({
   };
 
   return (
-    <div className="h-[calc(100vh-9.5rem)] overflow-y-auto scrollbar-styles scrollbar-thumb-transparent space-y-4">
-      {isVisible("available") && <ColumnAppointmentAvailable appointments={[]} />}
-      {isVisible("to-confirm") && <ColumnAppointmentToBeConfirm appointments={[]} />}
-      {isVisible("confirmed") && <ColumnAppointmentConfirmed appointments={[]} />}
-      {isVisible("cancelled") && <ColumnAppointmentCancelled appointments={[]} />}
-    </div>
+    <ViewProfessionalDataContext showProfesionalData>
+      <div className="h-[calc(100vh-9.5rem)] overflow-y-auto scrollbar-styles scrollbar-thumb-transparent space-y-4">
+        {isVisible("available") && <ColumnAppointmentAvailable appointments={[]} />}
+        {isVisible("to-confirm") && <ColumnAppointmentToBeConfirm appointments={[]} />}
+        {isVisible("confirmed") && <ColumnAppointmentConfirmed appointments={[]} />}
+        {isVisible("cancelled") && <ColumnAppointmentCancelled appointments={[]} />}
+      </div>
+    </ViewProfessionalDataContext>
   );
 };
