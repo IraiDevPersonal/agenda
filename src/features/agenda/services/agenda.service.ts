@@ -5,6 +5,7 @@ import SearchParams from "@/config/search-params";
 export type GetAppointmentsReturn = Promise<[error?: string, appointmets?: AgendaEntity]>;
 
 export type GetAppointmentsFilters = {
+  profession_id: string;
   patient_rut: string;
   date: string;
 };
