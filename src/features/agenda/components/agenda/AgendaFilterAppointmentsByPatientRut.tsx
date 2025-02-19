@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
-import { prettifyRut } from "react-rut-formatter";
+import { useCallback, useRef, useState } from "react";
+import { checkRut, prettifyRut } from "react-rut-formatter";
 import InputSearch from "@/features/_core/components/ui/inputs/InputSearch";
 import useFilterAppointments from "../../hooks/useFilterAppointments";
-import { GetAppointmentsFilters } from "../../services/agenda.service";
+import type { GetAppointmentsFilters } from "../../services/agenda.service";
 import type { InputChangeEvHandler } from "@/config/types";
 
 type Props = {
@@ -10,33 +10,42 @@ type Props = {
 };
 
 const AgendaFilterAppointmentsByPatientRut: React.FC<Props> = ({ defaultValue = "" }) => {
-  const { appointmentsFilters, onFilterAppointments } = useFilterAppointments();
+  const { onFilterAppointments } = useFilterAppointments();
   const [patientRut, setPatientRut] =
     useState<GetAppointmentsFilters["patient_rut"]>(defaultValue);
+  const shouldSearch = useRef<boolean>(false);
 
   const handleChange: InputChangeEvHandler = (e) => {
     const value = e.target.value;
     setPatientRut(value);
+    shouldSearch.current = true;
   };
 
   const handleSearch = useCallback(
     (value: string) => () => {
-      const fromatedRut = prettifyRut(value);
-      onFilterAppointments({ patient_rut: fromatedRut });
-      setPatientRut(fromatedRut);
-    },
-    [onFilterAppointments],
-  );
+      const formatedRut = prettifyRut(value);
 
-  useEffect(() => {
-    setPatientRut(appointmentsFilters.patient_rut ?? "");
-  }, [appointmentsFilters.patient_rut]);
+      if (!shouldSearch.current) return;
+
+      shouldSearch.current = false;
+
+      if (!checkRut(formatedRut) && formatedRut !== "") {
+        alert("rut invalido");
+        return;
+      }
+
+      onFilterAppointments({ patient_rut: formatedRut });
+      setPatientRut(formatedRut);
+    },
+    [onFilterAppointments, shouldSearch],
+  );
 
   return (
     <>
       <InputSearch
         placeholder="Buscar por Rut paciente..."
         onSearch={handleSearch(patientRut)}
+        onBlur={handleSearch(patientRut)}
         onChange={handleChange}
         value={patientRut}
         className="w-60"

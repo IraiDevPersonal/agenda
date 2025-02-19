@@ -1,3 +1,4 @@
+import React from "react";
 import IconInfo from "@/features/_core/components/icons/IconInfo";
 import IconLocation from "@/features/_core/components/icons/IconLocation";
 import IconPhone from "@/features/_core/components/icons/IconPhone";
@@ -7,7 +8,7 @@ import Popover from "@/features/_core/components/ui/Popover";
 import Text from "@/features/_core/components/ui/Text";
 import TextItem from "@/features/_core/components/ui/TextItem";
 
-const PopoverBonoFonasa = () => {
+const PopoverBonoFonasa = React.memo(() => {
   return (
     <Popover>
       <Button asChild>
@@ -23,14 +24,10 @@ const PopoverBonoFonasa = () => {
           </Text>
           <ul className="px-3">
             <li className="space-y-1.5">
-              <TextItem label="Nombre">
-                Ignacio Rodrigo Arriagada Iriarte
-              </TextItem>
+              <TextItem label="Nombre">Ignacio Rodrigo Arriagada Iriarte</TextItem>
               <TextItem label="Rut">19.050.844-7</TextItem>
               <TextItem label="Codigo prestación 1º sesión">0902001</TextItem>
-              <TextItem label="Codigo prestación siguientes sesiones">
-                0902002
-              </TextItem>
+              <TextItem label="Codigo prestación siguientes sesiones">0902002</TextItem>
             </li>
           </ul>
         </div>
@@ -62,6 +59,6 @@ const PopoverBonoFonasa = () => {
       </Popover.Content>
     </Popover>
   );
-};
+});
 
 export default PopoverBonoFonasa;
