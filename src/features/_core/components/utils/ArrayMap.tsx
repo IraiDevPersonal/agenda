@@ -1,5 +1,5 @@
 import React from "react";
-import type { HTMLTags } from "@/config";
+import type { HTMLTags } from "@/config/types";
 
 type Props<T> = {
   as?: HTMLTags | React.ExoticComponent<{ children?: React.ReactNode }>;
@@ -8,12 +8,7 @@ type Props<T> = {
   dataset: T[];
 };
 
-const ArrayMap = <T,>({
-  dataset,
-  children,
-  emptyContent,
-  as: Comp = "li",
-}: Props<T>) => {
+const ArrayMap = <T,>({ dataset, children, emptyContent, as: Comp = "li" }: Props<T>) => {
   return (
     <>
       {dataset.length === 0 && <Comp>{emptyContent ?? "No hay items..."}</Comp>}

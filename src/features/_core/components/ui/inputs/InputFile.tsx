@@ -2,7 +2,7 @@ import { useId } from "react";
 import FieldRootWrapper from "../FieldRootWrapper";
 import Label from "../Label";
 import Input, { InputProps } from "./Input";
-import { cn } from "@/config";
+import cn from "@/config/tailwind-merge";
 
 export type Props = {
   label?: React.ReactNode;
@@ -12,20 +12,12 @@ export type Props = {
   }>;
 } & Omit<InputProps, "value" | "type">;
 
-const InputFile: React.FC<Props> = ({
-  classNames,
-  className,
-  label,
-  ...props
-}) => {
+const InputFile: React.FC<Props> = ({ classNames, className, label, ...props }) => {
   const id = useId();
   return (
     <FieldRootWrapper className={className}>
       {label && (
-        <Label
-          className={cn("block", classNames?.label)}
-          htmlFor={props.id ?? id}
-        >
+        <Label className={cn("block", classNames?.label)} htmlFor={props.id ?? id}>
           {label}
         </Label>
       )}

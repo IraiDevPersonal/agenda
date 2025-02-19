@@ -1,4 +1,4 @@
-import { cn } from "@/config";
+import cn from "@/config/tailwind-merge";
 
 type Props = {
   className?: string;
@@ -7,10 +7,7 @@ type Props = {
 
 const Main: React.FC<Props> = ({ className, ...props }) => {
   return (
-    <main
-      className={cn("w-full h-screen overflow-auto pb-4", className)}
-      {...props}
-    />
+    <main className={cn("w-full h-screen overflow-auto pb-4", className)} {...props} />
   );
 };
 

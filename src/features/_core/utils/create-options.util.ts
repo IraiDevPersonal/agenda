@@ -1,4 +1,4 @@
-import type { Option } from "@/config";
+import type { Option } from "@/config/types";
 
 type CreateOptionProps = {
   options: Option[];
@@ -8,7 +8,7 @@ type CreateOptionProps = {
 
 export function createOptions(
   { options, customLabel, customValue }: CreateOptionProps,
-  shouldContainEmptyOption: boolean = false
+  shouldContainEmptyOption: boolean = false,
 ) {
   const emptyOption: Option = {
     label: customLabel ?? "Sin selección",

@@ -1,10 +1,10 @@
-import { cn } from "@/config/tailwind-merge";
 import * as React from "react";
 import { DayPicker } from "react-day-picker";
 import { es } from "react-day-picker/locale";
 import IconChevronLeft from "../icons/IconChevronLeft";
 import IconChevronRight from "../icons/IconChevronRight";
 import { buttonVariants } from "./Button";
+import cn from "@/config/tailwind-merge";
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
@@ -18,10 +18,8 @@ const Calendar: React.FC<CalendarProps> = ({
   const defaultClassNames = {
     months: "relative flex flex-col sm:flex-row gap-4",
     month: "w-full",
-    month_caption:
-      "relative mx-10 mb-1 flex h-9 items-center justify-center z-20",
-    caption_label:
-      "text-lg font-semibold first-letter:uppercase w-40 text-center",
+    month_caption: "relative mx-10 mb-1 flex h-9 items-center justify-center z-20",
+    caption_label: "text-lg font-semibold first-letter:uppercase w-40 text-center",
     nav: "absolute top-0 flex w-full gap-40 justify-center z-30",
     button_previous: cn(buttonVariants({ variant: "text", size: "icon" })),
     button_next: cn(buttonVariants({ variant: "text", size: "icon" })),
@@ -40,18 +38,18 @@ const Calendar: React.FC<CalendarProps> = ({
   };
 
   const mergedClassNames: typeof defaultClassNames = Object.keys(
-    defaultClassNames
+    defaultClassNames,
   ).reduce(
     (acc, key) => ({
       ...acc,
       [key]: classNames?.[key as keyof typeof classNames]
         ? cn(
             defaultClassNames[key as keyof typeof defaultClassNames],
-            classNames[key as keyof typeof classNames]
+            classNames[key as keyof typeof classNames],
           )
         : defaultClassNames[key as keyof typeof defaultClassNames],
     }),
-    {} as typeof defaultClassNames
+    {} as typeof defaultClassNames,
   );
 
   const defaultComponents = {

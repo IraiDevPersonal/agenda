@@ -1,19 +1,16 @@
 import { useMemo } from "react";
 import { useSortable } from "@dnd-kit/sortable";
-import { useDialog } from "@/features/_core/hooks";
+import useDialog from "@/features/_core/hooks/useDialog";
 import { CSS } from "@dnd-kit/utilities";
 import Box from "@/features/_core/components/ui/Box";
 import DialogAppointmentAvailable from "./DialogAppointmentAvailable";
 import DialogAppointmentCancelled from "./DialogAppointmentCancelled";
 import DialogAppointmentConfirmed from "./DialogAppointmentConfirmed";
 import DialogAppointmentToConfirm from "./DialogAppointmentToConfirm";
-import { cn } from "@/config/tailwind-merge";
-import {
-  HASH_COLUMN_TITLE,
-  HASH_COLUMNS_STYLES,
-} from "../../utils/constants.util";
-import type { AgendaColumns } from "../../domain/types";
+import cn from "@/config/tailwind-merge";
+import { HASH_COLUMN_TITLE, HASH_COLUMNS_STYLES } from "../../utils/constants.util";
 import AppointmentEntity from "../../domain/appointment.entity";
+import type { AgendaColumns } from "../../domain/types";
 
 export type AppointmentColumnProps = {
   children(item: any, idx: number): React.ReactNode;
@@ -29,8 +26,9 @@ const AppointmentColumn: React.FC<AppointmentColumnProps> = ({
   id,
 }) => {
   const [isOpen, onToggleOpen] = useDialog();
-  const { attributes, listeners, setNodeRef, transform, transition, items } =
-    useSortable({ id });
+  const { attributes, listeners, setNodeRef, transform, transition, items } = useSortable(
+    { id },
+  );
   const style = useMemo(() => {
     return {
       transform: CSS.Transform.toString(transform),
@@ -48,7 +46,7 @@ const AppointmentColumn: React.FC<AppointmentColumnProps> = ({
         "w-full p-0 rounded-2xl border overflow-hidden",
         hasItems ? "h-[90vh]" : "pb-4",
         HASH_COLUMNS_STYLES[id].wrapper,
-        className
+        className,
       )}
     >
       <div
@@ -56,7 +54,7 @@ const AppointmentColumn: React.FC<AppointmentColumnProps> = ({
         {...listeners}
         className={cn(
           "px-4 py-2.5 transition-colors duration-300 flex justify-between items-center cursor-default",
-          hasItems && HASH_COLUMNS_STYLES[id].header
+          hasItems && HASH_COLUMNS_STYLES[id].header,
         )}
       >
         <h3 className="text-lg font-bold">
@@ -67,7 +65,7 @@ const AppointmentColumn: React.FC<AppointmentColumnProps> = ({
         className={cn(
           "px-4 pt-2 space-y-2 scrollbar-styles",
           hasItems && "h-[calc(100%-65px)] overflow-y-auto",
-          HASH_COLUMNS_STYLES[id].body
+          HASH_COLUMNS_STYLES[id].body,
         )}
       >
         {appointments.map((item, idx) => (

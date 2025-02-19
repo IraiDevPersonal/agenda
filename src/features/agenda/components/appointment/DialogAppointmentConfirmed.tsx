@@ -1,4 +1,3 @@
-import { Option, DialogHandlerProps } from "@/config";
 import { createOptions } from "@/features/_core/utils/create-options.util";
 import { useViewProfessionalData } from "../../context/ViewProfessionalDataContext";
 import Dialog from "@/features/_core/components/ui/dialog/Dialog";
@@ -9,6 +8,7 @@ import Professional from "../shared/Professional";
 import Patient from "../shared/Patient";
 import Button from "@/features/_core/components/ui/Button";
 import IconSave from "@/features/_core/components/icons/IconSave";
+import type { Option, DialogHandlerProps } from "@/config/types";
 
 const STATUS: Option[] = [
   { label: "Estado: Atendido", value: "1" },
@@ -40,8 +40,7 @@ const DialogAppointmentConfirmed: React.FC<Props> = ({ isOpen, onClose }) => {
           })}
         />
         <Text type="text" className="mt-2">
-          "Mantenga el estado de seguimiento de asistencia del paciente
-          actualizado"
+          "Mantenga el estado de seguimiento de asistencia del paciente actualizado"
         </Text>
         {showProfesionalData && <Professional />}
         <Patient />

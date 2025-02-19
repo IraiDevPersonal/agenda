@@ -1,15 +1,10 @@
-import { cn } from "@/config";
+import cn from "@/config/tailwind-merge";
 
 export type InputProps = React.ComponentProps<"input"> & {
   ref?: React.Ref<HTMLInputElement>;
 };
 
-const Input: React.FC<InputProps> = ({
-  ref,
-  type,
-  className,
-  ...props
-}) => {
+const Input: React.FC<InputProps> = ({ ref, type, className, ...props }) => {
   return (
     <input
       ref={ref}
@@ -20,7 +15,7 @@ const Input: React.FC<InputProps> = ({
           "[&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none [&::-webkit-search-results-button]:appearance-none [&::-webkit-search-results-decoration]:appearance-none;",
         type === "file" &&
           "p-0 pr-3 italic text-muted-foreground text-sm file:me-3 file:h-full file:border-0 file:border-r file:border-solid file:border-black/20 file:bg-transparent file:px-3 file:font-semibold file:not-italic file:text-foreground cursor-pointer file:cursor-pointer border-black/20 hover:bg-black/[7%]",
-        className
+        className,
       )}
       {...props}
     />

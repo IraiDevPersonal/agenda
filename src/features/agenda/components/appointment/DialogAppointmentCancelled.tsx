@@ -1,10 +1,10 @@
-import { DialogHandlerProps } from "@/config";
 import { useViewProfessionalData } from "../../context/ViewProfessionalDataContext";
 import Dialog from "@/features/_core/components/ui/dialog/Dialog";
 import SelectedAppointmentDateTime from "./SelectedAppointmentDatetime";
 import Professional from "../shared/Professional";
 import Patient from "../shared/Patient";
 import PatientHistory from "../shared/PatientHistory";
+import type { DialogHandlerProps } from "@/config/types";
 
 type Props = DialogHandlerProps;
 

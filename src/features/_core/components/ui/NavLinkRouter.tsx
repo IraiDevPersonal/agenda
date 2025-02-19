@@ -1,6 +1,6 @@
-import type { CustomLinkProps } from "@/config";
 import { NavLink, NavLinkProps } from "react-router-dom";
 import { generatePath } from "../../utils/generate-path.util";
+import type { CustomLinkProps } from "@/config/types";
 
 type Props = Omit<NavLinkProps, "to"> & CustomLinkProps;
 

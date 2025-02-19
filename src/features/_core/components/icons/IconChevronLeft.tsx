@@ -1,4 +1,4 @@
-import type { IconProps } from "@/config";
+import type { IconProps } from "@/config/types";
 import { ChevronLeftIcon } from "lucide-react";
 import { DEFAULT_ICON_SIZE } from "../../utils/constants";
 

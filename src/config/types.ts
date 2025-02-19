@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 import { LucideProps } from "lucide-react";
-import { ROUTES } from "./routes";
+import ROUTES from "./routes";
 
 export type HTMLAttributes<T extends HTMLElement | unknown = HTMLElement> =
   React.HTMLAttributes<T>;
@@ -12,8 +12,8 @@ type ExtractURLParams<T extends string> =
   T extends `${string}:${infer Param}/${infer Rest}`
     ? { [K in Param | keyof ExtractURLParams<`/${Rest}`>]: string }
     : T extends `${string}:${infer Param}`
-    ? { [K in Param]: string }
-    : {};
+      ? { [K in Param]: string }
+      : {};
 
 export type CustomLinkProps = {
   query?: Record<string, any> | string;
@@ -32,9 +32,7 @@ export type DialogHandlerProps = {
 };
 
 export type SelectChangeEvHandler = React.ChangeEventHandler<HTMLSelectElement>;
-export type SelectKeyboardEventHandler =
-  React.KeyboardEventHandler<HTMLSelectElement>;
+export type SelectKeyboardEventHandler = React.KeyboardEventHandler<HTMLSelectElement>;
 export type InputChangeEvHandler = React.ChangeEventHandler<HTMLInputElement>;
-export type InputKeyboardEventHandler =
-  React.KeyboardEventHandler<HTMLInputElement>;
+export type InputKeyboardEventHandler = React.KeyboardEventHandler<HTMLInputElement>;
 export type ButtonMouseEvHandler = React.MouseEventHandler<HTMLButtonElement>;

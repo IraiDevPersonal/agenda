@@ -1,4 +1,3 @@
-import { cn, Paths } from "@/config";
 import UserAccount from "@/features/account/components/UserAccount";
 import ArrayMap from "../utils/ArrayMap";
 import NavLinkRouter from "./NavLinkRouter";
@@ -8,6 +7,8 @@ import IconAgenda from "../icons/IconAgenda";
 import IconUsers from "../icons/IconUsers";
 import IconDolar from "../icons/IconDolar";
 import IconVerticalDots from "../icons/IconVerticalDots";
+import cn from "@/config/tailwind-merge";
+import type { Paths } from "@/config/types";
 
 const PAGES: PageProps[] = [
   { label: "Mi Día", icon: <IconMyDay />, route: "/" },
@@ -58,7 +59,7 @@ const ActiveNavLink: React.FC<PageProps> = ({ icon, label, route }) => {
           "px-3 py-2.5 flex gap-4 items-center rounded-2xl font-medium",
           "[&_figure]:hover:scale-125",
           "transition-all duration-300",
-          isActive ? "bg-primary text-white" : "hover:bg-accent"
+          isActive ? "bg-primary text-white" : "hover:bg-accent",
         )
       }
     >

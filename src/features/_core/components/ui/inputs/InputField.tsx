@@ -5,7 +5,7 @@ import FieldRootWrapper from "../FieldRootWrapper";
 import Label from "../Label";
 import InputWrapper from "./InputWrapper";
 import InputContentWrapper from "./InputContentWrapper";
-import { cn } from "@/config";
+import cn from "@/config/tailwind-merge";
 
 export type InputFieldProps = {
   startContent?: React.ReactNode;
@@ -37,33 +37,22 @@ const InputField: React.FC<InputFieldProps> = ({
   return (
     <FieldRootWrapper className={className}>
       {label && (
-        <Label
-          className={cn("block", classNames?.label)}
-          htmlFor={props.id ?? id}
-        >
+        <Label className={cn("block", classNames?.label)} htmlFor={props.id ?? id}>
           {label}
         </Label>
       )}
 
       <InputWrapper className={classNames?.wrapper}>
-        <InputContentWrapper
-          className={cn("start-0 ps-2", classNames?.startContent)}
-        >
+        <InputContentWrapper className={cn("start-0 ps-2", classNames?.startContent)}>
           {startContent}
         </InputContentWrapper>
         <Input id={id} className={classNames?.input} {...props} />
-        <InputContentWrapper
-          className={cn("end-0 pe-2", classNames?.endContent)}
-        >
+        <InputContentWrapper className={cn("end-0 pe-2", classNames?.endContent)}>
           {endContent}
         </InputContentWrapper>
       </InputWrapper>
 
-      <HelperText
-        error={error}
-        message={message}
-        className={classNames?.helper}
-      />
+      <HelperText error={error} message={message} className={classNames?.helper} />
     </FieldRootWrapper>
   );
 };

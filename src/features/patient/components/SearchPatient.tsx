@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
-import { PatientEntity } from "../domain/patient.entity";
-import { DUMMY_PATIENT } from "../utils/constants.util";
-import { InputKeyboardEventHandler } from "@/config";
 import FieldRootWrapper from "@/features/_core/components/ui/FieldRootWrapper";
 import InputSearch from "@/features/_core/components/ui/inputs/InputSearch";
 import Label from "@/features/_core/components/ui/Label";
 import RadioGroup from "@/features/_core/components/ui/RadioGroup";
+import { PatientEntity } from "../domain/patient.entity";
+import { DUMMY_PATIENT } from "../utils/constants.util";
+import type { InputKeyboardEventHandler } from "@/config/types";
 
 const FILTER_ITEMS = [
   { label: "Rut paciente", showName: "rut", id: "rut" },

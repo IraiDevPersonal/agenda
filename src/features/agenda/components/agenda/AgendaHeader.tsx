@@ -1,6 +1,6 @@
 import Select from "@/features/_core/components/ui/selects/Select";
 import Header from "../shared/Header";
-import AgendaFilterPatientByRut from "./AgendaFilterPatientByRut";
+import AgendaFilterAppointmentsByPatientRut from "./AgendaFilterAppointmentsByPatientRut";
 import { createOptions } from "@/features/_core/utils/create-options.util";
 
 const AgendaHeader = () => {
@@ -20,7 +20,7 @@ const AgendaHeader = () => {
           customLabel: "Profesional: Sin selección",
         })}
       />
-      <AgendaFilterPatientByRut />
+      <AgendaFilterAppointmentsByPatientRut defaultValue="" />
     </Header>
   );
 };

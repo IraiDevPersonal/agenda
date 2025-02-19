@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
 import { prettifyRut } from "react-rut-formatter";
-import { PatientEntity } from "../domain/patient.entity";
-import { DUMMY_PATIENT } from "../utils/constants.util";
-import { InputChangeEvHandler, InputKeyboardEventHandler } from "@/config";
 import FieldRootWrapper from "@/features/_core/components/ui/FieldRootWrapper";
 import InputContentWrapper from "@/features/_core/components/ui/inputs/InputContentWrapper";
 import InputSearch from "@/features/_core/components/ui/inputs/InputSearch";
+import { PatientEntity } from "../domain/patient.entity";
+import { DUMMY_PATIENT } from "../utils/constants.util";
+import type { InputChangeEvHandler, InputKeyboardEventHandler } from "@/config/types";
 
 type Props = {
   getPatient(patient: PatientEntity | null): void;

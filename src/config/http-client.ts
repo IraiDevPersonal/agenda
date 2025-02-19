@@ -1,12 +1,12 @@
 import axios, { AxiosInstance, CreateAxiosDefaults } from "axios";
-import { BrowserStorage } from "./browser-storage";
+import BrowserStorage from "./browser-storage";
 
 type CreateReturn = AxiosInstance & {
   getErrorMessage: (error: unknown) => string;
   withAuthorizationToken: () => void;
 };
 
-export class HttpClient {
+export default class HttpClient {
   constructor(private readonly storage: BrowserStorage) {}
 
   public create(config?: CreateAxiosDefaults) {

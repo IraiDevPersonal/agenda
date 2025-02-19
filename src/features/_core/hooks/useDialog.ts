@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function useDialog(initialIsOpen: boolean = false) {
+export default function useDialog(initialIsOpen: boolean = false) {
   const [isOpen, setIsOpen] = useState(initialIsOpen);
 
   const toggleOpen = () => {

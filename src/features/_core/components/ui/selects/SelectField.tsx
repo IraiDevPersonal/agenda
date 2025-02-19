@@ -3,7 +3,7 @@ import FieldRootWrapper from "../FieldRootWrapper";
 import Select, { SelectProps } from "./Select";
 import HelperText, { HelperTextProps } from "../HelperText";
 import Label from "../Label";
-import { cn } from "@/config";
+import cn from "@/config/tailwind-merge";
 
 type Props = {
   label?: React.ReactNode;
@@ -28,21 +28,14 @@ const SelectField: React.FC<Props> = ({
   return (
     <FieldRootWrapper className={className}>
       {label && (
-        <Label
-          className={cn("block", classNames?.label)}
-          htmlFor={props.id ?? id}
-        >
+        <Label className={cn("block", classNames?.label)} htmlFor={props.id ?? id}>
           {label}
         </Label>
       )}
 
       <Select {...props} />
 
-      <HelperText
-        error={error}
-        message={message}
-        className={classNames?.helper}
-      />
+      <HelperText error={error} message={message} className={classNames?.helper} />
     </FieldRootWrapper>
   );
 };

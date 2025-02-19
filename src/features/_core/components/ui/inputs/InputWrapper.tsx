@@ -1,4 +1,4 @@
-import { cn } from "@/config";
+import cn from "@/config/tailwind-merge";
 
 type Props = { className?: string; children: React.ReactNode };
 

@@ -24,7 +24,7 @@ type ControllerOptions<T extends object> = RegisterOptions<T, Path<T>> & {
 
 export type UseFormControllerHandler<T extends object> = (
   name: Path<T>,
-  options: ControllerOptions<T>
+  options: ControllerOptions<T>,
 ) => UseFormController;
 
 type HandleChangeHandler = React.ChangeEventHandler<
@@ -35,16 +35,14 @@ type Props<T extends object> = Omit<UseFormProps<T>, "resolver"> & {
   validationSchema?: ZodType<T>;
 };
 
-export function useForm<T extends object>({
+export default function useForm<T extends object>({
   validationSchema,
   ...props
 }: Props<T>) {
-  const { watch, setValue, formState, register, handleSubmit } = useFormLibrary(
-    {
-      ...props,
-      resolver: validationSchema ? zodResolver(validationSchema) : undefined,
-    }
-  );
+  const { watch, setValue, formState, register, handleSubmit } = useFormLibrary({
+    ...props,
+    resolver: validationSchema ? zodResolver(validationSchema) : undefined,
+  });
 
   const controller: UseFormControllerHandler<T> = useCallback(
     (name, options) => {
@@ -56,7 +54,7 @@ export function useForm<T extends object>({
         value: formatValue ? formatValue(watch(name)) : undefined,
       };
     },
-    [register, watch, formState.errors]
+    [register, watch, formState.errors],
   );
 
   const handleChange: HandleChangeHandler = useCallback(
@@ -65,7 +63,7 @@ export function useForm<T extends object>({
       const name = e.target.name as Path<T>;
       setValue(name, value, options);
     },
-    [setValue]
+    [setValue],
   );
 
   return {

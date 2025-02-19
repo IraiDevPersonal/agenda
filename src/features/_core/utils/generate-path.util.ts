@@ -1,10 +1,10 @@
-import { CustomLinkProps } from "@/config";
+import type { CustomLinkProps } from "@/config/types";
 
 export function generatePath({ to, params, query }: CustomLinkProps) {
   const path: string = to.replace(/:([^/]+)/g, (_, key) => {
     if (!params || !(key in params)) {
       throw new Error(
-        `falta el param: "${key}" en la prop "params (object)", para la ruta: "${to} en el componente LinkRoute/NavLinkRoute"`
+        `falta el param: "${key}" en la prop "params (object)", para la ruta: "${to} en el componente LinkRoute/NavLinkRoute"`,
       );
     }
     return (params as any)[key];

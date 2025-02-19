@@ -1,6 +1,6 @@
 import { v4 } from "uuid";
 
-export class Uid {
+export default class Uid {
   public static generate() {
     return v4();
   }

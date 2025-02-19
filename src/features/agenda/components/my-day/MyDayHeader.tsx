@@ -1,16 +1,18 @@
-import { Now } from "@/config";
-import Input from "@/features/_core/components/ui/inputs/Input";
-import AgendaFilterPatientByRut from "../agenda/AgendaFilterPatientByRut";
+import AgendaFilterAppointmentByDate from "../agenda/AgendaFilterAppointmentByDate";
+import AgendaFilterAppointmentsByPatientRut from "../agenda/AgendaFilterAppointmentsByPatientRut";
 import Header from "../shared/Header";
+import useFilterAppointments from "../../hooks/useFilterAppointments";
 
 const MyDayHeader = () => {
+  const { appointmentsFilters } = useFilterAppointments();
   return (
     <Header title="Mi Día">
-      <AgendaFilterPatientByRut />
-      <Input
-        defaultValue={new Now().format(new Date(), "yyyy-mm-dd")}
-        className="w-max"
-        type="date"
+      <AgendaFilterAppointmentsByPatientRut
+        defaultValue={appointmentsFilters.patient_rut}
+      />
+      <AgendaFilterAppointmentByDate
+        key={appointmentsFilters.date}
+        defaultValue={appointmentsFilters.date}
       />
     </Header>
   );

@@ -1,8 +1,8 @@
-import { cn } from "@/config";
 import InputField from "@/features/_core/components/ui/inputs/InputField";
-import { UseFormControllerHandler } from "@/features/_core/hooks";
 import { prettifyRut } from "react-rut-formatter";
 import { PatientEntity } from "../domain/patient.entity";
+import cn from "@/config/tailwind-merge";
+import type { UseFormControllerHandler } from "@/features/_core/hooks/useForm";
 
 type Props = {
   controller: UseFormControllerHandler<PatientEntity>;

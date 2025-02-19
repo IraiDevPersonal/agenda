@@ -1,6 +1,6 @@
-import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import * as React from "react";
-import { cn } from "@/config";
+import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import cn from "@/config/tailwind-merge";
 
 type RadioGroupProps = {
   ref?: React.Ref<HTMLDivElement>;
@@ -23,7 +23,7 @@ function RadioGroup({
         "gap-2",
         !orientation && "grid grid-cols-3",
         orientation === "vertical" ? "flex flex-col" : "flex",
-        className
+        className,
       )}
       {...props}
       ref={ref}
@@ -31,17 +31,13 @@ function RadioGroup({
   );
 }
 
-const RadioGroupItem: React.FC<RadioGroupItemProps> = ({
-  className,
-  ref,
-  ...props
-}) => {
+const RadioGroupItem: React.FC<RadioGroupItemProps> = ({ className, ref, ...props }) => {
   return (
     <RadioGroupPrimitive.Item
       ref={ref}
       className={cn(
         "aspect-square size-4 rounded-full border border-input shadow-sm shadow-black/5 outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
-        className
+        className,
       )}
       {...props}
     >

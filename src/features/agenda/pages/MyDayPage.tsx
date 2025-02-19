@@ -1,20 +1,17 @@
-import { Suspense } from "react";
 import Main from "@/features/_core/components/ui/Main";
 import AppointmentsPresenter from "../components/appointment/AppoinmentsPresenter";
-import AppointmentFallback from "../components/appointment/AppointmentFallback";
 import MyDayHeader from "../components/my-day/MyDayHeader";
+import { useSyncAppointmentFilters } from "../hooks/useFilterAppointments";
 
 const MyDayPage = () => {
+  useSyncAppointmentFilters();
   return (
     <>
       <title>Agenda | Mi Día</title>
 
       <Main>
         <MyDayHeader />
-
-        <Suspense fallback={<AppointmentFallback />}>
-          <AppointmentsPresenter />
-        </Suspense>
+        <AppointmentsPresenter />
       </Main>
     </>
   );

@@ -1,4 +1,4 @@
-import { cn } from "@/config";
+import cn from "@/config/tailwind-merge";
 
 export type HelperTextProps = Partial<{
   className: string;
@@ -6,11 +6,7 @@ export type HelperTextProps = Partial<{
   error: string;
 }>;
 
-const HelperText: React.FC<HelperTextProps> = ({
-  error,
-  message,
-  className,
-}) => {
+const HelperText: React.FC<HelperTextProps> = ({ error, message, className }) => {
   return (
     <>
       {(message || error) && (

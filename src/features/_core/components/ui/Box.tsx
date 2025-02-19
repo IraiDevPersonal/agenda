@@ -1,6 +1,6 @@
-import type { HTMLAttributes, HTMLTags } from "@/config";
 import CreateElement from "../utils/CreateElement";
-import { cn } from "@/config";
+import cn from "@/config/tailwind-merge";
+import type { HTMLAttributes, HTMLTags } from "@/config/types";
 
 type Props<T extends HTMLElement | unknown = HTMLElement> = {
   shouldUseDefaultStyles?: boolean;

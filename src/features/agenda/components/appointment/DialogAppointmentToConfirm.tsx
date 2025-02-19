@@ -1,4 +1,3 @@
-import { DialogHandlerProps } from "@/config";
 import { useState } from "react";
 import { useViewProfessionalData } from "../../context/ViewProfessionalDataContext";
 import Dialog from "@/features/_core/components/ui/dialog/Dialog";
@@ -11,6 +10,7 @@ import PatientHistory from "../shared/PatientHistory";
 import Button from "@/features/_core/components/ui/Button";
 import IconDislike from "@/features/_core/components/icons/IconDislike";
 import IconLike from "@/features/_core/components/icons/IconLike";
+import type { DialogHandlerProps } from "@/config/types";
 
 type Props = DialogHandlerProps;
 

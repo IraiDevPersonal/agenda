@@ -1,19 +1,19 @@
 import { Suspense } from "react";
 import { DndContext } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
-import { useSortableAppointments } from "../../hooks";
 import ViewProfessionalDataContext from "../../context/ViewProfessionalDataContext";
 import AgendaService from "../../services/agenda.service";
 import AppointmentFallback from "./AppointmentFallback";
 import AppointmentGrid from "./AppointmentGrid";
 import Appointments from "./Appointments";
-import { useSearchParams } from "react-router-dom";
+import useSortableAppointments from "../../hooks/useSortableAppointments";
+import useFilterAppointments from "../../hooks/useFilterAppointments";
 
 const agenda = new AgendaService();
 
 const AppointmentsPresenter = () => {
   const { columns, handleDragEnd } = useSortableAppointments();
-  const [query] = useSearchParams();
+  const { appointmentsFilters } = useFilterAppointments();
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
@@ -23,10 +23,7 @@ const AppointmentsPresenter = () => {
             <AppointmentGrid>
               <Appointments
                 columns={columns}
-                getAppointments={agenda.getAppointments({
-                  patient_rut: query.get("patient_rut"),
-                  date: query.get("date"),
-                })}
+                getAppointments={agenda.getAppointments(appointmentsFilters)}
               />
             </AppointmentGrid>
           </Suspense>

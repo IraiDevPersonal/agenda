@@ -1,7 +1,7 @@
 import Avatar from "@/features/_core/components/ui/Avatar";
-import { AgendaColumns } from "../../domain/types";
 import Card from "../shared/Card";
 import AppointmentEntity from "../../domain/appointment.entity";
+import type { AgendaColumns } from "../../domain/types";
 
 const HASH_COLORS: Record<AgendaColumns, string> = {
   "to-confirm": "bg-amber-100 text-amber-600",
@@ -17,14 +17,10 @@ type Props = {
 };
 
 const CardAppointment: React.FC<Props> = ({ appointment, ...props }) => {
-  const { patient_name, patient_rut, patient_phone, time_from, time_to } =
-    appointment;
+  const { patient_name, patient_rut, patient_phone, time_from, time_to } = appointment;
   return (
     <Card {...props}>
-      <Avatar
-        alt="Paciente 1"
-        classNames={{ fallback: HASH_COLORS[props.id] }}
-      />
+      <Avatar alt="Paciente 1" classNames={{ fallback: HASH_COLORS[props.id] }} />
       <div className="w-full">
         <h5 className="font-bold">{patient_name}</h5>
         <span className="block">{patient_rut}</span>

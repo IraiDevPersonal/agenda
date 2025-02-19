@@ -1,5 +1,5 @@
-import type { Option } from "@/config";
-import type { AgendaColumns } from "../domain";
+import type { AgendaColumns } from "../domain/types";
+import type { Option } from "@/config/types";
 
 export const PAYMENT_METHODS: Option[] = [
   { label: "Fonasa", value: "fonasa" },

@@ -1,19 +1,21 @@
 import { agendaApi } from "@/config/apis/agenda-api";
 import AgendaEntity from "../domain/agenda.entity";
-import { objectToURLSearchParams } from "@/features/_core/utils/object-to-url-search-params.util";
+import SearchParams from "@/config/search-params";
 
 export type GetAppointmentsReturn = Promise<[error?: string, appointmets?: AgendaEntity]>;
 
 export type GetAppointmentsFilters = {
-  patient_rut: string | null;
-  date: string | null;
+  patient_rut: string;
+  date: string;
 };
 
 export default class AgendaService {
-  public async getAppointments(filters?: GetAppointmentsFilters): GetAppointmentsReturn {
+  public async getAppointments(
+    filters?: Partial<GetAppointmentsFilters>,
+  ): GetAppointmentsReturn {
     try {
-      const searchParams = objectToURLSearchParams(filters);
-      const { data } = await agendaApi.get(`/agenda?${searchParams}`);
+      const query = SearchParams.toString(filters);
+      const { data } = await agendaApi.get(`/agenda?${query}`);
       return [undefined, AgendaEntity.appointmentsAdapter(data)];
     } catch (error) {
       const errorMessage = agendaApi.getErrorMessage(error);

@@ -1,5 +1,5 @@
 import { createContext, use, useMemo, useState } from "react";
-import { useForm } from "@/features/_core/hooks";
+import useForm from "@/features/_core/hooks/useForm";
 import { createOptions } from "@/features/_core/utils/create-options.util";
 import { PatientEntity } from "@/features/patient/domain/patient.entity";
 import Dialog from "@/features/_core/components/ui/dialog/Dialog";
@@ -14,7 +14,7 @@ import IconSearch from "@/features/_core/components/icons/IconSearch";
 import IconPlus from "@/features/_core/components/icons/IconPlus";
 import IconSave from "@/features/_core/components/icons/IconSave";
 import { PAYMENT_METHODS } from "../../utils/constants.util";
-import type { DialogHandlerProps, SelectChangeEvHandler } from "@/config";
+import type { DialogHandlerProps, SelectChangeEvHandler } from "@/config/types";
 
 type Props = DialogHandlerProps;
 type ContextProps = {
@@ -26,16 +26,13 @@ type ContextProps = {
 const Context = createContext<ContextProps | undefined>(undefined);
 
 const DialogAppointmentAvailable: React.FC<Props> = ({ onClose, isOpen }) => {
-  const [component, setComponent] =
-    useState<ContextProps["component"]>("search");
+  const [component, setComponent] = useState<ContextProps["component"]>("search");
 
   const value: ContextProps = useMemo(() => {
     return {
       component,
       onToggleComponent: () => {
-        setComponent((prevValue) =>
-          prevValue === "create" ? "search" : "create"
-        );
+        setComponent((prevValue) => (prevValue === "create" ? "search" : "create"));
       },
       resetComponent: () => {
         setComponent("search");
@@ -57,10 +54,7 @@ type FormPatientProps = {
   withAutofocus?: boolean;
 };
 
-const FormPatient: React.FC<FormPatientProps> = ({
-  initialValues,
-  withAutofocus,
-}) => {
+const FormPatient: React.FC<FormPatientProps> = ({ initialValues, withAutofocus }) => {
   const { controller, handleSubmit } = useForm({
     defaultValues: initialValues,
     validationSchema: PatientEntity.getValidationSchema(),
@@ -71,25 +65,16 @@ const FormPatient: React.FC<FormPatientProps> = ({
   };
 
   return (
-    <form
-      onSubmit={handleSubmit((values) =>
-        alert(JSON.stringify(values, null, 2))
-      )}
-    >
+    <form onSubmit={handleSubmit((values) => alert(JSON.stringify(values, null, 2)))}>
       <SelectField
-        error={
-          paymentMethod ? undefined : 'Debe seleccionar una "Forma de pago"'
-        }
+        error={paymentMethod ? undefined : 'Debe seleccionar una "Forma de pago"'}
         options={createOptions({ options: PAYMENT_METHODS }, true)}
         onChange={handleChangePaymentMethod}
         value={paymentMethod}
         label="Forma de pago"
         className="mb-2"
       />
-      <FormFieldsPatient
-        withAutofocus={withAutofocus}
-        controller={controller}
-      />
+      <FormFieldsPatient withAutofocus={withAutofocus} controller={controller} />
       <DialogActions disableSaveButton={!paymentMethod} />
     </form>
   );
@@ -151,17 +136,12 @@ const CreatePatient = () => {
 const DialogActions: React.FC<{ disableSaveButton?: boolean }> = ({
   disableSaveButton = false,
 }) => {
-  const { component, resetComponent, onToggleComponent } =
-    useComponentContext();
+  const { component, resetComponent, onToggleComponent } = useComponentContext();
   return (
     <Dialog.Footer className="mt-6">
       {({ onClose }) => (
         <>
-          <Button
-            variant="info"
-            className="mr-auto"
-            onClick={onToggleComponent}
-          >
+          <Button variant="info" className="mr-auto" onClick={onToggleComponent}>
             {component === "create" ? "Buscar paciente" : "Registrar paciente"}
             {component === "create" ? <IconSearch /> : <IconPlus />}
           </Button>

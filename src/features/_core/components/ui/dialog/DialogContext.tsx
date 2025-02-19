@@ -1,5 +1,5 @@
-import { DialogHandlerProps } from "@/config";
 import { createContext, use } from "react";
+import type { DialogHandlerProps } from "@/config/types";
 
 type ContextProps = DialogHandlerProps;
 
@@ -16,9 +16,7 @@ const DialogContext: React.FC<Props> = ({ children, ...props }) => {
 export const useDialogContext = () => {
   const context = use(Context);
   if (!context) {
-    throw new Error(
-      "useDialogContext solo puede usarse dentro de: DialogContext"
-    );
+    throw new Error("useDialogContext solo puede usarse dentro de: DialogContext");
   }
   return context;
 };
