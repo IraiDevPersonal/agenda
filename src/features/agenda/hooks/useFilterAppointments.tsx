@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect } from "react";
+import { useCallback, useEffect, useLayoutEffect } from "react";
 import { create } from "zustand";
 import useSyncSearchParams from "@/features/_core/hooks/useSyncSearchParams";
 import SearchParams from "@/config/search-params";
@@ -27,9 +27,17 @@ export default function useFilterAppointments() {
 export function useSyncAppointmentFilters() {
   const syncFilters = useFilterAppointmentsStore((s) => s.syncAppointmentFilters);
 
-  window.addEventListener("popstate", () => {
-    syncFilters();
-  });
+  useEffect(() => {
+    const handlePopState = () => {
+      syncFilters();
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [syncFilters]);
 
   useLayoutEffect(() => {
     // TODO: reset de filtros al cambiar de paginas

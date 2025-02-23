@@ -1,23 +1,21 @@
-import { use } from "react";
+import { Suspense } from "react";
 import ArrayMap from "@/features/_core/components/utils/ArrayMap";
+import AgendaService from "../../services/agenda.service";
 import ColumnAppointmentAvailable from "./ColumnAppointmentAvailable";
 import ColumnAppointmentCancelled from "./ColumnAppointmentCancelled";
 import ColumnAppointmentConfirmed from "./ColumnAppointmentConfirmed";
 import ColumnAppointmentToBeConfirm from "./ColumnAppointmentToBeConfirm";
+import useFilterAppointments from "../../hooks/useFilterAppointments";
 import type { AgendaColumns } from "../../domain/types";
-import type { GetAppointmentsReturn } from "../../services/agenda.service";
 
 type Props = {
   columns: { id: AgendaColumns }[];
-  getAppointments: GetAppointmentsReturn;
 };
 
-const Appointments: React.FC<Props> = ({ columns, getAppointments }) => {
-  const [error, appointments] = use(getAppointments);
+const agenda = new AgendaService();
 
-  if (error) {
-    return <p className="text-center text-3xl text-red-500">{error}</p>;
-  }
+const Appointments: React.FC<Props> = ({ columns }) => {
+  const { appointmentsFilters } = useFilterAppointments();
 
   return (
     <>
@@ -26,31 +24,47 @@ const Appointments: React.FC<Props> = ({ columns, getAppointments }) => {
           switch (col.id) {
             case "available":
               return (
-                <ColumnAppointmentAvailable
-                  key={col.id}
-                  appointments={appointments!.availables}
-                />
+                <Suspense key={col.id} fallback="Cargando...">
+                  <ColumnAppointmentAvailable
+                    getAppointments={agenda.getAppointmentsByType(
+                      "AVAILABLE",
+                      appointmentsFilters,
+                    )}
+                  />
+                </Suspense>
               );
             case "cancelled":
               return (
-                <ColumnAppointmentCancelled
-                  key={col.id}
-                  appointments={appointments!.cancelled}
-                />
+                <Suspense key={col.id} fallback="Cargando...">
+                  <ColumnAppointmentCancelled
+                    getAppointments={agenda.getAppointmentsByType(
+                      "CANCELLED",
+                      appointmentsFilters,
+                    )}
+                  />
+                </Suspense>
               );
             case "confirmed":
               return (
-                <ColumnAppointmentConfirmed
-                  key={col.id}
-                  appointments={appointments!.confirmed}
-                />
+                <Suspense key={col.id} fallback="Cargando...">
+                  <ColumnAppointmentConfirmed
+                    getAppointments={agenda.getAppointmentsByType(
+                      "CONFIRMED",
+                      appointmentsFilters,
+                    )}
+                  />
+                </Suspense>
               );
             case "to-confirm":
               return (
-                <ColumnAppointmentToBeConfirm
-                  key={col.id}
-                  appointments={appointments!.toConfirm}
-                />
+                <Suspense key={col.id} fallback="Cargando...">
+                  <ColumnAppointmentToBeConfirm
+                    getAppointments={agenda.getAppointmentsByType(
+                      "TO_CONFIRM",
+                      appointmentsFilters,
+                    )}
+                  />
+                </Suspense>
               );
             default:
               return null;

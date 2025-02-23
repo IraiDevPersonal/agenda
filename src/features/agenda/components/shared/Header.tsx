@@ -1,5 +1,8 @@
 import Box from "@/features/_core/components/ui/Box";
 import PopoverBonoFonasa from "./PopoverBonoFonasa";
+import Button from "@/features/_core/components/ui/Button";
+import useFilterAppointments from "../../hooks/useFilterAppointments";
+import IconReload from "@/features/_core/components/icons/IconReload";
 import cn from "@/config/tailwind-merge";
 
 type Props = React.PropsWithChildren<{
@@ -11,6 +14,7 @@ type Props = React.PropsWithChildren<{
 }>;
 
 const Header: React.FC<Props> = ({ classNames, className, children, title }) => {
+  const { onFilterAppointments } = useFilterAppointments();
   return (
     <Box
       as="header"
@@ -21,6 +25,14 @@ const Header: React.FC<Props> = ({ classNames, className, children, title }) => 
     >
       <h1 className={cn("mr-auto text-2xl font-bold", classNames?.title)}>{title}</h1>
       {children}
+      <Button
+        size="icon"
+        title="Actualizar"
+        variant="secondary"
+        onClick={() => onFilterAppointments({})}
+      >
+        <IconReload />
+      </Button>
       <PopoverBonoFonasa />
     </Box>
   );

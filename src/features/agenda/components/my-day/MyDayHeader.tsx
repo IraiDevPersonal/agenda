@@ -8,6 +8,7 @@ const MyDayHeader = () => {
   return (
     <Header title="Mi Día">
       <AgendaFilterAppointmentsByPatientRut
+        key={appointmentsFilters.patient_rut}
         defaultValue={appointmentsFilters.patient_rut}
       />
       <AgendaFilterAppointmentByDate
