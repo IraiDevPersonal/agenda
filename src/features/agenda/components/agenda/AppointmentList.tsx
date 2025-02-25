@@ -4,10 +4,10 @@ import IconChevronRight from "@/features/_core/components/icons/IconChevronRight
 import Button from "@/features/_core/components/ui/Button";
 import Select from "@/features/_core/components/ui/selects/Select";
 import Text from "@/features/_core/components/ui/Text";
-import ColumnAppointmentAvailable from "./ColumnAppointmentAvailable";
-import ColumnAppointmentCancelled from "./ColumnAppointmentCancelled";
-import ColumnAppointmentConfirmed from "./ColumnAppointmentConfirmed";
-import ColumnAppointmentToBeConfirm from "./ColumnAppointmentToBeConfirm";
+// import ColumnAppointmentAvailable from "../appointment/ColumnAppointmentAvailable";
+// import ColumnAppointmentCancelled from "../appointment/ColumnAppointmentCancelled";
+// import ColumnAppointmentConfirmed from "../appointment/ColumnAppointmentConfirmed";
+// import ColumnAppointmentToBeConfirm from "../appointment/ColumnAppointmentToBeConfirm";
 import ViewProfessionalDataContext from "../../context/ViewProfessionalDataContext";
 import { createOptions } from "@/features/_core/utils/create-options.util";
 import { APPOINTMENT_OPTIONS } from "../../utils/constants.util";
@@ -71,10 +71,10 @@ const List: React.FC<{ appointmentFilter: AgendaColumns | "all" }> = ({
   return (
     <ViewProfessionalDataContext showProfesionalData>
       <div className="h-[calc(100vh-9.5rem)] overflow-y-auto scrollbar-styles scrollbar-thumb-transparent space-y-4">
-        {isVisible("available") && <ColumnAppointmentAvailable appointments={[]} />}
+        {/* {isVisible("available") && <ColumnAppointmentAvailable appointments={[]} />}
         {isVisible("to-confirm") && <ColumnAppointmentToBeConfirm appointments={[]} />}
         {isVisible("confirmed") && <ColumnAppointmentConfirmed appointments={[]} />}
-        {isVisible("cancelled") && <ColumnAppointmentCancelled appointments={[]} />}
+        {isVisible("cancelled") && <ColumnAppointmentCancelled appointments={[]} />} */}
       </div>
     </ViewProfessionalDataContext>
   );

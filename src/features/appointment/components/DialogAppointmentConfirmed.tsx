@@ -1,13 +1,13 @@
-import { createOptions } from "@/features/_core/utils/create-options.util";
-import { useViewProfessionalData } from "../../context/ViewProfessionalDataContext";
+import { useShowProfessionalData } from "../context/ShowProfessionalDataContext";
 import Dialog from "@/features/_core/components/ui/dialog/Dialog";
-import SelectedAppointmentDateTime from "./SelectedAppointmentDatetime";
+import AppointmentDateTime from "./AppointmentDatetime";
 import Select from "@/features/_core/components/ui/selects/Select";
 import Text from "@/features/_core/components/ui/Text";
-import Professional from "../shared/Professional";
-import Patient from "../shared/Patient";
 import Button from "@/features/_core/components/ui/Button";
 import IconSave from "@/features/_core/components/icons/IconSave";
+import Professional from "@/features/professional/components/Professional";
+import Patient from "@/features/patient/components/Patient";
+import { createOptions } from "@/features/_core/utils/create-options.util";
 import type { Option, DialogHandlerProps } from "@/config/types";
 
 const STATUS: Option[] = [
@@ -20,7 +20,7 @@ const STATUS: Option[] = [
 type Props = DialogHandlerProps;
 
 const DialogAppointmentConfirmed: React.FC<Props> = ({ isOpen, onClose }) => {
-  const { showProfesionalData } = useViewProfessionalData();
+  const { showProfesionalData } = useShowProfessionalData();
   const handleClose = () => {
     onClose();
   };
@@ -28,7 +28,7 @@ const DialogAppointmentConfirmed: React.FC<Props> = ({ isOpen, onClose }) => {
   return (
     <Dialog isOpen={isOpen} onClose={handleClose} className="sm:max-w-[500px]">
       <Dialog.Header title="Seguimiento asistencia paciente">
-        <SelectedAppointmentDateTime type="confirmed" />
+        <AppointmentDateTime type="confirmed" />
       </Dialog.Header>
 
       <Dialog.Body className="gap-y-6">

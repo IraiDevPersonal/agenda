@@ -1,11 +1,9 @@
 import { createContext, use, useMemo, useState } from "react";
 import useForm from "@/features/_core/hooks/useForm";
-import { createOptions } from "@/features/_core/utils/create-options.util";
-import { PatientEntity } from "@/features/patient/domain/patient.entity";
 import Dialog from "@/features/_core/components/ui/dialog/Dialog";
 import SelectField from "@/features/_core/components/ui/selects/SelectField";
 import FormFieldsPatient from "@/features/patient/components/FormFieldsPatient";
-import SelectedApointmentDateTime from "./SelectedAppointmentDatetime";
+import ApointmentDateTime from "./AppointmentDatetime";
 import SearchPatientByRut from "@/features/patient/components/SearchPatientByRut";
 import Text from "@/features/_core/components/ui/Text";
 import Alert from "@/features/_core/components/ui/Alert";
@@ -13,7 +11,9 @@ import Button from "@/features/_core/components/ui/Button";
 import IconSearch from "@/features/_core/components/icons/IconSearch";
 import IconPlus from "@/features/_core/components/icons/IconPlus";
 import IconSave from "@/features/_core/components/icons/IconSave";
-import { PAYMENT_METHODS } from "../../utils/constants.util";
+import { PAYMENT_METHODS } from "../utils/constants.util";
+import { createOptions } from "@/features/_core/utils/create-options.util";
+import { PatientEntity } from "@/features/patient/domain/patient.entity";
 import type { DialogHandlerProps, SelectChangeEvHandler } from "@/config/types";
 
 type Props = DialogHandlerProps;
@@ -89,7 +89,7 @@ const SearchPatient = () => {
   return (
     <>
       <Dialog.Header title="Agendar Paciente">
-        <SelectedApointmentDateTime type="available" />
+        <ApointmentDateTime type="available" />
       </Dialog.Header>
 
       <Dialog.Body>
@@ -119,7 +119,7 @@ const CreatePatient = () => {
           content: "flex-row gap-2 *:w-1/2 items-center",
         }}
       >
-        <SelectedApointmentDateTime type="available" />
+        <ApointmentDateTime type="available" />
         <Alert
           severity="info"
           description="Al Registrar y agendar se creará al paciente y se le agendará la cita seleccionada."

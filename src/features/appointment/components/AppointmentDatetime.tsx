@@ -1,5 +1,34 @@
 import cn from "@/config/tailwind-merge";
-import type { AgendaColumns } from "../../domain/types";
+import type { AppointementTypes } from "../domain/types";
+
+type Props = {
+  type: AppointementTypes;
+  className?: string;
+};
+
+const AppointmentDateTime: React.FC<Props> = ({ className, type }) => {
+  return (
+    <div
+      className={cn(
+        "flex rounded-xl w-max overflow-hidden border divide-x h-max",
+        HASH_COLORS[type].wrapper,
+        className,
+      )}
+    >
+      <div className="p-4">
+        <h3 className="font-bold mt-4">Cita</h3>
+      </div>
+      <div className="flex flex-col w-full font-bold *:leading-tight *:block *:p-3">
+        <span className={cn("pb-1.5", HASH_COLORS[type].date)}>Fecha: 11-01-2025</span>
+        <span className={cn("pt-1.5", HASH_COLORS[type].time)}>
+          Horario: 13:00 - 13:45
+        </span>
+      </div>
+    </div>
+  );
+};
+
+export default AppointmentDateTime;
 
 const HASH_COLORS: Record<
   Props["type"],
@@ -30,32 +59,3 @@ const HASH_COLORS: Record<
     time: "bg-sky-50/85",
   },
 };
-
-type Props = {
-  type: AgendaColumns;
-  className?: string;
-};
-
-const SelectedAppointmentDateTime: React.FC<Props> = ({ className, type }) => {
-  return (
-    <div
-      className={cn(
-        "flex rounded-xl w-max overflow-hidden border divide-x h-max",
-        HASH_COLORS[type].wrapper,
-        className,
-      )}
-    >
-      <div className="p-4">
-        <h3 className="font-bold mt-4">Cita</h3>
-      </div>
-      <div className="flex flex-col w-full font-bold *:leading-tight *:block *:p-3">
-        <span className={cn("pb-1.5", HASH_COLORS[type].date)}>Fecha: 11-01-2025</span>
-        <span className={cn("pt-1.5", HASH_COLORS[type].time)}>
-          Horario: 13:00 - 13:45
-        </span>
-      </div>
-    </div>
-  );
-};
-
-export default SelectedAppointmentDateTime;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AppointmentList from "../appointment/AppointmentList";
+import AppointmentList from "./AppointmentList";
 import AgendaCalendar from "./AgendaCalendar";
 import Text from "@/features/_core/components/ui/Text";
 

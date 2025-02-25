@@ -1,21 +1,21 @@
 import { useState } from "react";
-import { useViewProfessionalData } from "../../context/ViewProfessionalDataContext";
+import { useShowProfessionalData } from "../context/ShowProfessionalDataContext";
 import Dialog from "@/features/_core/components/ui/dialog/Dialog";
-import SelectedAppointmentDateTime from "./SelectedAppointmentDatetime";
+import AppointmentDateTime from "./AppointmentDatetime";
 import Alert from "@/features/_core/components/ui/Alert";
 import InputFile from "@/features/_core/components/ui/inputs/InputFile";
-import Professional from "../shared/Professional";
-import Patient from "../shared/Patient";
-import PatientHistory from "../shared/PatientHistory";
 import Button from "@/features/_core/components/ui/Button";
 import IconDislike from "@/features/_core/components/icons/IconDislike";
 import IconLike from "@/features/_core/components/icons/IconLike";
+import Professional from "@/features/professional/components/Professional";
+import Patient from "@/features/patient/components/Patient";
+import PatientHistory from "@/features/patient/components/PatientHistory";
 import type { DialogHandlerProps } from "@/config/types";
 
 type Props = DialogHandlerProps;
 
 const DialogAppointmentToConfirm: React.FC<Props> = ({ isOpen, onClose }) => {
-  const { showProfesionalData } = useViewProfessionalData();
+  const { showProfesionalData } = useShowProfessionalData();
   const [file, setFile] = useState<File | null>(null);
   const handleClose = () => {
     setFile(null);
@@ -29,7 +29,7 @@ const DialogAppointmentToConfirm: React.FC<Props> = ({ isOpen, onClose }) => {
   return (
     <Dialog isOpen={isOpen} onClose={handleClose}>
       <Dialog.Header title="Confirmar paciente">
-        <SelectedAppointmentDateTime type="to-confirm" />
+        <AppointmentDateTime type="to-confirm" />
         <Alert
           severity="info"
           description="Profesional exige bono para confirmar paciente."

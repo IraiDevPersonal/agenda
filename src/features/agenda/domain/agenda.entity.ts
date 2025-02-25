@@ -1,5 +1,6 @@
 import { toArray } from "@/features/_core/utils/to-array.util";
 import AppointmentEntity from "./appointment.entity";
+import { AppointementTypes } from "@/features/appointment/domain/types";
 
 type AgendaModel = {
   availables: AppointmentEntity[];
@@ -28,5 +29,16 @@ export default class AgendaEntity {
       confirmed: toArray(entry.confirmed).map(AppointmentEntity.appointmentAdapter),
       toConfirm: toArray(entry.toConfirm).map(AppointmentEntity.appointmentAdapter),
     });
+  }
+
+  static appointmentViewerAdapter(
+    entry: AgendaEntity,
+  ): Record<AppointementTypes, AppointmentEntity[]> {
+    return {
+      "to-confirm": entry.toConfirm,
+      available: entry.availables,
+      cancelled: entry.cancelled,
+      confirmed: entry.confirmed,
+    };
   }
 }

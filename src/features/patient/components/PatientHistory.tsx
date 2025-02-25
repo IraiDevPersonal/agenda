@@ -1,5 +1,5 @@
 import ArrayMap from "@/features/_core/components/utils/ArrayMap";
-import DataWrapper from "./DataWrapper";
+import DataWrapper from "../../_core/components/ui/DataWrapper";
 
 const PatientHistory = () => {
   return (

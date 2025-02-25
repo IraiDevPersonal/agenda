@@ -1,17 +1,18 @@
-import { useViewProfessionalData } from "../../context/ViewProfessionalDataContext";
-import Card from "../shared/Card";
+import { useShowProfessionalData } from "../context/ShowProfessionalDataContext";
 import IconAvailable from "@/features/_core/components/icons/IconAvailable";
-import AppointmentEntity from "../../domain/appointment.entity";
+import AppointmentEntity from "../domain/appointment.entity";
+import Card from "@/features/_core/components/ui/Card";
 
 type Props = {
   appointment: AppointmentEntity;
 };
 
-const CardAvailableAppointment: React.FC<Props> = ({ appointment }) => {
+const AppointmentAvailableCard: React.FC<Props> = ({ appointment }) => {
   const { professional_name, time_to, time_from, professions } = appointment;
-  const { showProfesionalData } = useViewProfessionalData();
+  const { showProfesionalData } = useShowProfessionalData();
+
   return (
-    <Card id="available">
+    <Card className="text-emerald-700 border-emerald-100/70 bg-emerald-50 shadow-emerald-700/10 hover:bg-emerald-100">
       <div className="flex flex-col mr-auto">
         {showProfesionalData && <strong>{professional_name}</strong>}
         <span>
@@ -33,4 +34,4 @@ const CardAvailableAppointment: React.FC<Props> = ({ appointment }) => {
   );
 };
 
-export default CardAvailableAppointment;
+export default AppointmentAvailableCard;

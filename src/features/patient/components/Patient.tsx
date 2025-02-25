@@ -1,5 +1,5 @@
 import TextItem from "@/features/_core/components/ui/TextItem";
-import DataWrapper from "./DataWrapper";
+import DataWrapper from "../../_core/components/ui/DataWrapper";
 
 const Patient = () => {
   return (
