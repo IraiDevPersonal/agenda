@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Input from "@/features/_core/components/ui/inputs/Input";
-import useFilterAppointments from "../../hooks/useFilterAppointments";
+import useFilterAppointments from "../hooks/useFilterAppointments";
 import type { InputChangeEvHandler } from "@/config/types";
 
 type Props = {

@@ -1,7 +1,7 @@
-import AgendaFilterAppointmentByDate from "../agenda/AgendaFilterAppointmentByDate";
-import AgendaFilterAppointmentsByPatientRut from "../agenda/AgendaFilterAppointmentsByPatientRut";
-import Header from "../shared/Header";
-import useFilterAppointments from "../../hooks/useFilterAppointments";
+import useFilterAppointments from "../hooks/useFilterAppointments";
+import AgendaFilterAppointmentByDate from "./AgendaFilterAppointmentByDate";
+import AgendaFilterAppointmentsByPatientRut from "./AgendaFilterAppointmentsByPatientRut";
+import Header from "./Header";
 
 const MyDayHeader = () => {
   const { appointmentsFilters } = useFilterAppointments();

@@ -1,8 +1,8 @@
 import Box from "@/features/_core/components/ui/Box";
-import PopoverBonoFonasa from "./PopoverBonoFonasa";
 import Button from "@/features/_core/components/ui/Button";
-import useFilterAppointments from "../../hooks/useFilterAppointments";
+import useFilterAppointments from "../hooks/useFilterAppointments";
 import IconReload from "@/features/_core/components/icons/IconReload";
+import PopoverBonoFonasa from "./PopoverBonoFonasa";
 import cn from "@/config/tailwind-merge";
 
 type Props = React.PropsWithChildren<{

@@ -1,11 +1,7 @@
-import { Suspense } from "react";
 import { useSyncAppointmentFilters } from "../hooks/useFilterAppointments";
 import Main from "@/features/_core/components/ui/Main";
-import MyDayHeader from "../components/my-day/MyDayHeader";
+import MyDayHeader from "../components/MyDayHeader";
 import Appointments from "@/features/appointment/components/Appointments";
-import AgendaService from "../services/agenda.service";
-
-const agenda = new AgendaService();
 
 const MyDayPage = () => {
   useSyncAppointmentFilters();
@@ -15,9 +11,7 @@ const MyDayPage = () => {
 
       <Main>
         <MyDayHeader />
-        <Suspense fallback="Cargando...">
-          <Appointments getAppointments={agenda.getAppointments()} />
-        </Suspense>
+        <Appointments />
       </Main>
     </>
   );

@@ -1,4 +1,5 @@
 import useDialog from "@/features/_core/hooks/useDialog";
+import ShowProfessionalDataContext from "../context/ShowProfessionalDataContext";
 import SortableColumn from "@/features/_core/components/ui/SortableColumn";
 import ArrayMap from "@/features/_core/components/utils/ArrayMap";
 import DialogAppointmentAvailable from "./DialogAppointmentAvailable";
@@ -10,7 +11,6 @@ import AppointmentCard from "./AppointmentCard";
 import AppointmentEntity from "../domain/appointment.entity";
 import type { DialogHandlerProps } from "@/config/types";
 import type { AppointementTypes } from "../domain/types";
-import ShowProfessionalDataContext from "../context/ShowProfessionalDataContext";
 
 type Props = {
   appointments: AppointmentEntity[];
@@ -22,7 +22,7 @@ const AppointmentColumn: React.FC<Props> = ({ id, appointments }) => {
   return (
     <SortableColumn id={id} title={TITLES[id]} classNames={CLASSNAMES[id]}>
       <ShowProfessionalDataContext>
-        <ArrayMap dataset={appointments}>
+        <ArrayMap dataset={appointments} emptyContent="No hay citas...">
           {(item) => (
             <li key={item.uid} onClick={onToggleIsOpen} className="cursor-pointer">
               {id === "available" ? (

@@ -1,6 +1,6 @@
 import Calendar from "@/features/_core/components/ui/Calendar.new";
-import type { PropsSingle, WeekdayProps } from "react-day-picker";
 import cn from "@/config/tailwind-merge";
+import type { PropsSingle, WeekdayProps } from "react-day-picker";
 
 type Props = Pick<PropsSingle, "onSelect" | "selected">;
 

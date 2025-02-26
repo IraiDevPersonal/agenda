@@ -8,12 +8,12 @@ import Text from "@/features/_core/components/ui/Text";
 // import ColumnAppointmentCancelled from "../appointment/ColumnAppointmentCancelled";
 // import ColumnAppointmentConfirmed from "../appointment/ColumnAppointmentConfirmed";
 // import ColumnAppointmentToBeConfirm from "../appointment/ColumnAppointmentToBeConfirm";
-import ViewProfessionalDataContext from "../../context/ViewProfessionalDataContext";
-import { createOptions } from "@/features/_core/utils/create-options.util";
-import { APPOINTMENT_OPTIONS } from "../../utils/constants.util";
+import ViewProfessionalDataContext from "../context/ViewProfessionalDataContext";
 import Now from "@/config/now";
-import type { AgendaColumns } from "../../domain/types";
+import { createOptions } from "@/features/_core/utils/create-options.util";
+import { APPOINTMENT_OPTIONS } from "@/features/appointment/utils/constants.util";
 import type { SelectChangeEvHandler } from "@/config/types";
+import type { AppointementTypes } from "@/features/appointment/domain/types";
 
 type Props = {
   date: Date;
@@ -28,7 +28,7 @@ const AppointmentList: React.FC<Props> = ({ date }) => {
   );
 
   const handleFilterAppointment: SelectChangeEvHandler = (e) => {
-    const value = e.target.value as AgendaColumns;
+    const value = e.target.value as AppointementTypes;
     setAppointmentFilter(value);
   };
   const handleNavigateToMyDay = () => {
@@ -61,10 +61,10 @@ const AppointmentList: React.FC<Props> = ({ date }) => {
 
 export default AppointmentList;
 
-const List: React.FC<{ appointmentFilter: AgendaColumns | "all" }> = ({
+const List: React.FC<{ appointmentFilter: AppointementTypes | "all" }> = ({
   appointmentFilter,
 }) => {
-  const isVisible = (value: AgendaColumns) => {
+  const isVisible = (value: AppointementTypes) => {
     return appointmentFilter === "all" || appointmentFilter === value;
   };
 

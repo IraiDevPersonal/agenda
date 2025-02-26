@@ -14,7 +14,9 @@ const AppointmentAvailableCard: React.FC<Props> = ({ appointment }) => {
   return (
     <Card className="text-emerald-700 border-emerald-100/70 bg-emerald-50 shadow-emerald-700/10 hover:bg-emerald-100">
       <div className="flex flex-col mr-auto">
-        {showProfesionalData && <strong>{professional_name}</strong>}
+        {showProfesionalData && (
+          <h5 className="capitalize font-bold">{professional_name}</h5>
+        )}
         <span>
           Horario:{" "}
           <strong>

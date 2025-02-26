@@ -1,31 +1,35 @@
 import { useState } from "react";
+import useFilterAppointments from "../hooks/useFilterAppointments";
+import useProfessionsAsOptions from "@/features/profession/hooks/useProfessionsAsOptions";
+import useProfessionalsAsOptions from "@/features/professional/hooks/useProfessionalsAsOptions";
 import Select from "@/features/_core/components/ui/selects/Select";
-import Header from "../shared/Header";
+import Header from "./Header";
 import AgendaFilterAppointmentsByPatientRut from "./AgendaFilterAppointmentsByPatientRut";
 import AgendaFilterAppointmentByDate from "./AgendaFilterAppointmentByDate";
-import useFilterAppointments from "../../hooks/useFilterAppointments";
-import useProfessionAsOptions from "@/features/profession/hooks/useProfessionAsOptions";
 import { createOptions } from "@/features/_core/utils/create-options.util";
-import { GetAppointmentsFilters } from "../../services/agenda.service";
 import type { Option, SelectChangeEvHandler } from "@/config/types";
 
 const AgendaHeader = () => {
   const { appointmentsFilters } = useFilterAppointments();
-  const { professionOptions } = useProfessionAsOptions({ shouldLoad: true });
+  const { professionOptions, isLoading: isProffesionLoading } = useProfessionsAsOptions();
+  const { professionalOptions, isLoading: isProffesionalLoading } =
+    useProfessionalsAsOptions();
 
   return (
     <Header title="Agenda">
-      <ProfessionSelect
+      <FilterSelect
         defaultValue={appointmentsFilters.profession_id}
         key={appointmentsFilters.profession_id}
+        isLoading={isProffesionLoading}
         options={professionOptions}
+        label="Profesión"
       />
-      <Select
-        className="w-56"
-        options={createOptions({
-          options: [{ label: "Profesional: opcion 1", value: "1" }],
-          customLabel: "Profesional: Sin selección",
-        })}
+      <FilterSelect
+        defaultValue={appointmentsFilters.professional_id}
+        key={appointmentsFilters.professional_id}
+        isLoading={isProffesionalLoading}
+        options={professionalOptions}
+        label="Profesional"
       />
       <AgendaFilterAppointmentsByPatientRut
         defaultValue={appointmentsFilters.patient_rut}
@@ -41,18 +45,21 @@ const AgendaHeader = () => {
 
 export default AgendaHeader;
 
-type ProfessionSelectProps = {
+type FilterSelectProps = {
   defaultValue: string | undefined;
+  isLoading: boolean;
   options: Option[];
+  label: string;
 };
 
-const ProfessionSelect: React.FC<ProfessionSelectProps> = ({
+const FilterSelect: React.FC<FilterSelectProps> = ({
   defaultValue = "",
+  isLoading,
   options,
+  label,
 }) => {
   const { onFilterAppointments } = useFilterAppointments();
-  const [value, setValue] =
-    useState<GetAppointmentsFilters["profession_id"]>(defaultValue);
+  const [value, setValue] = useState<string>(defaultValue);
 
   const handleChange: SelectChangeEvHandler = (e) => {
     const value = e.target.value;
@@ -62,15 +69,16 @@ const ProfessionSelect: React.FC<ProfessionSelectProps> = ({
 
   return (
     <Select
+      disabled={isLoading}
       options={createOptions({
         options: options.map((opt) => ({
-          label: `Profesión: ${opt.label}`,
+          label: `${label}: ${opt.label}`,
           value: opt.value,
         })),
-        customLabel: "Profesión: Sin selección",
+        customLabel: `${label}: Sin selección`,
       })}
       onChange={handleChange}
-      className="w-56"
+      className="w-max"
       value={value}
     />
   );

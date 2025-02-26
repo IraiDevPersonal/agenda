@@ -1,20 +1,32 @@
-import { use } from "react";
-import AppointmentsDragable from "./AppointmentsDragable";
-import type { GetAppointmentsReturn } from "@/features/agenda/services/agenda.service";
+import useAppointments from "../hooks/useAppointments";
+import ArrayMap from "@/features/_core/components/utils/ArrayMap";
+import SortableAppointments from "./SortableAppointments";
+import AppointmentColumn from "./AppointmentColumn";
+import Box from "@/features/_core/components/ui/Box";
+import AgendaEntity from "@/features/agenda/domain/agenda.entity";
 
-type Props = {
-  getAppointments: GetAppointmentsReturn;
-};
+const Appointments = () => {
+  const { data, error, isError, isLoading } = useAppointments();
 
-const Appointments: React.FC<Props> = ({ getAppointments }) => {
-  const [error, agendaAppointments] = use(getAppointments);
-
-  if (error) return <p>{error}</p>;
+  if (isError) return <p>{error.message}</p>;
+  if (isLoading) return <p>Cargando...</p>;
 
   return (
-    <>
-      <AppointmentsDragable agendaAppointments={agendaAppointments!} />
-    </>
+    <Box as="div" className="flex flex-wrap gap-4 *:w-96">
+      <SortableAppointments>
+        {(columns) => (
+          <ArrayMap dataset={columns}>
+            {({ id }) => (
+              <AppointmentColumn
+                id={id}
+                key={id}
+                appointments={AgendaEntity.appointmentViewerAdapter(data!)[id]}
+              />
+            )}
+          </ArrayMap>
+        )}
+      </SortableAppointments>
+    </Box>
   );
 };
 

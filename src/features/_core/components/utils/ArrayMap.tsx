@@ -1,20 +1,29 @@
 import React from "react";
-import type { HTMLTags } from "@/config/types";
 
 type Props<T> = {
-  as?: HTMLTags | React.ExoticComponent<{ children?: React.ReactNode }>;
   children(e: T, idx: number): React.ReactNode;
-  emptyContent?: string;
+  emptyContent?: React.ReactNode;
   dataset: T[];
 };
 
-const ArrayMap = <T,>({ dataset, children, emptyContent, as: Comp = "li" }: Props<T>) => {
+const ArrayMap = <T,>({ dataset, children, emptyContent }: Props<T>) => {
   return (
     <>
-      {dataset.length === 0 && <Comp>{emptyContent ?? "No hay items..."}</Comp>}
+      {dataset.length === 0 &&
+        (emptyContent ? (
+          typeof emptyContent === "string" ? (
+            <li className={EMPTY_CONTENT_STYLES}>{emptyContent}</li>
+          ) : (
+            emptyContent
+          )
+        ) : (
+          <li className={EMPTY_CONTENT_STYLES}>No hay items...</li>
+        ))}
       {dataset.map((el, idx) => children(el, idx))}
     </>
   );
 };
 
 export default ArrayMap;
+
+const EMPTY_CONTENT_STYLES = "italic opacity-70";

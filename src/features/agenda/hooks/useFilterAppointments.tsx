@@ -3,7 +3,7 @@ import { create } from "zustand";
 import useSyncSearchParams from "@/features/_core/hooks/useSyncSearchParams";
 import SearchParams from "@/config/search-params";
 import Now from "@/config/now";
-import type { GetAppointmentsFilters } from "../services/agenda.service";
+import type { AppointmentsFilters } from "@/features/appointment/domain/types";
 
 export default function useFilterAppointments() {
   const onSync = useSyncSearchParams();
@@ -46,7 +46,7 @@ export function useSyncAppointmentFilters() {
 }
 
 type Store = {
-  filters: Partial<GetAppointmentsFilters>;
+  filters: Partial<AppointmentsFilters>;
   onFilter(props: Store["filters"]): Store["filters"];
   syncAppointmentFilters(): void;
 };

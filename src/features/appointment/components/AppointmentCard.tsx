@@ -15,7 +15,7 @@ const AppointmentCard: React.FC<Props> = ({ id, appointment }) => {
     <Card className={HASH_COLORS[id].card}>
       <Avatar alt="Paciente 1" classNames={{ fallback: HASH_COLORS[id].avatar }} />
       <div className="w-full">
-        <h5 className="font-bold">{patient_name}</h5>
+        <h5 className="font-bold capitalize">{patient_name}</h5>
         <span className="block">{patient_rut}</span>
         <div className="flex w-full gap-2">
           <span>{patient_phone}</span>

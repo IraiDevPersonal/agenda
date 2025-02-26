@@ -2,15 +2,13 @@ import { useState } from "react";
 import { arrayMove } from "@dnd-kit/sortable";
 import { DragEndEvent } from "@dnd-kit/core";
 import BrowserStorage from "@/config/browser-storage";
-import { AGENDA_COLUMNS } from "../utils/constants.util";
-import type { AgendaColumns } from "../domain/types";
+import type { AppointementTypes } from "@/features/appointment/domain/types";
 
+export type AgendaColumns = { id: AppointementTypes };
 const storage = new BrowserStorage("agenda_user_columns_order");
 
 export default function useSortableAppointments() {
-  const [columns, setColumns] = useState(
-    storage.get<{ id: AgendaColumns }[]>(AGENDA_COLUMNS),
-  );
+  const [columns, setColumns] = useState(storage.get<AgendaColumns[]>(AGENDA_COLUMNS));
 
   const handleDragEnd = (e: DragEndEvent) => {
     const { active, over } = e;
@@ -28,6 +26,13 @@ export default function useSortableAppointments() {
 
   return {
     handleDragEnd,
-    columns: columns ?? [],
+    columns: columns ?? AGENDA_COLUMNS,
   };
 }
+
+const AGENDA_COLUMNS: AgendaColumns[] = [
+  { id: "available" },
+  { id: "to-confirm" },
+  { id: "confirmed" },
+  { id: "cancelled" },
+];
