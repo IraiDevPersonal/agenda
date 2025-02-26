@@ -1,10 +1,10 @@
-import useFilterAppointments from "../hooks/useFilterAppointments";
+import useAppointmentFilters from "@/features/appointment/hooks/useAppointmentFilters";
 import AgendaFilterAppointmentByDate from "./AgendaFilterAppointmentByDate";
 import AgendaFilterAppointmentsByPatientRut from "./AgendaFilterAppointmentsByPatientRut";
 import Header from "./Header";
 
 const MyDayHeader = () => {
-  const { appointmentsFilters } = useFilterAppointments();
+  const { appointmentsFilters } = useAppointmentFilters();
   return (
     <Header title="Mi Día">
       <AgendaFilterAppointmentsByPatientRut

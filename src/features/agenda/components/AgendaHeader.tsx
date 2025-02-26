@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useFilterAppointments from "../hooks/useFilterAppointments";
+import useAppointmentFilters from "@/features/appointment/hooks/useAppointmentFilters";
 import useProfessionsAsOptions from "@/features/profession/hooks/useProfessionsAsOptions";
 import useProfessionalsAsOptions from "@/features/professional/hooks/useProfessionalsAsOptions";
 import Select from "@/features/_core/components/ui/selects/Select";
@@ -10,7 +10,7 @@ import { createOptions } from "@/features/_core/utils/create-options.util";
 import type { Option, SelectChangeEvHandler } from "@/config/types";
 
 const AgendaHeader = () => {
-  const { appointmentsFilters } = useFilterAppointments();
+  const { appointmentsFilters } = useAppointmentFilters();
   const { professionOptions, isLoading: isProffesionLoading } = useProfessionsAsOptions();
   const { professionalOptions, isLoading: isProffesionalLoading } =
     useProfessionalsAsOptions();
@@ -58,7 +58,7 @@ const FilterSelect: React.FC<FilterSelectProps> = ({
   options,
   label,
 }) => {
-  const { onFilterAppointments } = useFilterAppointments();
+  const { onFilterAppointments } = useAppointmentFilters();
   const [value, setValue] = useState<string>(defaultValue);
 
   const handleChange: SelectChangeEvHandler = (e) => {

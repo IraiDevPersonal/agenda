@@ -1,9 +1,9 @@
 import Box from "@/features/_core/components/ui/Box";
 import Button from "@/features/_core/components/ui/Button";
-import useFilterAppointments from "../hooks/useFilterAppointments";
 import IconReload from "@/features/_core/components/icons/IconReload";
 import PopoverBonoFonasa from "./PopoverBonoFonasa";
 import cn from "@/config/tailwind-merge";
+import useAppointmentFilters from "@/features/appointment/hooks/useAppointmentFilters";
 
 type Props = React.PropsWithChildren<{
   title: string;
@@ -14,7 +14,7 @@ type Props = React.PropsWithChildren<{
 }>;
 
 const Header: React.FC<Props> = ({ classNames, className, children, title }) => {
-  const { onFilterAppointments } = useFilterAppointments();
+  const { onFilterAppointments } = useAppointmentFilters();
   return (
     <Box
       as="header"

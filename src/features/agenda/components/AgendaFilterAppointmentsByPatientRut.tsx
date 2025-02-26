@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 import { checkRut, prettifyRut } from "react-rut-formatter";
+import useAppointmentFilters from "@/features/appointment/hooks/useAppointmentFilters";
 import InputSearch from "@/features/_core/components/ui/inputs/InputSearch";
-import useFilterAppointments from "../hooks/useFilterAppointments";
 import type { InputChangeEvHandler } from "@/config/types";
 import type { AppointmentsFilters } from "@/features/appointment/domain/types";
 
@@ -10,7 +10,7 @@ type Props = {
 };
 
 const AgendaFilterAppointmentsByPatientRut: React.FC<Props> = ({ defaultValue = "" }) => {
-  const { onFilterAppointments } = useFilterAppointments();
+  const { onFilterAppointments } = useAppointmentFilters();
   const [patientRut, setPatientRut] =
     useState<AppointmentsFilters["patient_rut"]>(defaultValue);
   const shouldSearch = useRef<boolean>(false);
