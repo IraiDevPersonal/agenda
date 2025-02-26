@@ -1,10 +1,8 @@
-import { useSyncAppointmentFilters } from "../hooks/useFilterAppointments";
 import Main from "@/features/_core/components/ui/Main";
 import AgendaHeader from "../components/AgendaHeader";
 import Appointments from "@/features/appointment/components/Appointments";
 
 const AgendaDayPage = () => {
-  useSyncAppointmentFilters();
   return (
     <>
       <title>Agenda</title>
