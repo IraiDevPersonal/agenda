@@ -1,14 +1,14 @@
 import { agendaApi } from "@/config/apis/agenda-api";
-import AgendaEntity from "../domain/agenda.entity";
 import SearchParams from "@/config/search-params";
-import AppointmentEntity from "../domain/appointment.entity";
 import { toArray } from "@/features/_core/utils/to-array.util";
+import AppointmentEntity from "../domain/appointment.entity";
+import AgendaEntity from "@/features/agenda/domain/agenda.entity";
 import type { AppointmentsFilters } from "@/features/appointment/domain/types";
 
 type AppointmentType = "AVAILABLE" | "CANCELLED" | "CONFIRMED" | "TO_CONFIRM";
 
-export default class AgendaService {
-  public async getAppointments(filters?: Partial<AppointmentsFilters>) {
+export default class AppointmentService {
+  public async getAgendaAppointments(filters?: Partial<AppointmentsFilters>) {
     const query = this.parseFilters(filters);
     const { data } = await agendaApi.get(`/agenda?${query}`);
     return AgendaEntity.appointmentsAdapter(data);

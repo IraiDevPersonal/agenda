@@ -1,14 +1,14 @@
 import useQuery from "@/features/_core/hooks/useQuery";
-import AgendaService from "@/features/agenda/services/agenda.service";
 import useAppointmentFilters from "./useAppointmentFilters";
+import AppointmentService from "../services/appointment.service";
 
-const agenda = new AgendaService();
+const appointmentService = new AppointmentService();
 
 export default function useAppointments() {
   const { appointmentsFilters } = useAppointmentFilters();
   const appointmentQuery = useQuery({
     queryKey: ["appointments", { ...appointmentsFilters }],
-    queryFn: () => agenda.getAppointments(appointmentsFilters),
+    queryFn: () => appointmentService.getAgendaAppointments(appointmentsFilters),
   });
 
   return appointmentQuery;

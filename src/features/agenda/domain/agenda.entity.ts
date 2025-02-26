@@ -1,6 +1,6 @@
 import { toArray } from "@/features/_core/utils/to-array.util";
-import AppointmentEntity from "./appointment.entity";
-import { AppointementTypes } from "@/features/appointment/domain/types";
+import AppointmentEntity from "@/features/appointment/domain/appointment.entity";
+import type { AppointementTypes } from "@/features/appointment/domain/types";
 
 type AgendaModel = {
   availables: AppointmentEntity[];
@@ -8,6 +8,8 @@ type AgendaModel = {
   confirmed: AppointmentEntity[];
   toConfirm: AppointmentEntity[];
 };
+
+// TODO: esto tiene que ser repensado para ver si lo saco de agenda y se deja en appointment feature
 
 export default class AgendaEntity {
   public availables: AgendaModel["availables"];
