@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect } from "react";
 import { create } from "zustand";
 import useSyncSearchParams from "@/features/_core/hooks/useSyncSearchParams";
-import Now from "@/config/now";
+import DateHelper from "@/config/date-helper";
 import SearchParams from "@/config/search-params";
 import type { AppointmentsFilters } from "../domain/types";
 
@@ -52,7 +52,7 @@ type Store = {
 };
 
 const defaultFilters = () =>
-  SearchParams.getAsObject({ date: new Now().format(new Date(), "yyyy-mm-dd") });
+  SearchParams.getAsObject({ date: DateHelper.format(new Date(), "yyyy-mm-dd") });
 
 const useStore = create<Store>((set, get) => ({
   filters: defaultFilters(),

@@ -1,14 +1,8 @@
 type IntlFormatOptions = Intl.DateTimeFormatOptions;
 type Format = keyof typeof DATE_FORMATS;
 
-export default class Now {
-  public currentDate: Date;
-
-  constructor(date?: Date) {
-    this.currentDate = date ?? new Date();
-  }
-
-  public format(date: Date, format: Format = "dd-mm-yyyy") {
+export default class DateHelper {
+  public static format(date: Date, format: Format = "dd-mm-yyyy") {
     if (format === "yyyy-mm-dd") return date.toISOString().split("T")[0];
 
     const output = this.config("es-CL", {
@@ -18,11 +12,7 @@ export default class Now {
     return output;
   }
 
-  public valueOf(): Date {
-    return this.currentDate;
-  }
-
-  private config(locale: string, options?: IntlFormatOptions) {
+  private static config(locale: string, options?: IntlFormatOptions) {
     return new Intl.DateTimeFormat(locale, options);
   }
 }

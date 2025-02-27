@@ -2,7 +2,7 @@ import useAppointmentFilters from "@/features/appointment/hooks/useAppointmentFi
 import AgendaCalendar from "../../agenda/components/AgendaCalendar";
 import Text from "@/features/_core/components/ui/Text";
 import AppointmentList from "./AppointmentList";
-import Now from "@/config/now";
+import DateHelper from "@/config/date-helper";
 
 const AppointmentPicker = () => {
   // const [date, setDate] = useState<Date>();
@@ -15,7 +15,7 @@ const AppointmentPicker = () => {
   const handleSelectDate = (date?: Date) => {
     // setDate(date);
     if (date) {
-      onFilterAppointments({ date: new Now().format(date, "yyyy-mm-dd") });
+      onFilterAppointments({ date: DateHelper.format(date, "yyyy-mm-dd") });
     }
   };
 

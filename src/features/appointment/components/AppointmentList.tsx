@@ -5,7 +5,7 @@ import IconChevronRight from "@/features/_core/components/icons/IconChevronRight
 import Button from "@/features/_core/components/ui/Button";
 import Select from "@/features/_core/components/ui/selects/Select";
 import Text from "@/features/_core/components/ui/Text";
-import Now from "@/config/now";
+import DateHelper from "@/config/date-helper";
 import { createOptions } from "@/features/_core/utils/create-options.util";
 import { APPOINTMENT_OPTIONS } from "@/features/appointment/utils/constants.util";
 import AppointmentColumn from "./AppointmentColumn";
@@ -16,22 +16,20 @@ type Props = {
   date: Date;
 };
 
-const now = new Now();
-
 const AppointmentList: React.FC<Props> = ({ date }) => {
   const navigate = useNavigate();
   const { filter, handleFilter } = useAppointmentListFilter();
   const { data } = useAppointments();
 
   const handleNavigateToMyDay = () => {
-    navigate(`detalle?date=${now.format(date, "yyyy-mm-dd")}`);
+    navigate(`detalle?date=${DateHelper.format(date, "yyyy-mm-dd")}`);
   };
 
   return (
     <div className="w-full pt-4 pe-2 space-y-4">
       <div className="flex items-center gap-4">
         <Text type="subtitle" className="mr-auto">
-          {now.format(date, "dd-of-mmmm-of-yyyy")}
+          {DateHelper.format(date, "dd-of-mmmm-of-yyyy")}
         </Text>
         <Select
           value={filter}

@@ -1,5 +1,5 @@
 import useQueryParams from "@/features/_core/hooks/useQueryParams";
-import Now from "@/config/now";
+import DateHelper from "@/config/date-helper";
 import type { AppointmentsFilters } from "../domain/types";
 
 export default function useAppointmentFilters() {
@@ -9,7 +9,7 @@ export default function useAppointmentFilters() {
       parseBooleans: true,
     },
     defaultValues: {
-      date: new Now().format(new Date(), "yyyy-mm-dd"),
+      date: DateHelper.format(new Date(), "yyyy-mm-dd"),
     },
   });
 
