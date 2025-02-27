@@ -11,6 +11,7 @@ import { createOptions } from "@/features/_core/utils/create-options.util";
 import { APPOINTMENT_OPTIONS } from "@/features/appointment/utils/constants.util";
 import AppointmentColumn from "./AppointmentColumn";
 import AgendaEntity from "@/features/agenda/domain/agenda.entity";
+import ROUTES from "@/config/routes";
 import type { AppointementTypes } from "@/features/appointment/domain/types";
 
 type Props = {
@@ -24,7 +25,7 @@ const AppointmentList: React.FC<Props> = ({ date }) => {
   const { data } = useAppointments();
 
   const handleNavigateToMyDay = () => {
-    navigate(`detalle?${appointmentFiltersAsString}`);
+    navigate(`${ROUTES.AGENDA_DETAIL}?${appointmentFiltersAsString}`);
   };
 
   return (
