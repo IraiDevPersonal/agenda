@@ -7,7 +7,7 @@ import type { SelectChangeEvHandler } from "@/config/types";
 const AgendaFilterByProfessional = () => {
   const {
     onFilterAppointments,
-    appointmentsFilters: { professional_id },
+    appointmentFilters: { professional_id = "" },
   } = useAppointmentFilters();
   const { professionalOptions, isLoading } = useProfessionalsAsOptions();
 
@@ -32,5 +32,4 @@ const AgendaFilterByProfessional = () => {
     />
   );
 };
-
 export default AgendaFilterByProfessional;

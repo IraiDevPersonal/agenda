@@ -7,7 +7,7 @@ import type { InputChangeEvHandler } from "@/config/types";
 const AgendaFilterByPatientRut = () => {
   const {
     onFilterAppointments,
-    appointmentsFilters: { patient_rut },
+    appointmentFilters: { patient_rut },
   } = useAppointmentFilters();
   const [patientRut, setPatientRut] = useState<string>(patient_rut ?? "");
   const shouldSearch = useRef<boolean>(false);

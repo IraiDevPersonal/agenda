@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import useAppointmentFilters from "../hooks/useAppointmentFilters";
 import useAppointments from "../hooks/useAppointments";
 import useAppointmentListFilter from "../hooks/useAppointmentListFilter";
 import IconChevronRight from "@/features/_core/components/icons/IconChevronRight";
@@ -19,10 +20,11 @@ type Props = {
 const AppointmentList: React.FC<Props> = ({ date }) => {
   const navigate = useNavigate();
   const { filter, handleFilter } = useAppointmentListFilter();
+  const { appointmentFiltersAsString } = useAppointmentFilters();
   const { data } = useAppointments();
 
   const handleNavigateToMyDay = () => {
-    navigate(`detalle?date=${DateHelper.format(date, "yyyy-mm-dd")}`);
+    navigate(`detalle?${appointmentFiltersAsString}`);
   };
 
   return (

@@ -1,27 +1,36 @@
-type IntlFormatOptions = Intl.DateTimeFormatOptions;
+import { format as dateFormat, setDefaultOptions, DateArg } from "date-fns";
+import { es } from "date-fns/locale";
+
+setDefaultOptions({ locale: es });
+
 type Format = keyof typeof DATE_FORMATS;
 
 export default class DateHelper {
-  public static format(date: Date, format: Format = "dd-mm-yyyy") {
-    if (format === "yyyy-mm-dd") return date.toISOString().split("T")[0];
-
-    const output = this.config("es-CL", {
-      ...(DATE_FORMATS[format] as any),
-    }).format(date);
-
-    return output;
+  public static format(date: DateArg<Date> | null, format: Format = "dd-mm-yyyy") {
+    return dateFormat(date ?? new Date(), DATE_FORMATS[format]);
   }
 
-  private static config(locale: string, options?: IntlFormatOptions) {
-    return new Intl.DateTimeFormat(locale, options);
+  public static getFullDate(value: string) {
+    if (!this.isValidDateFormat(value)) {
+      throw new Error(
+        "EL formato proporcionado no es el esperado, formato debe ser: yyyy-mm-dd",
+      );
+    }
+    const [year, month, day] = value.split("-").map(Number);
+    return new Date(year, month - 1, day);
+  }
+
+  private static isValidDateFormat(
+    value: string,
+  ): value is `${number}-${number}-${number}` {
+    return /^\d{4}-\d{2}-\d{2}$/.test(value);
   }
 }
 
 const DATE_FORMATS = {
-  "yyyy-mm-dd": { year: "numeric", month: "2-digit", day: "2-digit" },
-  day_complete: { weekday: "short", day: "numeric" },
-  month_year: { month: "long", year: "numeric" },
-  "dd-of-mmmm-of-yyyy": { dateStyle: "long" },
-  month_name: { month: "long" },
-  "dd-mm-yyyy": {},
+  "dd-of-mmmm-of-yyyy": "dd 'de' MMMM 'de' yyyy",
+  "dd-mm-yyyy": "dd-MM-yyyy",
+  "yyyy-mm-dd": "yyyy-MM-dd",
+  month_year: "MMMM yyyy",
+  month_name: "MMMM",
 };

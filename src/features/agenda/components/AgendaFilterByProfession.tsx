@@ -7,9 +7,11 @@ import type { SelectChangeEvHandler } from "@/config/types";
 const AgendaFilterByProfession = () => {
   const {
     onFilterAppointments,
-    appointmentsFilters: { profession_id },
+    appointmentFilters: { profession_id = "" },
   } = useAppointmentFilters();
   const { professionOptions, isLoading } = useProfessionsAsOptions();
+  console.log({ profession_id });
+
   const handleChange: SelectChangeEvHandler = (e) => {
     const value = e.target.value;
     onFilterAppointments({ profession_id: value });

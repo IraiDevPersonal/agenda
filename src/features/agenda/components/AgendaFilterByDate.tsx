@@ -5,7 +5,7 @@ import type { InputChangeEvHandler } from "@/config/types";
 const AgendaFilterByDate = () => {
   const {
     onFilterAppointments,
-    appointmentsFilters: { date },
+    appointmentFilters: { date },
   } = useAppointmentFilters();
 
   const handleChange: InputChangeEvHandler = (e) => {

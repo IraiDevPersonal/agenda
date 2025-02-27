@@ -14,7 +14,7 @@ export default function useAppointmentFilters() {
   });
 
   return {
-    appointmentsFilters: queryToOject,
+    appointmentFilters: queryToOject,
     onFilterAppointments: setQueryParams,
   };
 }

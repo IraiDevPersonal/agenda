@@ -8,7 +8,7 @@ import type { AppointmentsFilters } from "../domain/types";
 export default function useAppointmentFilters() {
   const onSync = useSyncSearchParams();
   const onFilter = useStore((s) => s.onFilter);
-  const appointmentsFilters = useStore((s) => s.filters);
+  const appointmentFilters = useStore((s) => s.filters);
 
   const handleFilterAppointments = useCallback(
     (filters: Store["filters"]) => {
@@ -19,8 +19,9 @@ export default function useAppointmentFilters() {
   );
 
   return {
-    appointmentsFilters,
+    appointmentFilters,
     onFilterAppointments: handleFilterAppointments,
+    appointmentFiltersAsString: SearchParams.toString(appointmentFilters),
   };
 }
 
