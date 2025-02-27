@@ -9,7 +9,7 @@ export default function useAppointments() {
   const { appointmentFilters } = useAppointmentFilters();
   const appointmentQuery = useQuery({
     queryKey: ["appointments", { ...appointmentFilters }],
-    queryFn: () => appointmentService.getAgendaAppointments(appointmentFilters),
+    queryFn: () => appointmentService.getAgenda(appointmentFilters),
     // refetchOnMount: shouldRefetchOnMount ? "always" : false,
     initialData: AgendaEntity.appointmentsAdapter({}),
   });

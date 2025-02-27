@@ -8,7 +8,7 @@ import type { AppointmentsFilters } from "@/features/appointment/domain/types";
 type AppointmentType = "AVAILABLE" | "CANCELLED" | "CONFIRMED" | "TO_CONFIRM";
 
 export default class AppointmentService {
-  public async getAgendaAppointments(filters?: Partial<AppointmentsFilters>) {
+  public async getAgenda(filters?: Partial<AppointmentsFilters>) {
     const query = this.parseFilters(filters);
     const { data } = await agendaApi.get(`/agenda?${query}`);
     return AgendaEntity.appointmentsAdapter(data);
