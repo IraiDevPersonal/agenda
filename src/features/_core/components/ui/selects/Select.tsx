@@ -70,7 +70,7 @@ export const SelectOption: React.FC<{
   value: string | number;
 }> = ({ children, value }) => {
   return (
-    <option value={value} className="capitalize">
+    <option value={value} className="capitalize" title={children?.toString()}>
       {children}
     </option>
   );

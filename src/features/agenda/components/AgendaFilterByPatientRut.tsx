@@ -3,16 +3,13 @@ import { checkRut, prettifyRut } from "react-rut-formatter";
 import useAppointmentFilters from "@/features/appointment/hooks/useAppointmentFilters";
 import InputSearch from "@/features/_core/components/ui/inputs/InputSearch";
 import type { InputChangeEvHandler } from "@/config/types";
-import type { AppointmentsFilters } from "@/features/appointment/domain/types";
 
-type Props = {
-  defaultValue: string | undefined;
-};
-
-const AgendaFilterAppointmentsByPatientRut: React.FC<Props> = ({ defaultValue = "" }) => {
-  const { onFilterAppointments } = useAppointmentFilters();
-  const [patientRut, setPatientRut] =
-    useState<AppointmentsFilters["patient_rut"]>(defaultValue);
+const AgendaFilterByPatientRut = () => {
+  const {
+    onFilterAppointments,
+    appointmentsFilters: { patient_rut },
+  } = useAppointmentFilters();
+  const [patientRut, setPatientRut] = useState<string>(patient_rut ?? "");
   const shouldSearch = useRef<boolean>(false);
 
   const handleChange: InputChangeEvHandler = (e) => {
@@ -48,10 +45,10 @@ const AgendaFilterAppointmentsByPatientRut: React.FC<Props> = ({ defaultValue = 
         onBlur={handleSearch(patientRut)}
         onChange={handleChange}
         value={patientRut}
-        className="w-60"
+        className="w-56"
       />
     </>
   );
 };
 
-export default AgendaFilterAppointmentsByPatientRut;
+export default AgendaFilterByPatientRut;

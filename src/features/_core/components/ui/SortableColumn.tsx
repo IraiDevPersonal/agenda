@@ -11,8 +11,8 @@ type Props = {
     header: string;
     body: string;
   }>;
-  id: string;
   title: string;
+  id: string;
 };
 
 const SortableColumn: React.FC<Props> = ({ classNames, children, title, id }) => {
@@ -32,7 +32,7 @@ const SortableColumn: React.FC<Props> = ({ classNames, children, title, id }) =>
       style={style}
       className={cn(
         "w-full p-0 rounded-2xl border overflow-hidden bg-accent",
-        hasItems ? "h-[90vh]" : "pb-4",
+        hasItems ? "h-[86vh]" : "pb-4",
         classNames?.wrapper,
       )}
     >
