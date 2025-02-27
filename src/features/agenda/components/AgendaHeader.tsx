@@ -7,6 +7,7 @@ import Header from "./Header";
 import AgendaFilterAppointmentsByPatientRut from "./AgendaFilterAppointmentsByPatientRut";
 import AgendaFilterAppointmentByDate from "./AgendaFilterAppointmentByDate";
 import { createOptions } from "@/features/_core/utils/create-options.util";
+import type { AppointmentsFilters } from "@/features/appointment/domain/types";
 import type { Option, SelectChangeEvHandler } from "@/config/types";
 
 const AgendaHeader = () => {
@@ -18,17 +19,19 @@ const AgendaHeader = () => {
   return (
     <Header title="Agenda">
       <FilterSelect
+        key={`profession_id_${appointmentsFilters.profession_id}`}
         defaultValue={appointmentsFilters.profession_id}
-        key={appointmentsFilters.profession_id}
         isLoading={isProffesionLoading}
         options={professionOptions}
+        filterName="profession_id"
         label="Profesión"
       />
       <FilterSelect
+        key={`professional_id_${appointmentsFilters.professional_id}`}
         defaultValue={appointmentsFilters.professional_id}
-        key={appointmentsFilters.professional_id}
         isLoading={isProffesionalLoading}
         options={professionalOptions}
+        filterName="professional_id"
         label="Profesional"
       />
       <AgendaFilterAppointmentsByPatientRut
@@ -46,6 +49,7 @@ const AgendaHeader = () => {
 export default AgendaHeader;
 
 type FilterSelectProps = {
+  filterName: keyof Pick<AppointmentsFilters, "profession_id" | "professional_id">;
   defaultValue: string | undefined;
   isLoading: boolean;
   options: Option[];
@@ -54,6 +58,7 @@ type FilterSelectProps = {
 
 const FilterSelect: React.FC<FilterSelectProps> = ({
   defaultValue = "",
+  filterName,
   isLoading,
   options,
   label,
@@ -64,7 +69,7 @@ const FilterSelect: React.FC<FilterSelectProps> = ({
   const handleChange: SelectChangeEvHandler = (e) => {
     const value = e.target.value;
     setValue(value);
-    onFilterAppointments({ profession_id: value });
+    onFilterAppointments({ [filterName]: value });
   };
 
   return (

@@ -30,7 +30,7 @@ const Header: React.FC<Props> = ({ classNames, children, title }) => {
         size="icon"
         title="Actualizar"
         variant="secondary"
-        onClick={() => onFilterAppointments({}, true)}
+        onClick={() => onFilterAppointments({})}
       >
         <IconReload />
       </Button>

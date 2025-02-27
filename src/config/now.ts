@@ -9,11 +9,11 @@ export default class Now {
   }
 
   public format(date: Date, format: Format = "dd-mm-yyyy") {
+    if (format === "yyyy-mm-dd") return date.toISOString().split("T")[0];
+
     const output = this.config("es-CL", {
       ...(DATE_FORMATS[format] as any),
     }).format(date);
-
-    if (format === "yyyy-mm-dd") return date.toISOString().split("T")[0];
 
     return output;
   }
