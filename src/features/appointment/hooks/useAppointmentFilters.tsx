@@ -1,6 +1,6 @@
 import useQueryParams from "@/features/_core/hooks/useQueryParams";
-import type { AppointmentsFilters } from "../domain/types";
 import Now from "@/config/now";
+import type { AppointmentsFilters } from "../domain/types";
 
 export default function useAppointmentFilters() {
   const { queryToOject, setQueryParams } = useQueryParams<AppointmentsFilters>({

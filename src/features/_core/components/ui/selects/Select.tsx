@@ -69,7 +69,11 @@ export const SelectOption: React.FC<{
   children: React.ReactNode;
   value: string | number;
 }> = ({ children, value }) => {
-  return <option value={value}>{children}</option>;
+  return (
+    <option value={value} className="capitalize">
+      {children}
+    </option>
+  );
 };
 
 export default Select;

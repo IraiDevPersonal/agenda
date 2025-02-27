@@ -23,8 +23,8 @@ export default function useQueryParams<
   }, [query, props?.options]);
 
   const setQueryParams = useCallback(
-    (obj: Partial<T>) => {
-      const currentQuery = createSearchParams(obj);
+    (obj: Partial<T>, refetch?: boolean) => {
+      const currentQuery = createSearchParams(obj, refetch);
       setQuery(currentQuery);
     },
     [setQuery],
@@ -37,13 +37,17 @@ export default function useQueryParams<
   };
 }
 
-function createSearchParams<T extends object>(obj: T) {
-  const currentQuery = new URLSearchParams(window.location.search);
+function createSearchParams<T extends object>(obj: T, refetch?: boolean) {
+  const search = new URLSearchParams(window.location.search);
+  const refetchCount = Number(search.get("r") ?? "0");
 
-  for (const [key, value] of Object.entries(obj)) {
-    if (value) currentQuery.set(key, value.toString());
-    else currentQuery.delete(key);
+  for (const [key, value] of Object.entries({
+    ...obj,
+    ...(refetch ? { r: refetchCount + 1 } : {}),
+  })) {
+    if (value) search.set(key, value.toString());
+    else search.delete(key);
   }
 
-  return currentQuery;
+  return search;
 }

@@ -31,8 +31,8 @@ class ProfesionAsOption {
 
   static adapter(entry: Record<string, any>) {
     const item = {
-      value: `${entry["id"] ?? 0}`,
-      label: entry["name"] ?? "Sin nombre...",
+      value: `${entry["value"] ?? 0}`,
+      label: entry["label"] ?? "Sin nombre...",
     };
 
     return new ProfesionAsOption(item);
