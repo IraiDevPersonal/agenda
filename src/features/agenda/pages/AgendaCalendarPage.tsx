@@ -3,7 +3,7 @@ import Main from "@/features/_core/components/ui/Main";
 import AgendaHeader from "../components/AgendaHeader";
 import Appointments from "@/features/appointment/components/Appointments";
 
-const AgendaDayPage = () => {
+const AgendaCalendarPage = () => {
   useSyncAppointmentFilters();
   return (
     <>
@@ -17,4 +17,4 @@ const AgendaDayPage = () => {
   );
 };
 
-export default AgendaDayPage;
+export default AgendaCalendarPage;
