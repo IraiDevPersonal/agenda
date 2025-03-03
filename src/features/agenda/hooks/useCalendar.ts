@@ -1,15 +1,15 @@
+import useAppointmentFilters from "@/features/appointment/hooks/useAppointmentFilters";
 import useQuery from "@/features/_core/hooks/useQuery";
 import CalendarService from "../services/calendar.service";
-import useCalendarFilters from "./useCalendarFilters";
 
 const calendarService = new CalendarService();
 
 export default function useCalendar() {
   const {
-    calendarFilters: { date, ...filters },
-  } = useCalendarFilters();
+    appointmentFilters: { date, ...filters },
+  } = useAppointmentFilters();
   const query = useQuery({
-    queryKey: ["calendar"],
+    queryKey: ["calendar", { ...filters }],
     queryFn: () => calendarService.getCalendar(filters),
     initialData: [],
   });

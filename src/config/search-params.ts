@@ -3,7 +3,7 @@ import queryString, { ParseOptions } from "query-string";
 export type QueryParamsToObjetOptions = ParseOptions;
 
 export default class SearchParams {
-  public static getAsObject<T extends object>(defaultValues: Record<string, any> = {}) {
+  public static getAsObject<T extends object>(defaultValues?: Partial<T>) {
     const asObject = this.toObject<T>(window.location.search);
     return { ...defaultValues, ...asObject };
   }

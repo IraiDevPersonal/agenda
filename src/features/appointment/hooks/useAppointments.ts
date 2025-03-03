@@ -6,10 +6,12 @@ import AgendaEntity from "@/features/agenda/domain/agenda.entity";
 const appointmentService = new AppointmentService();
 
 export default function useAppointments() {
-  const { appointmentFilters } = useAppointmentFilters();
+  const {
+    appointmentFilters: { year_month, ...filters },
+  } = useAppointmentFilters();
   const query = useQuery({
-    queryKey: ["appointments", { ...appointmentFilters }],
-    queryFn: () => appointmentService.getAgenda(appointmentFilters),
+    queryKey: ["appointments", { ...filters }],
+    queryFn: () => appointmentService.getAgenda(filters),
     // refetchOnMount: shouldRefetchOnMount ? "always" : false,
     initialData: AgendaEntity.appointmentsAdapter({}),
   });

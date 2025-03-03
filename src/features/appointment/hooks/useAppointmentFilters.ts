@@ -19,7 +19,9 @@ export function useSyncAppointmentFilters() {
 }
 
 const defaultFilters = () => {
+  const date = new Date();
   return SearchParams.getAsObject<AppointmentFilters>({
-    date: DateHelper.format(new Date(), "yyyy-mm-dd"),
+    date: DateHelper.format(date, "yyyy-mm-dd"),
+    year_month: DateHelper.format(date, "year_month"),
   });
 };
