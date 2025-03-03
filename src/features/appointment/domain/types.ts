@@ -1,6 +1,6 @@
 export type AppointementTypes = "confirmed" | "to-confirm" | "available" | "cancelled";
 
-export type AppointmentsFilters = {
+export type AppointmentFilters = {
   professional_id: string;
   profession_id: string;
   patient_rut: string;

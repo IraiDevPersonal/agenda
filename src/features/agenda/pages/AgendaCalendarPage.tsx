@@ -1,17 +1,17 @@
-import { useSyncAppointmentFilters } from "@/features/appointment/hooks/useAppointmentFilters";
+import { useSyncCalendarFilters } from "../hooks/useCalendarFilters";
 import Main from "@/features/_core/components/ui/Main";
-import AppointmentDatePicker from "../../appointment/components/AppointmentDatePicker";
+import AgendaDatePicker from "../components/AgendaDatePicker";
 import AgendaHeader from "../components/AgendaHeader";
 
 const AgendaCalendarPage = () => {
-  useSyncAppointmentFilters();
+  useSyncCalendarFilters();
   return (
     <>
-      <title>Agenda</title>
+      <title>Agenda | Calendario</title>
 
       <Main>
         <AgendaHeader />
-        <AppointmentDatePicker />
+        <AgendaDatePicker />
       </Main>
     </>
   );

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import useAppointmentFilters from "../hooks/useAppointmentFilters";
+import useCalendarFilters from "@/features/agenda/hooks/useCalendarFilters";
 import useAppointments from "../hooks/useAppointments";
 import useAppointmentListFilter from "../hooks/useAppointmentListFilter";
 import IconChevronRight from "@/features/_core/components/icons/IconChevronRight";
@@ -21,11 +21,11 @@ type Props = {
 const AppointmentList: React.FC<Props> = ({ date }) => {
   const navigate = useNavigate();
   const { filter, handleFilter } = useAppointmentListFilter();
-  const { appointmentFiltersAsString } = useAppointmentFilters();
+  const { calendarFiltersAsString } = useCalendarFilters();
   const { data } = useAppointments();
 
   const handleNavigateToMyDay = () => {
-    navigate(`${ROUTES.AGENDA_DETAIL}?${appointmentFiltersAsString}`);
+    navigate(`${ROUTES.AGENDA_DETAIL}?${calendarFiltersAsString}`);
   };
 
   return (

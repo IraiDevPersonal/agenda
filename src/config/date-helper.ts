@@ -23,7 +23,7 @@ export default class DateHelper {
   private static isValidDateFormat(
     value: string,
   ): value is `${number}-${number}-${number}` {
-    return /^\d{4}-\d{2}-\d{2}$/.test(value);
+    return /^\d{4}-\d{1,2}-\d{1,2}$/.test(value);
   }
 }
 
@@ -33,4 +33,7 @@ const DATE_FORMATS = {
   "yyyy-mm-dd": "yyyy-MM-dd",
   month_year: "MMMM yyyy",
   month_name: "MMMM",
+  month_number: "MM",
+  day_number: "dd",
+  year_number: "yyyy",
 };

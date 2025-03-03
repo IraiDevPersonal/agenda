@@ -1,3 +1,5 @@
+import useCalendar from "../hooks/useCalendar";
+import usePickCalendarMonth from "../hooks/usePickCalendarMonth";
 import Calendar from "@/features/_core/components/ui/Calendar.new";
 import cn from "@/config/tailwind-merge";
 import type { PropsSingle, WeekdayProps } from "react-day-picker";
@@ -5,20 +7,28 @@ import type { PropsSingle, WeekdayProps } from "react-day-picker";
 type Props = Pick<PropsSingle, "onSelect" | "selected">;
 
 const AgendaCalendar: React.FC<Props> = (props) => {
+  const { month, onChangeMonth } = usePickCalendarMonth();
+  const { data } = useCalendar();
+
   return (
-    <Calendar
-      mode="single"
-      className="p-4"
-      components={{
-        // Day: (props) => <Day {...props} />,
-        Weekday: (props: WeekdayProps) => (
-          <th {...props} className={cn(props.className, "capitalize")}>
-            {props["aria-label"]}
-          </th>
-        ),
-      }}
-      {...props}
-    />
+    <div className="flex flex-col gap-4">
+      <Calendar
+        mode="single"
+        className="p-4"
+        month={month}
+        onMonthChange={onChangeMonth}
+        components={{
+          // Day: (props) => <Day {...props} />,
+          Weekday: (props: WeekdayProps) => (
+            <th {...props} className={cn(props.className, "capitalize")}>
+              {props["aria-label"]}
+            </th>
+          ),
+        }}
+        {...props}
+      />
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
   );
 };
 

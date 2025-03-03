@@ -1,9 +1,9 @@
 import usePickAppointmentByDate from "../hooks/usePickAppointmentByDate";
-import AgendaCalendar from "../../agenda/components/AgendaCalendar";
+import AgendaCalendar from "./AgendaCalendar";
 import Text from "@/features/_core/components/ui/Text";
-import AppointmentList from "./AppointmentList";
+import AppointmentList from "../../appointment/components/AppointmentList";
 
-const AppointmentDatePicker = () => {
+const AgendaDatePicker = () => {
   const { date, showCalendar, handleSelectDate } = usePickAppointmentByDate();
 
   if (!showCalendar) {
@@ -24,4 +24,4 @@ const AppointmentDatePicker = () => {
   );
 };
 
-export default AppointmentDatePicker;
+export default AgendaDatePicker;

@@ -31,6 +31,8 @@ export type DialogHandlerProps = {
   onClose(): void;
 };
 
+export type AcceptedFilterValues = number | string | boolean | undefined | null;
+
 export type SelectChangeEvHandler = React.ChangeEventHandler<HTMLSelectElement>;
 export type SelectKeyboardEventHandler = React.KeyboardEventHandler<HTMLSelectElement>;
 export type InputChangeEvHandler = React.ChangeEventHandler<HTMLInputElement>;

@@ -21,6 +21,7 @@ export default function useQuery<
 
 type ValidQueryKeys =
   | "agenda"
+  | "calendar"
   | "appointments"
   | "proffesions-filters"
   | "proffesionals-filters";
