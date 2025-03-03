@@ -22,7 +22,7 @@ const AppointmentList: React.FC<Props> = ({ date }) => {
   const navigate = useNavigate();
   const { filter, handleFilter } = useAppointmentListFilter();
   const { appointmentFiltersAsString } = useAppointmentFilters();
-  const { data } = useAppointments();
+  const { data, isFetching } = useAppointments();
 
   const handleNavigateToMyDay = () => {
     navigate(`${ROUTES.AGENDA_DETAIL}?${appointmentFiltersAsString}`);
@@ -47,24 +47,28 @@ const AppointmentList: React.FC<Props> = ({ date }) => {
           <IconChevronRight />
         </Button>
       </div>
-      <List filter={filter} agenda={data!} />
+      <List filter={filter} agenda={data!} isLoading={isFetching} />
     </div>
   );
 };
 
 export default AppointmentList;
 
-const List: React.FC<{ filter: AppointementTypes | "all"; agenda: AgendaEntity }> = ({
-  filter,
-  agenda,
-}) => {
+type ListProps = {
+  filter: AppointementTypes | "all";
+  agenda: AgendaEntity;
+  isLoading?: boolean;
+};
+
+const List: React.FC<ListProps> = ({ filter, agenda, ...props }) => {
   return (
     <>
       <div className="h-[calc(100vh-9.5rem)] overflow-y-auto scrollbar-styles scrollbar-thumb-transparent space-y-4">
         {filter === "all" ? (
-          <AllAppointmentColumns agenda={agenda} />
+          <AllAppointmentColumns agenda={agenda} {...props} />
         ) : (
           <AppointmentColumn
+            {...props}
             id={filter}
             appointments={AgendaEntity.appointmentViewerAdapter(agenda)[filter]}
           />
@@ -74,13 +78,16 @@ const List: React.FC<{ filter: AppointementTypes | "all"; agenda: AgendaEntity }
   );
 };
 
-const AllAppointmentColumns: React.FC<{ agenda: AgendaEntity }> = ({ agenda }) => {
+const AllAppointmentColumns: React.FC<Pick<ListProps, "agenda" | "isLoading">> = ({
+  agenda,
+  ...props
+}) => {
   return (
     <>
-      <AppointmentColumn id="available" appointments={agenda.availables} />
-      <AppointmentColumn id="to-confirm" appointments={agenda.toConfirm} />
-      <AppointmentColumn id="confirmed" appointments={agenda.confirmed} />
-      <AppointmentColumn id="cancelled" appointments={agenda.cancelled} />
+      <AppointmentColumn id="available" appointments={agenda.availables} {...props} />
+      <AppointmentColumn id="to-confirm" appointments={agenda.toConfirm} {...props} />
+      <AppointmentColumn id="confirmed" appointments={agenda.confirmed} {...props} />
+      <AppointmentColumn id="cancelled" appointments={agenda.cancelled} {...props} />
     </>
   );
 };

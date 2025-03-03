@@ -6,10 +6,9 @@ import Box from "@/features/_core/components/ui/Box";
 import AgendaEntity from "@/features/agenda/domain/agenda.entity";
 
 const Appointments = () => {
-  const { data, error, isError, isLoading } = useAppointments();
+  const { data, error, isError, isFetching } = useAppointments();
 
   if (isError) return <p>{error.message}</p>;
-  if (isLoading) return <p>Cargando...</p>;
 
   return (
     <Box as="div" className="flex flex-wrap gap-4 *:w-96">
@@ -20,6 +19,7 @@ const Appointments = () => {
               <AppointmentColumn
                 id={id}
                 key={id}
+                isLoading={isFetching}
                 appointments={AgendaEntity.appointmentViewerAdapter(data!)[id]}
               />
             )}
