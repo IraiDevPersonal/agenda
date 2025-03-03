@@ -10,7 +10,6 @@ const AgendaFilterByProfession = () => {
     appointmentFilters: { profession_id = "" },
   } = useAppointmentFilters();
   const { professionOptions, isLoading } = useProfessionsAsOptions();
-  console.log({ profession_id });
 
   const handleChange: SelectChangeEvHandler = (e) => {
     const value = e.target.value;

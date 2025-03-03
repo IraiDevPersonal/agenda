@@ -2,8 +2,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "../layouts/Layout";
 
 import MyDayPage from "@/features/agenda/pages/MyDayPage";
-import AgendaPage from "@/features/agenda/pages/AgendaPage";
-import AgendaCalendarPage from "@/features/agenda/pages/AgendaCalendarPage";
+import AgendaPage from "@/features/agenda/pages/AgendaCalendarPage";
+import AgendaCalendarPage from "@/features/agenda/pages/AgendaPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
 import ROUTES from "@/config/routes";
