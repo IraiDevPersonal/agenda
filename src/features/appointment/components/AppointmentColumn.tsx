@@ -2,7 +2,6 @@ import useDialog from "@/features/_core/hooks/useDialog";
 import ShowProfessionalDataContext from "../context/ShowProfessionalDataContext";
 import SortableColumn from "@/features/_core/components/ui/SortableColumn";
 import ArrayMap from "@/features/_core/components/utils/ArrayMap";
-import IconLoading from "@/features/_core/components/icons/IconLoading";
 import DialogAppointmentAvailable from "./DialogAppointmentAvailable";
 import DialogAppointmentCancelled from "./DialogAppointmentCancelled";
 import DialogAppointmentConfirmed from "./DialogAppointmentConfirmed";
@@ -10,6 +9,7 @@ import DialogAppointmentToConfirm from "./DialogAppointmentToConfirm";
 import AppointmentAvailableCard from "./AppointmentAvailableCard";
 import AppointmentCard from "./AppointmentCard";
 import AppointmentEntity from "../domain/appointment.entity";
+import cn from "@/config/tailwind-merge";
 import type { DialogHandlerProps } from "@/config/types";
 import type { AppointementTypes } from "../domain/types";
 
@@ -22,14 +22,26 @@ type Props = {
 const AppointmentColumn: React.FC<Props> = ({ id, appointments, isLoading }) => {
   const [isOpen, onToggleIsOpen] = useDialog();
   return (
-    <SortableColumn id={id} title={TITLES[id]} classNames={CLASSNAMES[id]}>
+    <SortableColumn
+      classNames={CLASSNAMES[id]}
+      isLoading={isLoading}
+      title={TITLES[id]}
+      id={id}
+    >
       <ShowProfessionalDataContext>
         <ArrayMap
           dataset={appointments}
-          emptyContent={isLoading ? " " : "No hay citas..."}
+          emptyContent={isLoading ? "Cargando..." : "No hay citas..."}
         >
           {(item) => (
-            <li key={item.uid} onClick={onToggleIsOpen} className="cursor-pointer">
+            <li
+              key={item.uid}
+              onClick={onToggleIsOpen}
+              className={cn(
+                "cursor-pointer transition-opacity duration-300",
+                isLoading && "pointer-events-none cursor-default opacity-50",
+              )}
+            >
               {id === "available" ? (
                 <AppointmentAvailableCard appointment={item} />
               ) : (
@@ -40,11 +52,6 @@ const AppointmentColumn: React.FC<Props> = ({ id, appointments, isLoading }) => 
         </ArrayMap>
         <AppointmentDialogs id={id} dialogProps={{ isOpen, onClose: onToggleIsOpen }} />
       </ShowProfessionalDataContext>
-      {isLoading && (
-        <li className="w-full flex justify-center">
-          <IconLoading className="animate-spin" height={32} width={32} />
-        </li>
-      )}
     </SortableColumn>
   );
 };

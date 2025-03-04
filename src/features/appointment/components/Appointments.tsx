@@ -6,9 +6,7 @@ import Box from "@/features/_core/components/ui/Box";
 import AgendaEntity from "@/features/agenda/domain/agenda.entity";
 
 const Appointments = () => {
-  const { data, error, isError, isFetching } = useAppointments();
-
-  if (isError) return <p>{error.message}</p>;
+  const { data, isFetching } = useAppointments();
 
   return (
     <Box as="div" className="flex flex-wrap gap-4 *:w-96">

@@ -3,19 +3,27 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import Box from "@/features/_core/components/ui/Box";
 import cn from "@/config/tailwind-merge";
+import IconLoading from "../icons/IconLoading";
 
 type Props = {
   children: React.ReactNode;
+  title: React.ReactNode;
   classNames?: Partial<{
     wrapper: string;
     header: string;
     body: string;
   }>;
-  title: string;
+  isLoading?: boolean;
   id: string;
 };
 
-const SortableColumn: React.FC<Props> = ({ classNames, children, title, id }) => {
+const SortableColumn: React.FC<Props> = ({
+  classNames,
+  children,
+  title,
+  isLoading,
+  id,
+}) => {
   const { attributes, listeners, setNodeRef, transform, transition, items } = useSortable(
     { id },
   );
@@ -45,6 +53,11 @@ const SortableColumn: React.FC<Props> = ({ classNames, children, title, id }) =>
         )}
       >
         <h3 className="text-lg font-bold">{title}</h3>
+        {isLoading && (
+          <figure>
+            <IconLoading className="animate-spin" />
+          </figure>
+        )}
       </div>
       <ul
         className={cn(
