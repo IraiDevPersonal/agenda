@@ -25,7 +25,12 @@ const AppointmentColumn: React.FC<Props> = ({ id, appointments, isLoading }) => 
     <SortableColumn
       classNames={CLASSNAMES[id]}
       isLoading={isLoading}
-      title={TITLES[id]}
+      title={
+        <>
+          {TITLES[id]}
+          <span className="ml-2">({appointments.length})</span>
+        </>
+      }
       id={id}
     >
       <ShowProfessionalDataContext>
