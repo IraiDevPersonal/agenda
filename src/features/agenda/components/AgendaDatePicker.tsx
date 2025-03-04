@@ -1,10 +1,10 @@
-import usePickAppointmentByDate from "../hooks/usePickAppointmentByDate";
-import AgendaCalendar from "./AgendaCalendar";
+import usePickCalendarDate from "../../calendar/hooks/usePickCalendarDate";
+import AgendaCalendar from "@/features/calendar/components/AgendaCalendar";
 import Text from "@/features/_core/components/ui/Text";
 import AppointmentList from "../../appointment/components/AppointmentList";
 
 const AgendaDatePicker = () => {
-  const { date, showCalendar, handleSelectDate } = usePickAppointmentByDate();
+  const { date, showCalendar, handleSelectDate } = usePickCalendarDate();
 
   if (!showCalendar) {
     return (

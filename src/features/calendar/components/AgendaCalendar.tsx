@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import useCalendar from "../hooks/useCalendar";
 import usePickCalendarByMonth from "../hooks/usePickCalendarByMonth";
-import AgendaCalendarDayButton from "./AgendaCalendarDayButton";
+import CalendarDayButton from "./CalendarDayButton";
 import Calendar from "@/features/_core/components/ui/Calendar";
 import cn from "@/config/tailwind-merge";
 import DateHelper from "@/config/date-helper";
@@ -40,7 +40,7 @@ const AgendaCalendar: React.FC<Props> = (props) => {
           </th>
         ),
         DayButton: (props) => (
-          <AgendaCalendarDayButton {...props} dayData={dayData(props.day.date)} />
+          <CalendarDayButton {...props} dayData={dayData(props.day.date)} />
         ),
       }}
       {...props}

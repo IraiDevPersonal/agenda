@@ -16,22 +16,23 @@ type CalendarModel = {
 };
 
 export default class CalendarEntity {
-  // public professional_name: CalendarModel["professional_name"];
   public date: CalendarModel["date"];
   public appointments: CalendarModel["appointments"];
 
   private constructor(init: CalendarModel) {
-    // this.professional_name = init["professional_name"];
     this.date = init["date"];
     this.appointments = init["appointments"];
   }
 
   static calendarAdapter(entry: Record<string, any>) {
     return new CalendarEntity({
-      // professional_name: entry["professional_name"] ?? "Profesional sin nombre...",
       date: entry["date"] ?? "__-__-____",
       appointments: toArray(entry["appointments"]).map(CalendarAppointmentEntity.adapter),
     });
+  }
+
+  static calendarAsArrayAdapter(data: any[]) {
+    return toArray(data).map(CalendarEntity.calendarAdapter);
   }
 }
 

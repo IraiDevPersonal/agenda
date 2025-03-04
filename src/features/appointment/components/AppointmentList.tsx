@@ -29,7 +29,7 @@ const AppointmentList: React.FC<Props> = ({ date }) => {
   };
 
   return (
-    <div className="w-full pt-4 pe-2 space-y-4">
+    <div className="w-full pt-4 pe-2 space-y-4 max-w-md">
       <div className="flex items-center gap-4">
         <Text type="subtitle" className="mr-auto">
           {DateHelper.format(date, "dd-of-mmmm-of-yyyy")}

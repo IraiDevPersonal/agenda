@@ -8,7 +8,7 @@ type ItemsProps = CalendarEntity & {
   isSelected: boolean;
 };
 
-const AgendaCalendarDayItems: React.FC<ItemsProps> = ({ isSelected, appointments }) => {
+const CalendarDayItems: React.FC<ItemsProps> = ({ isSelected, appointments }) => {
   const handleClick: React.MouseEventHandler<HTMLLIElement> = (e) => {
     e.stopPropagation();
     alert("todas las horas para el dia");
@@ -45,4 +45,4 @@ const AgendaCalendarDayItems: React.FC<ItemsProps> = ({ isSelected, appointments
   );
 };
 
-export default AgendaCalendarDayItems;
+export default CalendarDayItems;

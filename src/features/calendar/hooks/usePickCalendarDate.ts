@@ -1,7 +1,7 @@
 import useAppointmentFilters from "@/features/appointment/hooks/useAppointmentFilters";
 import DateHelper from "@/config/date-helper";
 
-export default function usePickAppointmentByDate() {
+export default function usePickCalendarDate() {
   const {
     appointmentFilters: { date: filterDate, profession_id },
     onFilterAppointments,
