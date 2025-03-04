@@ -1,4 +1,4 @@
-import { format as dateFormat, setDefaultOptions, DateArg } from "date-fns";
+import { format as dateFormat, isEqual, setDefaultOptions, DateArg } from "date-fns";
 import { es } from "date-fns/locale";
 
 setDefaultOptions({ locale: es });
@@ -8,6 +8,10 @@ type Format = keyof typeof DATE_FORMATS;
 export default class DateHelper {
   public static format(date: DateArg<Date> | null, format: Format = "dd-mm-yyyy") {
     return dateFormat(date ?? new Date(), DATE_FORMATS[format]);
+  }
+
+  public static isEqual(a: Date, b: Date) {
+    return isEqual(a, b);
   }
 
   public static getFullDate(value: string) {

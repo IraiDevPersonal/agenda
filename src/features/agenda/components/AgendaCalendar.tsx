@@ -1,7 +1,10 @@
+import { useCallback } from "react";
 import useCalendar from "../hooks/useCalendar";
 import usePickCalendarByMonth from "../hooks/usePickCalendarByMonth";
-import Calendar from "@/features/_core/components/ui/Calendar.new";
+import AgendaCalendarDayButton from "./AgendaCalendarDayButton";
+import Calendar from "@/features/_core/components/ui/Calendar";
 import cn from "@/config/tailwind-merge";
+import DateHelper from "@/config/date-helper";
 import type { PropsSingle, WeekdayProps } from "react-day-picker";
 
 type Props = Pick<PropsSingle, "onSelect" | "selected">;
@@ -10,73 +13,39 @@ const AgendaCalendar: React.FC<Props> = (props) => {
   const { month, onMonthChange } = usePickCalendarByMonth();
   const { data } = useCalendar();
 
+  const dayData = useCallback(
+    (date: Date) => {
+      return data?.find((el) =>
+        DateHelper.isEqual(DateHelper.getFullDate(el.date), date),
+      );
+    },
+    [data],
+  );
+
   return (
-    <div className="flex flex-col gap-4">
-      <Calendar
-        mode="single"
-        className="p-4"
-        month={month}
-        onMonthChange={onMonthChange}
-        components={{
-          // Day: (props) => <Day {...props} />,
-          Weekday: (props: WeekdayProps) => (
-            <th {...props} className={cn(props.className, "capitalize")}>
-              {props["aria-label"]}
-            </th>
-          ),
-        }}
-        {...props}
-      />
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-    </div>
+    <Calendar
+      mode="single"
+      className="p-4"
+      month={month}
+      onMonthChange={onMonthChange}
+      classNames={{
+        day_button:
+          "relative flex p-2 h-36 w-40 whitespace-nowrap bg-accent rounded-xl border-2 border-transparent hover:border-primary/40 text-foreground transition-all duration-300 hover:scale-105 outline-none group-data-[disabled]:pointer-events-none focus-visible:z-10 hover:bg-accent group-data-[selected]:bg-primary group-data-[selected]:text-primary-foreground group-data-[disabled]:text-foreground/30 group-data-[disabled]:line-through group-data-[outside]:bg-transparent group-data-[outside]:text-foreground/30 group-data-[outside]:group-data-[selected]:text-primary-foreground",
+        day: "group p-0.5",
+      }}
+      components={{
+        Weekday: (props: WeekdayProps) => (
+          <th {...props} className={cn(props.className, "capitalize")}>
+            {props["aria-label"]}
+          </th>
+        ),
+        DayButton: (props) => (
+          <AgendaCalendarDayButton {...props} dayData={dayData(props.day.date)} />
+        ),
+      }}
+      {...props}
+    />
   );
 };
 
 export default AgendaCalendar;
-
-// const Nav: React.FC<NavProps & { date: Date }> = ({
-//   onPreviousClick,
-//   onNextClick,
-//   date,
-// }) => {
-//   return (
-//     <nav className="flex justify-between sm:justify-center items-center gap-3">
-//       <Button size="icon" variant="text" onClick={onPreviousClick}>
-//         <IconChevronLeft />
-//       </Button>
-//       <span className="font-semibold text-lg first-letter:capitalize sm:w-64 text-center">
-//         {new Now().format(date, "month_year")}
-//       </span>
-//       <Button size="icon" variant="text" onClick={onNextClick}>
-//         <IconChevronRight />
-//       </Button>
-//     </nav>
-//   );
-// };
-
-// const WeekDay: React.FC<WeekdayProps> = ({
-//   "aria-label": ariaLabel,
-//   ...props
-// }) => {
-//   return (
-//     <th aria-label={ariaLabel} {...props} className="capitalize h-16">
-//       {ariaLabel}
-//     </th>
-//   );
-// };
-// <Calendar
-//   month={date}
-//   mode="single"
-//   onMonthChange={setDate}
-//   className="p-4"
-//   classNames={{
-//     day: "p-1",
-//     caption_label: "hidden",
-//   }}
-//   components={{
-//     Nav: (props) => <Nav {...props} date={date} />,
-//     DayButton: (props) => <AgendaCalendarDayButton {...props} />,
-//     Weekday: (props) => <WeekDay {...props} />,
-//   }}
-//   {...props}
-// />
