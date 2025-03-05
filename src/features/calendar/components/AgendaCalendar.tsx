@@ -23,7 +23,7 @@ const AgendaCalendar: React.FC<Props> = (props) => {
   );
 
   return (
-    <div className="h-[calc(100vh-6rem)]">
+    <div className="h-[calc(100vh-6rem)] scrollbar-styles overflow-y-auto scrollbar-thumb-transparent">
       <Calendar
         mode="single"
         className="p-4"

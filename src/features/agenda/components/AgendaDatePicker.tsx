@@ -16,7 +16,7 @@ const AgendaDatePicker = () => {
 
   return (
     <>
-      <div className="flex w-full">
+      <div className="flex w-full justify-center">
         <AgendaCalendar selected={date} onSelect={handleSelectDate} />
         {date && <AppointmentList date={date} />}
       </div>

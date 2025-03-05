@@ -1,7 +1,7 @@
 import ArrayMap from "@/features/_core/components/utils/ArrayMap";
 import IconDots from "@/features/_core/components/icons/IconDots";
-import { tooltipCalendarItem } from "../utils/utilities.util";
 import cn from "@/config/tailwind-merge";
+import { tooltipCalendarItem } from "../utils/utilities.util";
 import CalendarEntity from "../domain/calendar.entity";
 
 type ItemsProps = CalendarEntity & {
@@ -11,8 +11,6 @@ type ItemsProps = CalendarEntity & {
 const CalendarDayItems: React.FC<ItemsProps> = ({ isSelected, appointments }) => {
   const handleClick: React.MouseEventHandler<HTMLLIElement> = (e) => {
     e.stopPropagation();
-    console.log(JSON.stringify(appointments, null, 2));
-    alert(JSON.stringify(appointments, null, 2));
   };
 
   return (
@@ -23,7 +21,7 @@ const CalendarDayItems: React.FC<ItemsProps> = ({ isSelected, appointments }) =>
             key={item.uid}
             title={tooltipCalendarItem(item)}
             className={cn(
-              "p-1.5 rounded-md bg-primary text-accent text-left text-xs leading-none truncate",
+              "p-1.5 rounded-md bg-primary text-accent text-left text-xs leading-none truncate cursor-help",
               isSelected && "bg-accent text-primary",
             )}
           >
@@ -36,7 +34,7 @@ const CalendarDayItems: React.FC<ItemsProps> = ({ isSelected, appointments }) =>
           onClick={handleClick}
           className={cn(
             "px-2 py-1 w-max text-left hover:bg-primary/10 transition-colors duration-300 rounded-md",
-            isSelected && "hover:bg-accent/15",
+            isSelected && "hover:bg-accent/20",
           )}
         >
           <IconDots />
