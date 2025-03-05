@@ -1,11 +1,11 @@
 import { createContext, use } from "react";
-import type { DialogHandlerProps } from "@/config/types";
+import type { DialogPropsHandler } from "@/config/types";
 
-type ContextProps = DialogHandlerProps;
+type ContextProps = DialogPropsHandler;
 
 const Context = createContext<ContextProps | undefined>(undefined);
 
-type Props = DialogHandlerProps & {
+type Props = DialogPropsHandler & {
   children: React.ReactNode;
 };
 

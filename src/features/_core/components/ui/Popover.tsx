@@ -1,11 +1,11 @@
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import cn from "@/config/tailwind-merge";
-import type { DialogHandlerProps } from "@/config/types";
+import type { DialogPropsHandler } from "@/config/types";
 
 type Props = {
   children: React.ReactNode;
   defaultOpen?: boolean;
-} & Partial<DialogHandlerProps>;
+} & Partial<DialogPropsHandler>;
 
 function Popover({ isOpen, children, defaultOpen, onClose }: Props) {
   return (

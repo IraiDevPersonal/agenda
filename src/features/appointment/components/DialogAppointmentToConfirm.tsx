@@ -10,9 +10,9 @@ import IconLike from "@/features/_core/components/icons/IconLike";
 import Professional from "@/features/professional/components/Professional";
 import Patient from "@/features/patient/components/Patient";
 import PatientHistory from "@/features/patient/components/PatientHistory";
-import type { DialogHandlerProps } from "@/config/types";
+import type { DialogPropsHandler } from "@/config/types";
 
-type Props = DialogHandlerProps;
+type Props = DialogPropsHandler;
 
 const DialogAppointmentToConfirm: React.FC<Props> = ({ isOpen, onClose }) => {
   const { showProfesionalData } = useShowProfessionalData();

@@ -1,18 +1,14 @@
 import ArrayMap from "@/features/_core/components/utils/ArrayMap";
-import IconDots from "@/features/_core/components/icons/IconDots";
-import cn from "@/config/tailwind-merge";
+import DialogCalendarDay from "./DialogCalendarDay";
 import { tooltipCalendarItem } from "../utils/utilities.util";
+import cn from "@/config/tailwind-merge";
 import CalendarEntity from "../domain/calendar.entity";
 
 type ItemsProps = CalendarEntity & {
   isSelected: boolean;
 };
 
-const CalendarDayItems: React.FC<ItemsProps> = ({ isSelected, appointments }) => {
-  const handleClick: React.MouseEventHandler<HTMLLIElement> = (e) => {
-    e.stopPropagation();
-  };
-
+const CalendarDayItems: React.FC<ItemsProps> = ({ isSelected, appointments, date }) => {
   return (
     <ul className="space-y-1 w-full">
       <ArrayMap dataset={appointments.toSpliced(3)}>
@@ -30,15 +26,11 @@ const CalendarDayItems: React.FC<ItemsProps> = ({ isSelected, appointments }) =>
         )}
       </ArrayMap>
       {appointments.length > 3 && (
-        <li
-          onClick={handleClick}
-          className={cn(
-            "px-2 py-1 w-max text-left hover:bg-primary/10 transition-colors duration-300 rounded-md",
-            isSelected && "hover:bg-accent/20",
-          )}
-        >
-          <IconDots />
-        </li>
+        <DialogCalendarDay
+          appointments={appointments}
+          isSelected={isSelected}
+          date={date}
+        />
       )}
     </ul>
   );

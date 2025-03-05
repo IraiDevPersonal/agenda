@@ -2,6 +2,7 @@ import Card from "@/features/_core/components/ui/Card";
 import AppointmentEntity from "../domain/appointment.entity";
 import Avatar from "@/features/_core/components/ui/Avatar";
 import type { AppointementTypes } from "../domain/types";
+import { useShowProfessionalData } from "../context/ShowProfessionalDataContext";
 
 type Props = {
   appointment: AppointmentEntity;
@@ -9,13 +10,25 @@ type Props = {
 };
 
 const AppointmentCard: React.FC<Props> = ({ id, appointment }) => {
-  const { patient_name, patient_rut, patient_phone, time_from, time_to } = appointment;
+  const {
+    patient_name,
+    patient_rut,
+    patient_phone,
+    time_from,
+    time_to,
+    professional_name,
+  } = appointment;
+  const { showProfesionalData } = useShowProfessionalData();
 
   return (
     <Card className={HASH_COLORS[id].card}>
       <Avatar alt="Paciente 1" classNames={{ fallback: HASH_COLORS[id].avatar }} />
       <div className="w-full">
-        <h5 className="font-bold capitalize">{patient_name}</h5>
+        {showProfesionalData && (
+          <h5 className="capitalize font-bold">{professional_name}</h5>
+        )}
+        <small className="block italic">Paciente:</small>
+        <span className="font-bold capitalize">{patient_name}</span>
         <span className="block">{patient_rut}</span>
         <div className="flex w-full gap-2">
           <span>{patient_phone}</span>

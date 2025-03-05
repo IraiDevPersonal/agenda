@@ -14,9 +14,9 @@ import IconSave from "@/features/_core/components/icons/IconSave";
 import { PAYMENT_METHODS } from "../utils/constants.util";
 import { createOptions } from "@/features/_core/utils/create-options.util";
 import { PatientEntity } from "@/features/patient/domain/patient.entity";
-import type { DialogHandlerProps, SelectChangeEvHandler } from "@/config/types";
+import type { DialogPropsHandler, SelectChangeEvHandler } from "@/config/types";
 
-type Props = DialogHandlerProps;
+type Props = DialogPropsHandler;
 type ContextProps = {
   component: "create" | "search";
   onToggleComponent(): void;

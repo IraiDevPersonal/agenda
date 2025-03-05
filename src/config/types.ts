@@ -29,7 +29,7 @@ export type Option<
   value: TValue;
 } & TExpand;
 
-export type DialogHandlerProps = {
+export type DialogPropsHandler = {
   isOpen: boolean;
   onClose(): void;
 };

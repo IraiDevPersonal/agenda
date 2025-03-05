@@ -3,14 +3,14 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 import DialogContext, { useDialogContext } from "./DialogContext";
 import IconX from "@/features/_core/components/icons/IconX";
 import cn from "@/config/tailwind-merge";
-import type { DialogHandlerProps } from "@/config/types";
+import type { DialogPropsHandler } from "@/config/types";
 
 const root = document.getElementById("root");
 
 type DialogContentProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>;
 
 type DialogProps = DialogContentProps &
-  DialogHandlerProps & {
+  DialogPropsHandler & {
     shouldClickOutsideCloseDialog?: boolean;
     overlayRef?: React.Ref<HTMLDivElement>;
     shouldEscapeKeyCloseDialog?: boolean;
@@ -160,7 +160,7 @@ const DialogBody: React.FC<DialogBodyProps> = ({
 };
 
 type DialogFooterProps = {
-  children: React.ReactNode | ((props: DialogHandlerProps) => React.ReactNode);
+  children: React.ReactNode | ((props: DialogPropsHandler) => React.ReactNode);
 } & Omit<React.HTMLAttributes<HTMLDivElement>, "children">;
 
 const DialogFooter: React.FC<DialogFooterProps> = ({ className, children, ...props }) => {

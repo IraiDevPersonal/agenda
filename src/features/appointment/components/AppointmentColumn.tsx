@@ -10,7 +10,7 @@ import AppointmentAvailableCard from "./AppointmentAvailableCard";
 import AppointmentCard from "./AppointmentCard";
 import AppointmentEntity from "../domain/appointment.entity";
 import cn from "@/config/tailwind-merge";
-import type { DialogHandlerProps } from "@/config/types";
+import type { DialogPropsHandler } from "@/config/types";
 import type { AppointementTypes } from "../domain/types";
 
 type Props = {
@@ -65,7 +65,7 @@ export default AppointmentColumn;
 
 const AppointmentDialogs: React.FC<{
   id: AppointementTypes;
-  dialogProps: DialogHandlerProps;
+  dialogProps: DialogPropsHandler;
 }> = ({ dialogProps, id }) => {
   switch (id) {
     case "available":

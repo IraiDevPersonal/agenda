@@ -8,7 +8,7 @@ import IconSave from "@/features/_core/components/icons/IconSave";
 import Professional from "@/features/professional/components/Professional";
 import Patient from "@/features/patient/components/Patient";
 import { createOptions } from "@/features/_core/utils/create-options.util";
-import type { Option, DialogHandlerProps } from "@/config/types";
+import type { Option, DialogPropsHandler } from "@/config/types";
 
 const STATUS: Option[] = [
   { label: "Estado: Atendido", value: "1" },
@@ -17,7 +17,7 @@ const STATUS: Option[] = [
   { label: "Estado: No se presento", value: "4" },
 ];
 
-type Props = DialogHandlerProps;
+type Props = DialogPropsHandler;
 
 const DialogAppointmentConfirmed: React.FC<Props> = ({ isOpen, onClose }) => {
   const { showProfesionalData } = useShowProfessionalData();

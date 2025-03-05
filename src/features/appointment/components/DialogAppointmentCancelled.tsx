@@ -4,9 +4,9 @@ import AppointmentDateTime from "./AppointmentDatetime";
 import Patient from "@/features/patient/components/Patient";
 import PatientHistory from "@/features/patient/components/PatientHistory";
 import Professional from "@/features/professional/components/Professional";
-import type { DialogHandlerProps } from "@/config/types";
+import type { DialogPropsHandler } from "@/config/types";
 
-type Props = DialogHandlerProps;
+type Props = DialogPropsHandler;
 
 const DialogAppointmentCancelled: React.FC<Props> = ({ isOpen, onClose }) => {
   const { showProfesionalData } = useShowProfessionalData();
