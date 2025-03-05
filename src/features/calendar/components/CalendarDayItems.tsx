@@ -11,7 +11,8 @@ type ItemsProps = CalendarEntity & {
 const CalendarDayItems: React.FC<ItemsProps> = ({ isSelected, appointments }) => {
   const handleClick: React.MouseEventHandler<HTMLLIElement> = (e) => {
     e.stopPropagation();
-    alert("todas las horas para el dia");
+    console.log(JSON.stringify(appointments, null, 2));
+    alert(JSON.stringify(appointments, null, 2));
   };
 
   return (

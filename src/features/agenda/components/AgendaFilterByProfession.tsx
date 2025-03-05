@@ -7,13 +7,16 @@ import type { SelectChangeEvHandler } from "@/config/types";
 const AgendaFilterByProfession = () => {
   const {
     onFilterAppointments,
-    appointmentFilters: { profession_id = "" },
+    appointmentFilters: { profession_id },
   } = useAppointmentFilters();
   const { professionOptions, isLoading } = useProfessionsAsOptions();
 
   const handleChange: SelectChangeEvHandler = (e) => {
     const value = e.target.value;
-    onFilterAppointments({ profession_id: value });
+    onFilterAppointments({
+      profession_id: value ? Number(value) : undefined,
+      professional_id: undefined,
+    });
   };
 
   return (
@@ -27,7 +30,7 @@ const AgendaFilterByProfession = () => {
         customLabel: "Profesión: Sin selección",
       })}
       onChange={handleChange}
-      value={profession_id}
+      value={profession_id ?? ""}
       className="w-56"
     />
   );

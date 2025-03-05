@@ -1,6 +1,8 @@
 import { Option } from "@/config/types";
 import { toArray } from "@/features/_core/utils/to-array.util";
 
+export type ProfessionalOption = Option<number, { professions: number[] }>;
+
 export type ProfessionalModel = {
   id: number;
   name: string;
@@ -21,18 +23,21 @@ export default class ProfessionalEntity {
 }
 
 class ProfesionalAsOption {
-  public value: Option["value"];
-  public label: Option["label"];
+  public value: ProfessionalOption["value"];
+  public label: ProfessionalOption["label"];
+  public professions: ProfessionalOption["professions"];
 
-  private constructor(init: Option) {
+  private constructor(init: ProfessionalOption) {
     this.label = init.label;
     this.value = init.value;
+    this.professions = init.professions;
   }
 
   static adapter(entry: Record<string, any>) {
-    const item = {
-      value: `${entry["value"] ?? 0}`,
+    const item: ProfessionalOption = {
+      value: Number(entry["value"] ?? 0),
       label: entry["label"] ?? "Sin nombre...",
+      professions: toArray(entry["professions"]).map((p) => p ?? 0),
     };
 
     return new ProfesionalAsOption(item);
