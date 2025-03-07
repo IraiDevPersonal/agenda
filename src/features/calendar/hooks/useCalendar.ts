@@ -7,7 +7,7 @@ const calendarService = new CalendarService();
 
 export default function useCalendar() {
   const {
-    appointmentFilters: { date, ...filters },
+    appointmentFilters: { date, show, ...filters },
   } = useAppointmentFilters();
   const query = useQuery({
     queryKey: ["calendar", { ...filters }],

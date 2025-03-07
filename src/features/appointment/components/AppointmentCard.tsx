@@ -1,8 +1,8 @@
+import { useShowProfessionalData } from "../context/ShowProfessionalDataContext";
 import Card from "@/features/_core/components/ui/Card";
 import AppointmentEntity from "../domain/appointment.entity";
 import Avatar from "@/features/_core/components/ui/Avatar";
 import type { AppointementTypes } from "../domain/types";
-import { useShowProfessionalData } from "../context/ShowProfessionalDataContext";
 
 type Props = {
   appointment: AppointmentEntity;

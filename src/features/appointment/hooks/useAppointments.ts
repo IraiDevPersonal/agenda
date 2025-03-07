@@ -8,13 +8,13 @@ const appointmentService = new AppointmentService();
 
 export default function useAppointments() {
   const {
-    appointmentFilters: { year_month, ...filters },
+    appointmentFilters: { year_month, show, ...filters },
   } = useAppointmentFilters();
   const query = useQuery({
     queryKey: ["appointments", { ...filters }],
     queryFn: () => appointmentService.getAgenda(filters),
     // refetchOnMount: shouldRefetchOnMount ? "always" : false,
-    retry: 2,
+    // retry: 2,
     initialData: AgendaEntity.appointmentsAdapter({}),
     throwOnError(error) {
       Notify.error(error.message, { duration: 5000 });

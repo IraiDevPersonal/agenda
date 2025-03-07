@@ -1,18 +1,16 @@
 import { toArray } from "@/features/_core/utils/to-array.util";
 
-type CalendarAppointmentModel = {
-  uid: string;
-  pattient_name: string;
-  patient_rut: string;
-  appointment_time_to: string;
-  appointment_time_from: string;
-  appointment_time: string;
-  professional_name: string;
-};
-
 type CalendarModel = {
   date: string;
-  appointments: CalendarAppointmentModel[];
+  appointments: {
+    uid: string;
+    pattient_name: string;
+    patient_rut: string;
+    appointment_time_to: string;
+    appointment_time_from: string;
+    appointment_time: string;
+    professional_name: string;
+  }[];
 };
 
 export default class CalendarEntity {
@@ -31,21 +29,21 @@ export default class CalendarEntity {
     });
   }
 
-  static calendarAsArrayAdapter(data: any[]) {
+  static calendarResponse(data: any) {
     return toArray(data).map(CalendarEntity.calendarAdapter);
   }
 }
 
 class CalendarAppointmentEntity {
-  public uid: CalendarAppointmentModel["uid"];
-  public pattient_name: CalendarAppointmentModel["pattient_name"];
-  public patient_rut: CalendarAppointmentModel["patient_rut"];
-  public appointment_time_to: CalendarAppointmentModel["appointment_time_to"];
-  public appointment_time_from: CalendarAppointmentModel["appointment_time_from"];
-  public appointment_time: CalendarAppointmentModel["appointment_time"];
-  public professional_name: CalendarAppointmentModel["professional_name"];
+  public uid: CalendarModel["appointments"][number]["uid"];
+  public pattient_name: CalendarModel["appointments"][number]["pattient_name"];
+  public patient_rut: CalendarModel["appointments"][number]["patient_rut"];
+  public appointment_time_to: CalendarModel["appointments"][number]["appointment_time_to"];
+  public appointment_time_from: CalendarModel["appointments"][number]["appointment_time_from"];
+  public appointment_time: CalendarModel["appointments"][number]["appointment_time"];
+  public professional_name: CalendarModel["appointments"][number]["professional_name"];
 
-  private constructor(init: CalendarAppointmentModel) {
+  private constructor(init: CalendarModel["appointments"][number]) {
     this.uid = init["uid"];
     this.pattient_name = init["pattient_name"];
     this.patient_rut = init["patient_rut"];

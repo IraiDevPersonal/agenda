@@ -9,7 +9,7 @@ const Appointments = () => {
   const { data, isFetching } = useAppointments();
 
   return (
-    <Box as="div" className="flex flex-wrap gap-4 *:max-w-[400px]">
+    <Box as="div" className="flex flex-wrap gap-4 *:max-w-[390px]">
       <SortableAppointments>
         {(columns) => (
           <ArrayMap dataset={columns}>

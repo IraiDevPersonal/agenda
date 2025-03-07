@@ -7,7 +7,7 @@ export default class CalendarService {
   public async getCalendar(filters?: Partial<AppointmentFilters>) {
     const query = this.parseFilters(filters);
     const { data } = await agendaApi.get(`/calendar?${query}`);
-    return CalendarEntity.calendarAsArrayAdapter(data);
+    return CalendarEntity.calendarResponse(data);
   }
 
   private parseFilters(obj: Partial<AppointmentFilters> = {}) {
