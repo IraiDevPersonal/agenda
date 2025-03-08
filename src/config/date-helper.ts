@@ -22,30 +22,47 @@ export default class DateHelper {
     return isEqual(a, b);
   }
 
-  static isWithinInterval(start: string, end: string) {
-    if (!this.isValidHoursFormat(start)) {
-      throw new Error("El formato proporcionado para 'start' no es el esperado: hh:mm");
+  static isBefore(endTime: string, endDate?: string) {
+    if (!this.isValidHoursFormat(endTime)) {
+      throw new Error("El formato de 'endTime' no es válido. Se espera hh:mm.");
     }
-    if (!this.isValidHoursFormat(end)) {
-      throw new Error("El formato proporcionado para 'end' no es el esperado: hh:mm");
+    if (endDate && !this.isValidFullDateFormat(endDate)) {
+      throw new Error("El formato de 'endDate' no es válido. Se espera yyyy-mm-dd.");
     }
 
-    const now = new Date();
+    const referenceDate = endDate ? this.getFullDate(endDate) : new Date();
+    const endDateTime = this.getHoursAndMins(endTime, referenceDate);
 
-    return isWithinInterval(now, {
-      start: this.getHoursAndMins(start, now),
-      end: this.getHoursAndMins(end, now),
-    });
+    return isBefore(endDateTime, new Date());
   }
 
-  static isBefore(end: string) {
-    if (!this.isValidHoursFormat(end)) {
-      throw new Error("El formato proporcionado para 'end' no es el esperado: hh:mm");
+  static isWithinInterval(
+    startTime: string,
+    endTime: string,
+    startDate?: string,
+    endDate?: string,
+  ) {
+    if (!this.isValidHoursFormat(startTime)) {
+      throw new Error("El formato de 'startTime' no es válido. Se espera hh:mm.");
+    }
+    if (!this.isValidHoursFormat(endTime)) {
+      throw new Error("El formato de 'endTime' no es válido. Se espera hh:mm.");
+    }
+    if (startDate && !this.isValidFullDateFormat(startDate)) {
+      throw new Error("El formato de 'startDate' no es válido. Se espera yyyy-mm-dd.");
+    }
+    if (endDate && !this.isValidFullDateFormat(endDate)) {
+      throw new Error("El formato de 'endDate' no es válido. Se espera yyyy-mm-dd.");
     }
 
     const now = new Date();
+    const referenceStartDate = startDate ? this.getFullDate(startDate) : now;
+    const referenceEndDate = endDate ? this.getFullDate(endDate) : now;
 
-    return isBefore(this.getHoursAndMins(end, now), now);
+    return isWithinInterval(now, {
+      start: this.getHoursAndMins(startTime, referenceStartDate),
+      end: this.getHoursAndMins(endTime, referenceEndDate),
+    });
   }
 
   static getFullDate(value: string) {
@@ -87,3 +104,55 @@ const DATE_FORMATS = {
   day_number: "dd",
   year_number: "yyyy",
 };
+
+// static isBefore(endTime: string, endDate?: string) {
+//   if (!this.isValidHoursFormat(endTime)) {
+//     throw new Error("El formato de 'endTime' no es válido. Se espera hh:mm.");
+//   }
+//   if (endDate && !this.isValidFullDateFormat(endDate)) {
+//     throw new Error("El formato de 'endDate' no es válido. Se espera yyyy-mm-dd.");
+//   }
+
+//   const referenceDate = endDate ? this.getFullDate(endDate) : new Date();
+//   const endDateTime = this.getHoursAndMins(endTime, referenceDate);
+
+//   return isBefore(endDateTime, new Date());
+// }
+
+// static isAfter(startTime: string, startDate?: string) {
+//   if (!this.isValidHoursFormat(startTime)) {
+//     throw new Error("El formato de 'startTime' no es válido. Se espera hh:mm.");
+//   }
+//   if (startDate && !this.isValidFullDateFormat(startDate)) {
+//     throw new Error("El formato de 'startDate' no es válido. Se espera yyyy-mm-dd.");
+//   }
+
+//   const referenceDate = startDate ? this.getFullDate(startDate) : new Date();
+//   const startDateTime = this.getHoursAndMins(startTime, referenceDate);
+
+//   return isAfter(startDateTime, new Date());
+// }
+
+// static isFutureDateTime(date: string, time: string): boolean {
+//   if (!this.isValidFullDateFormat(date)) {
+//     throw new Error("El formato de 'date' no es válido. Se espera yyyy-mm-dd.");
+//   }
+//   if (!this.isValidHoursFormat(time)) {
+//     throw new Error("El formato de 'time' no es válido. Se espera hh:mm.");
+//   }
+
+//   const providedDateTime = this.getHoursAndMins(time, this.getFullDate(date));
+//   return isAfter(providedDateTime, new Date());
+// }
+
+// static isPastDateTime(date: string, time: string): boolean {
+//   if (!this.isValidFullDateFormat(date)) {
+//     throw new Error("El formato de 'date' no es válido. Se espera yyyy-mm-dd.");
+//   }
+//   if (!this.isValidHoursFormat(time)) {
+//     throw new Error("El formato de 'time' no es válido. Se espera hh:mm.");
+//   }
+
+//   const providedDateTime = this.getHoursAndMins(time, this.getFullDate(date));
+//   return isBefore(providedDateTime, new Date());
+// }

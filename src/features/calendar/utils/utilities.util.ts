@@ -1,7 +1,7 @@
 import CalendarEntity from "../domain/calendar.entity";
 
 export function tooltipCalendarItem(
-  data: CalendarEntity["appointments"][number],
+  data: Partial<CalendarEntity["appointments"][number]>,
 ): string {
   return [
     `Profesional: ${data.professional_name}`,

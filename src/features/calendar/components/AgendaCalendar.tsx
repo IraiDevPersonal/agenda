@@ -23,15 +23,15 @@ const AgendaCalendar: React.FC<Props> = (props) => {
   );
 
   return (
-    <div className="h-[calc(100vh-6rem)] scrollbar-styles overflow-y-auto scrollbar-thumb-transparent">
+    <div className="h-[calc(100vh-6rem)] scrollbar-styles overflow-y-auto scrollbar-thumb-transparent min-w-max">
       <Calendar
         mode="single"
-        className="p-4"
+        className="p-4 pr-2"
         month={month}
         onMonthChange={onMonthChange}
         classNames={{
           day_button:
-            "relative flex p-2 h-36 w-40 whitespace-nowrap bg-accent rounded-xl border-2 border-transparent hover:border-primary/40 text-foreground transition-all duration-300 hover:scale-105 outline-none group-data-[disabled]:pointer-events-none focus-visible:z-10 hover:bg-accent group-data-[selected]:bg-primary group-data-[selected]:text-primary-foreground group-data-[disabled]:text-foreground/30 group-data-[disabled]:line-through group-data-[outside]:bg-transparent group-data-[outside]:text-foreground/30 group-data-[outside]:group-data-[selected]:text-primary-foreground",
+            "relative flex p-2 h-36 w-40 whitespace-nowrap bg-accent rounded-xl border-2 border-transparent hover:border-primary/40 text-foreground transition-all duration-300 outline-none group-data-[disabled]:pointer-events-none focus-visible:z-10 hover:bg-accent group-data-[selected]:bg-primary group-data-[selected]:text-primary-foreground group-data-[disabled]:text-foreground/30 group-data-[disabled]:line-through group-data-[outside]:bg-transparent group-data-[outside]:text-foreground/30 group-data-[outside]:group-data-[selected]:text-primary-foreground",
           day: "group p-0.5",
         }}
         components={{

@@ -16,7 +16,7 @@ const CalendarDayButton: React.FC<ButtonProps> = ({ dayData, ...props }) => {
   } = props;
 
   return (
-    <button {...props} className={cn(className, "flex flex-col gap-1 items-start")}>
+    <button {...props} className={cn(className, "flex flex-col gap-2 items-start")}>
       <span className="font-semibold leading-none">{children}</span>
       {!isOutside && dayData && <CalendarDayItems isSelected={selected} {...dayData} />}
     </button>
