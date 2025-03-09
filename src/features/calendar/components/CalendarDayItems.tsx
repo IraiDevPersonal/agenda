@@ -15,20 +15,21 @@ const CalendarDayItems: React.FC<ItemsProps> = ({ isSelected, appointments, date
   return (
     <ul className="space-y-1 w-full">
       <ArrayMap dataset={appointments.toSpliced(appointments.length > MAX_SHOW ? 4 : 5)}>
-        {({
-          appointment_time_to: time_to,
-          appointment_time_from: time_from,
-          ...item
-        }) => (
+        {(item) => (
           <li
             key={item.uid}
-            title={tooltipCalendarItem(item)}
+            title={tooltipCalendarItem(
+              item,
+              [
+                `${isWithinInterval(item, date) ? "En atención..." : ""}`,
+                `${isBefore(item, date) ? "Cita finalizada..." : ""}`,
+              ].join(""),
+            )}
             className={cn(
               "relative text-primary text-left text-xs truncate cursor-help ps-2 before:content-[' '] before:w-1 before:h-full before:rounded-full before:bg-primary before:absolute before:left-0 before:top-0",
               isSelected && "text-accent before:bg-accent",
-              DateHelper.isWithinInterval(time_from, time_to, date, date) &&
-                "before:bg-green-400",
-              DateHelper.isBefore(time_to, date) && "line-through before:bg-orange-400",
+              isWithinInterval(item, date) && "before:bg-green-400",
+              isBefore(item, date) && "line-through before:bg-orange-400",
             )}
           >
             <small className="font-bold">{item.appointment_time}:</small>{" "}
@@ -48,3 +49,16 @@ const CalendarDayItems: React.FC<ItemsProps> = ({ isSelected, appointments, date
 };
 
 export default CalendarDayItems;
+
+function isWithinInterval(item: CalendarEntity["appointments"][number], date: string) {
+  return DateHelper.isWithinInterval(
+    item.appointment_time_from,
+    item.appointment_time_to,
+    date,
+    date,
+  );
+}
+
+function isBefore(item: CalendarEntity["appointments"][number], date: string) {
+  return DateHelper.isBefore(item.appointment_time_to, date);
+}

@@ -8,7 +8,7 @@ import cn from "@/config/pluggins/cn";
 import DateHelper from "@/config/pluggins/date-helper";
 import CalendarEntity from "../domain/calendar.entity";
 
-type Props = CalendarEntity & {
+type Props = Omit<CalendarEntity, "available_appointments_count"> & {
   isSelected: boolean;
 };
 

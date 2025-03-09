@@ -89,7 +89,7 @@ export default class DateHelper {
   }
 
   private static isValidHoursFormat(value: string): value is `${number}:${number}` {
-    return /^\d{2}:\d{2}$/.test(value);
+    return /^\d{2}:\d{2}$/.test(value.trim());
   }
 }
 
