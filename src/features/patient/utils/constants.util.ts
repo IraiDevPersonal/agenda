@@ -1,5 +1,5 @@
 import { PatientEntity } from "../domain/patient.entity";
-import Uid from "@/config/uid";
+import Uid from "@/config/pluggins/uid";
 
 export const DUMMY_PATIENT: PatientEntity = {
   id: 1,

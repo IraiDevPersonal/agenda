@@ -1,5 +1,5 @@
 import * as PopoverPrimitive from "@radix-ui/react-popover";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 import type { DialogPropsHandler } from "@/config/types";
 
 type Props = {

@@ -2,7 +2,7 @@ import { useId } from "react";
 import FieldRootWrapper from "../FieldRootWrapper";
 import Label from "../Label";
 import Input, { InputProps } from "./Input";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 
 export type Props = {
   label?: React.ReactNode;

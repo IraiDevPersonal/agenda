@@ -4,7 +4,7 @@ import { es } from "react-day-picker/locale";
 import IconChevronLeft from "../icons/IconChevronLeft";
 import IconChevronRight from "../icons/IconChevronRight";
 import { buttonVariants } from "./Button";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 

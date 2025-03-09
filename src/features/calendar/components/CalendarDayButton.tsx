@@ -1,5 +1,5 @@
 import CalendarDayItems from "./CalendarDayItems";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 import CalendarEntity from "../domain/calendar.entity";
 import type { DayButtonProps } from "react-day-picker";
 

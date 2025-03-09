@@ -2,7 +2,7 @@ import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import DialogContext, { useDialogContext } from "./DialogContext";
 import IconX from "@/features/_core/components/icons/IconX";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 import type { DialogPropsHandler } from "@/config/types";
 
 const root = document.getElementById("root");

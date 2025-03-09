@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import Box from "@/features/_core/components/ui/Box";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 import IconLoading from "../icons/IconLoading";
 
 type Props = {

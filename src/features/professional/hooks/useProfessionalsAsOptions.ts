@@ -1,6 +1,6 @@
 import useQuery from "@/features/_core/hooks/useQuery";
 import ProfessionalService from "../services/professional.service";
-import Notify from "@/config/notify";
+import Notify from "@/config/pluggins/notify";
 
 const professionalService = new ProfessionalService();
 

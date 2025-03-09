@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
-import SearchParams from "@/config/search-params";
+import SearchParams from "@/config/pluggins/search-params";
 import type { AcceptedFilterValues } from "@/config/types";
 
 export default function useSyncSearchParams() {

@@ -7,7 +7,7 @@ import IconAgenda from "../icons/IconAgenda";
 import IconUsers from "../icons/IconUsers";
 import IconDolar from "../icons/IconDolar";
 import IconVerticalDots from "../icons/IconVerticalDots";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 import type { Paths } from "@/config/types";
 
 const PAGES: PageProps[] = [

@@ -8,7 +8,7 @@ import IconLock from "../../icons/IconLock";
 import IconEyeOff from "../../icons/IconEyeOff";
 import IconEye from "../../icons/IconEye";
 import Label from "../Label";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 
 type Props = {
   label?: React.ReactNode;

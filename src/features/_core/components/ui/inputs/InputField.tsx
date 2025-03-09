@@ -5,7 +5,7 @@ import FieldRootWrapper from "../FieldRootWrapper";
 import Label from "../Label";
 import InputWrapper from "./InputWrapper";
 import InputContentWrapper from "./InputContentWrapper";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 
 export type InputFieldProps = {
   startContent?: React.ReactNode;

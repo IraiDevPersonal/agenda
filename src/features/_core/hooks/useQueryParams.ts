@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
-import SearchParams, { QueryParamsToObjetOptions } from "@/config/search-params";
+import SearchParams, { QueryParamsToObjetOptions } from "@/config/pluggins/search-params";
 
 type AcceptedValues = number | string | boolean | undefined | null;
 type Props<T extends Record<string, AcceptedValues | AcceptedValues[]>> = {

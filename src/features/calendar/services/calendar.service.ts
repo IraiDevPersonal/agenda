@@ -1,5 +1,5 @@
 import { agendaApi } from "@/config/apis/agenda-api";
-import SearchParams from "@/config/search-params";
+import SearchParams from "@/config/pluggins/search-params";
 import CalendarEntity from "../domain/calendar.entity";
 import type { AppointmentFilters } from "@/features/appointment/domain/types";
 

@@ -1,5 +1,5 @@
-import BrowserStorage from "../browser-storage";
-import HttpClient from "../http-client";
+import BrowserStorage from "../pluggins/browser-storage";
+import HttpClient from "../pluggins/http-client";
 
 const storage = new BrowserStorage("token");
 const httpClient = new HttpClient(storage);

@@ -1,4 +1,4 @@
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 import { HTMLAttributes } from "@/config/types";
 
 type Props = {

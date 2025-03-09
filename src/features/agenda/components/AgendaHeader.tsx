@@ -3,17 +3,15 @@ import AgendaFilterByPatientRut from "./AgendaFilterByPatientRut";
 import AgendaFilterByDate from "./AgendaFilterByDate";
 import AgendaFilterByProfession from "./AgendaFilterByProfession";
 import AgendaFilterByProfessional from "./AgendaFilterByProfessional";
-import { useLocation } from "react-router-dom";
-import ROUTES from "@/config/routes";
+import { includePath } from "@/features/_core/utils/include-path";
 
 const AgendaHeader = () => {
-  const location = useLocation();
   return (
     <Header title="Agenda">
       <AgendaFilterByProfession />
       <AgendaFilterByProfessional />
       <AgendaFilterByPatientRut />
-      {location.pathname === ROUTES.AGENDA_DETAIL && <AgendaFilterByDate />}
+      {includePath(["/agenda/detalle"]) && <AgendaFilterByDate />}
     </Header>
   );
 };

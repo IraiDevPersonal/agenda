@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo } from "react";
 import { create } from "zustand";
 import useSyncSearchParams from "@/features/_core/hooks/useSyncSearchParams";
-import SearchParams from "@/config/search-params";
+import SearchParams from "@/config/pluggins/search-params";
 import type { AcceptedFilterValues } from "@/config/types";
 
 type FilterValues = Record<string, AcceptedFilterValues | AcceptedFilterValues[]>;
 
 type Props<T extends FilterValues> = {
+  omitParams?: (keyof T | undefined)[];
   defaultValues?: T;
 };
 
@@ -20,9 +21,14 @@ export default function useFilters<T extends FilterValues>(props?: Props<T>) {
   const handleFilter = useCallback(
     (filters: Partial<T>) => {
       const newFilters = onFilter(filters);
+
+      props?.omitParams?.forEach((omited) => {
+        if (omited) delete newFilters[omited];
+      });
+
       onSync(newFilters);
     },
-    [onFilter, onSync],
+    [onFilter, onSync, props?.omitParams],
   );
 
   const filterAsString = useMemo(() => SearchParams.toString(filters), [filters]);

@@ -1,5 +1,5 @@
 import { agendaApi } from "@/config/apis/agenda-api";
-import SearchParams from "@/config/search-params";
+import SearchParams from "@/config/pluggins/search-params";
 import { toArray } from "@/features/_core/utils/to-array.util";
 import AppointmentEntity from "../domain/appointment.entity";
 import AgendaEntity from "@/features/agenda/domain/agenda.entity";

@@ -1,4 +1,4 @@
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 import Input, { InputProps } from "./Input";
 import InputWrapper from "./InputWrapper";
 import InputContentWrapper from "./InputContentWrapper";

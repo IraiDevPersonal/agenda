@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { arrayMove } from "@dnd-kit/sortable";
 import { DragEndEvent } from "@dnd-kit/core";
-import BrowserStorage from "@/config/browser-storage";
+import BrowserStorage from "@/config/pluggins/browser-storage";
 import type { AppointementTypes } from "@/features/appointment/domain/types";
 
 export type AgendaColumns = { id: AppointementTypes };

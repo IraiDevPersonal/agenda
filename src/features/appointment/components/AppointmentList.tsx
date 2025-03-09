@@ -4,7 +4,7 @@ import IconChevronRight from "@/features/_core/components/icons/IconChevronRight
 import Button from "@/features/_core/components/ui/Button";
 import Select from "@/features/_core/components/ui/selects/Select";
 import Text from "@/features/_core/components/ui/Text";
-import DateHelper from "@/config/date-helper";
+import DateHelper from "@/config/pluggins/date-helper";
 import { createOptions } from "@/features/_core/utils/create-options.util";
 import { APPOINTMENT_OPTIONS } from "@/features/appointment/utils/constants.util";
 import AppointmentColumn from "./AppointmentColumn";

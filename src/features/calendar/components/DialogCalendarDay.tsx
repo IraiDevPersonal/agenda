@@ -4,8 +4,8 @@ import ArrayMap from "@/features/_core/components/utils/ArrayMap";
 import Dialog from "@/features/_core/components/ui/dialog/Dialog";
 import TextItem from "@/features/_core/components/ui/TextItem";
 import IconDots from "@/features/_core/components/icons/IconDots";
-import cn from "@/config/tailwind-merge";
-import DateHelper from "@/config/date-helper";
+import cn from "@/config/pluggins/cn";
+import DateHelper from "@/config/pluggins/date-helper";
 import CalendarEntity from "../domain/calendar.entity";
 
 type Props = CalendarEntity & {

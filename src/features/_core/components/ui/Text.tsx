@@ -1,6 +1,6 @@
 import CreateElement from "../utils/CreateElement";
 import { HTMLTags } from "@/config/types";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 
 const HASH_TEXT_TYPE: Record<Props["type"], { tag: HTMLTags; styles: string }> = {
   paragraph: { tag: "p", styles: "text-muted-foreground" },

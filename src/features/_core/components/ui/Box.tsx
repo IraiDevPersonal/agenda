@@ -1,5 +1,5 @@
 import CreateElement from "../utils/CreateElement";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 import type { HTMLAttributes, HTMLTags } from "@/config/types";
 
 type Props<T extends HTMLElement | unknown = HTMLElement> = {

@@ -3,7 +3,7 @@ import FieldRootWrapper from "../FieldRootWrapper";
 import Select, { SelectProps } from "./Select";
 import HelperText, { HelperTextProps } from "../HelperText";
 import Label from "../Label";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 
 type Props = {
   label?: React.ReactNode;

@@ -1,7 +1,7 @@
 import useAppointmentFilters from "@/features/appointment/hooks/useAppointmentFilters";
 import useQuery from "@/features/_core/hooks/useQuery";
 import CalendarService from "../services/calendar.service";
-import Notify from "@/config/notify";
+import Notify from "@/config/pluggins/notify";
 
 const calendarService = new CalendarService();
 

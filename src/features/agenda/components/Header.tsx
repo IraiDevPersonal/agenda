@@ -3,7 +3,7 @@ import Box from "@/features/_core/components/ui/Box";
 import Button from "@/features/_core/components/ui/Button";
 import IconReload from "@/features/_core/components/icons/IconReload";
 import PopoverBonoFonasa from "./PopoverBonoFonasa";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 
 type Props = {
   children?: React.ReactNode;

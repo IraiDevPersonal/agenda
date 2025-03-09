@@ -11,20 +11,24 @@ type CalendarModel = {
     appointment_time: string;
     professional_name: string;
   }[];
+  available_appointments_count: number;
 };
 
 export default class CalendarEntity {
   public date: CalendarModel["date"];
   public appointments: CalendarModel["appointments"];
+  public available_appointments_count: CalendarModel["available_appointments_count"];
 
   private constructor(init: CalendarModel) {
     this.date = init["date"];
     this.appointments = init["appointments"];
+    this.available_appointments_count = init["available_appointments_count"];
   }
 
   static calendarAdapter(entry: Record<string, any>) {
     return new CalendarEntity({
       date: entry["date"] ?? "__-__-____",
+      available_appointments_count: entry["available_appointments_count"] ?? 0,
       appointments: toArray(entry["appointments"]).map(CalendarAppointmentEntity.adapter),
     });
   }

@@ -1,4 +1,4 @@
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 
 export type InputProps = React.ComponentProps<"input"> & {
   ref?: React.Ref<HTMLInputElement>;

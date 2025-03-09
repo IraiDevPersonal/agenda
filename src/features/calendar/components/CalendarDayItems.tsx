@@ -1,9 +1,9 @@
 import ArrayMap from "@/features/_core/components/utils/ArrayMap";
 import DialogCalendarDay from "./DialogCalendarDay";
 import { tooltipCalendarItem } from "../utils/utilities.util";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 import CalendarEntity from "../domain/calendar.entity";
-import DateHelper from "@/config/date-helper";
+import DateHelper from "@/config/pluggins/date-helper";
 
 const MAX_SHOW = 5;
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 
 type Props = {
   ref?: React.Ref<HTMLLabelElement>;

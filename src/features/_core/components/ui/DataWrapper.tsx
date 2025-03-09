@@ -1,5 +1,5 @@
 import Text from "@/features/_core/components/ui/Text";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 
 type Props = {
   children: React.ReactNode;

@@ -2,7 +2,7 @@ import useQuery from "@/features/_core/hooks/useQuery";
 import useAppointmentFilters from "./useAppointmentFilters";
 import AppointmentService from "../services/appointment.service";
 import AgendaEntity from "@/features/agenda/domain/agenda.entity";
-import Notify from "@/config/notify";
+import Notify from "@/config/pluggins/notify";
 
 const appointmentService = new AppointmentService();
 

@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 
 type RadioGroupProps = {
   ref?: React.Ref<HTMLDivElement>;

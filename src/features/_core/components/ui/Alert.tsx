@@ -1,4 +1,4 @@
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 import IconDanger from "../icons/IconDanger";
 import IconInfo from "../icons/IconInfo";
 import IconSuccess from "../icons/IconSuccess";

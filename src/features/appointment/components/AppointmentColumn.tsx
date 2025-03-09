@@ -9,7 +9,7 @@ import DialogAppointmentToConfirm from "./DialogAppointmentToConfirm";
 import AppointmentAvailableCard from "./AppointmentAvailableCard";
 import AppointmentCard from "./AppointmentCard";
 import AppointmentEntity from "../domain/appointment.entity";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 import type { DialogPropsHandler } from "@/config/types";
 import type { AppointementTypes } from "../domain/types";
 

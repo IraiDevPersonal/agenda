@@ -1,5 +1,5 @@
 import ArrayMap from "../../utils/ArrayMap";
-import cn from "@/config/tailwind-merge";
+import cn from "@/config/pluggins/cn";
 import type { Option } from "@/config/types";
 
 export type SelectProps = {
