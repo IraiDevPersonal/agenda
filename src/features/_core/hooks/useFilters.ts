@@ -31,7 +31,7 @@ export default function useFilters<T extends FilterValues>(props?: Props<T>) {
     [onFilter, onSync, props?.omitParams],
   );
 
-  const filterAsString = useMemo(() => SearchParams.toString(filters), [filters]);
+  const filterAsString = useMemo(() => SearchParams.toSearchParams(filters), [filters]);
 
   return [filters, handleFilter, filterAsString] as const;
 }
