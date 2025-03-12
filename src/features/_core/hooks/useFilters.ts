@@ -2,9 +2,12 @@ import { useCallback, useEffect, useLayoutEffect, useMemo } from "react";
 import { create } from "zustand";
 import useSyncSearchParams from "@/features/_core/hooks/useSyncSearchParams";
 import SearchParams from "@/config/pluggins/search-params";
-import type { AcceptedFilterValues } from "@/config/types";
+import type { SearchParamsAcceptedValue } from "@/config/types";
 
-type FilterValues = Record<string, AcceptedFilterValues | AcceptedFilterValues[]>;
+type FilterValues = Record<
+  string,
+  SearchParamsAcceptedValue | SearchParamsAcceptedValue[]
+>;
 
 type Props<T extends FilterValues> = {
   omitParams?: (keyof T | undefined)[];

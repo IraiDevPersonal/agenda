@@ -23,18 +23,18 @@ export type CustomLinkProps = {
 
 export type Option<
   TValue extends string | number = string,
-  TExpand extends object = {},
+  TObject extends object = {},
 > = {
   label: string;
   value: TValue;
-} & TExpand;
+} & TObject;
 
 export type DialogPropsHandler = {
   isOpen: boolean;
   onClose(): void;
 };
 
-export type AcceptedFilterValues = number | string | boolean | undefined | null;
+export type SearchParamsAcceptedValue = number | string | boolean | undefined | null;
 
 export type SelectChangeEvHandler = React.ChangeEventHandler<HTMLSelectElement>;
 export type SelectKeyboardEventHandler = React.KeyboardEventHandler<HTMLSelectElement>;
