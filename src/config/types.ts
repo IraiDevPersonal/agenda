@@ -1,29 +1,17 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
 import { LucideProps } from "lucide-react";
+import { AxiosError } from "axios";
 import ROUTES from "./routes";
 
 export type HTMLAttributes<T extends HTMLElement | unknown = HTMLElement> =
   React.HTMLAttributes<T>;
 export type HTMLTags = keyof React.JSX.IntrinsicElements;
-export type IconProps = LucideProps;
 export type Paths = (typeof ROUTES)[keyof typeof ROUTES];
-
-type ExtractURLParams<T extends string> =
-  T extends `${string}:${infer Param}/${infer Rest}`
-    ? { [K in Param | keyof ExtractURLParams<`/${Rest}`>]: string }
-    : T extends `${string}:${infer Param}`
-      ? { [K in Param]: string }
-      : {};
-
-export type CustomLinkProps = {
-  query?: Record<string, any> | string;
-  params?: ExtractURLParams<Paths>;
-  to: Paths;
-};
+export type IconProps = LucideProps;
+export type HttpError = AxiosError;
 
 export type Option<
   TValue extends string | number = string,
-  TObject extends object = {},
+  TObject extends object = Record<string, any>,
 > = {
   label: string;
   value: TValue;
@@ -36,8 +24,8 @@ export type DialogPropsHandler = {
 
 export type SearchParamsAcceptedValue = number | string | boolean | undefined | null;
 
-export type SelectChangeEvHandler = React.ChangeEventHandler<HTMLSelectElement>;
 export type SelectKeyboardEventHandler = React.KeyboardEventHandler<HTMLSelectElement>;
-export type InputChangeEvHandler = React.ChangeEventHandler<HTMLInputElement>;
+export type SelectChangeEvHandler = React.ChangeEventHandler<HTMLSelectElement>;
 export type InputKeyboardEventHandler = React.KeyboardEventHandler<HTMLInputElement>;
+export type InputChangeEvHandler = React.ChangeEventHandler<HTMLInputElement>;
 export type ButtonMouseEvHandler = React.MouseEventHandler<HTMLButtonElement>;

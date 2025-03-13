@@ -19,7 +19,6 @@ const AppointmentCard: React.FC<Props> = ({ id, appointment }) => {
     professional_name,
   } = appointment;
   const { showProfesionalData } = useShowProfessionalData();
-
   return (
     <Card className={HASH_COLORS[id].card}>
       <Avatar alt="Paciente 1" classNames={{ fallback: HASH_COLORS[id].avatar }} />

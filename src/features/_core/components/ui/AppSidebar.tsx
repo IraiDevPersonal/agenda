@@ -1,6 +1,6 @@
 import UserAccount from "@/features/account/components/UserAccount";
 import ArrayMap from "../utils/ArrayMap";
-import NavLinkRouter from "./NavLinkRouter";
+import RouterNavLink from "./RouterNavLink";
 import Box from "./Box";
 import IconMyDay from "../icons/IconMyDay";
 import IconAgenda from "../icons/IconAgenda";
@@ -52,7 +52,7 @@ const AppSidebar = () => {
 
 const ActiveNavLink: React.FC<PageProps> = ({ icon, label, route }) => {
   return (
-    <NavLinkRouter
+    <RouterNavLink
       to={route}
       className={({ isActive }) =>
         cn(
@@ -67,7 +67,7 @@ const ActiveNavLink: React.FC<PageProps> = ({ icon, label, route }) => {
         {icon}
       </figure>
       <span>{label}</span>
-    </NavLinkRouter>
+    </RouterNavLink>
   );
 };
 
