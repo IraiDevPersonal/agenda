@@ -11,7 +11,7 @@ import cn from "@/config/pluggins/cn";
 import type { Paths } from "@/config/types";
 
 const PAGES: PageProps[] = [
-  { label: "Mi Día", icon: <IconMyDay />, route: "/" },
+  { label: "Mi Día", icon: <IconMyDay />, route: "/mi-dia" },
   { label: "Agenda", icon: <IconAgenda />, route: "/agenda" },
   { label: "Pacientes", icon: <IconUsers />, route: "/not-found" },
   // { label: "Informes", icon: <IconDocument />, route: "/not-found" },

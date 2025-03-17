@@ -3,8 +3,8 @@ import type { Paths } from "@/config/types";
 
 type Props = Omit<NavLinkProps, "to"> & { to: Paths; searchParams?: string };
 
-const RouterNavLink: React.FC<Props> = ({ to, searchParams, ...props }) => {
-  return <NavLink {...props} to={`${to}?${searchParams}`} />;
+const RouterNavLink: React.FC<Props> = ({ to, ...props }) => {
+  return <NavLink {...props} to={to} />;
 };
 
 export default RouterNavLink;
