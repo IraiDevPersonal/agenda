@@ -2,8 +2,7 @@ import Main from "@/features/_core/components/ui/Main";
 import AgendaHeader from "../components/AgendaHeader";
 import Appointments from "@/features/appointment/components/Appointments";
 import QueryParamProvider from "@/features/_core/context/query-params-context";
-import DateHelper from "@/config/pluggins/date-helper";
-import type { AppointmentFilters } from "@/features/appointment/domain/types";
+import { defaultAppointmentFilters } from "@/features/appointment/utils/functions.util";
 
 const AgendaPage = () => {
   return (
@@ -11,9 +10,9 @@ const AgendaPage = () => {
       <title>Agenda</title>
 
       <Main>
-        <QueryParamProvider<AppointmentFilters>
+        <QueryParamProvider
           defaultValues={{
-            date: DateHelper.format(null, "yyyy-mm-dd"),
+            date: defaultAppointmentFilters().date,
           }}
         >
           <AgendaHeader />

@@ -12,9 +12,3 @@ export default function useAppointmentFilters() {
     getValue,
   };
 }
-
-// {
-//   date: DateHelper.format(date, "yyyy-mm-dd"),
-//   year_month: DateHelper.format(date, "year_month"),
-//   show: "available",
-// }

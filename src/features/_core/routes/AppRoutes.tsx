@@ -1,4 +1,10 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Navigate,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import Layout from "../layouts/Layout";
 
 import AgendaMyDayPage from "@/features/agenda/pages/AgendaMyDayPage";
@@ -8,20 +14,24 @@ import NotFoundPage from "../pages/NotFoundPage";
 
 import ROUTES from "@/config/routes";
 
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route element={<Layout />}>
+        <Route index element={<Navigate to={ROUTES.MY_DAY} />} />
+        <Route path={`${ROUTES.MY_DAY}/:uid?`} element={<AgendaMyDayPage />} />
+        <Route path={ROUTES.AGENDA} element={<AgendaPage />} />
+        <Route path={ROUTES.AGENDA_DETAIL} element={<AgendaCalendarPage />} />
+      </Route>
+      <Route path="*" element={<NotFoundPage />} />
+    </>,
+  ),
+);
+
 const AppRoutes = () => {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route index element={<Navigate to={ROUTES.MY_DAY} />} />
-            <Route path={`${ROUTES.MY_DAY}/:uid?`} element={<AgendaMyDayPage />} />
-            <Route path={ROUTES.AGENDA} element={<AgendaPage />} />
-            <Route path={ROUTES.AGENDA_DETAIL} element={<AgendaCalendarPage />} />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </>
   );
 };

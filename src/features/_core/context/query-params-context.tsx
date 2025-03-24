@@ -5,14 +5,16 @@ import QueryString, {
   QueryStringToStringOptions,
 } from "@/config/pluggins/query-string";
 
-type ContextProps<T extends object> = {
+type ValidObject = Record<string, any>;
+
+type ContextProps<T extends ValidObject> = {
   getValue: (key: keyof T, fallbackValue: T[keyof T]) => T[keyof T];
   setQuery: (object: Partial<T>) => void;
   queryAsObject: Partial<T>;
   queryAsString: string;
 };
 
-type Props<T extends object> = {
+type Props<T extends ValidObject> = {
   defaultValues?: Partial<T> | ((objectParams: Partial<T>) => Partial<T>);
   toStringOptions?: QueryStringToStringOptions;
   toObjectOptions?: QueryStringToObjectOptions;
@@ -21,18 +23,18 @@ type Props<T extends object> = {
 
 const Context = createContext<ContextProps<any> | undefined>(undefined);
 
-export default function QueryParamProvider<T extends object>({
+export default function QueryParamProvider<T extends ValidObject>({
   toStringOptions,
   toObjectOptions,
   defaultValues,
   children,
 }: Props<T>) {
-  const [query, handleSetQuery] = useSearchParams();
   const initialValues = useRef(defaultValues);
   const initialOptions = useRef({
     toStringOptions: toStringOptions ?? QueryString.toStringOptions,
     toObjectOptions: toObjectOptions ?? QueryString.toObjectOptions,
   });
+  const [query, handleSetQuery] = useSearchParams();
 
   useEffect(() => {
     if (!initialValues.current) return;
@@ -41,14 +43,17 @@ export default function QueryParamProvider<T extends object>({
       window.location.search,
       initialOptions.current.toObjectOptions,
     );
-    const newSearchParams = QueryString.toString(
+    let newQuery = QueryString.toString(
       { ...initialValues.current, ...parsed },
       initialOptions.current.toStringOptions,
     );
 
-    handleSetQuery(newSearchParams);
+    newQuery = newQuery ? `?${newQuery}` : "";
+
+    // TODO: para evitar que en ese primer renderizado con los defaulValues se almacene en el historial
+    window.history.replaceState(null, "", newQuery);
     initialValues.current = undefined;
-  }, [handleSetQuery]);
+  }, []);
 
   const queryAsObject = useMemo(() => {
     const parsedQuery = QueryString.toObject(
@@ -64,23 +69,24 @@ export default function QueryParamProvider<T extends object>({
         return queryAsObject[key] ?? fallbackValue;
       },
       setQuery: (object: Partial<T>) => {
-        handleSetQuery((prev) => {
-          const current = QueryString.toObject(
-            prev,
-            initialOptions.current.toObjectOptions,
-          );
-          const merged: Record<string, any> = { ...current, ...object };
+        const current = QueryString.toObject(
+          window.location.search,
+          initialOptions.current.toObjectOptions,
+        );
+        const merged = { ...current, ...object };
 
-          console.log({ merged, current, object });
-
-          Object.entries(merged).forEach(([key, value]) => {
-            if (value === null || value === undefined) {
-              delete merged[key];
-            }
-          });
-
-          return QueryString.toString(merged, initialOptions.current.toStringOptions);
+        Object.entries(merged).forEach(([key, value]) => {
+          if (value === null || value === undefined) {
+            delete merged[key];
+          }
         });
+
+        const newQuery = QueryString.toString(
+          merged,
+          initialOptions.current.toStringOptions,
+        );
+
+        handleSetQuery(newQuery);
       },
       queryAsString: QueryString.toString(
         { ...initialValues.current, ...queryAsObject },
@@ -94,7 +100,7 @@ export default function QueryParamProvider<T extends object>({
   return <Context value={value}>{children}</Context>;
 }
 
-export function useQueryParams<T extends object>() {
+export function useQueryParams<T extends ValidObject>() {
   const context = use(Context);
   if (!context) {
     throw new Error("El context solo puede ser usado dentro de QueryParamProvider");
