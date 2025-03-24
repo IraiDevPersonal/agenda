@@ -1,16 +1,16 @@
 import { agendaApi } from "@/config/apis/agenda-api";
-import SearchParams from "@/config/pluggins/search-params";
+import QueryString from "@/config/pluggins/query-string";
 import CalendarEntity from "../domain/calendar.entity";
 import type { AppointmentFilters } from "@/features/appointment/domain/types";
 
 export default class CalendarService {
   public async getCalendar(filters?: Partial<AppointmentFilters>) {
-    const query = this.parseFilters(filters);
-    const { data } = await agendaApi.get(`/calendar?${query}`);
-    return CalendarEntity.calendarResponse(data);
+    const search = this.stringifyFilters(filters);
+    const { data } = await agendaApi.get(`/calendar?${search}`);
+    return CalendarEntity.responseAdapter(data);
   }
 
-  private parseFilters(obj: Partial<AppointmentFilters> = {}) {
-    return SearchParams.toString(obj);
+  private stringifyFilters(obj: Partial<AppointmentFilters> = {}) {
+    return QueryString.toString(obj);
   }
 }

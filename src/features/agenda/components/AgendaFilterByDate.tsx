@@ -3,10 +3,7 @@ import useAppointmentFilters from "@/features/appointment/hooks/useAppointmentFi
 import type { InputChangeEvHandler } from "@/config/types";
 
 const AgendaFilterByDate = () => {
-  const {
-    onFilterAppointments,
-    appointmentFilters: { date },
-  } = useAppointmentFilters();
+  const { onFilterAppointments, getValue } = useAppointmentFilters();
 
   const handleChange: InputChangeEvHandler = (e) => {
     const date = e.target.value;
@@ -15,7 +12,12 @@ const AgendaFilterByDate = () => {
 
   return (
     <>
-      <Input onChange={handleChange} className="w-max" value={date} type="date" />
+      <Input
+        value={getValue("date", "")}
+        onChange={handleChange}
+        className="w-max"
+        type="date"
+      />
     </>
   );
 };

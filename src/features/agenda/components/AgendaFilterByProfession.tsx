@@ -5,10 +5,7 @@ import { createOptions } from "@/features/_core/utils/create-options.util";
 import type { SelectChangeEvHandler } from "@/config/types";
 
 const AgendaFilterByProfession = () => {
-  const {
-    onFilterAppointments,
-    appointmentFilters: { profession_id },
-  } = useAppointmentFilters();
+  const { onFilterAppointments, getValue } = useAppointmentFilters();
   const { professionOptions, isLoading } = useProfessionsAsOptions();
 
   const handleChange: SelectChangeEvHandler = (e) => {
@@ -21,7 +18,6 @@ const AgendaFilterByProfession = () => {
 
   return (
     <Select
-      disabled={isLoading}
       options={createOptions({
         options: professionOptions.map((opt) => ({
           label: `Profesión: ${opt.label}`,
@@ -29,8 +25,9 @@ const AgendaFilterByProfession = () => {
         })),
         customLabel: "Profesión: Sin selección",
       })}
+      value={getValue("profession_id", "")}
       onChange={handleChange}
-      value={profession_id ?? ""}
+      disabled={isLoading}
       className="w-56"
     />
   );

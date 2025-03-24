@@ -35,7 +35,7 @@ export default class AppointmentEntity {
     this.professions = init.professions;
   }
 
-  static appointmentAdapter(entry: Record<string, any>) {
+  static responseAdapter(entry: Record<string, any>) {
     const item = {
       uid: entry["uid"] ?? "",
       date: entry["date"] ?? "-- -- ----",

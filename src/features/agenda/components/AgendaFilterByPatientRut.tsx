@@ -5,11 +5,10 @@ import InputSearch from "@/features/_core/components/ui/inputs/InputSearch";
 import type { InputChangeEvHandler } from "@/config/types";
 
 const AgendaFilterByPatientRut = () => {
-  const {
-    onFilterAppointments,
-    appointmentFilters: { patient_rut },
-  } = useAppointmentFilters();
-  const [patientRut, setPatientRut] = useState<string>(patient_rut ?? "");
+  const { onFilterAppointments, getValue } = useAppointmentFilters();
+  const [patientRut, setPatientRut] = useState<string>(
+    getValue("patient_rut", "") as string,
+  );
   const shouldSearch = useRef<boolean>(false);
 
   const handleChange: InputChangeEvHandler = (e) => {

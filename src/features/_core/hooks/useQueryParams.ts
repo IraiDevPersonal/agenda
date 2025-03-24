@@ -1,10 +1,10 @@
 import { useCallback, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
-import SearchParams, { QueryParamsToObjetOptions } from "@/config/pluggins/search-params";
+import QueryString, { QueryStringToObjectOptions } from "@/config/pluggins/query-string";
 
 type AcceptedValues = number | string | boolean | undefined | null;
 type Props<T extends Record<string, AcceptedValues | AcceptedValues[]>> = {
-  options?: QueryParamsToObjetOptions;
+  options?: QueryStringToObjectOptions;
   defaultValues?: Partial<T>;
 };
 
@@ -19,7 +19,7 @@ export default function useQueryParams<
   );
 
   const queryToOject = useMemo(() => {
-    return SearchParams.toObject(query, props?.options) as T;
+    return QueryString.toObject(query, props?.options) as T;
   }, [query, props?.options]);
 
   const setQueryParams = useCallback(

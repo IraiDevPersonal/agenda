@@ -15,7 +15,7 @@ export default function useAppointmentList() {
   };
 
   const handleNavigateToMyDay = () => {
-    navigate(`${ROUTES.AGENDA_DETAIL}?${appointmentFiltersAsString(true)}`);
+    navigate(`${ROUTES.AGENDA_DETAIL}?${appointmentFiltersAsString}`);
   };
 
   return {

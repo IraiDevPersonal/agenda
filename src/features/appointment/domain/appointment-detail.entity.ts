@@ -34,7 +34,7 @@ export default class AppointmentDetailEntity {
     this.patient_history = init["patient_history"];
   }
 
-  static adapter(entry: Record<string, any>) {
+  static responseAdapter(entry: Record<string, any>) {
     return new AppointmentDetailEntity({
       alert: {
         message: entry?.["alert"]?.["messgge"] ?? "",

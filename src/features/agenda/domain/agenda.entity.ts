@@ -9,8 +9,6 @@ type AgendaModel = {
   toConfirm: AppointmentEntity[];
 };
 
-// TODO: esto tiene que ser repensado para ver si lo saco de agenda y se deja en appointment feature
-
 export default class AgendaEntity {
   public availables: AgendaModel["availables"];
   public cancelled: AgendaModel["cancelled"];
@@ -24,12 +22,12 @@ export default class AgendaEntity {
     this.toConfirm = init.toConfirm;
   }
 
-  static appointmentsAdapter(entry: Record<string, any>) {
+  static responseAdapter(entry: Record<string, any>) {
     return new AgendaEntity({
-      availables: toArray(entry.availables).map(AppointmentEntity.appointmentAdapter),
-      cancelled: toArray(entry.cancelled).map(AppointmentEntity.appointmentAdapter),
-      confirmed: toArray(entry.confirmed).map(AppointmentEntity.appointmentAdapter),
-      toConfirm: toArray(entry.toConfirm).map(AppointmentEntity.appointmentAdapter),
+      availables: toArray(entry.availables).map(AppointmentEntity.responseAdapter),
+      cancelled: toArray(entry.cancelled).map(AppointmentEntity.responseAdapter),
+      confirmed: toArray(entry.confirmed).map(AppointmentEntity.responseAdapter),
+      toConfirm: toArray(entry.toConfirm).map(AppointmentEntity.responseAdapter),
     });
   }
 

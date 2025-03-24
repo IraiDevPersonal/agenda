@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo } from "react";
 import { create } from "zustand";
 import useSyncSearchParams from "@/features/_core/hooks/useSyncSearchParams";
-import SearchParams from "@/config/pluggins/search-params";
+import QueryString from "@/config/pluggins/query-string";
 import type { SearchParamsAcceptedValue } from "@/config/types";
 
 type FilterValues = Record<
@@ -34,7 +34,7 @@ export default function useFilters<T extends FilterValues>(props?: Props<T>) {
     [onFilter, onSync, props?.omitParams],
   );
 
-  const filterAsString = useMemo(() => SearchParams.toSearchParams(filters), [filters]);
+  const filterAsString = useMemo(() => QueryString.toUrlSearchParams(filters), [filters]);
 
   return [filters, handleFilter, filterAsString] as const;
 }

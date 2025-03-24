@@ -33,7 +33,7 @@ export default class CalendarEntity {
     });
   }
 
-  static calendarResponse(data: any) {
+  static responseAdapter(data: any) {
     return toArray(data).map(CalendarEntity.calendarAdapter);
   }
 }

@@ -1,4 +1,3 @@
-import useAppointmentFilters from "@/features/appointment/hooks/useAppointmentFilters";
 import Box from "@/features/_core/components/ui/Box";
 import Button from "@/features/_core/components/ui/Button";
 import IconReload from "@/features/_core/components/icons/IconReload";
@@ -15,7 +14,7 @@ type Props = {
 };
 
 const Header: React.FC<Props> = ({ classNames, children, title }) => {
-  const { onFilterAppointments } = useAppointmentFilters();
+  // const { onFilterAppointments } = useAppointmentFilters();
   return (
     <Box
       as="header"
@@ -30,7 +29,7 @@ const Header: React.FC<Props> = ({ classNames, children, title }) => {
         size="icon"
         title="Actualizar"
         variant="secondary"
-        onClick={() => onFilterAppointments({})}
+        // onClick={() => onFilterAppointments({})}
       >
         <IconReload />
       </Button>

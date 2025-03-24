@@ -14,7 +14,7 @@ export default function useAppointments() {
     queryFn: () => appointmentService.getAgenda(filters),
     // refetchOnMount: shouldRefetchOnMount ? "always" : false,
     // retry: 2,
-    initialData: AgendaEntity.appointmentsAdapter({}),
+    initialData: AgendaEntity.responseAdapter({}),
   });
 
   return query;

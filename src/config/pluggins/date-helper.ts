@@ -3,6 +3,7 @@ import {
   isEqual,
   isBefore,
   set,
+  isValid,
   isWithinInterval,
   setDefaultOptions,
   DateArg,
@@ -14,7 +15,14 @@ setDefaultOptions({ locale: es });
 type Format = keyof typeof DATE_FORMATS;
 
 export default class DateHelper {
-  static format(date: DateArg<Date> | null, format: Format = "dd-mm-yyyy") {
+  static format(
+    date: DateArg<Date> | null,
+    format: Format = "dd-mm-yyyy",
+    errorMessage: string = "Fecha invalida...",
+  ) {
+    if (!isValid(date)) {
+      return errorMessage;
+    }
     return dateFormat(date ?? new Date(), DATE_FORMATS[format]);
   }
 
@@ -103,6 +111,7 @@ const DATE_FORMATS = {
   month_number: "MM",
   day_number: "dd",
   year_number: "yyyy",
+  date_time: "dd-MM-yyyy '('HH:mm')'",
 };
 
 // static isBefore(endTime: string, endDate?: string) {
