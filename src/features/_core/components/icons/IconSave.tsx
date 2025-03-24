@@ -1,6 +1,6 @@
 import type { IconProps } from "@/config/types";
 import { SaveIcon } from "lucide-react";
-import { DEFAULT_ICON_SIZE } from "../../utils/constants";
+import { DEFAULT_ICON_SIZE } from "../../utils/constants.util";
 
 const IconSave: React.FC<IconProps> = (props) => {
   return <SaveIcon {...DEFAULT_ICON_SIZE} {...props} />;

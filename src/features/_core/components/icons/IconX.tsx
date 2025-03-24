@@ -1,5 +1,5 @@
 import { XIcon } from "lucide-react";
-import { DEFAULT_ICON_SIZE } from "../../utils/constants";
+import { DEFAULT_ICON_SIZE } from "../../utils/constants.util";
 import type { IconProps } from "@/config/types";
 
 const IconX = (props: IconProps) => {

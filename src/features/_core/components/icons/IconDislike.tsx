@@ -1,6 +1,6 @@
 import type { IconProps } from "@/config/types";
 import { ThumbsDownIcon } from "lucide-react";
-import { DEFAULT_ICON_SIZE } from "../../utils/constants";
+import { DEFAULT_ICON_SIZE } from "../../utils/constants.util";
 
 const IconDislike: React.FC<IconProps> = (props) => {
   return <ThumbsDownIcon {...DEFAULT_ICON_SIZE} {...props} />;

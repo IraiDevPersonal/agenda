@@ -1,6 +1,6 @@
 import type { IconProps } from "@/config/types";
 import { ChevronLeftIcon } from "lucide-react";
-import { DEFAULT_ICON_SIZE } from "../../utils/constants";
+import { DEFAULT_ICON_SIZE } from "../../utils/constants.util";
 
 const IconChevronLeft: React.FC<IconProps> = (props) => {
   return <ChevronLeftIcon {...DEFAULT_ICON_SIZE} {...props} />;

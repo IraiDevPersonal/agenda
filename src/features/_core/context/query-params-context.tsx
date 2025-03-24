@@ -15,10 +15,11 @@ type ContextProps<T extends ValidObject> = {
 };
 
 type Props<T extends ValidObject> = {
-  defaultValues?: Partial<T> | ((objectParams: Partial<T>) => Partial<T>);
   toStringOptions?: QueryStringToStringOptions;
   toObjectOptions?: QueryStringToObjectOptions;
+  defaultValues?: Partial<T>;
   children: React.ReactNode;
+  omit?: (keyof T)[];
 };
 
 const Context = createContext<ContextProps<any> | undefined>(undefined);
@@ -28,13 +29,15 @@ export default function QueryParamProvider<T extends ValidObject>({
   toObjectOptions,
   defaultValues,
   children,
+  omit,
 }: Props<T>) {
-  const initialValues = useRef(defaultValues);
+  const [query, handleSetQuery] = useSearchParams();
   const initialOptions = useRef({
     toStringOptions: toStringOptions ?? QueryString.toStringOptions,
     toObjectOptions: toObjectOptions ?? QueryString.toObjectOptions,
   });
-  const [query, handleSetQuery] = useSearchParams();
+  const initialValues = useRef(defaultValues);
+  const omitedParams = useRef(omit ?? []);
 
   useEffect(() => {
     if (!initialValues.current) return;
@@ -44,7 +47,10 @@ export default function QueryParamProvider<T extends ValidObject>({
       initialOptions.current.toObjectOptions,
     );
     let newQuery = QueryString.toString(
-      { ...initialValues.current, ...parsed },
+      {
+        ...initialValues.current,
+        ...QueryString.withOmitParams(omitedParams.current, parsed),
+      },
       initialOptions.current.toStringOptions,
     );
 
@@ -56,11 +62,15 @@ export default function QueryParamProvider<T extends ValidObject>({
   }, []);
 
   const queryAsObject = useMemo(() => {
-    const parsedQuery = QueryString.toObject(
+    const parsedQuery = QueryString.toObject<Partial<T>>(
       query,
       initialOptions.current.toObjectOptions,
     );
-    return { ...initialValues.current, ...parsedQuery } as Partial<T>;
+
+    return {
+      ...initialValues.current,
+      ...QueryString.withOmitParams(omitedParams.current, parsedQuery),
+    };
   }, [query]);
 
   const value: ContextProps<T> = useMemo(
@@ -89,7 +99,7 @@ export default function QueryParamProvider<T extends ValidObject>({
         handleSetQuery(newQuery);
       },
       queryAsString: QueryString.toString(
-        { ...initialValues.current, ...queryAsObject },
+        queryAsObject,
         initialOptions.current.toStringOptions,
       ),
       queryAsObject,

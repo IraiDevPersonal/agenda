@@ -3,6 +3,7 @@ import MyDayHeader from "../components/MyDayHeader";
 import Appointments from "@/features/appointment/components/Appointments";
 import QueryParamProvider from "@/features/_core/context/query-params-context";
 import { defaultAppointmentFilters } from "@/features/appointment/utils/functions.util";
+import type { AppointmentFilters } from "@/features/appointment/domain/types";
 
 const AgendaMyDayPage = () => {
   return (
@@ -10,10 +11,11 @@ const AgendaMyDayPage = () => {
       <title>Agenda | Mi Día</title>
 
       <Main>
-        <QueryParamProvider
+        <QueryParamProvider<AppointmentFilters>
           defaultValues={{
             date: defaultAppointmentFilters().date,
           }}
+          omit={["show", "year_month"]}
         >
           <MyDayHeader />
           <Appointments />

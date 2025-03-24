@@ -6,12 +6,12 @@ import type { AppointmentFilters } from "../domain/types";
 
 export default function useAppointmentList() {
   const navigate = useNavigate();
-  const { appointmentFiltersAsString, appointmentFilters, onFilterAppointments } =
+  const { appointmentFiltersAsString, getValue, onFilterAppointments } =
     useAppointmentFilters();
 
   const handleFilterList: SelectChangeEvHandler = (e) => {
-    const value = e.target.value;
-    onFilterAppointments({ show: value as AppointmentFilters["show"] });
+    const value = e.target.value as AppointmentFilters["show"];
+    onFilterAppointments({ show: value });
   };
 
   const handleNavigateToMyDay = () => {
@@ -19,7 +19,7 @@ export default function useAppointmentList() {
   };
 
   return {
-    listFilter: appointmentFilters.show ?? "available",
+    listFilter: getValue("show", "available"),
     handleNavigateToMyDay,
     handleFilterList,
   };

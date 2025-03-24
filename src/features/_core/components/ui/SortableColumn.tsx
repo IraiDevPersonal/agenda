@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import IconLoading from "../icons/IconLoading";
 import Box from "@/features/_core/components/ui/Box";
 import cn from "@/config/pluggins/cn";
-import IconLoading from "../icons/IconLoading";
 
 type Props = {
   children: React.ReactNode;
@@ -27,7 +27,7 @@ const SortableColumn: React.FC<Props> = ({
   const { attributes, listeners, setNodeRef, transform, transition, items } = useSortable(
     { id },
   );
-  const hasItems = useMemo(() => items.length > 0, [items]);
+  const hasItems = items.length > 0;
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
@@ -61,7 +61,7 @@ const SortableColumn: React.FC<Props> = ({
       </div>
       <ul
         className={cn(
-          "px-4 pt-2 space-y-2 scrollbar-styles",
+          "px-4 pt-2 space-y-2 scrollbar-styles scrollbar-w-0 scrollbar-thumb-transparent",
           hasItems && "h-[calc(100%-65px)] overflow-y-auto",
           classNames?.body,
         )}

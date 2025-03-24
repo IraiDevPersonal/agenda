@@ -1,5 +1,5 @@
 import { useQueryParams } from "@/features/_core/context/query-params-context";
-import { AppointmentFilters } from "../domain/types";
+import type { AppointmentFilters } from "../domain/types";
 
 export default function useAppointmentFilters() {
   const { getValue, queryAsObject, queryAsString, setQuery } =

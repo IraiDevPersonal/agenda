@@ -1,6 +1,6 @@
 import type { IconProps } from "@/config/types";
 import { LoaderCircleIcon } from "lucide-react";
-import { DEFAULT_ICON_SIZE } from "../../utils/constants";
+import { DEFAULT_ICON_SIZE } from "../../utils/constants.util";
 
 const IconLoading: React.FC<IconProps> = (props) => {
   return <LoaderCircleIcon {...DEFAULT_ICON_SIZE} {...props} />;

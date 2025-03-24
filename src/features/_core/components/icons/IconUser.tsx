@@ -1,6 +1,6 @@
 import type { IconProps } from "@/config/types";
 import { UserRoundIcon } from "lucide-react";
-import { DEFAULT_ICON_SIZE } from "../../utils/constants";
+import { DEFAULT_ICON_SIZE } from "../../utils/constants.util";
 
 const IconUser: React.FC<IconProps> = (props) => {
   return <UserRoundIcon {...DEFAULT_ICON_SIZE} {...props} />;

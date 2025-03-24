@@ -34,4 +34,17 @@ export default class QueryString {
   ): T {
     return queryString.parse(query.toString(), options ?? this.toObjectOptions) as T;
   }
+
+  static withOmitParams<T extends object>(
+    omitedParams: (keyof T)[],
+    obj: Partial<T>,
+  ): Partial<T> {
+    const newObj = structuredClone(obj);
+    if (omitedParams.length > 0) {
+      omitedParams.forEach((omitKey) => {
+        delete newObj[omitKey];
+      });
+    }
+    return newObj as Partial<T>;
+  }
 }

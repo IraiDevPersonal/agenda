@@ -3,15 +3,13 @@ import useAppointmentFilters from "@/features/appointment/hooks/useAppointmentFi
 import DateHelper from "@/config/pluggins/date-helper";
 
 export default function usePickCalendarByMonth() {
-  const {
-    appointmentFilters: { year_month },
-    onFilterAppointments,
-  } = useAppointmentFilters();
+  const { getValue, onFilterAppointments } = useAppointmentFilters();
 
   const currentMonth = useMemo(() => {
-    if (year_month) return DateHelper.getFullDate(`${year_month}-01`);
+    const current = getValue("year_month", "");
+    if (current) return DateHelper.getFullDate(`${current}-01`);
     return undefined;
-  }, [year_month]);
+  }, [getValue]);
 
   const handleMonthChange = (date: Date) => {
     onFilterAppointments({

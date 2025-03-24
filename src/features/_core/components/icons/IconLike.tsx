@@ -1,6 +1,6 @@
 import type { IconProps } from "@/config/types";
 import { ThumbsUpIcon } from "lucide-react";
-import { DEFAULT_ICON_SIZE } from "../../utils/constants";
+import { DEFAULT_ICON_SIZE } from "../../utils/constants.util";
 
 const IconLike: React.FC<IconProps> = (props) => {
   return <ThumbsUpIcon {...DEFAULT_ICON_SIZE} {...props} />;
