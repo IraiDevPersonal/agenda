@@ -1,10 +1,10 @@
-import usePickCalendarDate from "../../calendar/hooks/usePickCalendarDate";
+import usePickCalendarDay from "../../calendar/hooks/usePickCalendarDate";
 import AgendaCalendar from "@/features/calendar/components/AgendaCalendar";
 import Text from "@/features/_core/components/ui/Text";
 import AppointmentList from "../../appointment/components/AppointmentList";
 
 const AgendaDatePicker = () => {
-  const { date, showCalendar, handleSelectDate } = usePickCalendarDate();
+  const { day, showCalendar, handleSelectDay } = usePickCalendarDay();
 
   if (!showCalendar) {
     return (
@@ -17,8 +17,8 @@ const AgendaDatePicker = () => {
   return (
     <>
       <div className="flex w-full justify-center">
-        <AgendaCalendar selected={date} onSelect={handleSelectDate} />
-        {date && <AppointmentList date={date} />}
+        <AgendaCalendar selected={day} onSelect={handleSelectDay} />
+        {day && <AppointmentList date={day} />}
       </div>
     </>
   );

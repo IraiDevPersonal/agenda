@@ -1,22 +1,22 @@
 import useAppointmentFilters from "@/features/appointment/hooks/useAppointmentFilters";
 import DateHelper from "@/config/pluggins/date-helper";
 
-export default function usePickCalendarDate() {
+export default function usePickCalendarDay() {
   const {
-    appointmentFilters: { date: filterDate, profession_id },
+    appointmentFilters: { date, profession_id },
     onFilterAppointments,
   } = useAppointmentFilters();
-  const date = (filterDate ? DateHelper.getFullDate(filterDate) : undefined) as Date;
+  const day = date ? DateHelper.getFullDate(date) : undefined;
 
-  const handleSelectDate = (date?: Date) => {
+  const handleSelectDay = (date?: Date) => {
     if (date) {
       onFilterAppointments({ date: DateHelper.format(date, "yyyy-mm-dd") });
     }
   };
 
   return {
-    date,
-    handleSelectDate,
+    day,
+    handleSelectDay,
     showCalendar: !!profession_id,
   };
 }
