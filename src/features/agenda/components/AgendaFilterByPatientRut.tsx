@@ -1,29 +1,16 @@
-import { useCallback, useRef, useState } from "react";
 import { checkRut, prettifyRut } from "react-rut-formatter";
+import useDebounce from "@/features/_core/hooks/useDebounce";
 import useAppointmentFilters from "@/features/appointment/hooks/useAppointmentFilters";
 import InputSearch from "@/features/_core/components/ui/inputs/InputSearch";
 import type { InputChangeEvHandler } from "@/config/types";
 
 const AgendaFilterByPatientRut = () => {
   const { onFilterAppointments, getValue } = useAppointmentFilters();
-  const [patientRut, setPatientRut] = useState<string>(
-    getValue("patient_rut", "") as string,
-  );
-  const shouldSearch = useRef<boolean>(false);
-
-  const handleChange: InputChangeEvHandler = (e) => {
-    const value = e.target.value;
-    setPatientRut(value);
-    shouldSearch.current = true;
-  };
-
-  const handleSearch = useCallback(
-    (value: string) => () => {
-      const formatedRut = prettifyRut(value);
-
-      if (!shouldSearch.current) return;
-
-      shouldSearch.current = false;
+  const { value, onValueChange, handleAction } = useDebounce({
+    delay: 1000,
+    defaultValue: getValue("patient_rut", "") as string,
+    actionFn: (v: string) => {
+      const formatedRut = prettifyRut(v);
 
       if (!checkRut(formatedRut) && formatedRut !== "") {
         alert("rut invalido");
@@ -31,20 +18,23 @@ const AgendaFilterByPatientRut = () => {
       }
 
       onFilterAppointments({ patient_rut: formatedRut });
-      setPatientRut(formatedRut);
+      onValueChange(formatedRut);
     },
-    [onFilterAppointments, shouldSearch],
-  );
+  });
+
+  const handleChange: InputChangeEvHandler = (e) => {
+    const value = e.target.value;
+    onValueChange(value);
+  };
 
   return (
     <>
       <InputSearch
         placeholder="Buscar por Rut paciente..."
-        onSearch={handleSearch(patientRut)}
-        onBlur={handleSearch(patientRut)}
+        onSearch={handleAction}
         onChange={handleChange}
-        value={patientRut}
         className="w-56"
+        value={value}
       />
     </>
   );
