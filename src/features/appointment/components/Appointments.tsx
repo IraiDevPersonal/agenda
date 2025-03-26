@@ -1,3 +1,4 @@
+import React from "react";
 import useAppointments from "../hooks/useAppointments";
 import ArrayMap from "@/features/_core/components/utils/ArrayMap";
 import SortableAppointments from "./SortableAppointments";
@@ -16,32 +17,32 @@ const Appointments = () => {
         {(columns) => (
           <ArrayMap dataset={columns}>
             {({ id }) => (
-              <>
+              <React.Fragment key={id}>
                 {id === "available" && (
                   <AvailableAppointments
-                    isLoading={isFetching}
                     appointments={data!.availables}
+                    isLoading={isFetching}
                   />
                 )}
                 {id === "cancelled" && (
                   <CancelledAppointments
-                    isLoading={isFetching}
                     appointments={data!.cancelled}
+                    isLoading={isFetching}
                   />
                 )}
                 {id === "confirmed" && (
                   <ConfirmedAppointments
-                    isLoading={isFetching}
                     appointments={data!.confirmed}
+                    isLoading={isFetching}
                   />
                 )}
                 {id === "to-confirm" && (
                   <ToConfirmAppointments
-                    isLoading={isFetching}
                     appointments={data!.toConfirm}
+                    isLoading={isFetching}
                   />
                 )}
-              </>
+              </React.Fragment>
             )}
           </ArrayMap>
         )}
