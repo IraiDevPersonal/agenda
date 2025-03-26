@@ -1,14 +1,18 @@
+import { useMemo } from "react";
 import { useQueryParams } from "@/features/_core/context/query-params-context";
 import type { AppointmentFilters } from "../domain/types";
 
 export default function useAppointmentFilters() {
-  const { getValue, queryAsObject, queryAsString, setQuery } =
-    useQueryParams<AppointmentFilters>();
+  const queryFilters = useQueryParams<AppointmentFilters>();
 
-  return {
-    appointmentFiltersAsString: queryAsString,
-    appointmentFilters: queryAsObject,
-    onFilterAppointments: setQuery,
-    getValue,
-  };
+  const returnValues = useMemo(() => {
+    return {
+      appointmentFiltersAsString: queryFilters.queryAsString,
+      appointmentFilters: queryFilters.queryAsObject,
+      onFilterAppointments: queryFilters.setQuery,
+      getValue: queryFilters.getValue,
+    };
+  }, [queryFilters]);
+
+  return returnValues;
 }
