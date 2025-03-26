@@ -1,11 +1,10 @@
-import { useMemo } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import IconLoading from "../icons/IconLoading";
 import Box from "@/features/_core/components/ui/Box";
 import cn from "@/config/pluggins/cn";
 
-type Props = {
+export type SortableColumnProps = {
   children: React.ReactNode;
   title: React.ReactNode;
   classNames?: Partial<{
@@ -17,7 +16,7 @@ type Props = {
   id: string;
 };
 
-const SortableColumn: React.FC<Props> = ({
+const SortableColumn: React.FC<SortableColumnProps> = ({
   classNames,
   children,
   title,

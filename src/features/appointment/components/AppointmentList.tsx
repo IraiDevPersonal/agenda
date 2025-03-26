@@ -4,11 +4,14 @@ import IconChevronRight from "@/features/_core/components/icons/IconChevronRight
 import Button from "@/features/_core/components/ui/Button";
 import Select from "@/features/_core/components/ui/selects/Select";
 import Text from "@/features/_core/components/ui/Text";
+import AvailableAppointments from "./AvailableAppointments";
+import CancelledAppointments from "./CancelledAppointments";
+import ConfirmedAppointments from "./ConfirmedAppointments";
+import ToConfirmAppointments from "./ToConfirmAppointments";
+import AgendaEntity from "@/features/agenda/domain/agenda.entity";
 import DateHelper from "@/config/pluggins/date-helper";
 import { createOptions } from "@/features/_core/utils/create-options.util";
 import { APPOINTMENT_OPTIONS } from "@/features/appointment/utils/constants.util";
-import AppointmentColumn from "./AppointmentColumn";
-import AgendaEntity from "@/features/agenda/domain/agenda.entity";
 import type { AppointementTypes } from "@/features/appointment/domain/types";
 
 type Props = {
@@ -51,34 +54,23 @@ type ListProps = {
   isLoading?: boolean;
 };
 
-const List: React.FC<ListProps> = ({ filter, agenda, ...props }) => {
+const List: React.FC<ListProps> = ({ agenda, filter, isLoading }) => {
   return (
     <>
       <div className="h-[calc(100vh-9.5rem)] overflow-y-auto scrollbar-styles scrollbar-thumb-transparent space-y-4">
-        {filter === "all" ? (
-          <AllAppointmentColumns agenda={agenda} {...props} />
-        ) : (
-          <AppointmentColumn
-            {...props}
-            id={filter}
-            appointments={AgendaEntity.appointmentViewerAdapter(agenda)[filter]}
-          />
+        {(filter === "all" || filter === "available") && (
+          <AvailableAppointments isLoading={isLoading} appointments={agenda.availables} />
+        )}
+        {(filter === "all" || filter === "cancelled") && (
+          <CancelledAppointments isLoading={isLoading} appointments={agenda.cancelled} />
+        )}
+        {(filter === "all" || filter === "confirmed") && (
+          <ConfirmedAppointments isLoading={isLoading} appointments={agenda.confirmed} />
+        )}
+        {(filter === "all" || filter === "to-confirm") && (
+          <ToConfirmAppointments isLoading={isLoading} appointments={agenda.toConfirm} />
         )}
       </div>
-    </>
-  );
-};
-
-const AllAppointmentColumns: React.FC<Pick<ListProps, "agenda" | "isLoading">> = ({
-  agenda,
-  ...props
-}) => {
-  return (
-    <>
-      <AppointmentColumn id="available" appointments={agenda.availables} {...props} />
-      <AppointmentColumn id="to-confirm" appointments={agenda.toConfirm} {...props} />
-      <AppointmentColumn id="confirmed" appointments={agenda.confirmed} {...props} />
-      <AppointmentColumn id="cancelled" appointments={agenda.cancelled} {...props} />
     </>
   );
 };

@@ -6,10 +6,10 @@ import type { AppointementTypes } from "../domain/types";
 
 type Props = {
   appointment: AppointmentEntity;
-  id: Exclude<AppointementTypes, "available">;
+  type: Exclude<AppointementTypes, "available">;
 };
 
-const AppointmentCard: React.FC<Props> = ({ id, appointment }) => {
+const AppointmentCard: React.FC<Props> = ({ type, appointment }) => {
   const {
     patient_name,
     patient_rut,
@@ -20,8 +20,8 @@ const AppointmentCard: React.FC<Props> = ({ id, appointment }) => {
   } = appointment;
   const { showProfesionalData } = useShowProfessionalData();
   return (
-    <Card className={HASH_COLORS[id].card}>
-      <Avatar alt="Paciente 1" classNames={{ fallback: HASH_COLORS[id].avatar }} />
+    <Card className={HASH_COLORS[type].card}>
+      <Avatar alt="Paciente 1" classNames={{ fallback: HASH_COLORS[type].avatar }} />
       <div className="w-full">
         {showProfesionalData && (
           <h5 className="capitalize font-bold">{professional_name}</h5>
@@ -42,7 +42,7 @@ const AppointmentCard: React.FC<Props> = ({ id, appointment }) => {
 
 export default AppointmentCard;
 
-const HASH_COLORS: Record<Props["id"], { avatar: string; card: string }> = {
+const HASH_COLORS: Record<Props["type"], { avatar: string; card: string }> = {
   "to-confirm": {
     avatar: "bg-amber-100 text-amber-600",
     card: "text-amber-700 border-amber-100/70 bg-amber-50 shadow-amber-700/10 hover:bg-amber-100",

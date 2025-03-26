@@ -1,36 +1,37 @@
-import useDialog from "@/features/_core/hooks/useDialog";
 import ShowProfessionalDataContext from "../context/ShowProfessionalDataContext";
 import SortableColumn from "@/features/_core/components/ui/SortableColumn";
 import ArrayMap from "@/features/_core/components/utils/ArrayMap";
-import DialogAppointmentAvailable from "./DialogAppointmentAvailable";
-import DialogAppointmentCancelled from "./DialogAppointmentCancelled";
-import DialogAppointmentConfirmed from "./DialogAppointmentConfirmed";
-import DialogAppointmentToConfirm from "./DialogAppointmentToConfirm";
-import AppointmentAvailableCard from "./AppointmentAvailableCard";
-import AppointmentCard from "./AppointmentCard";
 import AppointmentEntity from "../domain/appointment.entity";
 import cn from "@/config/pluggins/cn";
-import type { DialogPropsHandler } from "@/config/types";
 import type { AppointementTypes } from "../domain/types";
 
-type Props = {
+export type AppointmentColumnProps = {
+  renderCard(appointment: AppointmentEntity): React.ReactNode;
   appointments: AppointmentEntity[];
+  children: React.ReactNode;
   id: AppointementTypes;
+  onClickCard(): void;
   isLoading?: boolean;
 };
 
-const AppointmentColumn: React.FC<Props> = ({ id, appointments, isLoading }) => {
-  const [isOpen, onToggleIsOpen] = useDialog();
+const AppointmentColumn: React.FC<AppointmentColumnProps> = ({
+  appointments,
+  onClickCard,
+  renderCard,
+  isLoading,
+  children,
+  id,
+}) => {
   return (
     <SortableColumn
-      classNames={CLASSNAMES[id]}
-      isLoading={isLoading}
       title={
         <>
           {TITLES[id]}
           <span className="ml-2">({appointments.length})</span>
         </>
       }
+      classNames={CLASSNAMES[id]}
+      isLoading={isLoading}
       id={id}
     >
       <ShowProfessionalDataContext>
@@ -40,46 +41,24 @@ const AppointmentColumn: React.FC<Props> = ({ id, appointments, isLoading }) => 
         >
           {(item) => (
             <li
-              key={item.uid}
-              onClick={onToggleIsOpen}
               className={cn(
                 "cursor-pointer transition-opacity duration-300",
                 isLoading && "pointer-events-none cursor-default opacity-50",
               )}
+              onClick={onClickCard}
+              key={item.uid}
             >
-              {id === "available" ? (
-                <AppointmentAvailableCard appointment={item} />
-              ) : (
-                <AppointmentCard id={id} appointment={item} />
-              )}
+              {renderCard(item)}
             </li>
           )}
         </ArrayMap>
-        <AppointmentDialogs id={id} dialogProps={{ isOpen, onClose: onToggleIsOpen }} />
+        {children}
       </ShowProfessionalDataContext>
     </SortableColumn>
   );
 };
 
 export default AppointmentColumn;
-
-const AppointmentDialogs: React.FC<{
-  id: AppointementTypes;
-  dialogProps: DialogPropsHandler;
-}> = ({ dialogProps, id }) => {
-  switch (id) {
-    case "available":
-      return <DialogAppointmentAvailable {...dialogProps} />;
-    case "cancelled":
-      return <DialogAppointmentCancelled {...dialogProps} />;
-    case "confirmed":
-      return <DialogAppointmentConfirmed {...dialogProps} />;
-    case "to-confirm":
-      return <DialogAppointmentToConfirm {...dialogProps} />;
-    default:
-      return null;
-  }
-};
 
 const TITLES: Record<AppointementTypes, string> = {
   "to-confirm": "Por confirmar",

@@ -30,15 +30,4 @@ export default class AgendaEntity {
       toConfirm: toArray(entry.toConfirm).map(AppointmentEntity.responseAdapter),
     });
   }
-
-  static appointmentViewerAdapter(
-    entry: AgendaEntity,
-  ): Record<AppointementTypes, AppointmentEntity[]> {
-    return {
-      "to-confirm": entry.toConfirm,
-      available: entry.availables,
-      cancelled: entry.cancelled,
-      confirmed: entry.confirmed,
-    };
-  }
 }

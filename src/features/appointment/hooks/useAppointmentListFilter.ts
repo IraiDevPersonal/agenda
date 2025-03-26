@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import useAppointmentFilters from "./useAppointmentFilters";
 import ROUTES from "@/config/routes";
 import type { SelectChangeEvHandler } from "@/config/types";
-import type { AppointmentFilters } from "../domain/types";
+import type { AppointementTypes, AppointmentFilters } from "../domain/types";
 
 export default function useAppointmentList() {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export default function useAppointmentList() {
   };
 
   return {
-    listFilter: getValue("show", "available"),
+    listFilter: getValue("show", "available") as AppointementTypes,
     handleNavigateToMyDay,
     handleFilterList,
   };

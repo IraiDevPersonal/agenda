@@ -1,9 +1,11 @@
 import useAppointments from "../hooks/useAppointments";
 import ArrayMap from "@/features/_core/components/utils/ArrayMap";
 import SortableAppointments from "./SortableAppointments";
-import AppointmentColumn from "./AppointmentColumn";
 import Box from "@/features/_core/components/ui/Box";
-import AgendaEntity from "@/features/agenda/domain/agenda.entity";
+import AvailableAppointments from "./AvailableAppointments";
+import CancelledAppointments from "./CancelledAppointments";
+import ConfirmedAppointments from "./ConfirmedAppointments";
+import ToConfirmAppointments from "./ToConfirmAppointments";
 
 const Appointments = () => {
   const { data, isFetching } = useAppointments();
@@ -14,12 +16,32 @@ const Appointments = () => {
         {(columns) => (
           <ArrayMap dataset={columns}>
             {({ id }) => (
-              <AppointmentColumn
-                id={id}
-                key={id}
-                isLoading={isFetching}
-                appointments={AgendaEntity.appointmentViewerAdapter(data!)[id]}
-              />
+              <>
+                {id === "available" && (
+                  <AvailableAppointments
+                    isLoading={isFetching}
+                    appointments={data!.availables}
+                  />
+                )}
+                {id === "cancelled" && (
+                  <CancelledAppointments
+                    isLoading={isFetching}
+                    appointments={data!.cancelled}
+                  />
+                )}
+                {id === "confirmed" && (
+                  <ConfirmedAppointments
+                    isLoading={isFetching}
+                    appointments={data!.confirmed}
+                  />
+                )}
+                {id === "to-confirm" && (
+                  <ToConfirmAppointments
+                    isLoading={isFetching}
+                    appointments={data!.toConfirm}
+                  />
+                )}
+              </>
             )}
           </ArrayMap>
         )}
