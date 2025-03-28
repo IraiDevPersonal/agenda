@@ -1,7 +1,8 @@
-import useQuery from "@/features/_core/hooks/useQuery";
+import { useQuery } from "@tanstack/react-query";
 import useAppointmentFilters from "./useAppointmentFilters";
 import AppointmentService from "../services/appointment.service";
 import AgendaEntity from "@/features/agenda/domain/agenda.entity";
+import { QUERY_KEYS } from "@/config/query-keys";
 
 const appointmentService = new AppointmentService();
 
@@ -10,11 +11,9 @@ export default function useAppointments() {
     appointmentFilters: { year_month, show, ...filters },
   } = useAppointmentFilters();
   const query = useQuery({
-    queryKey: ["appointments", { ...filters }],
+    queryKey: [QUERY_KEYS.APPOINTMENTS, { ...filters }],
     queryFn: () => appointmentService.getAgenda(filters),
-    // refetchOnMount: shouldRefetchOnMount ? "always" : false,
-    // retry: 2,
-    initialData: AgendaEntity.responseAdapter({}),
+    initialData: AgendaEntity.adaper({}),
   });
 
   return query;

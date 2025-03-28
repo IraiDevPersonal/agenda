@@ -12,7 +12,7 @@ export default class AppointmentService {
   public async getAgenda(filters?: Partial<AppointmentFilters>) {
     const search = this.stringifyFilters(filters);
     const { data } = await agendaApi.get(`/agenda?${search}`);
-    return AgendaEntity.responseAdapter(data);
+    return AgendaEntity.adaper(data);
   }
 
   public async getAppointmentsByType(

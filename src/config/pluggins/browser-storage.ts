@@ -1,22 +1,23 @@
 export type StorageType = "local-storage" | "session-storage";
 
 export default class BrowserStorage {
-  constructor(
-    public readonly key: string,
-    private readonly storageType: StorageType = "local-storage",
-  ) {}
+  private readonly storage: Storage;
+  public readonly key: string;
 
-  private storage =
-    this.storageType === "local-storage" ? window.localStorage : window.sessionStorage;
+  constructor(key: string, storageType?: StorageType) {
+    const isLocalStorage = storageType === "local-storage";
+    this.key = key;
+    this.storage = isLocalStorage ? window.localStorage : window.sessionStorage;
+  }
 
   public save<T>(value: T) {
     const parseValue = typeof value === "string" ? value : JSON.stringify(value);
     this.storage.setItem(this.key, parseValue);
   }
 
-  public get<T>(defaultValue?: T) {
+  public get<T>(defaultValue: T) {
     const value = this.getAsString();
-    if (!value) return defaultValue ?? null;
+    if (!value) return defaultValue;
     try {
       return JSON.parse(value) as T;
     } catch (_) {

@@ -1,6 +1,7 @@
 import useAppointmentFilters from "@/features/appointment/hooks/useAppointmentFilters";
-import useQuery from "@/features/_core/hooks/useQuery";
+import { useQuery } from "@tanstack/react-query";
 import CalendarService from "../services/calendar.service";
+import { QUERY_KEYS } from "@/config/query-keys";
 
 const calendarService = new CalendarService();
 
@@ -9,7 +10,7 @@ export default function useCalendar() {
     appointmentFilters: { date, show, ...filters },
   } = useAppointmentFilters();
   const query = useQuery({
-    queryKey: ["calendar", { ...filters }],
+    queryKey: [QUERY_KEYS.CALENDAR, { ...filters }],
     queryFn: () => calendarService.getCalendar(filters),
     initialData: [],
   });

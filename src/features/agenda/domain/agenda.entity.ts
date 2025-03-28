@@ -22,7 +22,7 @@ export default class AgendaEntity {
     this.toConfirm = init.toConfirm;
   }
 
-  static responseAdapter(entry: Record<string, any>) {
+  static adaper(entry: Record<string, any>) {
     return new AgendaEntity({
       availables: toArray(entry.availables).map(AppointmentEntity.responseAdapter),
       cancelled: toArray(entry.cancelled).map(AppointmentEntity.responseAdapter),
