@@ -39,18 +39,21 @@ export default function QueryParamProvider<T extends ValidObject>({
   const initialValues = useRef(defaultValues);
   const omitedParams = useRef(omit ?? []);
 
+  // FIXME: solucionar problema con historial de navegacion
+
   useEffect(() => {
     if (!initialValues.current) return;
+    console.log("render en context");
 
     const parsed = QueryString.toObject(
       window.location.search,
       initialOptions.current.toObjectOptions,
     );
     let newQuery = QueryString.toString(
-      {
+      QueryString.withOmitParams(omitedParams.current, {
         ...initialValues.current,
-        ...QueryString.withOmitParams(omitedParams.current, parsed),
-      },
+        ...parsed,
+      }),
       initialOptions.current.toStringOptions,
     );
 

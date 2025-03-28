@@ -2,10 +2,10 @@ import { DefaultOptions, QueryClient } from "@tanstack/react-query";
 import Notify from "./notify";
 import HttpHelper from "./http-helper";
 
-export class CustomQueryClient extends QueryClient {
+export class AgendaQueryClient extends QueryClient {
   constructor() {
     super({
-      defaultOptions: CustomQueryClient.getDefaultOptions(),
+      defaultOptions: AgendaQueryClient.getDefaultOptions(),
     });
   }
 
@@ -24,3 +24,6 @@ export class CustomQueryClient extends QueryClient {
     };
   }
 }
+
+const agendaQueryClient = new AgendaQueryClient();
+export default agendaQueryClient;

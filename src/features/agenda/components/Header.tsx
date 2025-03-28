@@ -10,11 +10,11 @@ type Props = {
     title: string;
     wrapper: string;
   }>;
+  onReload(): void;
   title: string;
 };
 
-const Header: React.FC<Props> = ({ classNames, children, title }) => {
-  // const { onFilterAppointments } = useAppointmentFilters();
+const Header: React.FC<Props> = ({ classNames, children, onReload, title }) => {
   return (
     <Box
       as="header"
@@ -25,12 +25,7 @@ const Header: React.FC<Props> = ({ classNames, children, title }) => {
     >
       <h1 className={cn("mr-auto text-2xl font-bold", classNames?.title)}>{title}</h1>
       {children}
-      <Button
-        size="icon"
-        title="Actualizar"
-        variant="secondary"
-        // onClick={() => onFilterAppointments({})}
-      >
+      <Button size="icon" title="Actualizar" variant="secondary" onClick={onReload}>
         <IconReload />
       </Button>
       <PopoverBonoFonasa />

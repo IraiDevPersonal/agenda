@@ -1,7 +1,7 @@
 import Main from "@/features/_core/components/ui/Main";
 import AgendaDatePicker from "../components/AgendaDatePicker";
-import AgendaHeader from "../components/AgendaHeader";
 import QueryParamProvider from "@/features/_core/context/query-params-context";
+import CalendarHeader from "../components/CalendarHeader";
 import { defaultAppointmentFilters } from "@/features/appointment/utils/functions.util";
 
 const AgendaCalendarPage = () => {
@@ -11,7 +11,7 @@ const AgendaCalendarPage = () => {
 
       <Main>
         <QueryParamProvider defaultValues={defaultAppointmentFilters()}>
-          <AgendaHeader />
+          <CalendarHeader />
           <AgendaDatePicker />
         </QueryParamProvider>
       </Main>
