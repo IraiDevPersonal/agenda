@@ -1,5 +1,4 @@
 import axios, { AxiosInstance } from "axios";
-import Notify from "./notify";
 
 export default class HttpHelper {
   static isError(error: any) {
@@ -25,25 +24,12 @@ export default class HttpHelper {
     return errorMessage;
   }
 
-  static withAuthorizationToken(axiosInstance: AxiosInstance, token: string) {
+  static withAuthToken(axiosInstance: AxiosInstance, token: string) {
     axiosInstance.interceptors.request.use((config) => {
       if (token) {
         config.headers["Authorization"] = `Bearer ${token}`;
       }
       return config;
     });
-  }
-
-  static errorHandler(axiosInstance: AxiosInstance) {
-    axiosInstance.interceptors.response.use(
-      (response) => response,
-      (error) => {
-        const errorMesssage =
-          error.response?.data?.message || error.message || "Error por defecto...";
-        Notify.error(errorMesssage, { duration: 4000 });
-
-        return Promise.reject(error);
-      },
-    );
   }
 }

@@ -8,8 +8,8 @@ export const agendaApi = httpClient.create({
   baseURL: "http://localhost:3000/api",
 });
 
-const time = 500;
-
+const time = 1000;
+// TODO: para demorara las consultas y ver los loader
 agendaApi.interceptors.response.use(
   (response) => {
     return new Promise((resolve) => {

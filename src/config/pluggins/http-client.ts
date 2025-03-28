@@ -4,7 +4,7 @@ import HttpHelper from "./http-helper";
 
 type CreateReturn = AxiosInstance & {
   getErrorMessage: (error: unknown) => string;
-  withAuthorizationToken: () => void;
+  withAuthorization: () => void;
 };
 
 export default class HttpClient {
@@ -15,12 +15,12 @@ export default class HttpClient {
     return {
       ...instance,
       getErrorMessage: (error: unknown) => HttpHelper.getErrorMessage(error),
-      withAuthorizationToken: () => this.withAuthorization(instance),
+      withAuthorization: () => this.withAuthorization(instance),
     } as CreateReturn;
   }
 
   private withAuthorization(instance: AxiosInstance) {
     const token = this.storage.get<string>("");
-    HttpHelper.withAuthorizationToken(instance, token);
+    HttpHelper.withAuthToken(instance, token);
   }
 }
