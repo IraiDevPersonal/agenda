@@ -1,0 +1,64 @@
+import ArrayMap from "@/modules/_core/components/utils/ArrayMap";
+import DialogCalendarDay from "./DialogCalendarDay";
+import { tooltipCalendarItem } from "../utils/utilities.util";
+import cn from "@/config/pluggins/cn";
+import CalendarEntity from "../domain/calendar.entity";
+import DateHelper from "@/config/pluggins/date-helper";
+
+const MAX_SHOW = 5;
+
+type ItemsProps = CalendarEntity & {
+  isSelected: boolean;
+};
+
+const CalendarDayItems: React.FC<ItemsProps> = ({ isSelected, appointments, date }) => {
+  return (
+    <ul className="space-y-1 w-full">
+      <ArrayMap dataset={appointments.toSpliced(appointments.length > MAX_SHOW ? 4 : 5)}>
+        {(item) => (
+          <li
+            key={item.uid}
+            title={tooltipCalendarItem(
+              item,
+              [
+                `${isWithinInterval(item, date) ? "En atención..." : ""}`,
+                `${isBefore(item, date) ? "Cita finalizada..." : ""}`,
+              ].join(""),
+            )}
+            className={cn(
+              "relative text-primary text-left text-xs truncate cursor-help ps-2 before:content-[' '] before:w-1 before:h-full before:rounded-full before:bg-primary before:absolute before:left-0 before:top-0",
+              isSelected && "text-accent before:bg-accent",
+              isWithinInterval(item, date) && "before:bg-green-400",
+              isBefore(item, date) && "line-through before:bg-orange-400",
+            )}
+          >
+            <small className="font-bold">{item.appointment_time}:</small>{" "}
+            {item.professional_name}
+          </li>
+        )}
+      </ArrayMap>
+      {appointments.length > MAX_SHOW && (
+        <DialogCalendarDay
+          appointments={appointments}
+          isSelected={isSelected}
+          date={date}
+        />
+      )}
+    </ul>
+  );
+};
+
+export default CalendarDayItems;
+
+function isWithinInterval(item: CalendarEntity["appointments"][number], date: string) {
+  return DateHelper.isWithinInterval(
+    item.appointment_time_from,
+    item.appointment_time_to,
+    date,
+    date,
+  );
+}
+
+function isBefore(item: CalendarEntity["appointments"][number], date: string) {
+  return DateHelper.isBefore(item.appointment_time_to, date);
+}

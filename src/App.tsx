@@ -1,7 +1,7 @@
 import { QueryClientProvider } from "@tanstack/react-query";
 import agendaQueryClient from "./config/pluggins/agenda-query-client";
-import AppRoutes from "@/features/_core/routes/AppRoutes";
-import Notification from "./features/_core/components/ui/Notification";
+import AppRoutes from "@/modules/_core/routes/AppRoutes";
+import Notification from "./modules/_core/components/ui/Notification";
 
 const App = () => {
   return (
