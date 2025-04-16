@@ -7,11 +7,12 @@ const professionalService = new ProfessionalService();
 export default function useProfessionalsAsOptions() {
   const { refetch, data, isLoading } = useQuery({
     queryKey: [QUERY_KEYS["PROFFESIONALS-FILTERS"]],
-    queryFn: professionalService.getProfessionalsToOptions,
+    queryFn: professionalService.getProfessionalsAsOptions,
+    initialData: [],
   });
 
   return {
-    professionalOptions: isLoading ? [] : data!,
+    professionalOptions: data!,
     isLoading,
     refetch,
   };

@@ -7,11 +7,12 @@ const professionService = new ProfessionService();
 export default function useProfessionsAsOptions() {
   const { refetch, data, isLoading } = useQuery({
     queryKey: [QUERY_KEYS["PROFFESIONS-FILTERS"]],
-    queryFn: professionService.getProfessionsToOptions,
+    queryFn: professionService.getProfessionsAsOptions,
+    initialData: [],
   });
 
   return {
-    professionOptions: isLoading ? [] : data!,
+    professionOptions: data!,
     isLoading,
     refetch,
   };
